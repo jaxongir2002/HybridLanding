@@ -117,22 +117,22 @@ const containerRef = ref(null);
 onMounted(() => {
 
 
-  gsap.registerPlugin(SplitText, ScrollTrigger); // Register ScrollTrigger
-  let mySplitText = new SplitText('.animation-text', {type: 'chars'})
-  let chars = mySplitText.chars
+  // gsap.registerPlugin(SplitText, ScrollTrigger); // Register ScrollTrigger
+  // let mySplitText = new SplitText('.animation-text', {type: 'chars'})
+  // let chars = mySplitText.chars
 
-  gsap.from(chars, {
-    yPercent: -140,
-    stagger: 0.02,
-    ease: 'back.out',
-    duration: 1,
-    scrollTrigger: {
-      trigger: '.title-containers',
-      start: 'top 80%',
-      end: '30px',
-      scrub: 1,
-    }
-  });
+  // gsap.from(chars, {
+  //   yPercent: -140,
+  //   stagger: 0.02,
+  //   ease: 'back.out',
+  //   duration: 1,
+  //   scrollTrigger: {
+  //     trigger: '.title-containers',
+  //     start: 'top 80%',
+  //     end: '30px',
+  //     scrub: 1,
+  //   }
+  // });
 
   // let mySplitTextTwo = new SplitText('.animation-text-two', {type: 'chars'})
   // let charsTwo = mySplitTextTwo.chars

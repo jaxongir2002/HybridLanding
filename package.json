@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "gsap": "^3.12.5",
     "gsap-trial": "^3.12.5",
     "masonry-layout": "^4.2.2",
     "pinia": "^2.1.7",
