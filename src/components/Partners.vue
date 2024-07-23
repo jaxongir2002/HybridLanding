@@ -1,10 +1,9 @@
 <script setup>
 import {nextTick, onMounted, ref} from "vue";
 import Masonry from "masonry-layout";
-import gsap from 'gsap-trial'
-import {SplitText} from 'gsap-trial/SplitText'
 import {ScrollTrigger} from 'gsap-trial/ScrollTrigger'
-
+import { gsap } from "gsap";
+import { SplitText } from "gsap/SplitText";
 const logo = ref([
   {
     id: 1,
