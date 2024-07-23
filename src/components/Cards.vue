@@ -1,0 +1,338 @@
+<script setup>
+
+</script>
+
+<template>
+  <div class="flex justify-between  max-md:flex-col pt-[80px] pb-[80px]" style="--hue: 220">
+    <div class="flip-card col-span-4">
+      <div class="card-front">
+        <figure>
+          <div class="card-front-text">
+            THE TECH / INTERACTIVE
+          </div>
+          <div class="text-all-hybrid">
+            <div class="text-logo">
+              H
+              <p class="center-logo-hybrid">
+                Experience
+              </p>
+              X
+            </div>
+          </div>
+          <div class="footer-btn relative bottom-[46px]">
+            <img class="relative top-[20px]" src="../assets/img/Arrow_right.svg" alt="">
+            <div>
+              <div>
+                <button class="btn-content-hybrid">
+                  Holograms
+                </button>
+                <button class="btn-content-hybrid">
+                  Interactive
+                </button>
+              </div>
+              <div class="footer-content mt-[10px]">
+                <button class="btn-content-hybrid">
+                  Gaming
+                </button>
+                <button class="btn-content-hybrid">
+                  Hybrid IPS
+                </button>
+              </div>
+            </div>
+          </div>
+        </figure>
+      </div>
+      <div class="card-back">
+        <figure class="video-background">
+          <div class="text-logo"
+               style="color: white; position:relative; z-index: 3333; font-size: 48px; text-align: center; float: left; top: 80px">
+            H
+            <p class="center-logo-hybrid" style="color: white; font-size: 15px">
+              Experience
+            </p>
+            X
+          </div>
+          <div class="img-bg-hybrid">
+            <video autoplay loop muted>
+              <source src="../assets/video/91ec3544e41e9afbff63c3d000a9a5296073707d839b265710597bd574d824eb.mp4"
+                      type="video/mp4">
+            </video>
+            <div class="footer-btn absolute  bottom-[20px]">
+              <img src="../assets/img/Arrow_right.svg" alt="">
+              <div class="footer-content ">
+              </div>
+            </div>
+          </div>
+
+        </figure>
+
+      </div>
+    </div>
+    <div class="flip-card col-span-4">
+      <div class="card-front">
+        <figure>
+          <div class="card-front-text">
+            THE
+            <br>
+            Content
+          </div>
+          <div class="text-all-hybrid">
+            <div class="text-logo" style="color: #FF0000 !important;">
+              H
+              <p class="center-logo-hybrid" style="color: #FF0000 !important;">
+                Studio
+              </p>
+              X
+            </div>
+          </div>
+          <div class="footer-btn relative bottom-[4px]">
+            <img src="../assets/img/Arrow_right.svg" alt="">
+            <div class="footer-content ">
+              <button class="btn-content-hybrid">
+                Content
+              </button>
+            </div>
+          </div>
+        </figure>
+      </div>
+      <div class="card-back">
+        <figure class="video-background">
+          <div class="text-logo"
+               style="color: white; position:relative; z-index: 3333; font-size: 48px; text-align: center; float: left; top: 80px">
+            H
+            <p class="center-logo-hybrid" style="color: white; font-size: 15px">
+              Studio
+            </p>
+            X
+          </div>
+          <div class="img-bg-hybrid">
+            <video autoplay loop muted>
+              <source src="../assets/video/84d3ee1d02f80623a9f94aaf876be15f12f8030d7abc558fa81e43cf65067340.mp4"
+                      type="video/mp4">
+            </video>
+            <div class="footer-btn absolute  bottom-[20px]">
+              <img src="../assets/img/Arrow_right.svg" alt="">
+              <div class="footer-content ">
+              </div>
+            </div>
+          </div>
+        </figure>
+
+      </div>
+    </div>
+    <div class="flip-card col-span-4">
+      <div class="card-front">
+        <figure>
+          <div class="card-front-text">
+            THE
+            <br>
+            Experiments
+          </div>
+          <div class="text-all-hybrid">
+            <div class="text-logo" style="color:#FFFF00 ">
+              H
+              <p class="center-logo-hybrid" style="color:#FFFF00 ">
+                lab
+              </p>
+              X
+            </div>
+          </div>
+          <div class="footer-btn relative bottom-[5px]">
+            <img src="../assets/img/Arrow_right.svg" alt="">
+            <div class="footer-content mt-[10px] ">
+              <button class="btn-content-hybrid">
+                Gaming
+              </button>
+              <button class="btn-content-hybrid">
+                Hybrid IPS
+              </button>
+            </div>
+
+          </div>
+        </figure>
+      </div>
+
+      <div class="card-back">
+        <figure class="video-background">
+          <div class="text-logo"
+               style="color: white; position:relative; z-index: 3333; font-size: 48px; text-align: center; float: left; top: 80px">
+            H
+            <p class="center-logo-hybrid" style="color: white; font-size: 15px">
+              lab
+            </p>
+            X
+          </div>
+          <div class="img-bg-hybrid">
+            <video autoplay loop muted>
+              <source src="../assets/video/ac57976749d126f18128abad5cec0903ee50f1bcaab2b1941b03887e69ae9a29.mp4"
+                      type="video/mp4">
+            </video>
+            <div class="footer-btn absolute bottom-[20px]">
+              <img src="../assets/img/Arrow_right.svg" alt="">
+              <div class="footer-content ">
+              </div>
+            </div>
+          </div>
+
+        </figure>
+
+      </div>
+
+    </div>
+  </div>
+</template>
+
+<style scoped lang="scss">
+@import url('https://fonts.googleapis.com/css?family=Lato');
+
+.video-background {
+  position: relative;
+  width: 100%;
+  height: 740px;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+.img-bg-hybrid {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100% !important;
+  height: 100%;
+  z-index: -1;
+}
+
+.img-bg-hybrid video {
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.text-logo {
+  color: #CC11B2;
+  font-family: Alexandria, sans-serif;
+  font-size: 96px;
+  font-weight: 900;
+  line-height: 0.7;
+  margin: 0;
+  position: absolute;
+  top: 40%;
+  transform: translate(0, -40%);
+}
+
+.footer-content {
+  display: flex;
+  gap: 10px;
+  float: right;
+}
+
+.btn-content-hybrid {
+  border-radius: 100px;
+  padding: 10px;
+  color: white;
+  border: 1px solid #828282;
+  font-family: Alexandria, sans-serif;
+  font-weight: 300;
+  line-height: 19px;
+  font-size: 14px;
+}
+
+.center-logo-hybrid {
+  font-family: Alexandria, sans-serif;
+  font-weight: 900;
+  font-size: 30px;
+  line-height: 36px;
+  color: #CC11B2;
+  padding: 0;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.footer-btn {
+  display: flex;
+  justify-content: space-between;
+
+}
+
+.text-all-hybrid {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  height: 80%;
+  width: 100%;
+}
+
+/* .flip-card */
+.flip-card {
+  width: 440px;
+  height: 740px;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: .6s .1s;
+}
+
+/* hover and focus-within states */
+.flip-card:hover,
+.flip-card:focus-within {
+  transform: rotateY(180deg);
+}
+
+/* .card-... */
+.card-front,
+.card-back {
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  background: #111112;
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  backface-visibility: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* .card-front */
+.card-front {
+  transform: rotateY(0deg);
+  z-index: 2;
+  background: #111112;
+
+  &-text {
+    font-family: Alexandria, sans-serif;
+    font-weight: 300;
+    font-size: 32px;
+    background: linear-gradient(to left, #828282, #FFFFFF);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    width: 212px;
+  }
+}
+
+/* .card-back */
+.card-back {
+  transform: rotateY(180deg);
+  z-index: 1;
+}
+
+figure {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 40px 30px 40px 30px !important;
+  z-index: -1;
+}
+
+</style>
