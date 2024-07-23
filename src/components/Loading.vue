@@ -48,10 +48,10 @@ const interval = setInterval(() => {
       <img :class="{visibility : store.count >= 80 && store.count < 90}" src="../assets/img/YellowH.svg" alt=""
            class="yellow-img-h">
       <div class="title-container">
-        <div class="title-logo" :class="{'jaxon': addClass}">
+        <div class="title-logo" :class="{'enable': addClass}">
           Hybrid
         </div>
-        <div class="title-text" :class="{'jaxon': addClass}">
+        <div class="title-text" :class="{'enable': addClass}">
           xperience
         </div>
         <div class="glass-effect"></div>
@@ -85,7 +85,7 @@ const interval = setInterval(() => {
 </template>
 
 <style scoped lang="scss">
-.jaxon {
+.enable {
   -webkit-text-fill-color: white !important;
 }
 

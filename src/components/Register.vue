@@ -132,7 +132,6 @@
   border-width: 0 2.5px 2.5px 0;
   transform: rotate(45deg);
 }
-
 .container input:checked ~ .checkmark:after {
   display: block;
 }
