@@ -3,7 +3,7 @@ import {nextTick, onMounted, ref} from "vue";
 import Masonry from "masonry-layout";
 import {ScrollTrigger} from 'gsap-trial/ScrollTrigger'
 import { gsap } from "gsap";
-import { SplitText } from "gsap/SplitText";
+// import { SplitText } from "gsap/SplitText";
 const logo = ref([
   {
     id: 1,
@@ -134,21 +134,21 @@ onMounted(() => {
     }
   });
 
-  let mySplitTextTwo = new SplitText('.animation-text-two', {type: 'chars'})
-  let charsTwo = mySplitTextTwo.chars
+  // let mySplitTextTwo = new SplitText('.animation-text-two', {type: 'chars'})
+  // let charsTwo = mySplitTextTwo.chars
 
-  gsap.from(charsTwo, {
-    yPercent: 140,
-    stagger: 0.02,
-    ease: 'back.out',
-    duration: 1,
-    scrollTrigger: {
-      trigger: '.title-containers',
-      start: 'top 80%',
-      end: '30px',
-      scrub: 1,
-    }
-  });
+  // gsap.from(charsTwo, {
+  //   yPercent: 140,
+  //   stagger: 0.02,
+  //   ease: 'back.out',
+  //   duration: 1,
+  //   scrollTrigger: {
+  //     trigger: '.title-containers',
+  //     start: 'top 80%',
+  //     end: '30px',
+  //     scrub: 1,
+  //   }
+  // });
   gsap.to('.cards-company', {
     stagger: 0.2,
     ease: 'back.out',
