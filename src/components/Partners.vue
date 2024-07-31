@@ -4,7 +4,7 @@ import {ScrollTrigger} from 'gsap-trial/ScrollTrigger'
 import gsap from "gsap-trial";
 
 onMounted(() => {
-  gsap.registerPlugin(SplitText, ScrollTrigger, ScrollSmoother);
+  gsap.registerPlugin(SplitText, ScrollTrigger);
   let mySplitText = new SplitText('.animation-text', {type: 'chars'})
   let chars = mySplitText.chars
 
@@ -53,17 +53,6 @@ tl.from('.first',{
   window.addEventListener('load', animateSrtElement);
   window.addEventListener('resize', animateSrtElement);
 
-
-  const smoother = ScrollSmoother.create({
-    smooth: 1,
-    normalizeScroll: true,
-    speed: 1,
-    smoothTouch: 0.1,
-    ignoreMobileResize: true,
-    effects: true,
-    preventDefault: true,
-
-  });
 
 });
 </script>
