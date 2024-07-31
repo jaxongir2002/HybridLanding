@@ -1,7 +1,7 @@
 <script setup>
 import {onMounted} from "vue";
-import {ScrollTrigger} from 'gsap-trial/ScrollTrigger'
-import gsap from "gsap-trial";
+import {ScrollTrigger} from 'gsap/ScrollTrigger'
+import gsap from "gsap";
 
 onMounted(() => {
   gsap.registerPlugin(SplitText, ScrollTrigger);

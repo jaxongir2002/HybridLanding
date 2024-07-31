@@ -1,7 +1,7 @@
 <script setup>
 import {onMounted, ref} from "vue";
-import gsap from 'gsap-trial';
-import {ScrollTrigger} from "gsap-trial/ScrollTrigger";
+import gsap from 'gsap';
+import {ScrollTrigger} from "gsap/ScrollTrigger";
 
 const missionTitle = ref(null);
 
