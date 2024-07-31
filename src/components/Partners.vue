@@ -98,10 +98,10 @@ onMounted(() => {
               <img class="w-full h-auto object-cover" src="../assets/img/Sera.svg" alt="">
             </div>
             <div class="cards-company h-[218px] p-[80px] max-sm:p-[30px] max-sm:h-[87.761px]">
-              <img class="w-full h-auto object-cover" src="../assets/img/E" alt="">
+<!--              <img class="w-full h-auto object-cover" src="../assets/img/E" alt="">-->
             </div>
             <div class="cards-company h-[220px] p-[80px] max-sm:p-[30px] max-sm:h-[91.94px]">
-              <img class="w-full h-auto object-cover" src="../assets/img/E" alt="">
+<!--              <img class="w-full h-auto object-cover" src="../assets/img/E" alt="">-->
             </div>
           </div>
           <div data-lag="1" class="second">
