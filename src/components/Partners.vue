@@ -99,7 +99,7 @@ onMounted(() => {
               <img class="w-full h-auto object-cover" src="../assets/img/Sera.svg" alt="">
             </div>
             <div class="cards-company h-[210px] p-[80px] max-sm:p-[30px] max-sm:h-[87.761px]">
-              <img class="w-full h-auto object-cover" src="../assets/img/EMPIRE.svg" alt="">
+<!--              <img class="w-full h-auto object-cover" src="../assets/img/EMPIRE.svg" alt="">-->
             </div>
             <div class="cards-company h-[190px] p-[80px] max-sm:p-[30px] max-sm:h-[91.94px]">
               <img class="w-full h-auto object-cover" src="../assets/img/NOZOMI.svg" alt="">
