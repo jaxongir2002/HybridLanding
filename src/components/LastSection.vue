@@ -3,7 +3,7 @@ import gsap from "gsap-trial";
 import {ScrollTrigger} from 'gsap-trial/ScrollTrigger'
 import {onMounted} from "vue";
 
-gsap.registerPlugin(SplitText, ScrollTrigger, ScrollSmoother);
+gsap.registerPlugin(SplitText, ScrollTrigger);
 onMounted(() => {
   let tl = gsap.timeline({
     scrollTrigger: {
