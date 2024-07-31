@@ -48,7 +48,9 @@ onMounted(() => {
       ease: "power2.inOut",
     });
   }
-
+tl.from('.first',{
+  stagger: 0.03,
+})
 // Call the animation function on window load and resize
   window.addEventListener('load', animateSrtElement);
   window.addEventListener('resize', animateSrtElement);
@@ -104,7 +106,7 @@ onMounted(() => {
 <!--              <img class="w-full h-auto object-cover" src="../assets/img/E" alt="">-->
             </div>
           </div>
-          <div data-lag="1" class="second">
+          <div data-lag="1" class="second first">
             <div class="cards-company h-[180px]  p-[80px] max-sm:p-[30px] max-sm:h-[75.224px]">
               <img class="w-full h-auto object-cover" src="../assets/img/Tiktok.svg" alt="">
             </div>
@@ -128,7 +130,7 @@ onMounted(() => {
               <img class="w-full h-auto object-cover" src="../assets/img/CLAP.svg" alt="">
             </div>
           </div>
-          <div data-lag="2" class="third">
+          <div data-lag="2" class="third first">
             <div class="cards-company h-[220px]  p-[80px] max-sm:p-[30px]">
               <img class="w-full h-auto object-cover" src="../assets/img/Tiktok.svg" alt="">
             </div>
@@ -152,7 +154,7 @@ onMounted(() => {
               <img class="w-full h-auto object-cover" src="../assets/img/CLAP.svg" alt="">
             </div>
           </div>
-          <div data-lag="3" class="four">
+          <div data-lag="3" class="four first">
             <div class="cards-company h-[190px]  p-[80px] max-sm:p-[30px]">
               <img class="w-full h-auto object-cover" src="../assets/img/Tiktok.svg" alt="">
             </div>

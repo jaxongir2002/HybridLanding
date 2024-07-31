@@ -153,7 +153,7 @@ onMounted(() => {
       </div>
     </div>
 
-    <div class="flex justify-center items-center relative">
+    <div class="flex justify-center items-center">
       <div id="dev-card" ref="containerRef" :class="{'dev-card-tab' : addTab}"
            class="dev-card h-[550px]">
         <div v-for="(item,index) in listImg" :key="index" :class="{'cards-tab' : addTab}"
@@ -225,7 +225,6 @@ onMounted(() => {
   flex-shrink: 0;
   border-radius: 6px;
   padding: 7.5px;
-
   background: rgba(222, 222, 222, 0.05);
   backdrop-filter: blur(29.5px);
   transition: transform 1s !important;
@@ -292,23 +291,19 @@ onMounted(() => {
 }
 
 .modal {
-  position: fixed;
-  height: 100%;
-  width: 100%;
+  position: absolute;
+  height: 100% ;
+  width: 100% ;
   left: 0;
-  top: 1600px;
+  top: 0;
   display: flex;
   justify-content: center;
   align-items: center;
-  pointer-events: auto;
   flex-direction: column;
   z-index: 1;
-  bottom: 0;
-  overflow: auto;
   border-radius: 12px;
   background: rgba(222, 222, 222, 0.05);
   backdrop-filter: blur(24px);
-  opacity: 1;
   transition: opacity 0.3s ease-in-out;
   animation-name: fadeIn;
   animation-duration: 0.4s;
@@ -360,7 +355,6 @@ onMounted(() => {
   animation-duration: 0.5s;
   display: flex !important;
   flex-direction: column !important;
-  pointer-events: auto;
 
 }
 

@@ -8,6 +8,7 @@ import OurWorks from "@/components/OurWorks.vue";
 import Partners from "@/components/Partners.vue";
 import Register from "@/components/Register.vue";
 import LastSection from "@/components/LastSection.vue";
+
 </script>
 
 <template>

@@ -185,7 +185,7 @@ const openMobil = ref(false)
 
 .menu-dialog {
   width: 602px;
-  height: 7.2%;
+  height: 95%;
   flex-shrink: 0;
   border-radius: 30px;
   background: #181818;

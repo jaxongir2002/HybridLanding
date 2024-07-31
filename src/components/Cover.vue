@@ -1023,7 +1023,7 @@ function topScroll() {
     <span class="text-scroll" @click="topScroll">
     Scroll to experience magic <img class="animation-arrow" src="../assets/img/Arrow.svg" alt="">
   </span>
-    <canvas class="srt" width="2440" height="964"></canvas>
+    <canvas class="srt" width="" height="964"></canvas>
   </section>
 </template>
 
@@ -1052,7 +1052,7 @@ function topScroll() {
   }
 }
 .srt{
-  width: 100vw !important;
+  width: 99.5vw !important;
   top: -75px;
   position: absolute;
 }
@@ -1096,7 +1096,7 @@ function topScroll() {
 }
 
 canvas {
-  width: 100%;
+  width: 30%;
   height: 80%;
 }
 

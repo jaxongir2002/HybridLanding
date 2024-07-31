@@ -346,7 +346,7 @@ onMounted(() => {
       </div>
 
     </div>
-    <div class="col-span-6 ml-[300px] mobile-version-animation">
+    <div class="col-span-6 ml-[200px] mobile-version-animation">
       <iframe width="440px" height="494px"
               src="https://lottie.host/embed/8e80c604-e0af-4b03-96ce-f75675059aa0/Tyehx7Emkq.json"></iframe>
     </div>
