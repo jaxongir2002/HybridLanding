@@ -127,21 +127,21 @@ onMounted(() => {
             <span class="btn-link-text">Social:</span>
             <button class="btn-links mt-[15px] btn-animation-links">
               <i class="pi pi-instagram text-white text-[20px]"></i>
-              <!--              <img src="@/assets/img/instagram.svg" alt="">-->
+              <!-- <img src="@/assets/img/instagram.svg" alt="">-->
             </button>
           </label>
           <label class="leading-[140%] text-transparent">
             Social:
             <button class="btn-links mt-[15px] btn-animation-links">
               <i class="pi pi-twitter text-white text-[20px]"></i>
-              <!--              <img src="@/assets/img/tweeter.svg" alt="">-->
+              <!-- <img src="@/assets/img/tweeter.svg" alt="">-->
             </button>
           </label>
           <label class="leading-[140%] text-transparent">
             Social:
             <button class="btn-links mt-[15px] btn-animation-links">
               <i class="pi pi-linkedin text-white text-[20px]"></i>
-              <!--              <img src="@/assets/img/mdi_linkedin.svg" alt="">-->
+              <!-- <img src="@/assets/img/mdi_linkedin.svg" alt="">-->
             </button>
           </label>
         </div>

@@ -3,6 +3,7 @@ import {ref} from 'vue'
 
 const openMenu = ref(false)
 const openMobil = ref(false)
+
 </script>
 
 <template>
@@ -185,7 +186,7 @@ const openMobil = ref(false)
 
 .menu-dialog {
   width: 602px;
-  height: 95%;
+  height: 6.4%;
   flex-shrink: 0;
   border-radius: 30px;
   background: #181818;
@@ -313,7 +314,7 @@ const openMobil = ref(false)
     color: white;
   }
   &-menu span {
-    cursor: pointer;
+    cursor: url("@/assets/img/Polygon.svg"), auto;
   }
   &-magic{
     display: flex;

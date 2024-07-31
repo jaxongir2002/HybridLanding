@@ -40,35 +40,35 @@ const listImg = ref([
     src: new URL('@/assets/img/OurWork10.svg', import.meta.url),
   },
   {
-    src: new URL('@/assets/img/OurWork11.svg', import.meta.url),
+    src: new URL('@/assets/img/ourworksImg1.jpg', import.meta.url),
   },
   {
-    src: new URL('@/assets/img/OurWork12.svg', import.meta.url),
+    src: new URL('@/assets/img/ourworksImg2.svg', import.meta.url),
   },
   {
-    src: new URL('@/assets/img/OurWork13.svg', import.meta.url),
+    src: new URL('@/assets/img/ourworksImg3.svg', import.meta.url),
   },
   {
-    src: new URL('@/assets/img/OurWork14.svg', import.meta.url),
+    src: new URL('@/assets/img/ourworksImg1.jpg', import.meta.url),
   },
   {
-    src: new URL('@/assets/img/OurWork15.svg', import.meta.url),
+    src: new URL('@/assets/img/ourworksImg2.svg', import.meta.url),
   },
   {
-    src: new URL('@/assets/img/OurWork11.svg', import.meta.url),
+    src: new URL('@/assets/img/ourworksImg3.svg', import.meta.url),
   },
   {
-    src: new URL('@/assets/img/OurWork12.svg', import.meta.url),
+    src: new URL('@/assets/img/ourworksImg3.svg', import.meta.url),
   },
   {
-    src: new URL('@/assets/img/OurWork13.svg', import.meta.url),
+    src: new URL('@/assets/img/ourworksImg1.jpg', import.meta.url),
   },
   {
-    src: new URL('@/assets/img/OurWork14.svg', import.meta.url),
+    src: new URL('@/assets/img/ourworksImg2.svg', import.meta.url),
   },
   {
-    src: new URL('@/assets/img/OurWork15.svg', import.meta.url),
-  },
+    src: new URL('@/assets/img/ourworksImg3.svg', import.meta.url),
+  }
 ])
 const containerRef = ref(null)
 
@@ -143,7 +143,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="pt-[80px] pb-[80px] relative our-works-div">
+  <div class="pt-[80px] pb-[80px] our-works-div">
     <div class="nav">
       <div class="nav-text">
         Our works
@@ -172,7 +172,7 @@ onMounted(() => {
         </div>
       </div>
     </transition>
-    <div v-if="addTab" class="w-[2%] active:scale-50 transition-all relative z-20 mt-[80px]" @click="openTab">
+    <div v-if="addTab" class="w-[2%] active:scale-50 transition-all z-20 mt-[80px]" @click="openTab">
       <img alt="" src="@/assets/img/menuTabs.svg">
     </div>
     <div v-else
@@ -235,6 +235,39 @@ onMounted(() => {
   }
 }
 
+.cards:hover {
+  animation: border-animation 6s linear infinite;
+  background: repeating-conic-gradient(from var(--a), #FAFAFA 0%,
+      #FAFAFA 5%, transparent 5%, transparent 95%, #FAFAFA 100%) !important;
+  background: linear-gradient(to bottom right, #9370DB, #8B00FF, #4B0082);
+  position: relative;
+  z-index: 1;
+
+
+}
+
+@property --a {
+  syntax: '<angle>';
+  inherits: false;
+  initial-value: 0deg;
+}
+
+@keyframes border-animation {
+  0% {
+    --a: 0deg
+  }
+  100% {
+    --a: 360deg
+  }
+}
+.cards:after {
+  content: '';
+  position: absolute;
+  inset: 2px;
+  background: #181818;
+  border-radius: 12px;
+  z-index: -2;
+}
 .dev-card {
   display: flex;
   width: 910px;
@@ -254,6 +287,7 @@ onMounted(() => {
   width: 100%;
   gap: 80px;
   align-items: center;
+  overflow-y: auto;
 }
 
 .cards:active {
@@ -291,10 +325,10 @@ onMounted(() => {
 }
 
 .modal {
-  position: absolute;
-  height: 100% ;
-  width: 100% ;
-  left: 0;
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  left: -250px;
   top: 0;
   display: flex;
   justify-content: center;

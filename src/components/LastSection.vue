@@ -72,6 +72,12 @@ onMounted(() => {
     }
   })
 })
+function topScroll() {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  })
+}
 </script>
 
 <template>
@@ -122,8 +128,8 @@ onMounted(() => {
       <div class="text-info">
         ©2024 by HYBRID Xperience.
       </div>
-      <div class="text-info flex gap-[10px] items-center">
-        Back to top <img src="@/assets/img/ArrowUp.svg" alt="">
+      <div @click="topScroll" class="text-info flex gap-[10px] relative z-20 items-center">
+        Back to top <img class="animation-arrow" src="@/assets/img/ArrowUp.svg" alt="">
       </div>
     </div>
     <div class="footer-text">
@@ -177,6 +183,19 @@ onMounted(() => {
   display: inline-block;
   color: rgba(255, 255, 255, 0.10);
 }
+.animation-arrow {
+  animation: top-bottom 0.8s infinite forwards;
+}
+
+@keyframes top-bottom {
+  0% {
+    transform: translateY(2px);
+  }
+  100% {
+    transform: translateY(-2px);
+  }
+
+}
 
 .text-info {
   color: #F9F9F9;
@@ -214,7 +233,7 @@ onMounted(() => {
   color: rgba(255, 255, 255, 0.10);
   text-align: center;
   font-family: Alexandria, sans-serif;
-  font-size: 342px;
+  font-size: 336px;
   font-style: normal;
   font-weight: 900;
   line-height: 124px;
@@ -228,7 +247,7 @@ onMounted(() => {
   color: rgba(255, 255, 255, 0.10);
   text-align: center;
   font-family: Alexandria, sans-serif;
-  font-size: 227px;
+  font-size: 220px;
   font-style: normal;
   font-weight: 900;
   line-height: normal;

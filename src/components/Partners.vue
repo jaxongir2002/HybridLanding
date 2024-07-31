@@ -46,9 +46,10 @@ onMounted(() => {
       ease: "power2.inOut",
     });
   }
-tl.from('.first',{
-  stagger: 0.03,
-})
+
+  tl.from('.first', {
+    stagger: 0.03,
+  })
 // Call the animation function on window load and resize
   window.addEventListener('load', animateSrtElement);
   window.addEventListener('resize', animateSrtElement);
@@ -97,11 +98,11 @@ tl.from('.first',{
             <div class="cards-company h-[210px] p-[80px] max-sm:p-[30px] max-sm:h-[87.761px]">
               <img class="w-full h-auto object-cover" src="../assets/img/Sera.svg" alt="">
             </div>
-            <div class="cards-company h-[218px] p-[80px] max-sm:p-[30px] max-sm:h-[87.761px]">
-<!--              <img class="w-full h-auto object-cover" src="../assets/img/E" alt="">-->
+            <div class="cards-company h-[210px] p-[80px] max-sm:p-[30px] max-sm:h-[87.761px]">
+              <img class="w-full h-auto object-cover" src="../assets/img/EMPIRE.svg" alt="">
             </div>
-            <div class="cards-company h-[220px] p-[80px] max-sm:p-[30px] max-sm:h-[91.94px]">
-<!--              <img class="w-full h-auto object-cover" src="../assets/img/E" alt="">-->
+            <div class="cards-company h-[190px] p-[80px] max-sm:p-[30px] max-sm:h-[91.94px]">
+              <img class="w-full h-auto object-cover" src="../assets/img/NOZOMI.svg" alt="">
             </div>
           </div>
           <div data-lag="1" class="second first">
@@ -130,50 +131,50 @@ tl.from('.first',{
           </div>
           <div data-lag="2" class="third first">
             <div class="cards-company h-[220px]  p-[80px] max-sm:p-[30px]">
-              <img class="w-full h-auto object-cover" src="../assets/img/Tiktok.svg" alt="">
+              <img class="w-full h-auto object-cover" src="../assets/img/angahami.png" alt="">
             </div>
             <div class="cards-company h-[250px]  p-[80px] max-sm:p-[30px]">
-              <img class="w-full h-auto object-cover" src="../assets/img/redBUll.svg" alt="">
+              <img class="w-full h-auto object-cover" src="../assets/img/Ikea.svg" alt="">
             </div>
             <div class="cards-company h-[220px] p-[80px] max-sm:p-[30px]">
-              <img class="w-full h-auto object-cover" src="../assets/img/vuseLogo.svg" alt="">
+              <img class="w-full h-auto object-cover" src="../assets/img/events.svg" alt="">
             </div>
             <div class="cards-company h-[200px] p-[80px] max-sm:p-[30px]">
-              <img class="w-full h-auto object-cover" src="../assets/img/madic.svg" alt="">
+              <img class="w-full h-auto object-cover" src="../assets/img/Expo2020.svg" alt="">
             </div>
 
             <div class="cards-company h-[180px] p-[80px] max-sm:p-[30px]">
-              <img class="w-full h-auto object-cover" src="../assets/img/Sharaf.svg" alt="">
+              <img class="w-full h-auto object-cover" src="../assets/img/Boeker.svg" alt="">
             </div>
             <div class="cards-company h-[190px] p-[80px] max-sm:p-[30px]">
-              <img class="w-full h-auto object-cover" src="../assets/img/CLAP.svg" alt="">
+              <img class="w-full h-auto object-cover" src="../assets/img/IRIS.svg" alt="">
             </div>
             <div class="cards-company h-[180px] p-[80px] max-sm:p-[30px]">
-              <img class="w-full h-auto object-cover" src="../assets/img/CLAP.svg" alt="">
+              <img class="w-full h-auto object-cover" src="../assets/img/BIVWORLD.svg" alt="">
             </div>
           </div>
           <div data-lag="3" class="four first">
             <div class="cards-company h-[190px]  p-[80px] max-sm:p-[30px]">
-              <img class="w-full h-auto object-cover" src="../assets/img/Tiktok.svg" alt="">
+              <img class="w-full h-auto object-cover" src="../assets/img/srt.svg" alt="">
             </div>
             <div class="cards-company h-[230px]  p-[80px] max-sm:p-[30px]">
-              <img class="w-full h-auto object-cover" src="../assets/img/redBUll.svg" alt="">
+              <img class="w-full h-auto object-cover" src="../assets/img/2022Logo.svg" alt="">
             </div>
             <div class="cards-company h-[220px] p-[80px] max-sm:p-[30px]">
-              <img class="w-full h-auto object-cover" src="../assets/img/vuseLogo.svg" alt="">
+              <img class="w-full h-auto object-cover" src="../assets/img/sunset.png" alt="">
             </div>
             <div class="cards-company h-[220px] p-[80px] max-sm:p-[30px]">
-              <img class="w-full h-auto object-cover" src="../assets/img/madic.svg" alt="">
+              <img class="w-full h-auto object-cover" src="../assets/img/srmo.svg" alt="">
             </div>
 
             <div class="cards-company h-[170px] p-[80px] max-sm:p-[30px]">
-              <img class="w-full h-auto object-cover" src="../assets/img/Sharaf.svg" alt="">
+              <img class="w-full h-auto object-cover" src="../assets/img/RTA.svg" alt="">
             </div>
             <div class="cards-company h-[240px] p-[80px] max-sm:p-[30px]">
-              <img class="w-full h-auto object-cover" src="../assets/img/CLAP.svg" alt="">
+              <img class="w-full h-auto object-cover" src="../assets/img/ESCWA.svg" alt="">
             </div>
             <div class="cards-company h-[170px] p-[80px] max-sm:p-[30px]">
-              <img class="w-full h-auto object-cover" src="../assets/img/CLAP.svg" alt="">
+              <img class="w-full h-auto object-cover" src="../assets/img/lastImg.svg" alt="">
             </div>
           </div>
         </div>
@@ -233,12 +234,43 @@ tl.from('.first',{
   background: rgba(222, 222, 222, 0.05);
   backdrop-filter: blur(59px);
   transition: transform 0.5s ease-in-out;
-  //padding: 60px 60px 60px 88px;
   margin-top: 20px;
   width: 325px;
   max-width: 100%;
 }
 
+.cards-company:hover {
+  animation: border-animation 6s linear infinite;
+  background: repeating-conic-gradient(from var(--a), #FAFAFA 0%,
+      #FAFAFA 5%, transparent 5%, transparent 95%, #FAFAFA 100%) !important;
+  background: linear-gradient(to bottom right, #9370DB, #8B00FF, #4B0082);
+  position: relative;
+  z-index: 1;
+}
+
+@property --a {
+  syntax: '<angle>';
+  inherits: false;
+  initial-value: 0deg;
+}
+
+@keyframes border-animation {
+  0% {
+    --a: 0deg
+  }
+  100% {
+    --a: 360deg
+  }
+}
+
+.cards-company:after {
+  content: '';
+  position: absolute;
+  inset: 2px;
+  background: #181818;
+  border-radius: 12px;
+  z-index: -2;
+}
 
 @keyframes cardAnimation {
   0% {
