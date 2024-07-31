@@ -2,8 +2,6 @@
 import {onMounted} from "vue";
 import {ScrollTrigger} from 'gsap-trial/ScrollTrigger'
 import gsap from "gsap-trial";
-import {SplitText} from "gsap-trial/SplitText";
-import {ScrollSmoother} from 'gsap-trial/ScrollSmoother';
 
 onMounted(() => {
   gsap.registerPlugin(SplitText, ScrollTrigger, ScrollSmoother);

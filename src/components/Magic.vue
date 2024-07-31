@@ -2,7 +2,6 @@
 import {onMounted} from "vue";
 import {gsap} from 'gsap-trial'
 import {ScrollTrigger} from 'gsap-trial/ScrollTrigger';
-import { SplitText } from "gsap-trial/SplitText";
 gsap.registerPlugin(ScrollTrigger,SplitText);
 
 const animateElements = () => {

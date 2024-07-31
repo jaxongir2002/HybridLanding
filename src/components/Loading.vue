@@ -1,8 +1,7 @@
 <script setup>
-import {ref,computed} from 'vue'
+import {computed, ref} from 'vue'
 import {useCounterStore} from "../store/store.js";
 import {useRouter} from "vue-router";
-import gsap from 'gsap'
 
 const store = useCounterStore()
 const router = useRouter()
