@@ -3,8 +3,9 @@
 </script>
 
 <template>
-  <div class="flex justify-between  max-md:flex-col pt-[80px] pb-[80px]" style="--hue: 220">
-    <div class="flip-card col-span-4">
+  <div class="flex gap-[20px] justify-between max-md:flex-col md:pt-[80px] pb-[80px]" style="--hue: 220">
+    <div class="flip-card">
+
       <div class="card-front">
         <figure>
           <div class="card-front-text">
@@ -14,13 +15,13 @@
             <div class="text-logo">
               H
               <p class="center-logo-hybrid">
-                Experience
+                Installations
               </p>
               X
             </div>
           </div>
           <div class="footer-btn relative bottom-[46px]">
-            <img class="relative top-[20px]" src="../assets/img/Arrow_right.svg" alt="">
+            <img class="relative top-[20px] img-mobile-first" src="../assets/img/Arrow_right.svg" alt="">
             <div>
               <div>
                 <button class="btn-content-hybrid">
@@ -42,12 +43,13 @@
           </div>
         </figure>
       </div>
+
       <div class="card-back">
         <figure class="video-background">
-          <div class="text-logo"
+          <div class="text-logo text-logo-mobile-back"
                style="color: white; position:relative; z-index: 3333; font-size: 48px; text-align: center; float: left; top: 80px">
             H
-            <p class="center-logo-hybrid" style="color: white; font-size: 15px">
+            <p class="center-logo-hybrid center-logo-back-mobile" style="color: white; font-size: 15px">
               Experience
             </p>
             X
@@ -65,10 +67,9 @@
           </div>
 
         </figure>
-
       </div>
     </div>
-    <div class="flip-card col-span-4">
+    <div class="flip-card">
       <div class="card-front">
         <figure>
           <div class="card-front-text">
@@ -77,16 +78,16 @@
             Content
           </div>
           <div class="text-all-hybrid">
-            <div class="text-logo" style="color: #FF0000 !important;">
+            <div class="text-logo " style="color: #FF0000 !important;">
               H
-              <p class="center-logo-hybrid" style="color: #FF0000 !important;">
+              <p class="center-logo-hybrid " style="color: #FF0000 !important;">
                 Studio
               </p>
               X
             </div>
           </div>
           <div class="footer-btn relative bottom-[4px]">
-            <img src="../assets/img/Arrow_right.svg" alt="">
+            <img class="img-mobile" src="../assets/img/Arrow_right.svg" alt="">
             <div class="footer-content ">
               <button class="btn-content-hybrid">
                 Content
@@ -97,10 +98,10 @@
       </div>
       <div class="card-back">
         <figure class="video-background">
-          <div class="text-logo"
+          <div class="text-logo text-logo-mobile-back"
                style="color: white; position:relative; z-index: 3333; font-size: 48px; text-align: center; float: left; top: 80px">
             H
-            <p class="center-logo-hybrid" style="color: white; font-size: 15px">
+            <p class="center-logo-hybrid center-logo-back-mobile" style="color: white; font-size: 15px">
               Studio
             </p>
             X
@@ -120,7 +121,7 @@
 
       </div>
     </div>
-    <div class="flip-card col-span-4">
+    <div class="flip-card">
       <div class="card-front">
         <figure>
           <div class="card-front-text">
@@ -138,7 +139,7 @@
             </div>
           </div>
           <div class="footer-btn relative bottom-[5px]">
-            <img src="../assets/img/Arrow_right.svg" alt="">
+            <img class="img-mobile" src="../assets/img/Arrow_right.svg" alt="">
             <div class="footer-content mt-[10px] ">
               <button class="btn-content-hybrid">
                 Gaming
@@ -154,10 +155,10 @@
 
       <div class="card-back">
         <figure class="video-background">
-          <div class="text-logo"
+          <div class="text-logo text-logo-mobile-back"
                style="color: white; position:relative; z-index: 3333; font-size: 48px; text-align: center; float: left; top: 80px">
             H
-            <p class="center-logo-hybrid" style="color: white; font-size: 15px">
+            <p class="center-logo-hybrid center-logo-back-mobile" style="color: white; font-size: 15px">
               lab
             </p>
             X
@@ -184,12 +185,89 @@
 
 <style scoped lang="scss">
 @import url('https://fonts.googleapis.com/css?family=Lato');
-
+//video{
+//  position: absolute;
+//  z-index: -1;
+//}
+//.card-back {
+//  animation: border-animation 8s linear;
+//  background: repeating-conic-gradient(from var(--a), #FAFAFA 0%,
+//      #FAFAFA 5%, transparent 5%, transparent 95%, #FAFAFA 100%) !important;
+//  background: linear-gradient(to bottom right, #9370DB, #8B00FF, #4B0082);
+//  position: relative;
+//  z-index: 1;
+//
+//
+//}
+//
+//@property --a {
+//  syntax: '<angle>';
+//  inherits: false;
+//  initial-value: 0deg;
+//}
+//
+//@keyframes border-animation {
+//  0% {
+//    --a: 0deg
+//  }
+//  100% {
+//    --a: 360deg
+//  }
+//}
+//.card-back:after {
+//  content: '';
+//  position: absolute;
+//  inset: 2px;
+//  background: #181818;
+//  border-radius: 12px;
+//  z-index: -2;
+//}
+@media (max-width: 768px) {
+  .flip-card {
+    width: 280px !important;
+    height: 470px !important;
+    justify-content: center !important;
+    margin: auto !important;
+  }
+  .text-logo {
+    font-size: 61px !important;
+  }
+  .center-logo-hybrid {
+    font-size: 20px !important;
+  }
+  .card-front-text {
+    font-size: 20px !important;
+  }
+  .img-mobile {
+    position: relative;
+    width: 30px;
+    height: 30px;
+    top: 15px;
+  }
+  .img-mobile-first {
+    position: relative;
+    width: 30px;
+    height: 30px;
+    top: 55px;
+  }
+  .btn-content-hybrid {
+    padding: 8px !important;
+    font-size: 12px !important;
+  }
+  .text-logo-mobile-back {
+    font-size: 24px !important;
+    top: 150px !important;
+    line-height: 10px !important;
+  }
+  .center-logo-back-mobile {
+    font-size: 8px !important;
+    line-height: 20px !important;
+  }
+}
 .video-background {
   position: relative;
   width: 100%;
   height: 740px;
-  overflow: hidden;
   margin: 0;
   padding: 0;
 }
@@ -241,6 +319,7 @@
   font-weight: 300;
   line-height: 19px;
   font-size: 14px;
+  cursor: default;
 }
 
 .center-logo-hybrid {
@@ -270,7 +349,6 @@
   width: 100%;
 }
 
-/* .flip-card */
 .flip-card {
   width: 440px;
   height: 740px;
@@ -279,13 +357,11 @@
   transition: .6s .1s;
 }
 
-/* hover and focus-within states */
 .flip-card:hover,
 .flip-card:focus-within {
   transform: rotateY(180deg);
 }
 
-/* .card-... */
 .card-front,
 .card-back {
   width: 100%;
@@ -300,9 +376,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
+
 }
 
-/* .card-front */
 .card-front {
   transform: rotateY(0deg);
   z-index: 2;
@@ -319,7 +395,6 @@
   }
 }
 
-/* .card-back */
 .card-back {
   transform: rotateY(180deg);
   z-index: 1;

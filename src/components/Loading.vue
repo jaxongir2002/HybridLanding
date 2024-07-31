@@ -1,7 +1,8 @@
 <script setup>
-import {ref} from 'vue'
+import {ref,computed} from 'vue'
 import {useCounterStore} from "../store/store.js";
 import {useRouter} from "vue-router";
+import gsap from 'gsap'
 
 const store = useCounterStore()
 const router = useRouter()
@@ -16,10 +17,15 @@ const interval = setInterval(() => {
     addClass.value = true
   }
 }, 40)
+const computedColor = computed(() => {
+  const opacity = Math.min(store.count / 100, 1);
+  return `rgba(255, 255, 255, ${opacity})`;
+});
+
 </script>
 
 <template>
-  <div class="navigation" style="display: flex; justify-content: space-around;">
+  <div class="navigation" style="display: flex; justify-content: space-between;">
     <div class="animate seven">
       <div class="hybrid-experience">
         <div>
@@ -78,7 +84,7 @@ const interval = setInterval(() => {
         class="third-animation">loading</span><span class="four-animation">...</span>
     </div>
 
-    <div class="progress">
+    <div class="progress" :style="{color:computedColor}">
       {{ store.count }}%
     </div>
   </div>
@@ -173,17 +179,22 @@ const interval = setInterval(() => {
 }
 
 .yellow-img-h {
-  transform: translateY(0);
+  position: relative;
+  transform: translateY(0px);
   animation-delay: 1s;
+  //top: 79px;
   animation: slide-up 1s linear forwards;
+
+
 }
 
 .yellow-img {
   position: relative;
-  bottom: 55px;
-  transform: translateY(60px);
+  //bottom: 121px;
+  transform: translateY(184px);
   animation-delay: 1s;
   animation: slide-down 1s linear forwards;
+
 }
 
 @keyframes fade-in {
@@ -246,7 +257,7 @@ const interval = setInterval(() => {
 }
 
 .content {
-  height: 81vh;
+  height: 79.1vh;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -273,6 +284,7 @@ const interval = setInterval(() => {
 }
 
 .progress {
+  color: rgba(255, 255, 255, 0.16);
   color: white;
   font-weight: 500;
   font-family: Alexandria, sans-serif;

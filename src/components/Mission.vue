@@ -1,16 +1,15 @@
 <script setup>
 import {onMounted, ref} from "vue";
-import gsap from "gsap";
-import {ScrollTrigger} from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
+import gsap from 'gsap-trial';
+import {ScrollTrigger} from "gsap-trial/ScrollTrigger";
 
 const missionTitle = ref(null);
 
 onMounted(() => {
+  gsap.registerPlugin(ScrollTrigger);
   let tl = gsap.timeline({
     scrollTrigger: {
-      trigger: '.grid',
+      trigger: '.helloWorld',
       start: 'top top',
       pin: true,
       end: '400%',
@@ -19,75 +18,122 @@ onMounted(() => {
   });
   tl.to('.one-text', {
     color: 'white',
+
+    duration: 1,
+    ease: "power2.inOut"
   });
   tl.to('.two-text', {
     color: 'white',
+    duration: 1,
+    ease: "power2.inOut"
   });
   tl.to('.first-text', {
     color: 'white',
+
+    duration: 1,
+    ease: "power2.inOut"
   });
   tl.to('.second-text', {
     color: 'white',
+
+    duration: 1,
+    ease: "power2.inOut"
   });
   tl.to('.third-text', {
     color: 'white',
+
+    duration: 1,
+    ease: "power2.inOut"
   });
   tl.to('.four-text', {
     color: 'white',
+    duration: 1,
+    ease: "power2.inOut"
   });
   tl.to('.five-text', {
     color: 'white',
+
+    duration: 1,
+    ease: "power2.inOut"
   });
   tl.to('.six-text', {
     color: 'white',
+    duration: 1,
+    ease: "power2.inOut"
   });
   tl.to('.seven-text', {
     color: 'white',
+    duration: 1,
+    ease: "power2.inOut"
   });
   tl.to('.eight-text', {
     color: 'white',
+    duration: 1,
+    ease: "power2.inOut"
   });
   tl.to('.nine-text', {
     color: 'white',
+    duration: 1,
+    ease: "power2.inOut"
   });
   tl.to('.tan-text', {
     color: 'white',
+    duration: 1,
+    ease: "power2.inOut"
   });
 
   tl.to('.eleven-text', {
     color: 'white',
+    duration: 1,
+    ease: "power2.inOut"
   });
   tl.to('.twelve-text', {
     color: 'white',
+    duration: 1,
+    ease: "power2.inOut"
   });
   tl.to('.thirteen-text', {
     color: 'white',
+    duration: 1,
+    ease: "power2.inOut"
   });
   tl.to('.fourteen-text', {
     color: 'white',
+    duration: 1,
+    ease: "power2.inOut"
   });
   // card mission
   tl.to('.card-mission', {
     padding: '0',
-  });
-
-  tl.to('.card-mission2', {
-    transform: 'translateY(-300px)',
-    duration: 2,
-    visibility: 'visible'
-
+    transition: .5,
+    duration: 1,
+    ease: "power2.inOut"
   });
   tl.to('.first-img', {
     opacity: '0',
+    transition: .5,
+    duration: 1,
+    ease: "power2.inOut",
+    yoyo: true
+  });
+  tl.to('.card-mission2', {
+    transform: 'translateY(-300px)',
+    transition: 0.8,
+    transitionProperty: 1,
+    visibility: 'visible',
+    duration: 1,
+    ease: "power2.inOut",
+    yoyo: true
   });
 
-  // tl.to('.first-name', {
-  //   visibility:'hidden'
-  // })
-  tl.to('.second-name', {
-    transform: 'translate3d(0,-25%,0)'
+  tl.to('.first-name', {
+    transition: 0.5,
+    transform: 'translateY(-50px)'
   })
-
+  tl.to('.second-name', {
+    transition: 0.5,
+    transform: 'translateY(-25px)'
+  })
 
   tl.to('.fifteen-text', {
     color: 'white',
@@ -123,60 +169,94 @@ onMounted(() => {
 
   tl.to('.card-mission3', {
     transform: 'translateY(-300px)',
-    duration: 2,
-    visibility: 'visible'
+    transition: 0.8,
+    visibility: 'visible',
+    duration: 1,
+    ease: "power2.inOut",
+    yoyo: true
   });
-
+  tl.to('.second-name', {
+    transition: 0.5,
+    transform: 'translateY(-80px)',
+    duration: 1,
+    ease: "power2.inOut",
+    yoyo: true
+  })
   tl.to('.third-name', {
-    transform: 'translate3d(0,-50%,0)'
+    transition: 0.5,
+    transform: 'translateY(-50px)',
+    duration: 1,
+    ease: "power2.inOut",
+    yoyo: true
   })
 
   tl.to('.second-img', {
     opacity: '0',
+    duration: 1,
+    ease: "power2.inOut",
+    yoyo: true
   });
   tl.to('.twenty-five-text', {
     color: 'white',
+    duration: 1,
+    ease: "power2.inOut"
   });
   tl.to('.twenty-six-text', {
     color: 'white',
+    duration: 1,
+    ease: "power2.inOut"
   });
   tl.to('.twenty-seven-text', {
     color: 'white',
+    duration: 1,
+    ease: "power2.inOut"
   });
   tl.to('.twenty-eight-text', {
     color: 'white',
+    duration: 1,
+    ease: "power2.inOut"
   });
   tl.to('.twenty-nine-text', {
     color: 'white',
+    duration: 1,
+    ease: "power2.inOut"
   });
   tl.to('.thirty-text', {
     color: 'white',
+    duration: 1,
+    ease: "power2.inOut"
   });
   tl.to('.thirty-one-text', {
     color: 'white',
+    duration: 1,
+    ease: "power2.inOut"
   });
   tl.to('.thirty-two-text', {
     color: 'white',
+    duration: 1,
+    ease: "power2.inOut"
   });
   tl.to('.thirty-third-text', {
     color: 'white',
+    duration: 1,
+    ease: "power2.inOut"
   });
   tl.to('.thirty-four-text', {
     color: 'white',
+    duration: 1,
+    ease: "power2.inOut"
   });
   tl.to('.final-text', {
     color: 'white',
+    duration: 1,
+    ease: "power2.inOut"
   });
-
-
 });
-
-
 </script>
 
 <template>
-  <div ref="logo" class=" grid grid-cols-12 pt-[80px] pb-[80px]">
-    <div class="col-span-6 w-[555px]">
+  <div ref="logo" class="helloWorld grid grid-cols-12 pt-[80px] pb-[80px]">
+    <div class="col-span-6 w-[555px] mobile-version">
       <div class="card-mission relative">
         <img class="first-img" src="@/assets/img/monkey.svg" alt="">
         <div class="card-mission2 ">
@@ -200,16 +280,16 @@ onMounted(() => {
       </div>
 
     </div>
-    <div class="col-span-6">
-      <h1 class="uppercase text-font font-bold text-[50px] leading-[50px] text-white">
+    <div class="col-span-6 big-div-mobile">
+      <h1 class="uppercase text-font font-bold text-[50px] leading-[50px] text-white title-mobile">
         mission & vision
       </h1>
       <div ref="missionTitle" class="text-description">
         <span class="text-white"> We are a modern</span> <span class="one-text"> and</span><span class="two-text"> innovative</span>
-        <span class="first-text">new</span> <span class="second-text">media</span> <span
-          class="third-text">arts</span>
+        <span class="first-text"> new</span> <span class="second-text">media</span> <span
+          class="third-text"> arts</span>
 
-        <span class="four-text">tech</span> <span class="five-text">studio,</span> <span
+        <span class="four-text"> tech</span> <span class="five-text">studio,</span> <span
           class="six-text">creatively</span> <span class="seven-text">combining</span> <span
           class="eight-text">art</span>
         <span class="nine-text">and</span> <span class="tan-text">tech</span> <span class="eleven-text">to</span> <span
@@ -234,35 +314,97 @@ onMounted(() => {
         <span class="thirty-four-text"> dream</span>
         <span class="final-text"> beyond boundaries.</span>
       </div>
-      <button class="btn-about-us flex gap-[5px]">
-        <img src="@/assets/img/ArrowRightBtn.svg" alt="">About us
+      <button class="btn-about-us flex gap-[5px] items-center">
+        <i class="pi pi-arrow-right text-[16px] mr-[3px] mt-[3px] h-[24px] mobile-icon"></i> About us
+        <!--        <img src="@/assets/img/ArrowRightBtn.svg" alt="">-->
       </button>
     </div>
 
-    <div class="col-span-6 flex flex-col justify-between">
+    <div class="col-span-6 flex flex-col justify-between mobile-version">
       <div>
       </div>
-      <div class="flex gap-[15px]">
-        <button class="btn-links">
-          <img src="@/assets/img/instagram.svg" alt="">
-        </button>
-        <button class="btn-links">
-          <img src="@/assets/img/tweeter.svg" alt="">
-        </button>
-        <button class="btn-links">
-          <img src="@/assets/img/mdi_linkedin.svg" alt="">
-        </button>
+
+      <div>
+        <div class="text-social mb-[15px]">
+          Social:
+        </div>
+        <div class="flex gap-[15px]">
+          <button class="btn-links">
+            <!--            <img src="@/assets/img/instagram.svg" alt="">-->
+            <i class="pi pi-instagram text-white text-[20px]"></i>
+          </button>
+          <button class="btn-links">
+            <!--            <img src="@/assets/img/tweeter.svg" alt="">-->
+            <i class="pi pi-twitter text-white text-[20px]"></i>
+          </button>
+          <button class="btn-links">
+            <!--            <img src="@/assets/img/mdi_linkedin.svg" alt="">-->
+            <i class="pi pi-linkedin text-white text-[20px]"></i>
+          </button>
+        </div>
+
       </div>
 
     </div>
-    <div class="col-span-6">
-      <video autoplay loop muted src="@/assets/video/Pf6gCjoF.gif.mp4"></video>
+    <div class="col-span-6 ml-[300px] mobile-version-animation">
+      <iframe width="440px" height="494px"
+              src="https://lottie.host/embed/8e80c604-e0af-4b03-96ce-f75675059aa0/Tyehx7Emkq.json"></iframe>
     </div>
   </div>
 
 </template>
 
 <style scoped lang="scss">
+@media (max-width: 768px) {
+  .mobile-version {
+    display: none;
+  }
+  .title-mobile {
+    font-size: 20px;
+    line-height: 130%;
+  }
+  .big-div-mobile {
+    grid-column: span 12 / 12;
+  }
+  .text-description {
+    font-size: 16px !important;
+    max-width: 251px !important;
+    line-height: 110% !important;
+    letter-spacing: -0.48px !important;
+  }
+  .btn-about-us {
+    width: 170px !important;
+    height: 40px !important;
+    padding: 12px 34px !important;
+    font-size: 15px !important;
+    line-height: 140% !important; /* 21px */
+  }
+  .mobile-icon {
+    font-size: 14px !important;
+    margin-top: 10px;
+  }
+  .mobile-version-animation {
+    grid-column: span 12 / 12 !important;
+    margin-left: 0;
+    margin-top: 40px;
+
+  }
+  iframe {
+    width: 270px !important;
+    height: 185px !important;
+    transform: scaleX(-1);
+  }
+}
+
+.text-social {
+  color: var(--White, #F9F9F9);
+  text-align: left;
+  font-family: Alexandria, sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 140%;
+}
 .btn-links {
   display: flex;
   height: 41px;
@@ -272,6 +414,14 @@ onMounted(() => {
 
   border-radius: 500px;
   border: 1px solid #FFF;
+}
+
+.btn-links:hover {
+  border-color: #FFFF00;
+  cursor: url("@/assets/img/Polygon.svg"), auto;
+  i {
+    color: #FFFF00;
+  }
 }
 .btn-links img{
   min-width: 24px;
@@ -287,6 +437,12 @@ onMounted(() => {
   line-height: 25px;
   font-weight: 500;
   margin-top: 40px;
+  cursor: url("@/assets/img/Polygon.svg"), auto;
+}
+
+.btn-about-us:hover {
+  color: #FFFF00;
+  border-color: #FFFF00;
 }
 
 .card-mission {
@@ -295,6 +451,8 @@ onMounted(() => {
   padding: 10px;
   background-color: #DEDEDE0D;
   overflow: hidden;
+  width: 555px;
+  height: 320px;
 }
 
 .card-mission2 {
@@ -304,6 +462,8 @@ onMounted(() => {
   background: #DEDEDE0D;
   position: absolute;
   visibility: hidden;
+  width: 555px;
+  height: 320px;
 }
 
 .card-mission3 {
@@ -313,6 +473,8 @@ onMounted(() => {
   background: #DEDEDE0D;
   position: absolute;
   visibility: hidden;
+  width: 555px;
+  height: 320px;
 }
 
 .text-font {

@@ -7,6 +7,7 @@ import Magic from "@/components/Magic.vue";
 import OurWorks from "@/components/OurWorks.vue";
 import Partners from "@/components/Partners.vue";
 import Register from "@/components/Register.vue";
+import LastSection from "@/components/LastSection.vue";
 </script>
 
 <template>
@@ -19,13 +20,14 @@ import Register from "@/components/Register.vue";
     <OurWorks/>
     <Partners/>
     <Register/>
+    <LastSection/>
   </div>
 
 </template>
 
 <style scoped lang="scss">
 .container-hybrid {
-  background: #000000;
+  background: #0E0E0E;
   width: 100% !important;
 }
 </style>

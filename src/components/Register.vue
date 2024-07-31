@@ -1,42 +1,152 @@
 <script setup>
+import gsap from "gsap-trial";
+import {ScrollTrigger} from 'gsap-trial/ScrollTrigger'
+import {SplitText} from "gsap-trial/SplitText";
+import {ScrollSmoother} from 'gsap-trial/ScrollSmoother';
+import {onMounted} from "vue";
 
+gsap.registerPlugin(SplitText, ScrollTrigger, ScrollSmoother);
+
+onMounted(() => {
+  let mySplitText = new SplitText('.text-register', {type: 'chars'})
+  let mySplit = new SplitText('.btn-link-text', {type: 'chars'})
+
+  let mayChars = mySplit.chars
+  let chars = mySplitText.chars
+
+  let tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: '.scroll-register',
+      start: 'top 50%',
+      end: 'bottom bottom',
+      scrub: 1,
+    }
+  });
+
+  tl.from(chars, {
+    yPercent: 130,
+    stagger: 0.02,
+  });
+
+  tl.from('.label-name', {
+    yPercent: -40,
+    opacity: 0,
+    stagger: .5,
+    duration: 1,
+    yoyo: true,
+    transition: 1
+  });
+
+  gsap.from(mayChars, {
+    yPercent: 130,
+    stagger: 0.02,
+    opacity: 0,
+    scrollTrigger: {
+      trigger: '.scroll-register',
+      start: 'top 50%',
+      end: 'bottom bottom',
+      scrub: 1,
+    }
+  });
+  gsap.from('.text-project', {
+    opacity: 0,
+    scrollTrigger: {
+      trigger: '.scroll-register',
+      start: 'top 50%',
+      end: 'bottom 50%',
+      scrub: 1,
+    }
+  });
+  gsap.from('.description-text', {
+    opacity: 0,
+    yPercent: 130,
+    stagger: 0.02,
+    scrollTrigger: {
+      trigger: '.scroll-register',
+      start: 'top 50%',
+      end: 'bottom 50%',
+      scrub: 1,
+    }
+  });
+  gsap.from('.btn-sent', {
+    duration: 0.5,
+    y: '0',
+    scale: 0.3,
+    transition: .3,
+    yoyo: true,
+    ease: 'power1.inOut',
+    scrollTrigger: {
+      trigger: ".scroll-register",
+      start: "top 50%",
+      end: "bottom bottom",
+      scrub: true,
+    }
+  });
+  gsap.from('.btn-animation-links', {
+    duration: 0.5,
+    y: '0',
+    scale: 0.3,
+    transition: .3,
+    yoyo: true,
+    ease: 'power1.inOut',
+    scrollTrigger: {
+      trigger: ".scroll-register",
+      start: "top 50%",
+      end: "bottom bottom",
+      scrub: true
+    }
+  });
+  tl.from('.checkbox-animation', {
+    animation: "check-animation 1s linear infinite",
+    scrollTrigger: {
+      trigger: ".scroll-register",
+      start: "top 50%",
+      end: "bottom bottom",
+      scrub: true
+    }
+  })
+})
 </script>
 
 <template>
-  <div class="pt-[80px] pb-[80px] flex justify-between">
-    <div class="">
+  <div class="pt-[80px] flex justify-between scroll-register mt-[20px]">
+    <div>
       <div class="text-touch">
         Get in Touch
         <div class="glass-effect"></div>
       </div>
-      <div class="flex gap-[20px] mt-[136px]">
+      <div class="flex gap-[20px] mt-[136px] info-container">
         <div>
           <label class="label-btn">
-            Start a project:
-            <button class="btn-links-text mt-[15px]">
+            <span class="text-project">Start a project:</span>
+            <button class="btn-links-text btn-links mt-[15px]">
               info@hybridinstallations.com
             </button>
           </label>
         </div>
-        <label class="label-btn">
-          Social:
-          <button class="btn-links mt-[15px]">
-            <img src="@/assets/img/instagram.svg" alt="">
-          </button>
-        </label>
-        <label class="leading-[140%]">
-          Social:
-          <button class="btn-links mt-[15px]">
-            <img src="@/assets/img/tweeter.svg" alt="">
-          </button>
-        </label>
-        <label class="leading-[140%]">
-          Social:
-          <button class="btn-links mt-[15px]">
-            <img src="@/assets/img/mdi_linkedin.svg" alt="">
-          </button>
-        </label>
-
+        <div class="flex gap-[20px]">
+          <label class="label-btn">
+            <span class="btn-link-text">Social:</span>
+            <button class="btn-links mt-[15px] btn-animation-links">
+              <i class="pi pi-instagram text-white text-[20px]"></i>
+              <!--              <img src="@/assets/img/instagram.svg" alt="">-->
+            </button>
+          </label>
+          <label class="leading-[140%] text-transparent">
+            Social:
+            <button class="btn-links mt-[15px] btn-animation-links">
+              <i class="pi pi-twitter text-white text-[20px]"></i>
+              <!--              <img src="@/assets/img/tweeter.svg" alt="">-->
+            </button>
+          </label>
+          <label class="leading-[140%] text-transparent">
+            Social:
+            <button class="btn-links mt-[15px] btn-animation-links">
+              <i class="pi pi-linkedin text-white text-[20px]"></i>
+              <!--              <img src="@/assets/img/mdi_linkedin.svg" alt="">-->
+            </button>
+          </label>
+        </div>
       </div>
       <div class="description-text mt-[227px]">
         New media art & entertainment studio creating experiences for the physical & digital world.
@@ -44,9 +154,15 @@
     </div>
     <div class="line-center"></div>
     <div>
-      <div class="text-register">
-        Tell us everything..
+      <div>
+        <div class="text-register">
+          Tell us
+        </div>
+        <div class="text-register">
+          everything..
+        </div>
       </div>
+
       <form>
         <div class="form-group mt-[30px]">
           <label for="name" class="label-name">Name
@@ -70,13 +186,15 @@
         </div>
 
         <div class="checkbox-container mt-[32px] mb-[32px]">
-          <label class="container label-name">
-            <span class="relative top-[27px] left-[15px]"> I agree to use and processing of my personal data</span>
+          <label class="container label-name ">
+            <span class="relative top-[27px] left-[15px] text-checkbox-mobile"> I agree to use and processing of my personal data</span>
             <input type="checkbox" checked="checked">
-            <div class="checkmark"></div>
+            <div class="checkmark checkbox-animation"></div>
           </label>
         </div>
-        <button type="submit" class="btn-sent "><img src="@/assets/img/rightArrow.svg" alt="">Send</button>
+        <button type="submit" class="btn-sent ">
+          <img src="@/assets/img/rightArrow.svg" alt="">Send
+        </button>
 
       </form>
     </div>
@@ -84,6 +202,62 @@
 </template>
 
 <style scoped lang="scss">
+@media (max-width: 768px) {
+  .text-touch {
+    font-size: 40px !important;
+    width: 188px !important;
+  }
+  .glass-effect {
+    width: 166px !important;
+    height: 40px !important;
+    bottom: 20px !important;
+    right: 5px;
+  }
+  .scroll-register {
+    flex-direction: column !important;
+  }
+  .line-center {
+    display: none;
+  }
+  .info-container {
+    flex-direction: column;
+    margin-top: 0;
+  }
+  .description-text {
+    margin-top: 8px !important;
+    margin-bottom: 40px !important;
+    font-size: 14px !important;
+    width: 204px !important;
+  }
+  .btn-links-text {
+    display: flex;
+    width: 100%;
+    padding: 12px 24px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+  }
+  .text-project {
+    color: #F9F9F9 !important;
+    font-size: 14px;
+  }
+  .btn-links {
+    height: 41px;
+    padding: 12px 24px;
+  }
+  .text-register {
+    font-size: 30px !important;
+  }
+  .label-name {
+    font-size: 16px !important;
+    text-align: left !important;
+
+  }
+  .text-checkbox-mobile {
+    top: 35px !important;
+    left: 40px !important;
+  }
+}
 
 .container {
   --input-focus: #2d8cf0;
@@ -149,7 +323,6 @@
   width: 24px;
   height: 24px;
   border-radius: 100px;
-
 }
 
 .checkbox-container input[type="checkbox"]:checked:focus {
@@ -185,7 +358,9 @@
   font-size: 18px;
   font-style: normal;
   font-weight: 500;
-  line-height: 140%; /* 25.2px */
+  line-height: 140%;
+  transition: .3s;
+  cursor: url("@/assets/img/Polygon.svg"), auto;
 }
 
 .line-center {
@@ -219,12 +394,10 @@
 
 .form-control[type=text]:focus {
   border: none;
-
 }
 
 .form-control::placeholder {
   color: rgba(255, 255, 255, 0.20) !important;
-  text-align: center;
   font-family: Alexandria, sans-serif;
   font-size: 18px;
   font-style: normal;
@@ -241,7 +414,9 @@
   font-style: normal;
   font-weight: 700;
   line-height: 130%;
+  position: relative;
   text-transform: uppercase;
+  overflow: hidden;
 }
 
 .text-touch {
@@ -274,16 +449,25 @@
   align-items: center;
   border-radius: 500px;
   border: 1px solid #FFF;
+  transition: 0.3s;
+}
+
+.btn-links:hover {
+  border-color: #FFFF00;
+  cursor: url("@/assets/img/Polygon.svg"), auto;
+
+  i {
+    color: #FFFF00;
+  }
 }
 
 .label-btn {
-  color: var(--icon-color, #FFF);
+  color: #FFFF;
   text-align: center;
   font-family: Alexandria, sans-serif;
   font-size: 14px;
   font-style: normal;
   font-weight: 300;
-  line-height: 140%; /* 19.6px */
 }
 
 .btn-links-text {
@@ -294,28 +478,54 @@
   align-items: center;
   border-radius: 500px;
   border: 1px solid #FFF;
-  color: var(--icon-color, #FFF);
+  color: #FFF;
   font-family: Alexandria, sans-serif;
   font-size: 14px;
   font-style: normal;
   font-weight: 300;
-  line-height: 140%; /* 19.6px */
+  line-height: 140%;
 }
 
 .description-text {
-  color: var(--icon-color, #FFF);
-
-  /* Body/b_16_Semibold */
+  color: #FFF;
   font-family: Urbanist, sans-serif;
   font-size: 16px;
   font-style: normal;
   font-weight: 600;
-  line-height: 120%; /* 19.2px */
+  line-height: 120%;
   letter-spacing: -0.48px;
   width: 321px;
 }
 
 .btn-links img {
   min-width: 24px;
+}
+
+.checkbox-animation {
+  animation: check-animation 1s;
+  animation-timing-function: ease-in-out;
+}
+
+@keyframes check-animation {
+  0% {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  20% {
+    transform: scale(0.8) rotate(10deg);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scale(1.2) rotate(-15deg);
+    opacity: 1;
+  }
+  80% {
+    transform: scale(0.9) rotate(5deg);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
 }
 </style>

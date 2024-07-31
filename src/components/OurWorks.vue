@@ -1,10 +1,12 @@
 <script setup>
 import {onMounted, ref,} from "vue";
-import gsap from 'gsap';
-import {ScrollTrigger} from "gsap/ScrollTrigger";
+import gsap from 'gsap-trial';
+import {ScrollTrigger} from "gsap-trial/ScrollTrigger";
+
 const addTab = ref(false);
 const showModal = ref(false)
 const selectedItem = ref(null)
+const selectedIndex = ref(-1);
 let bodyOverflow = null;
 const listImg = ref([
   {
@@ -52,12 +54,29 @@ const listImg = ref([
   {
     src: new URL('@/assets/img/OurWork15.svg', import.meta.url),
   },
+  {
+    src: new URL('@/assets/img/OurWork11.svg', import.meta.url),
+  },
+  {
+    src: new URL('@/assets/img/OurWork12.svg', import.meta.url),
+  },
+  {
+    src: new URL('@/assets/img/OurWork13.svg', import.meta.url),
+  },
+  {
+    src: new URL('@/assets/img/OurWork14.svg', import.meta.url),
+  },
+  {
+    src: new URL('@/assets/img/OurWork15.svg', import.meta.url),
+  },
 ])
-const container = ref(null)
+const containerRef = ref(null)
 
-function openModal(item) {
+function openModal(item, index) {
+
   showModal.value = true;
   selectedItem.value = item.src;
+  selectedIndex.value = index;
   bodyOverflow = document.body.style.overflow;
   document.body.style.overflow = 'hidden';
 }
@@ -100,75 +119,95 @@ onMounted(() => {
     slider.scrollLeft = scrollLeft - walk;
   })
 
-  gsap.registerPlugin(ScrollTrigger); // Register ScrollTrigger
-
+  gsap.registerPlugin(ScrollTrigger);
   let tl = gsap.timeline({
     scrollTrigger: {
-      trigger: '.srt',
+      trigger: '.our-works-div',
       start: 'top top',
-      end: '200px',
-      scrub: 1,
+      end: '70%',
+      scrub:true,
+      pin: true
     }
-  });
-  tl.to('.cards', {
-    animationName:'up-to-down'
-  });
-});
+  })
+  tl.fromTo('.cards', {
+    yPercent: 0,
+    yoyo:true
 
+  }, {
+    yPercent: -160,
+    stagger: 0.01,
+    yoyo:true
+  })
 
+})
 </script>
 
 <template>
-  <div class="pt-[80px] pb-[80px] srt">
+  <div class="pt-[80px] pb-[80px] relative our-works-div">
     <div class="nav">
       <div class="nav-text">
         Our works
       </div>
-      <div class="relative z-20">
-        <img src="@/assets/img/LinkText.svg" alt="">
+      <div class="relative z-20 our-works-img">
+        <img alt="" src="@/assets/img/LinkText.svg">
       </div>
     </div>
 
-    <div class="flex justify-center items-center ">
-      <div ref="container" class="dev-card h-[700px] overflow-x-auto"
-           :class="{'dev-card-tab' : addTab}">
-        <div class="cards" v-for="(item,index) in listImg" :key="index"
-             :style="{ animationDelay: `${index * 0.2}s` }"
-             :class="{'cards-tab' : addTab}" @click="openModal(item)">
-          <img class="cards-img" :src="item.src" alt="" :class="{'cards-img-tab' :addTab}">
+    <div class="flex justify-center items-center relative">
+      <div id="dev-card" ref="containerRef" :class="{'dev-card-tab' : addTab}"
+           class="dev-card h-[550px]">
+        <div v-for="(item,index) in listImg" :key="index" :class="{'cards-tab' : addTab}"
+             class="cards" @click="openModal(item,index)">
+          <img :class="{'cards-img-tab' :addTab}" :src="item.src" alt="" class="cards-img">
         </div>
       </div>
     </div>
     <transition name="modal">
-      <div class="modal" v-if="showModal" @click.self="closeModal">
+      <div v-if="showModal" class="modal" @click.self="closeModal">
         <div class="modal-content">
-          <img class="modal-image" :src="selectedItem" alt="">
+          <img :src="selectedItem" alt="" class="modal-image">
         </div>
         <div class="name-content">
           Hybrid + Ferrero rocher = Result
         </div>
       </div>
     </transition>
-    <div class="w-[2%] active:scale-50 transition-all relative z-20 mt-[80px]" v-if="addTab" @click="openTab">
-      <img class="cursor-pointer" src="@/assets/img/menuTabs.svg" alt="">
+    <div v-if="addTab" class="w-[2%] active:scale-50 transition-all relative z-20 mt-[80px]" @click="openTab">
+      <img alt="" src="@/assets/img/menuTabs.svg">
     </div>
     <div v-else
-         class="tabs flex active:scale-50 transition-all items-center gap-[5px] cursor-pointer w-[2%] relative z-20 mt-[80px]"
+         class="tabs flex active:scale-50 transition-all items-center gap-[5px] w-[2%] relative z-20 mt-[80px]"
          @click="openTab">
-      <div class="tab w-[10px] h-[20px] rounded-[2px] bg-[#404040] cursor-pointer"></div>
-      <div class="active-tab w-[10px] h-[22px] rounded-[2px] bg-[#fff] cursor-pointer"></div>
-      <div class="tab w-[10px] h-[20px] rounded-[2px] bg-[#404040] cursor-pointer"></div>
+      <div class="tab w-[10px] h-[20px] rounded-[2px] bg-[#404040]"></div>
+      <div class="active-tab w-[10px] h-[22px] rounded-[2px] bg-[#fff]"></div>
+      <div class="tab w-[10px] h-[20px] rounded-[2px] bg-[#404040]"></div>
     </div>
   </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
+@media (max-width: 768px) {
+  .our-works-img {
+    display: none;
+  }
+
+  .dev-card {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    overflow: scroll;
+    width: 600px !important;
+  }
+  .cards {
+    width: 131.03px;
+    height: 222.751px;
+  }
+}
 .nav {
   display: flex;
   justify-content: space-between;
 
   &-text {
-    color:  #FFF;
+    color: #FFF;
     font-family: Alexandria, sans-serif;
     font-size: 24px;
     font-style: normal;
@@ -186,10 +225,12 @@ onMounted(() => {
   flex-shrink: 0;
   border-radius: 6px;
   padding: 7.5px;
+
   background: rgba(222, 222, 222, 0.05);
   backdrop-filter: blur(29.5px);
-  transition: transform 1s;
-
+  transition: transform 1s !important;
+  animation: up-to-down 1s forwards;
+  animation-direction: revert;
   &-img {
     border-radius: 6px;
   }
@@ -204,28 +245,9 @@ onMounted(() => {
   flex-wrap: wrap;
   justify-content: center;
   user-select: none;
-  overflow-x: scroll;
-  overflow-y: hidden;
   transition: all 0.2s;
   max-width: 75vw;
   white-space: nowrap;
-  scroll-behavior: smooth;
-}
-
-.cards {
-  animation:up-to-down 1s forwards;
-  animation-direction: revert;
-}
-
-@keyframes up-to-down {
-  0% {
-    transform: translateY(200px);
-    animation-delay: 0.2s;
-  }
-  100% {
-    transform: translateY(0);
-    animation-delay: 0.2s;
-  }
 }
 
 .dev-card-tab {
@@ -233,12 +255,11 @@ onMounted(() => {
   width: 100%;
   gap: 80px;
   align-items: center;
-
 }
 
-.dev-card:active {
-  transform: scale(0.97);
-  transition: transform 1s;
+.cards:active {
+  transform: scale(0.95) !important;
+  transition: transform 1s !important;
 }
 
 .dev-card::-webkit-scrollbar {
@@ -262,6 +283,7 @@ onMounted(() => {
 .cards-tab {
   width: 300px !important;
   height: 510px !important;
+
 }
 
 .cards-img-tab {
@@ -270,16 +292,18 @@ onMounted(() => {
 }
 
 .modal {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  top: 1600px;
   display: flex;
   justify-content: center;
   align-items: center;
-  position: fixed;
+  pointer-events: auto;
   flex-direction: column;
   z-index: 1;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
+  bottom: 0;
   overflow: auto;
   border-radius: 12px;
   background: rgba(222, 222, 222, 0.05);
@@ -287,7 +311,8 @@ onMounted(() => {
   opacity: 1;
   transition: opacity 0.3s ease-in-out;
   animation-name: fadeIn;
-  animation-duration: 0.4s
+  animation-duration: 0.4s;
+
 }
 
 .modal::-webkit-scrollbar {
@@ -332,7 +357,11 @@ onMounted(() => {
   backdrop-filter: blur(70.80000305175781px);
   padding: 18px;
   animation-name: openModal;
-  animation-duration: 0.5s
+  animation-duration: 0.5s;
+  display: flex !important;
+  flex-direction: column !important;
+  pointer-events: auto;
+
 }
 
 @keyframes openModal {

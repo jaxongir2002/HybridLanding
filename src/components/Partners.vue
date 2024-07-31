@@ -1,204 +1,207 @@
 <script setup>
-import {nextTick, onMounted, ref} from "vue";
-import Masonry from "masonry-layout";
+import {onMounted} from "vue";
 import {ScrollTrigger} from 'gsap-trial/ScrollTrigger'
-import { gsap } from "gsap";
-// import { SplitText } from "gsap/SplitText";
-const logo = ref([
-  {
-    id: 1,
-    src: new URL('@/assets/img/netflix.svg', import.meta.url),
-  },
-  {
-    id: 2,
-    src: new URL('@/assets/img/tiktok.svg', import.meta.url),
-  },
-  {
-    id: 3,
+import gsap from "gsap-trial";
+import {SplitText} from "gsap-trial/SplitText";
+import {ScrollSmoother} from 'gsap-trial/ScrollSmoother';
 
-    src: new URL('@/assets/img/olee.svg', import.meta.url),
-  },
-  {
-    id: 4,
-    src: new URL('@/assets/img/srt.svg', import.meta.url),
-  },
-  {
-    id: 5,
-    src: new URL('@/assets/img/Dyson.svg', import.meta.url),
-  },
-  {
-    id: 6,
-    src: new URL('@/assets/img/redBUll.svg', import.meta.url),
-  },
-  {
-    id: 7,
-
-    src: new URL('@/assets/img/Ikea.svg', import.meta.url),
-  },
-  {
-    id: 8,
-    src: new URL('@/assets/img/2022Logo.svg', import.meta.url),
-  },
-  {
-    id: 9,
-    src: new URL('@/assets/img/Unilever.svg', import.meta.url),
-  },
-  {
-    id: 10,
-    src: new URL('@/assets/img/vuseLogo.svg', import.meta.url),
-  },
-  {
-    id: 11,
-    src: new URL('@/assets/img/events.svg', import.meta.url),
-  },
-  {
-    id: 12,
-    src: new URL('@/assets/img/ESCWA.svg', import.meta.url),
-  },
-  {
-    id: 12,
-    src: new URL('@/assets/img/vodafone.svg', import.meta.url),
-  },
-  {
-    id: 12,
-    src: new URL('@/assets/img/g3011.svg', import.meta.url),
-  },
-  {
-    id: 12,
-    src: new URL('@/assets/img/Expo2020.svg', import.meta.url),
-  },
-  {
-    id: 12,
-    src: new URL('@/assets/img/srmo.svg', import.meta.url),
-  },
-  {
-    id: 12,
-    src: new URL('@/assets/img/Sera.svg', import.meta.url),
-  },
-  {
-    id: 12,
-    src: new URL('@/assets/img/Sharaf.svg', import.meta.url),
-  },
-  {
-    id: 12,
-    src: new URL('@/assets/img/Boeker.svg', import.meta.url),
-  },
-  {
-    id: 12,
-    src: new URL('@/assets/img/NOZOMI.svg', import.meta.url),
-  },
-  {
-    id: 12,
-    src: new URL('@/assets/img/RTA.svg', import.meta.url),
-  },
-  {
-    id: 12,
-    src: new URL('@/assets/img/EMPIRE.svg', import.meta.url),
-  },
-  {
-    id: 12,
-    src: new URL('@/assets/img/CLAP.svg', import.meta.url),
-  },
-  {
-    id: 12,
-    src: new URL('@/assets/img/IRIS.svg', import.meta.url),
-  },
-  {
-    id: 12,
-    src: new URL('@/assets/img/BIVWORLD.svg', import.meta.url),
-  },
-  {
-    id: 12,
-    src: new URL('@/assets/img/CPYA.svg', import.meta.url),
-  },
-
-])
-const containerRef = ref(null);
 onMounted(() => {
+  gsap.registerPlugin(SplitText, ScrollTrigger, ScrollSmoother);
+  let mySplitText = new SplitText('.animation-text', {type: 'chars'})
+  let chars = mySplitText.chars
 
 
-  // gsap.registerPlugin(SplitText, ScrollTrigger); // Register ScrollTrigger
-  // let mySplitText = new SplitText('.animation-text', {type: 'chars'})
-  // let chars = mySplitText.chars
+  let mySplitTextTwo = new SplitText('.animation-text-two', {type: 'chars'})
+  let charsTwo = mySplitTextTwo.chars
 
-  // gsap.from(chars, {
-  //   yPercent: -140,
-  //   stagger: 0.02,
-  //   ease: 'back.out',
-  //   duration: 1,
-  //   scrollTrigger: {
-  //     trigger: '.title-containers',
-  //     start: 'top 80%',
-  //     end: '30px',
-  //     scrub: 1,
-  //   }
-  // });
 
-  // let mySplitTextTwo = new SplitText('.animation-text-two', {type: 'chars'})
-  // let charsTwo = mySplitTextTwo.chars
-
-  // gsap.from(charsTwo, {
-  //   yPercent: 140,
-  //   stagger: 0.02,
-  //   ease: 'back.out',
-  //   duration: 1,
-  //   scrollTrigger: {
-  //     trigger: '.title-containers',
-  //     start: 'top 80%',
-  //     end: '30px',
-  //     scrub: 1,
-  //   }
-  // });
-  gsap.to('.cards-company', {
-    stagger: 0.2,
-    ease: 'back.out',
-    duration: 1,
-    opacity:1,
+  let tl = gsap.timeline({
     scrollTrigger: {
-      trigger: '.title-containers',
-      start: 'top 80%',
-      end: '30px',
+      trigger: '.big-div',
+      start: 'top top',
+      end: 'bottom 30%',
       scrub: 1,
+      pin: true
     }
   });
-  setTimeout(() => {
-    nextTick(() => {
-      if (containerRef.value) {
-        new Masonry(containerRef.value, {
-          itemSelector: '.cards-company',
-          columnWidth: 325,
-          stagger: 0.3,
-          gap: 15,
-          columns: 4,
-          gutter: 20,
-          percentPosition: true,
-        });
-      }
+  tl.from(chars, {
+    yPercent: -140,
+    stagger: 0.02,
+    ease: 'back.out',
+    opacity: 0,
+  });
+
+  tl.from(charsTwo, {
+    yPercent: 140,
+    stagger: 0.02,
+    ease: 'back.out',
+    opacity: 0,
+    yoyo: true
+  }, 0);
+
+  function animateSrtElement() {
+    const isMobile = window.innerWidth <= 768; // Adjust breakpoint as needed
+
+    tl.to('.srt', {
+      yPercent: isMobile ? -140 : -60,
+      duration: 1,
+      ease: "power2.inOut",
     });
-  }, 250);
+  }
+
+// Call the animation function on window load and resize
+  window.addEventListener('load', animateSrtElement);
+  window.addEventListener('resize', animateSrtElement);
+
+
+  const smoother = ScrollSmoother.create({
+    smooth: 1,
+    normalizeScroll: true,
+    speed: 1,
+    smoothTouch: 0.1,
+    ignoreMobileResize: true,
+    effects: true,
+    preventDefault: true,
+
+  });
+
 });
 </script>
 
 <template>
   <div class="text-center big-div">
-    <div class="title-containers">
-      <div class="text-work animation-text">
-        We work with humans
+    <div class="smooth-wrapper ">
+      <div class="title-containers">
+        <div class="text-work animation-text">
+          We work with humans
+        </div>
+        <div class="text-work animation-text-two">
+          and more than humans
+        </div>
       </div>
-      <div ref="jacon" class="text-work animation-text-two">
-        and more than humans
-      </div>
-    </div>
-    <div ref="containerRef" class="grid grid-cols-12 gap-[20px] content-div">
-      <div class="col-span-4 cards-company grid-sizer" v-for="(item, index) in logo" :key="item.id">
-        <img class="w-full h-auto object-cover" :src="item.src" alt="">
+      <div class="smooth-content relative z-20 content-div ">
+        <div class="flex gap-[20px] srt max-sm:gap-[8px] max-sm:justify-center">
+          <div data-lag="0.5" class="first">
+            <div class="cards-company h-[250px] p-[80px] max-sm:h-[104.478px] max-sm:p-[30px]">
+              <img class="w-full h-auto object-cover" src="../assets/img/Netflix.svg" alt="">
+            </div>
+            <div class="cards-company h-[140px] p-[80px] max-sm:p-[30px] max-sm:h-[58.508px]">
+              <img class="w-full h-auto object-cover" src="../assets/img/Dyson.svg" alt="">
+            </div>
+            <div class="cards-company h-[220px] p-[120px] max-sm:p-[40px] max-sm:h-[91.94px]">
+              <img class="w-full h-auto object-cover" src="../assets/img/Unilever.svg" alt="">
+            </div>
+            <div class="cards-company h-[180px] p-[80px] max-sm:p-[30px] max-sm:h-[75.224px]">
+              <img class="w-full h-auto object-cover" src="../assets/img/vodafone.svg" alt="">
+            </div>
+            <div class="cards-company h-[210px] p-[80px] max-sm:p-[30px] max-sm:h-[87.761px]">
+              <img class="w-full h-auto object-cover" src="../assets/img/Sera.svg" alt="">
+            </div>
+            <div class="cards-company h-[218px] p-[80px] max-sm:p-[30px] max-sm:h-[87.761px]">
+              <img class="w-full h-auto object-cover" src="../assets/img/E" alt="">
+            </div>
+            <div class="cards-company h-[220px] p-[80px] max-sm:p-[30px] max-sm:h-[91.94px]">
+              <img class="w-full h-auto object-cover" src="../assets/img/E" alt="">
+            </div>
+          </div>
+          <div data-lag="1" class="second">
+            <div class="cards-company h-[180px]  p-[80px] max-sm:p-[30px] max-sm:h-[75.224px]">
+              <img class="w-full h-auto object-cover" src="../assets/img/Tiktok.svg" alt="">
+            </div>
+            <div class="cards-company h-[230px]  p-[80px] max-sm:p-[30px] max-sm:h-[96.119px]">
+              <img class="w-full h-auto object-cover" src="../assets/img/redBUll.svg" alt="">
+            </div>
+            <div class="cards-company h-[210px] p-[80px] max-sm:p-[30px] max-sm:h-[87.761px]">
+              <img class="w-full h-auto object-cover" src="../assets/img/vuseLogo.svg" alt="">
+            </div>
+            <div class="cards-company h-[160px] p-[80px] max-sm:p-[30px] max-sm:h-[66.866px]">
+              <img class="w-full h-auto object-cover" src="../assets/img/madic.svg" alt="">
+            </div>
+
+            <div class="cards-company h-[240px] p-[80px] max-sm:p-[30px] max-sm:h-[100.299px]">
+              <img class="w-full h-auto object-cover" src="../assets/img/Sharaf.svg" alt="">
+            </div>
+            <div class="cards-company h-[240px] p-[80px] max-sm:p-[30px] max-sm:h-[100.299px]">
+              <img class="w-full h-auto object-cover" src="../assets/img/CLAP.svg" alt="">
+            </div>
+            <div class="cards-company h-[180px] p-[80px] max-sm:p-[30px] max-sm:h-[91.94px]">
+              <img class="w-full h-auto object-cover" src="../assets/img/CLAP.svg" alt="">
+            </div>
+          </div>
+          <div data-lag="2" class="third">
+            <div class="cards-company h-[220px]  p-[80px] max-sm:p-[30px]">
+              <img class="w-full h-auto object-cover" src="../assets/img/Tiktok.svg" alt="">
+            </div>
+            <div class="cards-company h-[250px]  p-[80px] max-sm:p-[30px]">
+              <img class="w-full h-auto object-cover" src="../assets/img/redBUll.svg" alt="">
+            </div>
+            <div class="cards-company h-[220px] p-[80px] max-sm:p-[30px]">
+              <img class="w-full h-auto object-cover" src="../assets/img/vuseLogo.svg" alt="">
+            </div>
+            <div class="cards-company h-[200px] p-[80px] max-sm:p-[30px]">
+              <img class="w-full h-auto object-cover" src="../assets/img/madic.svg" alt="">
+            </div>
+
+            <div class="cards-company h-[180px] p-[80px] max-sm:p-[30px]">
+              <img class="w-full h-auto object-cover" src="../assets/img/Sharaf.svg" alt="">
+            </div>
+            <div class="cards-company h-[190px] p-[80px] max-sm:p-[30px]">
+              <img class="w-full h-auto object-cover" src="../assets/img/CLAP.svg" alt="">
+            </div>
+            <div class="cards-company h-[180px] p-[80px] max-sm:p-[30px]">
+              <img class="w-full h-auto object-cover" src="../assets/img/CLAP.svg" alt="">
+            </div>
+          </div>
+          <div data-lag="3" class="four">
+            <div class="cards-company h-[190px]  p-[80px] max-sm:p-[30px]">
+              <img class="w-full h-auto object-cover" src="../assets/img/Tiktok.svg" alt="">
+            </div>
+            <div class="cards-company h-[230px]  p-[80px] max-sm:p-[30px]">
+              <img class="w-full h-auto object-cover" src="../assets/img/redBUll.svg" alt="">
+            </div>
+            <div class="cards-company h-[220px] p-[80px] max-sm:p-[30px]">
+              <img class="w-full h-auto object-cover" src="../assets/img/vuseLogo.svg" alt="">
+            </div>
+            <div class="cards-company h-[220px] p-[80px] max-sm:p-[30px]">
+              <img class="w-full h-auto object-cover" src="../assets/img/madic.svg" alt="">
+            </div>
+
+            <div class="cards-company h-[170px] p-[80px] max-sm:p-[30px]">
+              <img class="w-full h-auto object-cover" src="../assets/img/Sharaf.svg" alt="">
+            </div>
+            <div class="cards-company h-[240px] p-[80px] max-sm:p-[30px]">
+              <img class="w-full h-auto object-cover" src="../assets/img/CLAP.svg" alt="">
+            </div>
+            <div class="cards-company h-[170px] p-[80px] max-sm:p-[30px]">
+              <img class="w-full h-auto object-cover" src="../assets/img/CLAP.svg" alt="">
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-
 </template>
 
 <style scoped lang="scss">
+@media (max-width: 768px) {
+  .text-work {
+    font-size: 20px !important;
+  }
+  .cards-company {
+    width: 135.821px !important;
+    margin-top: 8px !important;
+  }
+  .third {
+    display: none;
+  }
+  .four {
+    display: none;
+  }
+}
+
+.smooth-content {
+  transform: translateY(900px);
+}
 .text-work {
   color: #FFF;
   font-family: Alexandria, sans-serif;
@@ -209,15 +212,16 @@ onMounted(() => {
   text-transform: uppercase;
 
 }
-
 .grid-sizer {
   width: 20%;
 }
 
 .title-containers {
-  width: 50%;
-  height: 100px;
-  position: absolute;
+  width: 100%;
+  height: 50vh;
+  position: fixed;
+  left: 0;
+  transform: translate(0%, 50%);
 }
 
 .cards-company {
@@ -229,7 +233,7 @@ onMounted(() => {
   background: rgba(222, 222, 222, 0.05);
   backdrop-filter: blur(59px);
   transition: transform 0.5s ease-in-out;
-  padding: 60px 60px 60px 88px;
+  //padding: 60px 60px 60px 88px;
   margin-top: 20px;
   width: 325px;
   max-width: 100%;

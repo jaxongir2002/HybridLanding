@@ -2,7 +2,7 @@
 </script>
 
 <template>
-  <div style="background: #000000; padding: 34px 40px 34px 40px;">
+  <div style="background: #0E0E0E; padding: 34px 40px 34px 40px;">
     <div style="max-width: 1440px; margin:auto">
       <transition name="fade" mode="out-in">
         <router-view v-slot="{ Component }">
@@ -20,8 +20,6 @@
 .fade-leave-active {
   transition: opacity .8s ease;
 }
-
-
 .about-container {
   opacity: 0;
   transform: scale(0);
