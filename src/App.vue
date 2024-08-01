@@ -15,14 +15,8 @@ requestAnimationFrame(raf)
 
 <template>
   <div style="background: #0E0E0E; padding: 34px 40px 34px 40px;">
-    <div style="max-width: 1440px; margin:auto">
-      <transition name="fade" mode="out-in">
-        <router-view v-slot="{ Component }">
-          <keep-alive>
-            <component :is="Component"/>
-          </keep-alive>
-        </router-view>
-      </transition>
+    <div style="max-width: 1440px; margin:auto;">
+      <router-view></router-view>
     </div>
   </div>
 </template>

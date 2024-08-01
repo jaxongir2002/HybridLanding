@@ -1,11 +1,27 @@
 <script setup>
 
+import {onMounted} from "vue";
+
+onMounted(() => {
+  const flipCards = document.querySelectorAll('.flip-card');
+
+  flipCards.forEach(card => {
+    card.addEventListener('mousemove', () => {
+      card.style.transform = 'rotateY(180deg)';
+    });
+
+    card.addEventListener('mouseleave', () => {
+      setTimeout(() => {
+        card.style.transform = 'rotateY(0deg)';
+      }, 500)
+    });
+  });
+})
 </script>
 
 <template>
   <div class="flex gap-[20px] justify-between max-md:flex-col md:pt-[80px] pb-[80px]" style="--hue: 220">
-    <div class="flip-card">
-
+    <div class="flip-card ">
       <div class="card-front">
         <figure>
           <div class="card-front-text">
@@ -357,10 +373,10 @@
   transition: .6s .1s;
 }
 
-.flip-card:hover,
-.flip-card:focus-within {
-  transform: rotateY(180deg);
-}
+//.flip-card:hover,
+//.flip-card:focus-within {
+//  transform: rotateY(180deg);
+//}
 
 .card-front,
 .card-back {

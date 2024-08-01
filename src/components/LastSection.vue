@@ -1,7 +1,41 @@
 <script setup>
 import gsap from "gsap";
 import {ScrollTrigger} from 'gsap/ScrollTrigger'
-import {onMounted} from "vue";
+import {computed, onMounted, ref} from "vue";
+
+function topScroll() {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  })
+}
+
+const mousePosition = ref({x: 0, y: 0});
+
+const handleMouseMove = (event) => {
+  mousePosition.value = {
+    x: event.clientX,
+    y: event.clientY,
+  };
+};
+
+const computedStyle = computed(() => {
+  const {x, y} = mousePosition.value;
+  const gradientAngle =
+      Math.atan2(y - window.innerHeight / 2, x - window.innerWidth / 2) *
+      (180 / Math.PI) +
+      180;
+
+  return {
+    '--gradient-angle': `${gradientAngle}deg`,
+    'border-radius': '650px',
+    opacity: '0.4',
+    background: `linear-gradient(var(--gradient-angle), #002BFF 0.94%, #A20AFF 99.8%)`,
+    filter: 'blur(372.6000061035156px)',
+    transform: `translate(${-y / 5}px, ${x / 5}px)`,
+  };
+});
+
 
 gsap.registerPlugin(SplitText, ScrollTrigger);
 onMounted(() => {
@@ -71,13 +105,8 @@ onMounted(() => {
       scrub: true,
     }
   })
+
 })
-function topScroll() {
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth"
-  })
-}
 </script>
 
 <template>
@@ -132,12 +161,15 @@ function topScroll() {
         Back to top <img class="animation-arrow" src="@/assets/img/ArrowUp.svg" alt="">
       </div>
     </div>
-    <div class="footer-text">
-      <span class="first-letter">H</span>
-      <span class="rest-text">ybrid</span>
-    </div>
-    <div class="footer-text-second">
-      <span class="second-first-letter">x</span>perience
+    <div @mousemove="handleMouseMove">
+      <div id="footer-text" class="footer-text">
+        <span class="first-letter">H</span>
+        <span class="rest-text">ybrid</span>
+      </div>
+      <div class="footer-text-second">
+        <span class="second-first-letter">x</span>perience
+        <div class="gradient-overlay" :style="computedStyle"></div>
+      </div>
     </div>
   </div>
 </template>
@@ -229,6 +261,15 @@ function topScroll() {
   right: 50px;
 }
 
+.gradient-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
 .footer-text {
   color: rgba(255, 255, 255, 0.10);
   text-align: center;
@@ -241,6 +282,18 @@ function topScroll() {
   transform: translateY(100px);
   animation: last-text 2s linear infinite;
   transition: 1s;
+  position: relative;
+}
+
+.text-container::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  /* Other styles */
 }
 
 .footer-text-second {

@@ -1,5 +1,5 @@
 <script setup>
-import {onMounted, ref,} from "vue";
+import {onMounted, ref} from "vue";
 import gsap from 'gsap';
 import {ScrollTrigger} from "gsap/ScrollTrigger";
 
@@ -73,12 +73,12 @@ const listImg = ref([
 const containerRef = ref(null)
 
 function openModal(item, index) {
-
   showModal.value = true;
   selectedItem.value = item.src;
   selectedIndex.value = index;
   bodyOverflow = document.body.style.overflow;
   document.body.style.overflow = 'hidden';
+  document.querySelector('.our-works-div').style.transform = 'none'
 }
 
 function closeModal() {
@@ -86,11 +86,15 @@ function closeModal() {
   selectedItem.value = null;
   document.body.style.overflow = bodyOverflow || '';
 }
-
 function openTab() {
   addTab.value = !addTab.value
-}
+  if (addTab.value === false) {
+    document.querySelectorAll('.cards').forEach(el => {
+      el.style.transform = 'translateY(0px)';
+    })
+  }
 
+}
 onMounted(() => {
   const slider = document.querySelector('.dev-card');
   let isDown = false;
@@ -124,7 +128,7 @@ onMounted(() => {
     scrollTrigger: {
       trigger: '.our-works-div',
       start: 'top top',
-      end: '70%',
+      end: 'bottom 40%',
       scrub:true,
       pin: true
     }
@@ -134,21 +138,22 @@ onMounted(() => {
     yoyo:true
 
   }, {
-    yPercent: -160,
+    yPercent: -140,
     stagger: 0.01,
     yoyo:true
   })
-
 })
+
+
 </script>
 
 <template>
   <div class="pt-[80px] pb-[80px] our-works-div">
-    <div class="nav">
+    <div class="nav relative z-[20] ">
       <div class="nav-text">
         Our works
       </div>
-      <div class="relative z-20 our-works-img">
+      <div class="our-works-img">
         <img alt="" src="@/assets/img/LinkText.svg">
       </div>
     </div>
@@ -162,6 +167,17 @@ onMounted(() => {
         </div>
       </div>
     </div>
+
+    <div v-if="addTab" class="w-[2%] active:scale-50 transition-all relative z-20 mt-[80px]" @click="openTab">
+      <img alt="" src="@/assets/img/menuTabs.svg">
+    </div>
+    <div v-else
+         class="tabs flex active:scale-50 transition-all items-center gap-[5px] w-[2%] relative z-20 mt-[80px]"
+         @click="openTab">
+      <div class="tab w-[10px] h-[20px] rounded-[2px] bg-[#404040]"></div>
+      <div class="active-tab w-[10px] h-[22px] rounded-[2px] bg-[#fff]"></div>
+      <div class="tab w-[10px] h-[20px] rounded-[2px] bg-[#404040]"></div>
+    </div>
     <transition name="modal">
       <div v-if="showModal" class="modal" @click.self="closeModal">
         <div class="modal-content">
@@ -172,17 +188,8 @@ onMounted(() => {
         </div>
       </div>
     </transition>
-    <div v-if="addTab" class="w-[2%] active:scale-50 transition-all z-20 mt-[80px]" @click="openTab">
-      <img alt="" src="@/assets/img/menuTabs.svg">
-    </div>
-    <div v-else
-         class="tabs flex active:scale-50 transition-all items-center gap-[5px] w-[2%] relative z-20 mt-[80px]"
-         @click="openTab">
-      <div class="tab w-[10px] h-[20px] rounded-[2px] bg-[#404040]"></div>
-      <div class="active-tab w-[10px] h-[22px] rounded-[2px] bg-[#fff]"></div>
-      <div class="tab w-[10px] h-[20px] rounded-[2px] bg-[#404040]"></div>
-    </div>
   </div>
+
 </template>
 
 <style lang="scss" scoped>
@@ -235,39 +242,37 @@ onMounted(() => {
   }
 }
 
-.cards:hover {
-  animation: border-animation 6s linear infinite;
-  background: repeating-conic-gradient(from var(--a), #FAFAFA 0%,
-      #FAFAFA 5%, transparent 5%, transparent 95%, #FAFAFA 100%) !important;
-  background: linear-gradient(to bottom right, #9370DB, #8B00FF, #4B0082);
-  position: relative;
-  z-index: 1;
-
-
-}
-
-@property --a {
-  syntax: '<angle>';
-  inherits: false;
-  initial-value: 0deg;
-}
-
-@keyframes border-animation {
-  0% {
-    --a: 0deg
-  }
-  100% {
-    --a: 360deg
-  }
-}
-.cards:after {
-  content: '';
-  position: absolute;
-  inset: 2px;
-  background: #181818;
-  border-radius: 12px;
-  z-index: -2;
-}
+//.cards:hover {
+//  animation: border-animation 6s linear infinite;
+//  background: repeating-conic-gradient(from var(--a), #FAFAFA 0%,
+//      #FAFAFA 5%, transparent 5%, transparent 95%, #FAFAFA 100%) !important;
+//  background: linear-gradient(to bottom right, #9370DB, #8B00FF, #4B0082);
+//  position: relative;
+//  z-index: 1;
+//}
+//
+//@property --a {
+//  syntax: '<angle>';
+//  inherits: false;
+//  initial-value: 0deg;
+//}
+//
+//@keyframes border-animation {
+//  0% {
+//    --a: 0deg
+//  }
+//  100% {
+//    --a: 360deg
+//  }
+//}
+//.cards:after {
+//  content: '';
+//  position: absolute;
+//  inset: 2px;
+//  background: #181818;
+//  border-radius: 6px;
+//  z-index: -2;
+//}
 .dev-card {
   display: flex;
   width: 910px;
@@ -326,9 +331,9 @@ onMounted(() => {
 
 .modal {
   position: fixed;
-  height: 100vh;
-  width: 100vw;
-  left: -250px;
+  width: 100%;
+  height: 100%;
+  left: 0;
   top: 0;
   display: flex;
   justify-content: center;

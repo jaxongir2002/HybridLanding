@@ -1096,8 +1096,9 @@ function topScroll() {
 }
 
 canvas {
+  position: absolute;
   width: 30%;
-  height: 80%;
+  height: 100%;
 }
 
 .title-logo {

@@ -12,13 +12,12 @@ onMounted(() => {
       trigger: '.helloWorld',
       start: 'top top',
       pin: true,
-      end: '400%',
+      end: '200%',
       scrub: 1,
     }
   });
   tl.to('.one-text', {
     color: 'white',
-
     duration: 1,
     ease: "power2.inOut"
   });
@@ -27,82 +26,7 @@ onMounted(() => {
     duration: 1,
     ease: "power2.inOut"
   });
-  tl.to('.first-text', {
-    color: 'white',
 
-    duration: 1,
-    ease: "power2.inOut"
-  });
-  tl.to('.second-text', {
-    color: 'white',
-
-    duration: 1,
-    ease: "power2.inOut"
-  });
-  tl.to('.third-text', {
-    color: 'white',
-
-    duration: 1,
-    ease: "power2.inOut"
-  });
-  tl.to('.four-text', {
-    color: 'white',
-    duration: 1,
-    ease: "power2.inOut"
-  });
-  tl.to('.five-text', {
-    color: 'white',
-
-    duration: 1,
-    ease: "power2.inOut"
-  });
-  tl.to('.six-text', {
-    color: 'white',
-    duration: 1,
-    ease: "power2.inOut"
-  });
-  tl.to('.seven-text', {
-    color: 'white',
-    duration: 1,
-    ease: "power2.inOut"
-  });
-  tl.to('.eight-text', {
-    color: 'white',
-    duration: 1,
-    ease: "power2.inOut"
-  });
-  tl.to('.nine-text', {
-    color: 'white',
-    duration: 1,
-    ease: "power2.inOut"
-  });
-  tl.to('.tan-text', {
-    color: 'white',
-    duration: 1,
-    ease: "power2.inOut"
-  });
-
-  tl.to('.eleven-text', {
-    color: 'white',
-    duration: 1,
-    ease: "power2.inOut"
-  });
-  tl.to('.twelve-text', {
-    color: 'white',
-    duration: 1,
-    ease: "power2.inOut"
-  });
-  tl.to('.thirteen-text', {
-    color: 'white',
-    duration: 1,
-    ease: "power2.inOut"
-  });
-  tl.to('.fourteen-text', {
-    color: 'white',
-    duration: 1,
-    ease: "power2.inOut"
-  });
-  // card mission
   tl.to('.card-mission', {
     padding: '0',
     transition: .5,
@@ -118,14 +42,12 @@ onMounted(() => {
   });
   tl.to('.card-mission2', {
     transform: 'translateY(-300px)',
-    transition: 0.8,
+    transition: 0.5,
     transitionProperty: 1,
     visibility: 'visible',
     duration: 1,
     ease: "power2.inOut",
-    yoyo: true
   });
-
   tl.to('.first-name', {
     transition: 0.5,
     transform: 'translateY(-50px)'
@@ -135,122 +57,37 @@ onMounted(() => {
     transform: 'translateY(-25px)'
   })
 
-  tl.to('.fifteen-text', {
+  tl.to('.three-text', {
     color: 'white',
+    duration: 1,
+    ease: "power2.inOut"
   });
-  tl.to('.sixteen-text', {
-    color: 'white',
-  });
-  tl.to('.seventeen-text', {
-    color: 'white',
-  });
-  tl.to('.eighteen-text', {
-    color: 'white',
-  });
-  tl.to('.nineteen-text', {
-    color: 'white',
-  });
-  tl.to('.twenty-text', {
-    color: 'white',
-  });
-  tl.to('.twenty-one-text', {
-    color: 'white',
-  });
-  tl.to('.twenty-two-text', {
-    color: 'white',
-  });
-  tl.to('.twenty-three-text', {
-    color: 'white',
-  });
-  tl.to('.twenty-four-text', {
-    color: 'white',
-  });
-
-
   tl.to('.card-mission3', {
     transform: 'translateY(-300px)',
-    transition: 0.8,
+    transition: 0.5,
     visibility: 'visible',
     duration: 1,
     ease: "power2.inOut",
-    yoyo: true
   });
   tl.to('.second-name', {
     transition: 0.5,
-    transform: 'translateY(-80px)',
-    duration: 1,
-    ease: "power2.inOut",
-    yoyo: true
+    transform: 'translateY(-100px)',
+    ease: "power2.inOut"
   })
   tl.to('.third-name', {
     transition: 0.5,
     transform: 'translateY(-50px)',
     duration: 1,
     ease: "power2.inOut",
-    yoyo: true
   })
 
   tl.to('.second-img', {
     opacity: '0',
     duration: 1,
     ease: "power2.inOut",
-    yoyo: true
   });
-  tl.to('.twenty-five-text', {
-    color: 'white',
-    duration: 1,
-    ease: "power2.inOut"
-  });
-  tl.to('.twenty-six-text', {
-    color: 'white',
-    duration: 1,
-    ease: "power2.inOut"
-  });
-  tl.to('.twenty-seven-text', {
-    color: 'white',
-    duration: 1,
-    ease: "power2.inOut"
-  });
-  tl.to('.twenty-eight-text', {
-    color: 'white',
-    duration: 1,
-    ease: "power2.inOut"
-  });
-  tl.to('.twenty-nine-text', {
-    color: 'white',
-    duration: 1,
-    ease: "power2.inOut"
-  });
-  tl.to('.thirty-text', {
-    color: 'white',
-    duration: 1,
-    ease: "power2.inOut"
-  });
-  tl.to('.thirty-one-text', {
-    color: 'white',
-    duration: 1,
-    ease: "power2.inOut"
-  });
-  tl.to('.thirty-two-text', {
-    color: 'white',
-    duration: 1,
-    ease: "power2.inOut"
-  });
-  tl.to('.thirty-third-text', {
-    color: 'white',
-    duration: 1,
-    ease: "power2.inOut"
-  });
-  tl.to('.thirty-four-text', {
-    color: 'white',
-    duration: 1,
-    ease: "power2.inOut"
-  });
-  tl.to('.final-text', {
-    color: 'white',
-    duration: 1,
-    ease: "power2.inOut"
-  });
+
+
 });
 </script>
 
@@ -285,66 +122,35 @@ onMounted(() => {
         mission & vision
       </h1>
       <div ref="missionTitle" class="text-description">
-        <span class="text-white"> We are a modern</span> <span class="one-text"> and</span><span class="two-text"> innovative</span>
-        <span class="first-text"> new</span> <span class="second-text">media</span> <span
-          class="third-text"> arts</span>
-
-        <span class="four-text"> tech</span> <span class="five-text">studio,</span> <span
-          class="six-text">creatively</span> <span class="seven-text">combining</span> <span
-          class="eight-text">art</span>
-        <span class="nine-text">and</span> <span class="tan-text">tech</span> <span class="eleven-text">to</span> <span
-          class="twelve-text">create</span>
-        <span class="thirteen-text"> unique</span>
-        <span class="fourteen-text">immersive</span> <span class="fifteen-text">experiences.</span> <span
-          class="sixteen-text">Our</span>
-        <span class="seventeen-text">mission</span> <span class="eighteen-text">is</span><span
-          class="eighteen-text">to</span>
-        <span class="nineteen-text">bridge</span> <span class="twenty-text">the</span> <span
-          class="twenty-one-text">gap</span> <span class="twenty-two-text">between</span> <span
-          class="twenty-three-text">the</span> <span class="twenty-four-text">virtual</span>
-        <span class="twenty-five-text">and</span>
-        <span class="twenty-six-text"> physical</span> <span class="twenty-seven-text">worlds,</span>
-        <span class="twenty-eight-text"> offering</span>
-        <span class="twenty-nine-text"> concepts</span>
-        <span class="thirty-text"> that</span>
-        <span class="thirty-one-text"> empower</span>
-
-        <span class="thirty-two-text"> you</span>
-        <span class="thirty-third-text"> to</span>
-        <span class="thirty-four-text"> dream</span>
-        <span class="final-text"> beyond boundaries.</span>
+        <span class="text-white"> We are a modern</span>
+        <span class="one-text"> and innovative new media arts tech studio, creatively combining art and tech to create unique immersive experiences.</span>
+        <span class="two-text">Our mission is to bridge the gap between the virtual and physical worlds,</span>
+        <span class="three-text"> offering concepts that empower you to dream beyond boundaries.</span>
       </div>
       <button class="btn-about-us flex gap-[5px] items-center">
         <i class="pi pi-arrow-right text-[16px] mr-[3px] mt-[3px] h-[24px] mobile-icon"></i> About us
-        <!--        <img src="@/assets/img/ArrowRightBtn.svg" alt="">-->
       </button>
     </div>
 
-    <div class="col-span-6 flex flex-col justify-between mobile-version">
+    <div class="col-span-6 flex flex-col justify-between mb-[70px] mobile-version">
       <div>
       </div>
-
       <div>
         <div class="text-social mb-[15px]">
           Social:
         </div>
         <div class="flex gap-[15px]">
           <button class="btn-links">
-            <!--            <img src="@/assets/img/instagram.svg" alt="">-->
             <i class="pi pi-instagram text-white text-[20px]"></i>
           </button>
           <button class="btn-links">
-            <!--            <img src="@/assets/img/tweeter.svg" alt="">-->
             <i class="pi pi-twitter text-white text-[20px]"></i>
           </button>
           <button class="btn-links">
-            <!--            <img src="@/assets/img/mdi_linkedin.svg" alt="">-->
             <i class="pi pi-linkedin text-white text-[20px]"></i>
           </button>
         </div>
-
       </div>
-
     </div>
     <div class="col-span-6 ml-[200px] mobile-version-animation">
       <iframe width="440px" height="494px"
