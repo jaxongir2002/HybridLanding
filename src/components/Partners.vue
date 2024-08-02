@@ -1,160 +1,650 @@
 <script setup>
-import {onMounted} from "vue";
-import {ScrollTrigger} from 'gsap/ScrollTrigger'
+import { onMounted } from "vue";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import gsap from "gsap";
 
 onMounted(() => {
   gsap.registerPlugin(SplitText, ScrollTrigger);
-  let mySplitText = new SplitText('.animation-text', {type: 'chars'})
-  let chars = mySplitText.chars
+  let mySplitText = new SplitText(".animation-text", { type: "chars" });
+  let chars = mySplitText.chars;
 
-  let mySplitTextTwo = new SplitText('.animation-text-two', {type: 'chars'})
-  let charsTwo = mySplitTextTwo.chars
+  let mySplitTextTwo = new SplitText(".animation-text-two", { type: "chars" });
+  let charsTwo = mySplitTextTwo.chars;
   const slides = document.querySelectorAll(".cards-company");
   let tl = gsap.timeline({
     scrollTrigger: {
-      trigger: '.big-div',
-      start: 'top 10%',
+      trigger: ".big-div",
+      start: "top 10%",
       end: `+=${slides.length * 5}%`,
       scrub: true,
       pin: true,
     },
-    defaults: { ease: "none" }
+    defaults: { ease: "none" },
   });
   tl.from(chars, {
     yPercent: -140,
     stagger: 0.02,
-    ease: 'back.out',
+    ease: "back.out",
     opacity: 0,
   });
 
-  tl.from(charsTwo, {
-    yPercent: 140,
-    stagger: 0.02,
-    ease: 'back.out',
-    opacity: 0,
-    yoyo: true
-  }, 0);
-  tl.fromTo('.first', {
-    yPercent: 55,
-    yoyo: true,
-    transition: 0.5,
-    stagger: 0.06,
-  }, {
-    yPercent: 0,
-    stagger: 0.06,
-    yoyo: true,
-    transition: 0.5,
-  })
+  tl.from(
+    charsTwo,
+    {
+      yPercent: 140,
+      stagger: 0.02,
+      ease: "back.out",
+      opacity: 0,
+      yoyo: true,
+    },
+    0
+  );
+  tl.fromTo(
+    ".first",
+    {
+      yPercent: 55,
+      yoyo: true,
+      transition: 0.5,
+      stagger: 0.06,
+    },
+    {
+      yPercent: 0,
+      stagger: 0.06,
+      yoyo: true,
+      transition: 0.5,
+    }
+  );
+  (function setGlowEffectRx() {
+  const glowEffects = document.querySelectorAll(".glow-effect");
+
+  glowEffects.forEach((glowEffect) => {
+    const glowLines = glowEffect.querySelectorAll("rect");
+    const rx = getComputedStyle(glowEffect).borderRadius;
+
+    glowLines.forEach((line) => {
+      line.setAttribute("rx", rx);
+    });
+  });
+})();
 });
+
 </script>
 
 <template>
   <div class="text-center big-div relative">
-    <div class="smooth-wrapper ">
+    <div class="smooth-wrapper">
       <div class="title-containers">
-        <div class="text-work animation-text">
-          We work with humans
-        </div>
-        <div class="text-work animation-text-two">
-          and more than humans
-        </div>
+        <div class="text-work animation-text">We work with humans</div>
+        <div class="text-work animation-text-two">and more than humans</div>
       </div>
-      <div class="relative z-20 content-div ">
-        <div class="flex gap-[20px] all-cards-partners max-sm:gap-[8px] max-sm:justify-center">
+      <div class="relative z-20 content-div">
+        <div
+          class="flex gap-[20px] all-cards-partners max-sm:gap-[8px] max-sm:justify-center"
+        >
           <div class="first">
-            <div class="cards-company h-[250px] p-[80px] max-sm:h-[104.478px] max-sm:p-[30px]">
-              <img class="w-full h-auto object-cover" src="../assets/img/Netflix.svg" alt="">
+            <div
+              class="cards-company h-[250px] p-[80px] max-sm:h-[104.478px] max-sm:p-[30px] glow-effect"
+            >
+              <img
+                class="w-full h-auto object-cover"
+                src="../assets/img/Netflix.svg"
+                alt=""
+              />
+              <svg class="glow-container">
+                <rect
+                  pathLength="100"
+                  stroke-linecap="round"
+                  class="glow-blur"
+                ></rect>
+                <rect
+                  pathLength="100"
+                  stroke-linecap="round"
+                  class="glow-line"
+                ></rect>
+              </svg>
             </div>
-            <div class="cards-company h-[140px] p-[80px] max-sm:p-[30px] max-sm:h-[58.508px]">
-              <img class="w-full h-auto object-cover" src="../assets/img/Dyson.svg" alt="">
+            <div
+              class="cards-company h-[140px] p-[80px] max-sm:p-[30px] max-sm:h-[58.508px] glow-effect"
+            >
+              <img
+                class="w-full h-auto object-cover"
+                src="../assets/img/Dyson.svg"
+                alt=""
+              />
+               <svg class="glow-container">
+                <rect
+                  pathLength="100"
+                  stroke-linecap="round"
+                  class="glow-blur"
+                ></rect>
+                <rect
+                  pathLength="100"
+                  stroke-linecap="round"
+                  class="glow-line"
+                ></rect>
+              </svg>
             </div>
-            <div class="cards-company h-[220px] p-[120px] max-sm:p-[40px] max-sm:h-[91.94px]">
-              <img class="w-full h-auto object-cover" src="../assets/img/Unilever.svg" alt="">
+            <div
+              class="cards-company h-[220px] p-[120px] max-sm:p-[40px] max-sm:h-[91.94px] glow-effect"
+            >
+              <img
+                class="w-full h-auto object-cover"
+                src="../assets/img/Unilever.svg"
+                alt=""
+              />
+               <svg class="glow-container">
+                <rect
+                  pathLength="100"
+                  stroke-linecap="round"
+                  class="glow-blur"
+                ></rect>
+                <rect
+                  pathLength="100"
+                  stroke-linecap="round"
+                  class="glow-line"
+                ></rect>
+              </svg>
             </div>
-            <div class="cards-company h-[180px] p-[80px] max-sm:p-[30px] max-sm:h-[75.224px]">
-              <img class="w-full h-auto object-cover" src="../assets/img/vodafone.svg" alt="">
+            <div
+              class="cards-company h-[180px] p-[80px] max-sm:p-[30px] max-sm:h-[75.224px] glow-effect"
+            >
+              <img
+                class="w-full h-auto object-cover"
+                src="../assets/img/vodafone.svg"
+                alt=""
+              />
+               <svg class="glow-container">
+                <rect
+                  pathLength="100"
+                  stroke-linecap="round"
+                  class="glow-blur"
+                ></rect>
+                <rect
+                  pathLength="100"
+                  stroke-linecap="round"
+                  class="glow-line"
+                ></rect>
+              </svg>
             </div>
-            <div class="cards-company h-[210px] p-[80px] max-sm:p-[30px] max-sm:h-[87.761px]">
-              <img class="w-full h-auto object-cover" src="../assets/img/Sera.svg" alt="">
+            <div
+              class="cards-company h-[210px] p-[80px] max-sm:p-[30px] max-sm:h-[87.761px] glow-effect">
+              <img
+                class="w-full h-auto object-cover"
+                src="../assets/img/Sera.svg"
+                alt=""
+              />
+               <svg class="glow-container">
+                <rect
+                  pathLength="100"
+                  stroke-linecap="round"
+                  class="glow-blur"
+                ></rect>
+                <rect
+                  pathLength="100"
+                  stroke-linecap="round"
+                  class="glow-line"
+                ></rect>
+              </svg>
             </div>
-            <div class="cards-company h-[210px] p-[80px] max-sm:p-[30px] max-sm:h-[87.761px]">
-<!--              <img class="w-full h-auto object-cover" src="../assets/img/EMPIRE.svg" alt="">-->
+            <div
+              class="cards-company h-[210px] p-[80px] max-sm:p-[30px] max-sm:h-[87.761px] glow-effect"
+            >
+              <!--              <img class="w-full h-auto object-cover" src="../assets/img/EMPIRE.svg" alt="">-->
+               <svg class="glow-container">
+                <rect
+                  pathLength="100"
+                  stroke-linecap="round"
+                  class="glow-blur"
+                ></rect>
+                <rect
+                  pathLength="100"
+                  stroke-linecap="round"
+                  class="glow-line"
+                ></rect>
+              </svg>
             </div>
-            <div class="cards-company h-[190px] p-[80px] max-sm:p-[30px] max-sm:h-[91.94px]">
-              <img class="w-full h-auto object-cover" src="../assets/img/NOZOMI.svg" alt="">
+            <div
+              class="cards-company h-[190px] p-[80px] max-sm:p-[30px] max-sm:h-[91.94px] glow-effect"
+            >
+              <img
+                class="w-full h-auto object-cover"
+                src="../assets/img/NOZOMI.svg"
+                alt=""
+              />
+               <svg class="glow-container">
+                <rect
+                  pathLength="100"
+                  stroke-linecap="round"
+                  class="glow-blur"
+                ></rect>
+                <rect
+                  pathLength="100"
+                  stroke-linecap="round"
+                  class="glow-line"
+                ></rect>
+              </svg>
             </div>
           </div>
           <div class="second first">
-            <div class="cards-company h-[180px]  p-[80px] max-sm:p-[30px] max-sm:h-[75.224px]">
-              <img class="w-full h-auto object-cover" src="../assets/img/Tiktok.svg" alt="">
+            <div
+              class="cards-company h-[180px] p-[80px] max-sm:p-[30px] max-sm:h-[75.224px] glow-effect"
+            >
+              <img
+                class="w-full h-auto object-cover"
+                src="../assets/img/Tiktok.svg"
+                alt=""
+              />
+                   <svg class="glow-container">
+                <rect
+                  pathLength="100"
+                  stroke-linecap="round"
+                  class="glow-blur"
+                ></rect>
+                <rect
+                  pathLength="100"
+                  stroke-linecap="round"
+                  class="glow-line"
+                ></rect>
+              </svg>
             </div>
-            <div class="cards-company h-[230px]  p-[80px] max-sm:p-[30px] max-sm:h-[96.119px]">
-              <img class="w-full h-auto object-cover" src="../assets/img/redBUll.svg" alt="">
+            <div
+              class="cards-company h-[230px] p-[80px] max-sm:p-[30px] max-sm:h-[96.119px] glow-effect"
+            >
+              <img
+                class="w-full h-auto object-cover"
+                src="../assets/img/redBUll.svg"
+                alt=""
+              />
+                   <svg class="glow-container">
+                <rect
+                  pathLength="100"
+                  stroke-linecap="round"
+                  class="glow-blur"
+                ></rect>
+                <rect
+                  pathLength="100"
+                  stroke-linecap="round"
+                  class="glow-line"
+                ></rect>
+              </svg>
             </div>
-            <div class="cards-company h-[210px] p-[80px] max-sm:p-[30px] max-sm:h-[87.761px]">
-              <img class="w-full h-auto object-cover" src="../assets/img/vuseLogo.svg" alt="">
+            <div
+              class="cards-company h-[210px] p-[80px] max-sm:p-[30px] max-sm:h-[87.761px] glow-effect"
+            >
+              <img
+                class="w-full h-auto object-cover"
+                src="../assets/img/vuseLogo.svg"
+                alt=""
+              />
+                   <svg class="glow-container">
+                <rect
+                  pathLength="100"
+                  stroke-linecap="round"
+                  class="glow-blur"
+                ></rect>
+                <rect
+                  pathLength="100"
+                  stroke-linecap="round"
+                  class="glow-line"
+                ></rect>
+              </svg>
             </div>
-            <div class="cards-company h-[160px] p-[80px] max-sm:p-[30px] max-sm:h-[66.866px]">
-              <img class="w-full h-auto object-cover" src="../assets/img/madic.svg" alt="">
+            <div
+              class="cards-company h-[160px] p-[80px] max-sm:p-[30px] max-sm:h-[66.866px] glow-effect"
+            >
+              <img
+                class="w-full h-auto object-cover"
+                src="../assets/img/madic.svg"
+                alt=""
+              />
+                   <svg class="glow-container">
+                <rect
+                  pathLength="100"
+                  stroke-linecap="round"
+                  class="glow-blur"
+                ></rect>
+                <rect
+                  pathLength="100"
+                  stroke-linecap="round"
+                  class="glow-line"
+                ></rect>
+              </svg>
             </div>
 
-            <div class="cards-company h-[240px] p-[80px] max-sm:p-[30px] max-sm:h-[100.299px]">
-              <img class="w-full h-auto object-cover" src="../assets/img/Sharaf.svg" alt="">
+            <div
+              class="cards-company h-[240px] p-[80px] max-sm:p-[30px] max-sm:h-[100.299px] glow-effect"
+            >
+              <img
+                class="w-full h-auto object-cover"
+                src="../assets/img/Sharaf.svg"
+                alt=""
+              />
+                   <svg class="glow-container">
+                <rect
+                  pathLength="100"
+                  stroke-linecap="round"
+                  class="glow-blur"
+                ></rect>
+                <rect
+                  pathLength="100"
+                  stroke-linecap="round"
+                  class="glow-line"
+                ></rect>
+              </svg>
             </div>
-            <div class="cards-company h-[240px] p-[80px] max-sm:p-[30px] max-sm:h-[100.299px]">
-              <img class="w-full h-auto object-cover" src="../assets/img/CLAP.svg" alt="">
+            <div
+              class="cards-company h-[240px] p-[80px] max-sm:p-[30px] max-sm:h-[100.299px] glow-effect"
+            >
+              <img
+                class="w-full h-auto object-cover"
+                src="../assets/img/CLAP.svg"
+                alt=""
+              />
+                   <svg class="glow-container">
+                <rect
+                  pathLength="100"
+                  stroke-linecap="round"
+                  class="glow-blur"
+                ></rect>
+                <rect
+                  pathLength="100"
+                  stroke-linecap="round"
+                  class="glow-line"
+                ></rect>
+              </svg>
             </div>
-            <div class="cards-company h-[180px] p-[80px] max-sm:p-[30px] max-sm:h-[91.94px]">
-              <img class="w-full h-auto object-cover" src="../assets/img/CLAP.svg" alt="">
+            <div
+              class="cards-company h-[180px] p-[80px] max-sm:p-[30px] max-sm:h-[91.94px] glow-effect"
+            >
+              <img
+                class="w-full h-auto object-cover"
+                src="../assets/img/CLAP.svg"
+                alt=""
+              />
+                   <svg class="glow-container">
+                <rect
+                  pathLength="100"
+                  stroke-linecap="round"
+                  class="glow-blur"
+                ></rect>
+                <rect
+                  pathLength="100"
+                  stroke-linecap="round"
+                  class="glow-line"
+                ></rect>
+              </svg>
             </div>
           </div>
           <div class="third first">
-            <div class="cards-company h-[220px]  p-[80px] max-sm:p-[30px]">
-              <img class="w-full h-auto object-cover" src="../assets/img/angahami.png" alt="">
+            <div class="cards-company h-[220px] p-[80px] max-sm:p-[30px] glow-effect">
+              <img
+                class="w-full h-auto object-cover"
+                src="../assets/img/angahami.png"
+                alt=""
+              />
+                   <svg class="glow-container">
+                <rect
+                  pathLength="100"
+                  stroke-linecap="round"
+                  class="glow-blur"
+                ></rect>
+                <rect
+                  pathLength="100"
+                  stroke-linecap="round"
+                  class="glow-line"
+                ></rect>
+              </svg>
             </div>
-            <div class="cards-company h-[250px]  p-[80px] max-sm:p-[30px]">
-              <img class="w-full h-auto object-cover" src="../assets/img/Ikea.svg" alt="">
+            <div class="cards-company h-[250px] p-[80px] max-sm:p-[30px] glow-effect">
+              <img
+                class="w-full h-auto object-cover"
+                src="../assets/img/Ikea.svg"
+                alt=""
+              />
+               <svg class="glow-container">
+                <rect
+                  pathLength="100"
+                  stroke-linecap="round"
+                  class="glow-blur"
+                ></rect>
+                <rect
+                  pathLength="100"
+                  stroke-linecap="round"
+                  class="glow-line"
+                ></rect>
+              </svg>
             </div>
-            <div class="cards-company h-[220px] p-[80px] max-sm:p-[30px]">
-              <img class="w-full h-auto object-cover" src="../assets/img/events.svg" alt="">
+            <div class="cards-company h-[220px] p-[80px] max-sm:p-[30px] glow-effect">
+              <img
+                class="w-full h-auto object-cover"
+                src="../assets/img/events.svg"
+                alt=""
+              />
+               <svg class="glow-container">
+                <rect
+                  pathLength="100"
+                  stroke-linecap="round"
+                  class="glow-blur"
+                ></rect>
+                <rect
+                  pathLength="100"
+                  stroke-linecap="round"
+                  class="glow-line"
+                ></rect>
+              </svg>
             </div>
-            <div class="cards-company h-[200px] p-[80px] max-sm:p-[30px]">
-              <img class="w-full h-auto object-cover" src="../assets/img/Expo2020.svg" alt="">
+            <div class="cards-company h-[200px] p-[80px] max-sm:p-[30px] glow-effect">
+              <img
+                class="w-full h-auto object-cover"
+                src="../assets/img/Expo2020.svg"
+                alt=""
+              />
+               <svg class="glow-container">
+                <rect
+                  pathLength="100"
+                  stroke-linecap="round"
+                  class="glow-blur"
+                ></rect>
+                <rect
+                  pathLength="100"
+                  stroke-linecap="round"
+                  class="glow-line"
+                ></rect>
+              </svg>
             </div>
 
-            <div class="cards-company h-[180px] p-[80px] max-sm:p-[30px]">
-              <img class="w-full h-auto object-cover" src="../assets/img/Boeker.svg" alt="">
+            <div class="cards-company h-[180px] p-[80px] max-sm:p-[30px] glow-effect">
+              <img
+                class="w-full h-auto object-cover"
+                src="../assets/img/Boeker.svg"
+                alt=""
+              />
+               <svg class="glow-container">
+                <rect
+                  pathLength="100"
+                  stroke-linecap="round"
+                  class="glow-blur"
+                ></rect>
+                <rect
+                  pathLength="100"
+                  stroke-linecap="round"
+                  class="glow-line"
+                ></rect>
+              </svg>
             </div>
-            <div class="cards-company h-[190px] p-[80px] max-sm:p-[30px]">
-              <img class="w-full h-auto object-cover" src="../assets/img/IRIS.svg" alt="">
+            <div class="cards-company h-[190px] p-[80px] max-sm:p-[30px] glow-effect">
+              <img
+                class="w-full h-auto object-cover"
+                src="../assets/img/IRIS.svg"
+                alt=""
+              />
+               <svg class="glow-container">
+                <rect
+                  pathLength="100"
+                  stroke-linecap="round"
+                  class="glow-blur"
+                ></rect>
+                <rect
+                  pathLength="100"
+                  stroke-linecap="round"
+                  class="glow-line"
+                ></rect>
+              </svg>
             </div>
-            <div class="cards-company h-[180px] p-[80px] max-sm:p-[30px]">
-              <img class="w-full h-auto object-cover" src="../assets/img/BIVWORLD.svg" alt="">
+            <div class="cards-company h-[180px] p-[80px] max-sm:p-[30px] glow-effect">
+              <img
+                class="w-full h-auto object-cover"
+                src="../assets/img/BIVWORLD.svg"
+                alt=""
+              />
+               <svg class="glow-container">
+                <rect
+                  pathLength="100"
+                  stroke-linecap="round"
+                  class="glow-blur"
+                ></rect>
+                <rect
+                  pathLength="100"
+                  stroke-linecap="round"
+                  class="glow-line"
+                ></rect>
+              </svg>
             </div>
           </div>
           <div class="four first">
-            <div class="cards-company h-[190px]  p-[80px] max-sm:p-[30px]">
-              <img class="w-full h-auto object-cover" src="../assets/img/srt.svg" alt="">
+            <div class="cards-company h-[190px] p-[80px] max-sm:p-[30px] glow-effect">
+              <img
+                class="w-full h-auto object-cover"
+                src="../assets/img/srt.svg"
+                alt=""
+              />
+               <svg class="glow-container">
+                <rect
+                  pathLength="100"
+                  stroke-linecap="round"
+                  class="glow-blur"
+                ></rect>
+                <rect
+                  pathLength="100"
+                  stroke-linecap="round"
+                  class="glow-line"
+                ></rect>
+              </svg>
             </div>
-            <div class="cards-company h-[230px]  p-[80px] max-sm:p-[30px]">
-              <img class="w-full h-auto object-cover" src="../assets/img/2022Logo.svg" alt="">
+            <div class="cards-company h-[230px] p-[80px] max-sm:p-[30px] glow-effect">
+              <img
+                class="w-full h-auto object-cover"
+                src="../assets/img/2022Logo.svg"
+                alt=""
+              />
+               <svg class="glow-container">
+                <rect
+                  pathLength="100"
+                  stroke-linecap="round"
+                  class="glow-blur"
+                ></rect>
+                <rect
+                  pathLength="100"
+                  stroke-linecap="round"
+                  class="glow-line"
+                ></rect>
+              </svg>
             </div>
-            <div class="cards-company h-[220px] p-[80px] max-sm:p-[30px]">
-              <img class="w-full h-auto object-cover" src="../assets/img/sunset.png" alt="">
+            <div class="cards-company h-[220px] p-[80px] max-sm:p-[30px] glow-effect">
+              <img
+                class="w-full h-auto object-cover"
+                src="../assets/img/sunset.png"
+                alt=""
+              />
+               <svg class="glow-container">
+                <rect
+                  pathLength="100"
+                  stroke-linecap="round"
+                  class="glow-blur"
+                ></rect>
+                <rect
+                  pathLength="100"
+                  stroke-linecap="round"
+                  class="glow-line"
+                ></rect>
+              </svg>
             </div>
-            <div class="cards-company h-[220px] p-[80px] max-sm:p-[30px]">
-              <img class="w-full h-auto object-cover" src="../assets/img/srmo.svg" alt="">
+            <div class="cards-company h-[220px] p-[80px] max-sm:p-[30px] glow-effect">
+              <img
+                class="w-full h-auto object-cover"
+                src="../assets/img/srmo.svg"
+                alt=""
+              />
+               <svg class="glow-container">
+                <rect
+                  pathLength="100"
+                  stroke-linecap="round"
+                  class="glow-blur"
+                ></rect>
+                <rect
+                  pathLength="100"
+                  stroke-linecap="round"
+                  class="glow-line"
+                ></rect>
+              </svg>
             </div>
 
-            <div class="cards-company h-[170px] p-[80px] max-sm:p-[30px]">
-              <img class="w-full h-auto object-cover" src="../assets/img/RTA.svg" alt="">
+            <div class="cards-company h-[170px] p-[80px] max-sm:p-[30px] glow-effect">
+              <img
+                class="w-full h-auto object-cover"
+                src="../assets/img/RTA.svg"
+                alt=""
+              />
+               <svg class="glow-container">
+                <rect
+                  pathLength="100"
+                  stroke-linecap="round"
+                  class="glow-blur"
+                ></rect>
+                <rect
+                  pathLength="100"
+                  stroke-linecap="round"
+                  class="glow-line"
+                ></rect>
+              </svg>
             </div>
-            <div class="cards-company h-[240px] p-[80px] max-sm:p-[30px]">
-              <img class="w-full h-auto object-cover" src="../assets/img/ESCWA.svg" alt="">
+            <div class="cards-company h-[240px] p-[80px] max-sm:p-[30px] glow-effect">
+              <img
+                class="w-full h-auto object-cover"
+                src="../assets/img/ESCWA.svg"
+                alt=""
+              />
+               <svg class="glow-container">
+                <rect
+                  pathLength="100"
+                  stroke-linecap="round"
+                  class="glow-blur"
+                ></rect>
+                <rect
+                  pathLength="100"
+                  stroke-linecap="round"
+                  class="glow-line"
+                ></rect>
+              </svg>
             </div>
-            <div class="cards-company h-[170px] p-[80px] max-sm:p-[30px]">
-              <img class="w-full h-auto object-cover" src="../assets/img/lastImg.svg" alt="">
+            <div class="cards-company h-[170px] p-[80px] max-sm:p-[30px] glow-effect">
+              <img
+                class="w-full h-auto object-cover"
+                src="../assets/img/lastImg.svg"
+                alt=""
+              />
+               <svg class="glow-container">
+                <rect
+                  pathLength="100"
+                  stroke-linecap="round"
+                  class="glow-blur"
+                ></rect>
+                <rect
+                  pathLength="100"
+                  stroke-linecap="round"
+                  class="glow-line"
+                ></rect>
+              </svg>
             </div>
           </div>
         </div>
@@ -181,14 +671,13 @@ onMounted(() => {
 }
 
 .text-work {
-  color: #FFF;
+  color: #fff;
   font-family: Alexandria, sans-serif;
   font-size: 50px;
   font-style: normal;
   font-weight: 700;
   line-height: 130%;
   text-transform: uppercase;
-
 }
 .grid-sizer {
   width: 20%;
@@ -197,7 +686,7 @@ onMounted(() => {
 .all-cards-partners {
   transition: 0.5s;
 }
-.first{
+.first {
   transition: 0.5s;
   position: sticky;
 }
@@ -207,7 +696,8 @@ onMounted(() => {
   height: 50vh;
   position: fixed;
   left: 0;
-  transform: translate(0%, 50%);
+  top: 0;
+  transform: translate(0%, 65%);
 }
 
 .cards-company {
@@ -222,42 +712,7 @@ onMounted(() => {
   margin-top: 20px;
   width: 325px;
   max-width: 100%;
-  //transform: translateY(900px);
-
 }
-
-//.cards-company:hover {
-//  animation: border-animation 6s linear infinite;
-//  background: repeating-conic-gradient(from var(--a), #FAFAFA 0%,
-//      #FAFAFA 5%, transparent 5%, transparent 95%, #FAFAFA 100%) !important;
-//  background: linear-gradient(to bottom right, #9370DB, #8B00FF, #4B0082);
-//  position: relative;
-//  z-index: 1;
-//}
-//
-//@property --a {
-//  syntax: '<angle>';
-//  inherits: false;
-//  initial-value: 0deg;
-//}
-//
-//@keyframes border-animation {
-//  0% {
-//    --a: 0deg
-//  }
-//  100% {
-//    --a: 360deg
-//  }
-//}
-//
-//.cards-company:after {
-//  content: '';
-//  position: absolute;
-//  inset: 2px;
-//  background: #181818;
-//  border-radius: 12px;
-//  z-index: -2;
-//}
 
 @keyframes cardAnimation {
   0% {
@@ -270,4 +725,6 @@ onMounted(() => {
     transform: translateY(0);
   }
 }
+
+
 </style>

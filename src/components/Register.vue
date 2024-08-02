@@ -1,24 +1,24 @@
 <script setup>
 import gsap from "gsap";
-import {ScrollTrigger} from 'gsap/ScrollTrigger'
-import {onMounted} from "vue";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { onMounted } from "vue";
 
 gsap.registerPlugin(SplitText, ScrollTrigger);
 
 onMounted(() => {
-  let mySplitText = new SplitText('.text-register', {type: 'chars'})
-  let mySplit = new SplitText('.btn-link-text', {type: 'chars'})
+  let mySplitText = new SplitText(".text-register", { type: "chars" });
+  let mySplit = new SplitText(".btn-link-text", { type: "chars" });
 
-  let mayChars = mySplit.chars
-  let chars = mySplitText.chars
+  let mayChars = mySplit.chars;
+  let chars = mySplitText.chars;
 
   let tl = gsap.timeline({
     scrollTrigger: {
-      trigger: '.scroll-register',
-      start: 'top 50%',
-      end: 'bottom bottom',
+      trigger: ".scroll-register",
+      start: "top 50%",
+      end: "bottom bottom",
       scrub: 1,
-    }
+    },
   });
 
   tl.from(chars, {
@@ -26,13 +26,13 @@ onMounted(() => {
     stagger: 0.02,
   });
 
-  tl.from('.label-name', {
+  tl.from(".label-name", {
     yPercent: -40,
     opacity: 0,
-    stagger: .5,
+    stagger: 0.5,
     duration: 1,
     yoyo: true,
-    transition: 1
+    transition: 1,
   });
 
   gsap.from(mayChars, {
@@ -40,70 +40,70 @@ onMounted(() => {
     stagger: 0.02,
     opacity: 0,
     scrollTrigger: {
-      trigger: '.scroll-register',
-      start: 'top 50%',
-      end: 'bottom bottom',
+      trigger: ".scroll-register",
+      start: "top 50%",
+      end: "bottom bottom",
       scrub: 1,
-    }
+    },
   });
-  gsap.from('.text-project', {
+  gsap.from(".text-project", {
     opacity: 0,
     scrollTrigger: {
-      trigger: '.scroll-register',
-      start: 'top 50%',
-      end: 'bottom 50%',
+      trigger: ".scroll-register",
+      start: "top 50%",
+      end: "bottom 50%",
       scrub: 1,
-    }
+    },
   });
-  gsap.from('.description-text', {
+  gsap.from(".description-text", {
     opacity: 0,
     yPercent: 130,
     stagger: 0.02,
     scrollTrigger: {
-      trigger: '.scroll-register',
-      start: 'top 50%',
-      end: 'bottom 50%',
+      trigger: ".scroll-register",
+      start: "top 50%",
+      end: "bottom 50%",
       scrub: 1,
-    }
+    },
   });
-  gsap.from('.btn-sent', {
+  gsap.from(".btn-sent", {
     duration: 0.5,
-    y: '0',
+    y: "0",
     scale: 0.3,
-    transition: .3,
+    transition: 0.3,
     yoyo: true,
-    ease: 'power1.inOut',
+    ease: "power1.inOut",
     scrollTrigger: {
       trigger: ".scroll-register",
       start: "top 50%",
       end: "bottom bottom",
       scrub: true,
-    }
+    },
   });
-  gsap.from('.btn-animation-links', {
+  gsap.from(".btn-animation-links", {
     duration: 0.5,
-    y: '0',
+    y: "0",
     scale: 0.3,
-    transition: .3,
+    transition: 0.3,
     yoyo: true,
-    ease: 'power1.inOut',
+    ease: "power1.inOut",
     scrollTrigger: {
       trigger: ".scroll-register",
       start: "top 50%",
       end: "bottom bottom",
-      scrub: true
-    }
+      scrub: true,
+    },
   });
-  tl.from('.checkbox-animation', {
+  tl.from(".checkbox-animation", {
     animation: "check-animation 1s linear infinite",
     scrollTrigger: {
       trigger: ".scroll-register",
       start: "top 50%",
       end: "bottom bottom",
-      scrub: true
-    }
-  })
-})
+      scrub: true,
+    },
+  });
+});
 </script>
 
 <template>
@@ -127,73 +127,92 @@ onMounted(() => {
             <span class="btn-link-text">Social:</span>
             <button class="btn-links mt-[15px] btn-animation-links">
               <i class="pi pi-instagram text-white text-[20px]"></i>
-              <!-- <img src="@/assets/img/instagram.svg" alt="">-->
             </button>
           </label>
           <label class="leading-[140%] text-transparent">
             Social:
             <button class="btn-links mt-[15px] btn-animation-links">
               <i class="pi pi-twitter text-white text-[20px]"></i>
-              <!-- <img src="@/assets/img/tweeter.svg" alt="">-->
             </button>
           </label>
           <label class="leading-[140%] text-transparent">
             Social:
             <button class="btn-links mt-[15px] btn-animation-links">
               <i class="pi pi-linkedin text-white text-[20px]"></i>
-              <!-- <img src="@/assets/img/mdi_linkedin.svg" alt="">-->
             </button>
           </label>
         </div>
       </div>
       <div class="description-text mt-[227px]">
-        New media art & entertainment studio creating experiences for the physical & digital world.
+        New media art & entertainment studio creating experiences for the
+        physical & digital world.
       </div>
     </div>
     <div class="line-center"></div>
     <div>
       <div>
-        <div class="text-register">
-          Tell us
-        </div>
-        <div class="text-register">
-          everything..
-        </div>
+        <div class="text-register">Tell us</div>
+        <div class="text-register">everything..</div>
       </div>
 
       <form>
         <div class="form-group mt-[30px]">
-          <label for="name" class="label-name">Name
-            <input type="text" class="form-control" id="name" placeholder="John Smith">
+          <label for="name" class="label-name"
+            >Name
+            <input
+              type="text"
+              class="form-control"
+              id="name"
+              placeholder="John Smith"
+            />
           </label>
         </div>
         <div class="form-group mt-[30px]">
-          <label for="Email" class="label-name">Your Email
-            <input type="email" class="form-control" id="Email" placeholder="email@gmail.com">
+          <label for="Email" class="label-name"
+            >Your Email
+            <input
+              type="email"
+              class="form-control"
+              id="Email"
+              placeholder="email@gmail.com"
+            />
           </label>
         </div>
         <div class="form-group mt-[30px]">
-          <label for="Phone" class="label-name">Your Phone
-            <input type="number" class="form-control" id="Phone" placeholder="Enter your phone">
+          <label for="Phone" class="label-name"
+            >Your Phone
+            <input
+              type="number"
+              class="form-control number-input"
+              id="Phone"
+              placeholder="Enter your phone"
+            />
           </label>
         </div>
         <div class="form-group mt-[30px]">
-          <label for="Message" class="label-name">Message
-            <input type="text" class="form-control" id="Message" placeholder="Write about your project">
+          <label for="Message" class="label-name"
+            >Message
+            <input
+              type="text"
+              class="form-control"
+              id="Message"
+              placeholder="Write about your project"
+            />
           </label>
         </div>
 
         <div class="checkbox-container mt-[32px] mb-[32px]">
-          <label class="container label-name ">
-            <span class="relative top-[27px] left-[15px] text-checkbox-mobile"> I agree to use and processing of my personal data</span>
-            <input type="checkbox" checked="checked">
+          <label class="container label-name">
+            <span class="relative top-[27px] left-[15px] text-checkbox-mobile">
+              I agree to use and processing of my personal data</span
+            >
+            <input type="checkbox" checked="checked" />
             <div class="checkmark checkbox-animation"></div>
           </label>
         </div>
-        <button type="submit" class="btn-sent ">
-          <img src="@/assets/img/rightArrow.svg" alt="">Send
+        <button type="submit" class="btn-sent">
+          <img src="@/assets/img/rightArrow.svg" alt="" />Send
         </button>
-
       </form>
     </div>
   </div>
@@ -205,6 +224,7 @@ onMounted(() => {
     font-size: 40px !important;
     width: 188px !important;
   }
+
   .glass-effect {
     width: 166px !important;
     height: 40px !important;
@@ -236,7 +256,7 @@ onMounted(() => {
     gap: 10px;
   }
   .text-project {
-    color: #F9F9F9 !important;
+    color: #f9f9f9 !important;
     font-size: 14px;
   }
   .btn-links {
@@ -249,7 +269,6 @@ onMounted(() => {
   .label-name {
     font-size: 16px !important;
     text-align: left !important;
-
   }
   .text-checkbox-mobile {
     top: 35px !important;
@@ -265,7 +284,6 @@ onMounted(() => {
   --main-color: #323232;
   position: relative;
   cursor: pointer;
-
 }
 
 .container input {
@@ -289,7 +307,7 @@ onMounted(() => {
 }
 
 .container input:checked ~ .checkmark {
-  background-color: #A42DEA;
+  background-color: #a42dea;
 }
 
 .checkmark:after {
@@ -297,7 +315,7 @@ onMounted(() => {
   width: 7px;
   height: 15px;
   position: absolute;
-  top:3px;
+  top: 3px;
   left: 9px;
   display: none;
   border: solid var(--bg-color);
@@ -307,7 +325,6 @@ onMounted(() => {
 .container input:checked ~ .checkmark:after {
   display: block;
 }
-
 
 .checkbox-container {
   display: flex;
@@ -333,7 +350,7 @@ onMounted(() => {
 }
 
 .label-check {
-  color: var(--icon-color, #FFF);
+  color: var(--icon-color, #fff);
   text-align: center;
   font-family: Alexandria, sans-serif;
   font-size: 14px;
@@ -349,7 +366,7 @@ onMounted(() => {
   align-items: center;
   gap: 5px;
   border-radius: 500px;
-  background: var(--icon-color, #FFF);
+  background: var(--icon-color, #fff);
   color: #000;
   text-align: center;
   font-family: Alexandria, sans-serif;
@@ -357,7 +374,7 @@ onMounted(() => {
   font-style: normal;
   font-weight: 500;
   line-height: 140%;
-  transition: .3s;
+  transition: 0.3s;
   cursor: url("@/assets/img/Polygon.svg"), auto;
 }
 
@@ -365,13 +382,13 @@ onMounted(() => {
   width: 2px;
   height: 750px;
   opacity: 0.25;
-  background: #FFF;
+  background: #fff;
 }
 
 .label-name {
-  color: var(--icon-color, #FFF);
+  color: var(--icon-color, #fff);
   text-align: center;
-  font-family: Alexandria, sans-serif;;
+  font-family: Alexandria, sans-serif;
   font-size: 18px;
   font-style: normal;
   font-weight: 400;
@@ -386,16 +403,16 @@ onMounted(() => {
   gap: 10px;
   margin-top: 25px;
   background: transparent;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.20);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
   outline: none;
 }
 
-.form-control[type=text]:focus {
+.form-control[type="text"]:focus {
   border: none;
 }
 
 .form-control::placeholder {
-  color: rgba(255, 255, 255, 0.20) !important;
+  color: rgba(255, 255, 255, 0.2) !important;
   font-family: Alexandria, sans-serif;
   font-size: 18px;
   font-style: normal;
@@ -405,7 +422,7 @@ onMounted(() => {
 }
 
 .text-register {
-  color: var(--icon-color, #FFF);
+  color: var(--icon-color, #fff);
   width: 420px;
   font-family: Alexandria, sans-serif;
   font-size: 50px;
@@ -418,7 +435,7 @@ onMounted(() => {
 }
 
 .text-touch {
-  color: #FFF;
+  color: #fff;
   font-family: Alexandria, sans-serif;
   font-size: 120px;
   font-style: normal;
@@ -446,21 +463,21 @@ onMounted(() => {
   justify-content: center;
   align-items: center;
   border-radius: 500px;
-  border: 1px solid #FFF;
+  border: 1px solid #fff;
   transition: 0.3s;
 }
 
 .btn-links:hover {
-  border-color: #FFFF00;
+  border-color: #ffff00;
   cursor: url("@/assets/img/Polygon.svg"), auto;
 
   i {
-    color: #FFFF00;
+    color: #ffff00;
   }
 }
 
 .label-btn {
-  color: #FFFF;
+  color: #ffff;
   text-align: center;
   font-family: Alexandria, sans-serif;
   font-size: 14px;
@@ -475,8 +492,8 @@ onMounted(() => {
   justify-content: center;
   align-items: center;
   border-radius: 500px;
-  border: 1px solid #FFF;
-  color: #FFF;
+  border: 1px solid #fff;
+  color: #fff;
   font-family: Alexandria, sans-serif;
   font-size: 14px;
   font-style: normal;
@@ -485,7 +502,7 @@ onMounted(() => {
 }
 
 .description-text {
-  color: #FFF;
+  color: #fff;
   font-family: Urbanist, sans-serif;
   font-size: 16px;
   font-style: normal;
@@ -525,5 +542,14 @@ onMounted(() => {
     transform: scale(1) rotate(0deg);
     opacity: 1;
   }
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none !important;
+  margin: 0;
+}
+input[type="number"] {
+  -moz-appearance: textfield !important;
 }
 </style>

@@ -16,12 +16,24 @@ onMounted(() => {
       }, 500)
     });
   });
+    (function setGlowEffectRx() {
+  const glowEffects = document.querySelectorAll(".glow-effect");
+
+  glowEffects.forEach((glowEffect) => {
+    const glowLines = glowEffect.querySelectorAll("rect");
+    const rx = getComputedStyle(glowEffect).borderRadius;
+
+    glowLines.forEach((line) => {
+      line.setAttribute("rx", rx);
+    });
+  });
+})();
 })
 </script>
 
 <template>
-  <div class="flex gap-[20px] justify-between max-md:flex-col md:pt-[80px] pb-[80px]" style="--hue: 220">
-    <div class="flip-card ">
+  <div class="flex gap-[20px] justify-between max-md:flex-col md:pt-[80px] pb-[80px] " style="--hue: 220">
+    <div class="flip-card glow-effect">
       <div class="card-front">
         <figure>
           <div class="card-front-text">
@@ -62,6 +74,7 @@ onMounted(() => {
 
       <div class="card-back">
         <figure class="video-background">
+          
           <div class="text-logo text-logo-mobile-back"
                style="color: white; position:relative; z-index: 3333; font-size: 48px; text-align: center; float: left; top: 80px">
             H
@@ -81,11 +94,22 @@ onMounted(() => {
               </div>
             </div>
           </div>
-
+              <svg class="glow-container">
+                <rect
+                  pathLength="100"
+                  stroke-linecap="round"
+                  class="glow-blur"
+                ></rect>
+                <rect
+                  pathLength="100"
+                  stroke-linecap="round"
+                  class="glow-line"
+                ></rect>
+              </svg>
         </figure>
       </div>
     </div>
-    <div class="flip-card">
+    <div class="flip-card glow-effect">
       <div class="card-front">
         <figure>
           <div class="card-front-text">
@@ -112,7 +136,7 @@ onMounted(() => {
           </div>
         </figure>
       </div>
-      <div class="card-back">
+      <div class="card-back ">
         <figure class="video-background">
           <div class="text-logo text-logo-mobile-back"
                style="color: white; position:relative; z-index: 3333; font-size: 48px; text-align: center; float: left; top: 80px">
@@ -133,11 +157,23 @@ onMounted(() => {
               </div>
             </div>
           </div>
+               <svg class="glow-container">
+                <rect
+                  pathLength="100"
+                  stroke-linecap="round"
+                  class="glow-blur"
+                ></rect>
+                <rect
+                  pathLength="100"
+                  stroke-linecap="round"
+                  class="glow-line"
+                ></rect>
+              </svg>
         </figure>
 
       </div>
     </div>
-    <div class="flip-card">
+    <div class="flip-card glow-effect">
       <div class="card-front">
         <figure>
           <div class="card-front-text">
@@ -169,7 +205,7 @@ onMounted(() => {
         </figure>
       </div>
 
-      <div class="card-back">
+      <div class="card-back ">
         <figure class="video-background">
           <div class="text-logo text-logo-mobile-back"
                style="color: white; position:relative; z-index: 3333; font-size: 48px; text-align: center; float: left; top: 80px">
@@ -190,7 +226,18 @@ onMounted(() => {
               </div>
             </div>
           </div>
-
+            <svg class="glow-container">
+                <rect
+                  pathLength="100"
+                  stroke-linecap="round"
+                  class="glow-blur"
+                ></rect>
+                <rect
+                  pathLength="100"
+                  stroke-linecap="round"
+                  class="glow-line"
+                ></rect>
+              </svg>
         </figure>
 
       </div>
@@ -201,43 +248,7 @@ onMounted(() => {
 
 <style scoped lang="scss">
 @import url('https://fonts.googleapis.com/css?family=Lato');
-//video{
-//  position: absolute;
-//  z-index: -1;
-//}
-//.card-back {
-//  animation: border-animation 8s linear;
-//  background: repeating-conic-gradient(from var(--a), #FAFAFA 0%,
-//      #FAFAFA 5%, transparent 5%, transparent 95%, #FAFAFA 100%) !important;
-//  background: linear-gradient(to bottom right, #9370DB, #8B00FF, #4B0082);
-//  position: relative;
-//  z-index: 1;
-//
-//
-//}
-//
-//@property --a {
-//  syntax: '<angle>';
-//  inherits: false;
-//  initial-value: 0deg;
-//}
-//
-//@keyframes border-animation {
-//  0% {
-//    --a: 0deg
-//  }
-//  100% {
-//    --a: 360deg
-//  }
-//}
-//.card-back:after {
-//  content: '';
-//  position: absolute;
-//  inset: 2px;
-//  background: #181818;
-//  border-radius: 12px;
-//  z-index: -2;
-//}
+
 @media (max-width: 768px) {
   .flip-card {
     width: 280px !important;

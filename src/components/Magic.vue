@@ -12,7 +12,6 @@ const animateElements = () => {
     scrollTrigger: {
       trigger: '.magic-div',
       start: 'top 80%',
-
       end: '30px',
       scrub: true,
     },

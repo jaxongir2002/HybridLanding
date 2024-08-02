@@ -1,21 +1,20 @@
 <script setup>
-import Lenis from 'lenis'
+import Lenis from "lenis";
 
-const lenis = new Lenis()
-lenis.on('scroll', (e) => {
-})
+const lenis = new Lenis();
+lenis.on("scroll", (e) => {});
 
 function raf(time) {
-  lenis.raf(time)
-  requestAnimationFrame(raf)
+  lenis.raf(time);
+  requestAnimationFrame(raf);
 }
 
-requestAnimationFrame(raf)
+requestAnimationFrame(raf);
 </script>
 
 <template>
-  <div style="background: #0E0E0E; padding: 34px 40px 34px 40px;">
-    <div style="max-width: 1440px; margin:auto;">
+  <div style="background: #0e0e0e; padding: 34px 40px 34px 40px">
+    <div style="max-width: 1440px; margin: auto">
       <router-view></router-view>
     </div>
   </div>
@@ -24,12 +23,12 @@ requestAnimationFrame(raf)
 <style lang="scss" scoped>
 .fade-enter-active,
 .fade-leave-active {
-  transition: opacity .8s ease;
+  transition: opacity 0.8s ease;
 }
 .about-container {
   opacity: 0;
   transform: scale(0);
-  animation: fade-in .8s linear forwards;
+  animation: fade-in 0.8s linear forwards;
 }
 
 @keyframes fade-in {
