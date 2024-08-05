@@ -1,12 +1,19 @@
 <script setup>
-import { onMounted, ref, watchEffect } from "vue";
+import {onMounted, ref,computed, watchEffect} from "vue";
 import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import {ScrollTrigger} from "gsap/ScrollTrigger";
+import {Swiper, SwiperSlide} from 'swiper/vue';
+import {FreeMode} from "swiper/modules";
+import 'swiper/css';
+import 'swiper/css/free-mode';
+import 'swiper/css/pagination';
 
 const addTab = ref(false);
 const showModal = ref(false);
 const selectedItem = ref(null);
 const selectedIndex = ref(-1);
+const modules = ref([FreeMode])
+const isMobile = ref(window.innerWidth < 762);
 let bodyOverflow = null;
 const listImg = ref([
   {
@@ -100,6 +107,13 @@ function openTab() {
   }
 }
 
+const displayedItems = computed(() => {
+  if (isMobile.value) {
+    return listImg.value.slice(0, 6);
+  } else {
+    return listImg.value;
+  }
+});
 onMounted(() => {
   const slider = document.querySelector(".dev-card");
   let isDown = false;
@@ -136,6 +150,7 @@ onMounted(() => {
       end: "bottom 40%",
       scrub: true,
       pin: true,
+      lazy: true,
     },
   });
   tl.fromTo(
@@ -144,7 +159,6 @@ onMounted(() => {
       yPercent: 0,
       yoyo: true,
       onComplete: () => {
-        // Remove inline styles here, for example:
         document.querySelector(".our-works-div").style.cssText = "";
       },
     },
@@ -153,7 +167,6 @@ onMounted(() => {
       stagger: 0.01,
       yoyo: true,
       onComplete: () => {
-        // Remove inline styles here, for example:
         document.querySelector(".our-works-div").style.cssText = "";
       },
     }
@@ -170,53 +183,81 @@ onMounted(() => {
       <div class="nav relative z-[20]">
         <div class="nav-text">Our works</div>
         <div class="our-works-img">
-          <img alt="" src="@/assets/img/LinkText.svg" />
+          <button v-show="!addTab" class="view-all w-[205px]">
+            View all
+          </button>
         </div>
       </div>
 
-      <div class="flex justify-center items-center">
+      <div class="flex justify-center items-center" v-if="!addTab">
         <div
           id="dev-card"
           ref="containerRef"
-          :class="{ 'dev-card-tab': addTab }"
           class="dev-card h-[550px]"
         >
           <div
-            v-for="(item, index) in listImg"
+            v-for="(item, index) in displayedItems"
             :key="index"
-            :class="{ 'cards-tab': addTab }"
             class="cards"
             @click="openModal(item, index)"
           >
             <img
-              :class="{ 'cards-img-tab': addTab }"
               :src="item.src"
               alt=""
               class="cards-img"
             />
           </div>
         </div>
+
       </div>
 
+      <swiper v-else
+              :slidesPerView="4"
+              :spaceBetween="5"
+              :freeMode="true"
+              :pagination="{ clickable: true }"
+              :modules="modules"
+              class="mySwiper mt-[84px]"
+      >
+        <swiper-slide v-for="(item, index) in listImg"
+                      :key="index">
+          <div class="cards cards-tab"
+               @click="openModal(item, index)"
+          >
+            <img
+                :src="item.src"
+                alt=""
+                class="cards-img cards-img-tab"
+            />
+          </div>
+        </swiper-slide>
+      </swiper>
+      <button v-show="isMobile" class="view-all m-auto absolute left-0 right-0 w-[250px] z-[1] bottom-[-180px]">
+        See all
+      </button>
+      <button v-show="addTab" class="view-all m-auto absolute left-0 right-0 w-[250px] z-[1] bottom-[-50px]">
+        View all
+      </button>
       <div
-        v-if="addTab"
-        class="w-[2%] active:scale-50 transition-all relative z-20 mt-[80px]"
-        @click="openTab"
+          v-if="addTab"
+          class="w-[2%] active:scale-50 transition-all relative z-20 mt-[80px]"
+          @click="openTab"
       >
         <img alt="" src="@/assets/img/menuTabs.svg" />
       </div>
       <div
-        v-else
-        class="tabs flex active:scale-50 transition-all items-center gap-[5px] w-[2%] relative z-20 mt-[80px]"
-        @click="openTab"
+          v-else
+          class="tabs flex active:scale-50 transition-all items-center gap-[5px] w-[2%] relative z-20 mt-[80px]"
+          @click="openTab"
       >
         <div class="tab w-[10px] h-[20px] rounded-[2px] bg-[#404040]"></div>
         <div class="active-tab w-[10px] h-[22px] rounded-[2px] bg-[#fff]"></div>
         <div class="tab w-[10px] h-[20px] rounded-[2px] bg-[#404040]"></div>
       </div>
-    
+
     </div>
-      <transition name="modal">
+
+    <transition name="modal">
         <div v-if="showModal" class="modal" @click.self="closeModal">
           <div class="modal-content">
             <img :src="selectedItem" alt="" class="modal-image" />
@@ -236,17 +277,25 @@ onMounted(() => {
   .dev-card {
     display: grid !important;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    overflow: scroll;
     width: 600px !important;
+    margin-top: 20px;
+  }
+  .modal-content {
+    border-radius: 8px;
+    padding: 5px;
+    position: relative;
+    right: 50px;
+
   }
   .cards {
-    width: 131.03px;
-    height: 222.751px;
+    width: 131.03px !important;
+    height: 222.751px !important;
   }
 }
 .nav {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 
   &-text {
     color: #fff;
@@ -279,7 +328,7 @@ onMounted(() => {
 
 .dev-card {
   display: flex;
-  width: 910px;
+  width: 75%;
   align-items: flex-start;
   align-content: flex-start;
   gap: 40px;
@@ -289,6 +338,8 @@ onMounted(() => {
   transition: all 0.2s;
   max-width: 75vw;
   white-space: nowrap;
+  position: relative;
+  right: 20px;
 }
 
 .dev-card-tab {
@@ -439,5 +490,28 @@ onMounted(() => {
   line-height: 130%;
   text-transform: uppercase;
   margin-top: 43px;
+}
+
+.view-all {
+  display: inline-flex;
+  padding: 12px 64px;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  color: #F9F9F9;
+  text-align: center;
+  font-family: Alexandria, sans-serif;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 140%;
+  border-radius: 500px;
+  border: 1px solid #F9F9F9;
+  cursor: url("@/assets/img/Polygon.svg"), auto;
+}
+
+.view-all:hover {
+  border-color: #BF56FF;
+  color: #BF56FF;
 }
 </style>

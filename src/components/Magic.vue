@@ -14,6 +14,7 @@ const animateElements = () => {
       start: 'top 80%',
       end: '30px',
       scrub: true,
+      lazy: true,
     },
   });
   gsap.from('.magic-img', {

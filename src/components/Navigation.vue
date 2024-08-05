@@ -1,9 +1,21 @@
 <script setup>
-import {ref} from 'vue'
+import {ref,onMounted, onUnmounted,watch} from 'vue'
+import Lenis from "lenis";
+
+const lenis = new Lenis();
 
 const openMenu = ref(false)
 const openMobil = ref(false)
-
+function openMobileFn(){
+  openMobil.value=true
+  if (openMobil.value===true) {
+    document.body.classList.add('no-scroll');
+    lenis.stop();
+  } else {
+    document.body.classList.remove('no-scroll');
+    lenis.start();
+  }
+}
 </script>
 
 <template>
@@ -24,8 +36,9 @@ const openMobil = ref(false)
       </span>
       <img src="../assets/img/MenuIcon.svg" alt="">
     </div>
-    <div class="navigation-mobile" @click="openMobil=!openMobil">
-      <img src="../assets/img/MenuIcon.svg" alt="">
+    <div class="navigation-mobile" >
+      <img v-if="!openMobil" @click="openMobileFn" src="../assets/img/MenuIcon.svg" alt="">
+      <img v-else @click="openMobil=false" class="active:scale-[0.9]" src="@/assets/img/menuClose.svg" alt="">
     </div>
   </div>
   <Transition name="slide-fade">
@@ -150,6 +163,11 @@ const openMobil = ref(false)
     </div>
   </Transition>
 </template>
+<style lang="scss">
+.no-scroll{
+  overflow: hidden !important;
+}
+</style>
 
 <style scoped lang="scss">
 .navigation-mobile {

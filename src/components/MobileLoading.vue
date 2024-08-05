@@ -1,12 +1,11 @@
 <script setup>
-import { computed, onMounted, ref } from "vue";
+import {  ref } from "vue";
 import { useCounterStore } from "../store/store.js";
 import { useRouter } from "vue-router";
-import MobileLoading from "@/components/MobileLoading.vue";
 
 const store = useCounterStore();
 const router = useRouter();
-const isMobile = ref(window.innerWidth < 762);
+
 const showTitle = ref(false);
 const addClass = ref(false);
 
@@ -33,116 +32,57 @@ const interval = setInterval(() => {
 
     clearInterval(interval);
   }
-}, 60);
-const computedColor = computed(() => {
-  const opacity = Math.min(store.count / 100, 1);
-  return `rgba(255, 255, 255, ${opacity})`;
-});
+}, 20);
 </script>
 
 <template>
-  <MobileLoading v-if="isMobile"/>
-  <div v-else>
-    <!--  navigation-->
-    <div class="navigation">
-      <div class="big-logo-name">
-        <img src="../assets/img/Logo.svg" alt="" />
-      </div>
-      <div class="navigation-menu" style="visibility: hidden">
-        <span class="first-animation">About</span>
-        <span class="second-animation">Reels</span>
-        <span class="third-animation">Community</span>
-        <span class="four-animation">Blog</span>
-        <span class="five-animation">Brief</span>
-      </div>
-      <div class="navigation-magic" style="visibility: hidden">
-        <span class="magic-animation"> Discover magic </span>
-        <img src="../assets/img/MenuIcon.svg" alt="" />
-      </div>
+  <!--  navigation-->
+  <div class="navigation">
+    <div class="big-logo-name">
+      <img src="../assets/img/Logo.svg" alt="" />
     </div>
-    <section id="container" v-if="store.count >= 80 && store.count <= 100">
-      <img
-          :class="{
+    <div class="navigation-menu" style="visibility: hidden">
+      <span class="first-animation">About</span>
+      <span class="second-animation">Reels</span>
+      <span class="third-animation">Community</span>
+      <span class="four-animation">Blog</span>
+      <span class="five-animation">Brief</span>
+    </div>
+    <div class="navigation-magic" style="visibility: hidden">
+      <span class="magic-animation"> Discover magic </span>
+      <img src="../assets/img/MenuIcon.svg" alt="" />
+    </div>
+  </div>
+  <section id="container" v-if="store.count >= 80 && store.count <= 100">
+    <img
+        :class="{
         visibilityImg: showTitle,
         'yellow-img-h': store.count >= 80 && store.count <= 100,
       }"
-          src="../assets/img/YellowH.svg"
-          class="one-h-img"
-          alt=""
-      />
-      <div class="title-container" :class="{ animate: showTitle }">
-        <div class="title-logo" :class="{ shadowNone: addClass }">Hybrid</div>
-        <div class="title-text" :class="{ shadowNone: addClass }">xperience</div>
-        <div class="glass-effect" style="visibility: hidden"></div>
-      </div>
-      <img
-          :class="{
+        src="../assets/img/YellowH.svg"
+        class="one-h-img"
+        alt=""
+    />
+    <div class="title-container" :class="{ animate: showTitle }">
+      <div class="title-logo" :class="{ shadowNone: addClass }">Hybrid</div>
+      <div class="title-text" :class="{ shadowNone: addClass }">xperience</div>
+      <div class="glass-effect" style="visibility: hidden"></div>
+    </div>
+    <img
+        :class="{
         visibilityImgX: showTitle,
         'yellow-img': store.count >= 80 && store.count <= 100,
       }"
-          class="two-x-img"
-          src="../assets/img/YellowX.svg"
-          alt=""
-      />
-      <span class="text-scroll" style="visibility: hidden">
+        class="two-x-img"
+        src="../assets/img/YellowX.svg"
+        alt=""
+    />
+    <span class="text-scroll" style="visibility: hidden">
       Scroll to experience magic
       <img class="animation-arrow" src="../assets/img/Arrow.svg" alt="" />
     </span>
-    </section>
-    <!--  -->
-    <div v-else class="content">
-      <img
-          :class="{ visibility: store.count >= 5 && store.count < 20 }"
-          class="img-count relative right-[60px]"
-          src="../assets/img/Group1.svg"
-          alt=""
-      />
-      <div class="flex justify-between items-center gap-[309px]">
-        <img
-            :class="{ visibility: store.count >= 40 && store.count < 60 }"
-            class="img-count"
-            src="../assets/img/pink1.svg "
-            alt=""
-        />
-        <img
-            :class="{ visibility: store.count >= 60 && store.count < 80 }"
-            class="img-count"
-            src="../assets/img/pink2.svg"
-            alt=""
-        />
-      </div>
-      <div
-          :class="{ visibility: store.count >= 20 && store.count < 40 }"
-          class="img-count"
-      >
-        <img src="../assets/img/group2.svg" alt="" />
-        <img class="content-img" src="../assets/img/childGroup.svg" alt="" />
-
-      </div>
-    </div>
-
-    <!--  footer-->
-    <div
-        class="footer"
-        :class="{ footerTop: store.count >= 80 && store.count <= 100 }"
-    >
-      <div class="text-load" :class="{ animateFooter: addClass }">
-        <span class="first-animation">Xperience</span>
-        <span class="second-animation">is</span
-        ><span class="third-animation">loading</span
-      ><span class="four-animation">...</span>
-      </div>
-
-      <div
-          class="progress"
-          :style="{ color: computedColor }"
-          :class="{ animateFooter: addClass }"
-      >
-        {{ store.count }}%
-      </div>
-    </div>
-  </div>
-
+  </section>
+  <!--  -->
 </template>
 
 <style lang="scss">
@@ -168,6 +108,32 @@ const computedColor = computed(() => {
 </style>
 
 <style scoped lang="scss">
+@media (max-width: 768px) {
+  .title-logo {
+    font-size: 70px !important;
+    line-height: 55px !important;
+  }
+  .title-text {
+    font-size: 46.5px !important;
+    line-height: 100% !important;
+  }
+  .glass-effect {
+    width: 320px !important;
+    height: 40px !important;
+    transform: translateY(20px) !important;
+  }
+  .text-scroll {
+    font-size: 12px !important;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 140% !important;
+    position: relative;
+    top: 380px !important;
+  }
+  canvas{
+    display: none !important;
+  }
+}
 .nav-logo-name {
   color: var(--White, #f9f9f9);
   font-family: Alexandria, sans-serif;
@@ -404,7 +370,7 @@ const computedColor = computed(() => {
     transform: translateY(15px);
   }
   100% {
-    transform: translateY(-71px);
+    transform: translateY(-21px);
   }
 }
 .addClassH {
@@ -415,7 +381,7 @@ const computedColor = computed(() => {
 }
 @keyframes slideFullUp {
   0% {
-    transform: translateY(-71px);
+    transform: translateY(-21px);
   }
 
   60% {
@@ -428,7 +394,7 @@ const computedColor = computed(() => {
 }
 @keyframes slideFullDown {
   0% {
-    transform: translateY(145px);
+    transform: translateY(105px);
   }
   60% {
     transform: translateY(245px);
@@ -439,7 +405,7 @@ const computedColor = computed(() => {
   }
 }
 .yellow-img.visibilityImgX {
-  animation: slideDown 0.5s alternate forwards;
+  animation: slideDown 0.8s alternate forwards;
 }
 
 @keyframes slideDown {
@@ -447,7 +413,7 @@ const computedColor = computed(() => {
     transform: translateY(-15px);
   }
   100% {
-    transform: translateY(145px);
+    transform: translateY(105px);
   }
 }
 

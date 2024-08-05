@@ -1348,11 +1348,6 @@ canvas {
   transition: all 0.3s ease-in-out;
 }
 
-.title-container:hover {
-  color: #fff;
-  text-shadow: 0 0 5px #03e9f4, 0 0 25px #03e9f4, 0 0 50px #03e9f4,
-    0 0 100px #03e9f4;
-}
 @keyframes dashboard-animation {
   from {
     transform: scale(0.8);

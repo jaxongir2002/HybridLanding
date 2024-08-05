@@ -1,6 +1,6 @@
 <script setup>
-import { onMounted } from "vue";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import {onMounted} from "vue";
+import {ScrollTrigger} from "gsap/ScrollTrigger";
 import gsap from "gsap";
 
 onMounted(() => {
@@ -18,6 +18,7 @@ onMounted(() => {
       end: `+=${slides.length * 5}%`,
       scrub: true,
       pin: true,
+      lazy: true,
     },
     defaults: { ease: "none" },
   });
@@ -189,7 +190,7 @@ onMounted(() => {
             <div
               class="cards-company h-[210px] p-[80px] max-sm:p-[30px] max-sm:h-[87.761px] glow-effect"
             >
-              <!--              <img class="w-full h-auto object-cover" src="../assets/img/EMPIRE.svg" alt="">-->
+                            <img class="w-full h-auto object-cover" src="../assets/img/empireEnter.png" alt="">
                <svg class="glow-container">
                 <rect
                   pathLength="100"
@@ -204,7 +205,7 @@ onMounted(() => {
               </svg>
             </div>
             <div
-              class="cards-company h-[190px] p-[80px] max-sm:p-[30px] max-sm:h-[91.94px] glow-effect"
+              class="cards-company h-[213px] p-[100px] max-sm:p-[30px] max-sm:h-[91.94px] glow-effect"
             >
               <img
                 class="w-full h-auto object-cover"
@@ -337,7 +338,7 @@ onMounted(() => {
             >
               <img
                 class="w-full h-auto object-cover"
-                src="../assets/img/CLAP.svg"
+                src="../assets/img/clap.png"
                 alt=""
               />
                    <svg class="glow-container">
@@ -354,11 +355,11 @@ onMounted(() => {
               </svg>
             </div>
             <div
-              class="cards-company h-[180px] p-[80px] max-sm:p-[30px] max-sm:h-[91.94px] glow-effect"
+              class="cards-company h-[180px] p-[100px] max-sm:p-[30px] max-sm:h-[91.94px] glow-effect"
             >
               <img
                 class="w-full h-auto object-cover"
-                src="../assets/img/CLAP.svg"
+                src="../assets/img/DubaiPlace.png"
                 alt=""
               />
                    <svg class="glow-container">
@@ -553,7 +554,7 @@ onMounted(() => {
             <div class="cards-company h-[220px] p-[80px] max-sm:p-[30px] glow-effect">
               <img
                 class="w-full h-auto object-cover"
-                src="../assets/img/sunset.png"
+                src="../assets/img/SunsetGroup.png"
                 alt=""
               />
                <svg class="glow-container">
