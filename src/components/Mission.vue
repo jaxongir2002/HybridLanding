@@ -6,7 +6,7 @@ import {ScrollTrigger} from "gsap/ScrollTrigger";
 const missionTitle = ref(null);
 
 onMounted(() => {
-  gsap.registerPlugin(ScrollTrigger);
+  gsap.registerPlugin(ScrollTrigger,SplitText);
   let tl = gsap.timeline({
     scrollTrigger: {
       trigger: '.helloWorld',
@@ -16,16 +16,13 @@ onMounted(() => {
       scrub: 1,
     }
   });
-  tl.to('.one-text', {
+  let mySplitText = new SplitText(".split-texts", { type: "chars" });
+  let chars = mySplitText.chars;
+  tl.to(chars,{
     color: 'white',
     duration: 1,
-    ease: "power2.inOut"
-  });
-  tl.to('.two-text', {
-    color: 'white',
-    duration: 1,
-    ease: "power2.inOut"
-  });
+    stagger:0.02
+  })
 
   tl.to('.card-mission', {
     padding: '0',
@@ -56,12 +53,6 @@ onMounted(() => {
     transition: 0.5,
     transform: 'translateY(-25px)'
   })
-
-  tl.to('.three-text', {
-    color: 'white',
-    duration: 1,
-    ease: "power2.inOut"
-  });
   tl.to('.card-mission3', {
     transform: 'translateY(-300px)',
     transition: 0.5,
@@ -122,10 +113,10 @@ onMounted(() => {
         mission & vision
       </h1>
       <div ref="missionTitle" class="text-description">
-        <span class="text-white"> We are a modern</span>
-        <span class="one-text"> and innovative new media arts tech studio, creatively combining art and tech to create unique immersive experiences.</span>
-        <span class="two-text">Our mission is to bridge the gap between the virtual and physical worlds,</span>
-        <span class="three-text"> offering concepts that empower you to dream beyond boundaries.</span>
+        <span class=" split-texts"> We are a modern
+        and innovative new media arts tech studio, creatively combining art and tech to create unique immersive experiences.
+        Our mission is to bridge the gap between the virtual and physical worlds,
+        offering concepts that empower you to dream beyond boundaries.</span>
       </div>
       <button class="btn-about-us flex gap-[5px] items-center">
         <i class="pi pi-arrow-right text-[16px] mr-[3px] mt-[3px] h-[24px] mobile-icon"></i> About us

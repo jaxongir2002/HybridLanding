@@ -1042,24 +1042,24 @@ onMounted(() => {
   });
 
   canvas.addEventListener(
-    "touchmove",
+    "mousemove",
     function (e) {
       e.preventDefault();
       var touches = e.targetTouches;
-      for (var i = 0; i < touches.length; i++) {
-        var pointer = pointers[i + 1];
-        if (!pointer.down) {
-          continue;
-        }
-        var posX = scaleByPixelRatio(touches[i].pageX);
-        var posY = scaleByPixelRatio(touches[i].pageY);
-        updatePointerMoveData(pointer, posX, posY);
-      }
+      // for (var i = 0; i < touches.length; i++) {
+      //   var pointer = pointers[i + 1];
+      //   if (!pointer.down) {
+      //     continue;
+      //   }
+      //   var posX = scaleByPixelRatio(touches[i].pageX);
+      //   var posY = scaleByPixelRatio(touches[i].pageY);
+      //   updatePointerMoveData(pointer, posX, posY);
+      // }
     },
     false
   );
 
-  window.addEventListener("touchend", function (e) {
+  window.addEventListener("mousemove", function (e) {
     var touches = e.changedTouches;
     var loop = function (i) {
       var pointer = pointers.find(function (p) {
@@ -1071,7 +1071,7 @@ onMounted(() => {
       updatePointerUpData(pointer);
     };
 
-    for (var i = 0; i < touches.length; i++) loop(i);
+    // for (var i = 0; i < touches.length; i++) loop(i);
   });
 
   window.addEventListener("keydown", function (e) {
@@ -1274,6 +1274,9 @@ body::-webkit-scrollbar {
     position: relative;
     top: 380px !important;
   }
+ canvas{
+   display: none !important;
+ }
 }
 .srt {
   width: 99.5vw !important;
