@@ -211,6 +211,11 @@ const handleMousePos = (e) => {
   .text-info {
     font-size: 10px !important;
   }
+  iframe{
+    width: 100% !important;
+    position: relative;
+    right: 0px !important;
+  }
 }
 
 .first-letter,
@@ -252,7 +257,7 @@ const handleMousePos = (e) => {
 }
 
 .glass-effect {
-  width: 770px;
+  width: 100%;
   height: 80px;
   flex-shrink: 0;
   border-radius: 30px;
@@ -260,7 +265,7 @@ const handleMousePos = (e) => {
   backdrop-filter: blur(4px);
   position: relative;
   bottom: 30px;
-  right: 50px;
+  //right: 50px;
 }
 
 .gradient-overlay {
