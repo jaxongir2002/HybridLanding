@@ -19,7 +19,6 @@ onMounted(() => {
       start: "top 10%",
       end: `+=${slides.length * 5}%`,
       scrub: true,
-      pin: true,
       lazy: true,
     },
     defaults: { ease: "none" },
@@ -40,22 +39,21 @@ onMounted(() => {
       opacity: 0,
       yoyo: true,
     },
-    0
-  );
+    0);
   tl.fromTo(
-    ".first",
-    {
-      yPercent: 55,
-      yoyo: true,
-      transition: 2.5,
-      stagger: 0.2,
-    },
-    {
-      yPercent: 0,
-      stagger: 0.2,
-      yoyo: true,
-      transition: 2.5,
-    }
+      ".first",
+      {
+        yPercent: 55,
+        yoyo: true,
+        transition: 2.5,
+        stagger: 0.2,
+      },
+      {
+        yPercent: 0,
+        stagger: 0.2,
+        yoyo: true,
+        transition: 2.5,
+      }
   );
 
   (function setGlowEffectRx() {
@@ -70,12 +68,12 @@ onMounted(() => {
     });
   });
 })();
+})
 
-});
 </script>
 
 <template>
-  <div class="text-center big-div relative">
+  <div class="text-center big-div relative" >
     <div class="smooth-wrapper">
       <div class="title-containers">
         <div class="text-work animation-text">We work with humans</div>
@@ -694,7 +692,7 @@ onMounted(() => {
 .title-containers {
   width: 100%;
   height: 50vh;
-  position: fixed;
+  position: sticky;
   left: 0;
   top: 0;
   transform: translate(0%, 65%);

@@ -2,9 +2,10 @@
 import {onMounted,onBeforeMount} from "vue";
 import {gsap} from 'gsap'
 import {ScrollTrigger} from 'gsap/ScrollTrigger';
-gsap.registerPlugin(ScrollTrigger,SplitText);
+
 
 const animateElements = () => {
+  gsap.registerPlugin(ScrollTrigger,SplitText);
   gsap.from('.section-img', {
     opacity: 0,
     transition:0.5,

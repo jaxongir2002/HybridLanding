@@ -157,7 +157,6 @@ onMounted(() => {
         start: "top top",
         end: "100%",
         scrub: true,
-        pin:true,
         lazy: true,
       },
     });
@@ -171,6 +170,7 @@ onMounted(() => {
     if (showModal.value === true) {
       tl.kill();
     }
+  ScrollTrigger.refresh();
 });
 </script>
 
