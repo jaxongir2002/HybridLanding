@@ -1,5 +1,5 @@
 <script setup>
-import {onMounted, ref, computed, onBeforeUnmount} from "vue";
+import {computed, onMounted, ref} from "vue";
 import gsap from "gsap";
 import {ScrollTrigger} from "gsap/ScrollTrigger";
 import {Swiper, SwiperSlide} from 'swiper/vue';
@@ -152,46 +152,66 @@ onMounted(() => {
 
     gsap.registerPlugin(ScrollTrigger);
   const slides = document.querySelectorAll(".cards");
+  if (window.matchMedia("(min-width: 768px)").matches) {
     let tl = gsap.timeline({
       scrollTrigger: {
         trigger: ".our-works-div",
         start: "top top",
-        end: `bottom 20%`,
+        end: `+=${slides.length * 2}%`,
         scrub: true,
-        pin:true
+        isMobile: false
       },
     });
-  // tl.to(
-  //     ".our-works-div", {
-  //       position:'fixed',
-  //       top:0,
-  //       bottom:0,
-  //       transition:1
-  //     });
-  tl.to(
-      ".cards", {
-        y: -480,
-        stagger: 0.01,
+    tl.to(
+        ".cards", {
+          transform: "translateY(-480px)",
+          stagger: 0.01,
+          duration: 1,
+        });
 
-      });
+    tl.to(
+        ".our-works-div", {
+          position: 'fixed',
+          top: 0,
+          zIndex: 20,
+          duration: 1
+        });
+    tl.to(
+        ".cards", {
+          y: -480,
+          stagger: 0.01,
+          duration: 1
+        });
+    tl.to(
+        ".cards", {
+          y: -580,
+          stagger: 0.01,
+          duration: 1
+        });
 
-      // tl.to(".our-works-div", {
-      //       position:'static',
-      //       top:0,
-      //       bottom:0,
-      //       transition:1
-      //     });
+    tl.to(".our-works-div", {
+      position: 'relative',
+      duration: 1
+    });
 
+    tl.to(
+        ".cards", {
+          transform: "translateY(0px)",
+          duration: 1,
+        });
 
     if (showModal.value === true) {
       tl.kill();
     }
+  }
+
+
 });
 </script>
 
 <template>
   <div class="pt-[80px] pb-[80px] scroll-our-works">
-    <div class="our-works-div ">
+    <div class="our-works-div relative">
       <div class="nav-our-works relative z-[20]">
         <div class="nav-our-works-text">Our works</div>
         <div class="our-works-img">
@@ -199,7 +219,7 @@ onMounted(() => {
             View all
           </button>
         </div>
-      </div>
+        </div>
 
       <div class="flex justify-center items-center" v-show="!addTab">
         <div
@@ -309,7 +329,7 @@ onMounted(() => {
   }
 }
 .nav-our-works {
-  display: flex;
+  display: flex !important;
   justify-content: space-between;
   align-items: center;
   //position: page;
@@ -329,6 +349,7 @@ onMounted(() => {
 }
 .scroll-our-works{
   transition: 2s;
+  animation-duration: 1s;
 }
 .cards {
   width: 150px;
@@ -341,6 +362,8 @@ onMounted(() => {
   transition: transform 1s !important;
   animation: up-to-down 1s forwards;
   animation-direction: revert;
+  will-change: transform;
+
   &-img {
     border-radius: 6px;
   }

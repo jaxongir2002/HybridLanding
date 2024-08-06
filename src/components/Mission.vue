@@ -16,67 +16,84 @@ onMounted(() => {
       scrub: 1,
     }
   });
-  let mySplitText = new SplitText(".split-texts", { type: "chars" });
+  let mySplitText = new SplitText(".first-text", {type: "chars"});
   let chars = mySplitText.chars;
-  tl.to(chars,{
+  let secondText = new SplitText(".second-text", {type: "chars"});
+  let charsTwo = secondText.chars;
+  let thirdText = new SplitText(".third-text", {type: "chars"});
+  let charsThird = thirdText.chars;
+
+
+  tl.to(chars, { // Animate character elements
     color: 'white',
     duration: 1,
-    stagger:0.02
+    stagger: 0.02,
+  })
+  tl.to('.card-mission', { // Resize card mission div
+    padding: '0',
+    transition: '.5s', // Combined readability with clarity
+    duration: 1,
+    ease: "power2.inOut",
+  })
+  tl.to('.first-img', { // Fade out first image
+    opacity: '0',
+    transition: '.5s',
+    duration: 1,
+    ease: "power2.inOut",
+    yoyo: true, // Animate back and forth
+  })
+  tl.to('.card-mission2', { // Move card mission 2 down
+    transform: 'translateY(-300px)',
+    transition: '.5s',
+    transitionProperty: 'all', // Ensure smooth transition
+    visibility: 'visible',
+    duration: 1,
+    ease: "power2.inOut",
+  })
+  tl.to('.first-name', { // Move first name down
+    transition: '.5s',
+    transform: 'translateY(-50px)',
+  })
+  tl.to('.second-name', { // Move second name down
+    transition: '.5s',
+    transform: 'translateY(-25px)',
+  })
+  tl.to(charsTwo, { // Animate second character elements (assuming charsTwo exists)
+    color: 'white',
+    duration: 1,
+    stagger: 0.02,
+  })
+  tl.to(charsThird, { // Animate third character elements (assuming charsThird exists)
+    color: 'white',
+    duration: 1,
+    stagger: 0.02,
+  })
+  tl.to('.card-mission3', { // Move card mission 3 down
+    transform: 'translateY(-300px)',
+    transition: '.5s',
+    transitionProperty: 'all',
+    visibility: 'visible',
+    duration: 1,
+    ease: "power2.inOut",
   })
 
-  tl.to('.card-mission', {
-    padding: '0',
-    transition: .5,
-    duration: 1,
-    ease: "power2.inOut"
-  });
-  tl.to('.first-img', {
-    opacity: '0',
-    transition: .5,
-    duration: 1,
-    ease: "power2.inOut",
-    yoyo: true
-  });
-  tl.to('.card-mission2', {
-    transform: 'translateY(-300px)',
-    transition: 0.5,
-    transitionProperty: 1,
-    visibility: 'visible',
-    duration: 1,
-    ease: "power2.inOut",
-  });
-  tl.to('.first-name', {
-    transition: 0.5,
-    transform: 'translateY(-50px)'
-  })
-  tl.to('.second-name', {
-    transition: 0.5,
-    transform: 'translateY(-25px)'
-  })
-  tl.to('.card-mission3', {
-    transform: 'translateY(-300px)',
-    transition: 0.5,
-    visibility: 'visible',
-    duration: 1,
-    ease: "power2.inOut",
-  });
-  tl.to('.second-name', {
-    transition: 0.5,
-    transform: 'translateY(-100px)',
-    ease: "power2.inOut"
-  })
-  tl.to('.third-name', {
-    transition: 0.5,
+  tl.to('.third-name', { // Move third name down
+    transition: '.5s',
     transform: 'translateY(-50px)',
     duration: 1,
     ease: "power2.inOut",
   })
-
-  tl.to('.second-img', {
+  tl.to('.second-name', { // Move second name further down
+    transition: '.5s',
+    transform: 'translateY(-100px)',
+    ease: "power2.inOut",
+  })
+  tl.to('.second-img', { // Fade out second image
     opacity: '0',
     duration: 1,
     ease: "power2.inOut",
   });
+
 
 
 });
@@ -113,10 +130,10 @@ onMounted(() => {
         mission & vision
       </h1>
       <div ref="missionTitle" class="text-description">
-        <span class=" split-texts"> We are a modern
-        and innovative new media arts tech studio, creatively combining art and tech to create unique immersive experiences.
-        Our mission is to bridge the gap between the virtual and physical worlds,
-        offering concepts that empower you to dream beyond boundaries.</span>
+        <span class="first-text"> We are a modern
+        and innovative new media arts tech studio, creatively combining art and tech to create unique immersive experiences.</span>
+        <span class="second-text">Our mission is to bridge the gap between the virtual and physical worlds,</span>
+        <span class="third-text">offering concepts that empower you to dream beyond boundaries.</span>
       </div>
       <button class="btn-about-us flex gap-[5px] items-center">
         <i class="pi pi-arrow-right text-[16px] mr-[3px] mt-[3px] h-[24px] mobile-icon"></i> About us

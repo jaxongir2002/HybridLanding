@@ -290,6 +290,9 @@ onMounted(() => {
     font-size: 8px !important;
     line-height: 20px !important;
   }
+  .glow-container{
+    display: none;
+  }
 }
 .video-background {
   position: relative;
@@ -383,11 +386,6 @@ onMounted(() => {
   transform-style: preserve-3d;
   transition: .6s .1s;
 }
-
-//.flip-card:hover,
-//.flip-card:focus-within {
-//  transform: rotateY(180deg);
-//}
 
 .card-front,
 .card-back {
