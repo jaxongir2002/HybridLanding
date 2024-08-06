@@ -219,7 +219,7 @@ onMounted(() => {
 </template>
 
 <style scoped lang="scss">
-@media (max-width: 768px) {
+@media screen and (max-width: 992px){
   .text-touch {
     font-size: 40px !important;
     width: 188px !important;

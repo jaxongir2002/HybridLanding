@@ -1,13 +1,15 @@
 <script setup>
-import {ref,onMounted, onUnmounted,watch} from 'vue'
+import {ref} from 'vue'
 import Lenis from "lenis";
 
 const lenis = new Lenis();
 
 const openMenu = ref(false)
 const openMobil = ref(false)
-function openMobileFn(){
-  openMobil.value=true
+const isMobile = ref(window.innerWidth < 762);
+
+function mobile(){
+  // openMobil.value=true
   if (openMobil.value===true) {
     document.body.classList.add('no-scroll');
     lenis.stop();
@@ -15,6 +17,14 @@ function openMobileFn(){
     document.body.classList.remove('no-scroll');
     lenis.start();
   }
+}mobile()
+function openMobileFn() {
+  openMobil.value=true
+  mobile()
+}
+function closeMobile() {
+  openMobil.value=false
+  mobile()
 }
 </script>
 
@@ -38,7 +48,7 @@ function openMobileFn(){
     </div>
     <div class="navigation-mobile" >
       <img v-if="!openMobil" @click="openMobileFn" src="../assets/img/MenuIcon.svg" alt="">
-      <img v-else @click="openMobil=false" class="active:scale-[0.9]" src="@/assets/img/menuClose.svg" alt="">
+      <img v-else @click="closeMobile" class="active:scale-[0.9]" src="@/assets/img/menuClose.svg" alt="">
     </div>
   </div>
   <Transition name="slide-fade">
@@ -120,7 +130,7 @@ function openMobileFn(){
   <Transition name="slide-fade">
     <div class="menu-mobile" v-show="openMobil">
       <div class="flex">
-        <div class="flex flex-col gap-[10px]">
+        <div class="flex flex-col gap-[10px] relative bottom-[50px]">
           <div class="text-mobile flex justify-center gap-[15px]">
             <span>home</span>
             <div class="btn-mobile">01</div>
@@ -148,7 +158,7 @@ function openMobileFn(){
         </div>
       </div>
       <div class="flex  items-end">
-        <div class="flex gap-[10px]">
+        <div class="flex gap-[10px] relative bottom-[30px]">
           <button class="btn-links">
             Instagram
           </button>
@@ -166,6 +176,12 @@ function openMobileFn(){
 <style lang="scss">
 .no-scroll{
   overflow: hidden !important;
+}
+@media screen and (max-width: 992px){
+  body{
+    width: 100% !important;
+    overflow-x: hidden;
+  }
 }
 </style>
 
@@ -255,7 +271,7 @@ function openMobileFn(){
   border-color: #BF56FF;
 }
 
-@media (max-width: 768px) {
+@media screen and (max-width: 992px){
   /* Mobile styles */
   .navigation-menu {
     display: none !important;
@@ -266,6 +282,7 @@ function openMobileFn(){
   .navigation-mobile {
     display: block;
   }
+
 }
 
 .menu-mobile {

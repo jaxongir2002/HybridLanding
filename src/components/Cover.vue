@@ -1252,7 +1252,7 @@ body::-webkit-scrollbar {
 </style>
 
 <style scoped lang="scss">
-@media (max-width: 768px) {
+@media screen and (max-width: 992px){
   .title-logo {
     font-size: 70px !important;
     line-height: 55px !important;

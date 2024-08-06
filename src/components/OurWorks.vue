@@ -1,5 +1,5 @@
 <script setup>
-import {onMounted, ref,computed, watchEffect} from "vue";
+import {onMounted, ref, computed, watchEffect, nextTick} from "vue";
 import gsap from "gsap";
 import {ScrollTrigger} from "gsap/ScrollTrigger";
 import {Swiper, SwiperSlide} from 'swiper/vue';
@@ -7,6 +7,9 @@ import {FreeMode} from "swiper/modules";
 import 'swiper/css';
 import 'swiper/css/free-mode';
 import 'swiper/css/pagination';
+import Lenis from "lenis";
+
+const lenis = new Lenis();
 
 const addTab = ref(false);
 const showModal = ref(false);
@@ -85,7 +88,19 @@ function openModal(item, index) {
   selectedIndex.value = index;
   bodyOverflow = document.body.style.overflow;
   document.body.style.overflow = "hidden";
+  mobile()
 }
+
+function mobile(){
+  // openMobil.value=true
+  if (showModal.value===true) {
+    document.body.classList.add('no-scroll');
+    lenis.stop();
+  } else {
+    document.body.classList.remove('no-scroll');
+    lenis.start();
+  }
+}mobile()
 watchEffect(() => {
   if (showModal.value === true) {
     const ourWorksDiv = document.querySelector(".our-works-div");
@@ -97,6 +112,7 @@ function closeModal() {
   showModal.value = false;
   selectedItem.value = null;
   document.body.style.overflow = bodyOverflow || "";
+  mobile()
 }
 function openTab() {
   addTab.value = !addTab.value;
@@ -115,65 +131,65 @@ const displayedItems = computed(() => {
   }
 });
 onMounted(() => {
-  const slider = document.querySelector(".dev-card");
-  let isDown = false;
-  let startX;
-  let scrollLeft;
+  nextTick(()=>{
+    const slider = document.querySelector(".dev-card");
+    let isDown = false;
+    let startX;
+    let scrollLeft;
 
-  slider.addEventListener("mousedown", (e) => {
-    isDown = true;
-    slider.classList.add("active");
-    startX = e.pageX - slider.offsetLeft;
-    scrollLeft = slider.scrollLeft;
-  });
-  slider.addEventListener("mouseleave", () => {
-    isDown = false;
-    slider.classList.remove("active");
-  });
-  slider.addEventListener("mouseup", () => {
-    isDown = false;
-    slider.classList.remove("active");
-  });
-  slider.addEventListener("mousemove", (e) => {
-    if (!isDown) return;
-    e.preventDefault();
-    const x = e.pageX - slider.offsetLeft;
-    const walk = (x - startX) * 1.5;
-    slider.scrollLeft = scrollLeft - walk;
-  });
+    slider.addEventListener("mousedown", (e) => {
+      isDown = true;
+      slider.classList.add("active");
+      startX = e.pageX - slider.offsetLeft;
+      scrollLeft = slider.scrollLeft;
+    });
+    slider.addEventListener("mouseleave", () => {
+      isDown = false;
+      slider.classList.remove("active");
+    });
+    slider.addEventListener("mouseup", () => {
+      isDown = false;
+      slider.classList.remove("active");
+    });
+    slider.addEventListener("mousemove", (e) => {
+      if (!isDown) return;
+      e.preventDefault();
+      const x = e.pageX - slider.offsetLeft;
+      const walk = (x - startX) * 1.5;
+      slider.scrollLeft = scrollLeft - walk;
+    });
 
-  gsap.registerPlugin(ScrollTrigger);
-  let tl = gsap.timeline({
-    scrollTrigger: {
-      trigger: ".our-works-div",
-      start: "top top",
-      end: "bottom 40%",
-      scrub: true,
-      pin: true,
-      lazy: true,
-    },
-  });
-  tl.fromTo(
-    ".cards",
-    {
-      yPercent: 0,
-      yoyo: true,
-      onComplete: () => {
-        document.querySelector(".our-works-div").style.cssText = "";
+    gsap.registerPlugin(ScrollTrigger);
+    let tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".our-works-div",
+        start: "top top",
+        end: "bottom 40%",
+        scrub: true,
+        pin: true,
+        lazy: true,
       },
-    },
-    {
-      yPercent: -140,
-      stagger: 0.01,
-      yoyo: true,
-      onComplete: () => {
-        document.querySelector(".our-works-div").style.cssText = "";
-      },
+    });
+    tl.fromTo(
+        ".cards",
+        {
+          y: 0,
+          onComplete: () => {
+            document.querySelector(".our-works-div").style.cssText = "";
+          },
+        },
+        {
+          y: -440,
+          stagger: 0.01,
+          onComplete: () => {
+            document.querySelector(".our-works-div").style.cssText = "";
+          },
+        }
+    );
+    if (showModal.value === true) {
+      tl.kill();
     }
-  );
-  if (showModal.value === true) {
-    tl.kill();
-  }
+  })
 });
 </script>
 
@@ -269,7 +285,7 @@ onMounted(() => {
 </template>
 
 <style lang="scss" scoped>
-@media (max-width: 768px) {
+@media screen and (max-width: 992px){
   .our-works-img {
     display: none;
   }
@@ -284,8 +300,13 @@ onMounted(() => {
     border-radius: 8px;
     padding: 5px;
     position: relative;
-    right: 50px;
-
+    right: 10px;
+    width: 250px;
+    height: 400px;
+  }
+  .modal-image{
+    position: relative;
+    bottom: 105px;
   }
   .cards {
     width: 131.03px !important;

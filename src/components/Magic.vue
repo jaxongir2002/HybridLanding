@@ -86,7 +86,7 @@ onMounted(() => {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
-@media (max-width: 768px){
+@media screen and (max-width: 992px){
   .mobile-img{
     display: block;
   }

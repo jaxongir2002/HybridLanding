@@ -113,7 +113,7 @@ const computedColor = computed(() => {
       </div>
       <div
           :class="{ visibility: store.count >= 20 && store.count < 40 }"
-          class="img-count"
+          class="img-count relative right-[120px]"
       >
         <img src="../assets/img/group2.svg" alt="" />
         <img class="content-img" src="../assets/img/childGroup.svg" alt="" />

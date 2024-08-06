@@ -177,7 +177,7 @@ const handleMousePos = (e) => {
 </template>
 
 <style scoped lang="scss">
-@media (max-width: 768px) {
+@media screen and (max-width: 992px) {
   .info-mobile {
     flex-direction: column;
     font-size: 12px !important;

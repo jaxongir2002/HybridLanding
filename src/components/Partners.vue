@@ -1,9 +1,11 @@
 <script setup>
-import {onMounted} from "vue";
+import {onMounted,nextTick} from "vue";
 import {ScrollTrigger} from "gsap/ScrollTrigger";
 import gsap from "gsap";
+import anime from "animejs";
 
 onMounted(() => {
+  nextTick(() => {
   gsap.registerPlugin(SplitText, ScrollTrigger);
   let mySplitText = new SplitText(".animation-text", { type: "chars" });
   let chars = mySplitText.chars;
@@ -45,16 +47,17 @@ onMounted(() => {
     {
       yPercent: 55,
       yoyo: true,
-      transition: 0.5,
-      stagger: 0.06,
+      transition: 2.5,
+      stagger: 0.2,
     },
     {
       yPercent: 0,
-      stagger: 0.06,
+      stagger: 0.2,
       yoyo: true,
-      transition: 0.5,
+      transition: 2.5,
     }
   );
+
   (function setGlowEffectRx() {
   const glowEffects = document.querySelectorAll(".glow-effect");
 
@@ -67,7 +70,9 @@ onMounted(() => {
     });
   });
 })();
+  });
 });
+
 
 </script>
 
@@ -655,7 +660,7 @@ onMounted(() => {
 </template>
 
 <style scoped lang="scss">
-@media (max-width: 768px) {
+@media screen and (max-width: 992px){
   .text-work {
     font-size: 20px !important;
   }
@@ -682,10 +687,6 @@ onMounted(() => {
 }
 .grid-sizer {
   width: 20%;
-}
-
-.all-cards-partners {
-  transition: 0.5s;
 }
 .first {
   transition: 0.5s;

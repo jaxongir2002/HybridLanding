@@ -249,7 +249,7 @@ onMounted(() => {
 <style scoped lang="scss">
 @import url('https://fonts.googleapis.com/css?family=Lato');
 
-@media (max-width: 768px) {
+@media screen and (max-width: 992px){
   .flip-card {
     width: 280px !important;
     height: 470px !important;
