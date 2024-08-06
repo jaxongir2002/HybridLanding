@@ -195,7 +195,7 @@ onMounted(() => {
         </div>
       </div>
 
-      <div class="flex justify-center items-center" v-if="!addTab">
+      <div class="flex justify-center items-center" v-show="!addTab">
         <div
           id="dev-card"
           ref="containerRef"
@@ -217,7 +217,7 @@ onMounted(() => {
 
       </div>
 
-      <swiper v-else
+      <swiper v-if="addTab"
               :slidesPerView="4"
               :spaceBetween="5"
               :freeMode="true"
