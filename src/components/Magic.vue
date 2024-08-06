@@ -1,57 +1,57 @@
 <script setup>
-import {onMounted,onBeforeMount} from "vue";
-import {gsap} from 'gsap'
-import {ScrollTrigger} from 'gsap/ScrollTrigger';
-
-
-const animateElements = () => {
-  gsap.registerPlugin(ScrollTrigger,SplitText);
-  gsap.from('.section-img', {
-    opacity: 0,
-    transition:0.5,
-    transform: 'translateX(-100px)',
-    scrollTrigger: {
-      trigger: '.magic-div',
-      start: 'top 80%',
-      end: '30px',
-      scrub: true,
-      lazy: true,
-    },
-  });
-  gsap.from('.magic-img', {
-    opacity: 0,
-    transition:1,
-    transitionDuration:0.5,
-    transform: 'scale(0)',
-    scrollTrigger: {
-      trigger: '.magic-div',
-      start: 'top 80%',
-      end: '30px',
-      scrub: true, // Enable smooth scrubbing during scroll
-    },
-  });
-  let mySplitText = new SplitText('.description', {type: 'chars'})
-  let chars = mySplitText.chars
-
-  gsap.from(chars, {
-    yPercent: -140,
-    stagger: 0.01,
-    opacity:0,
-    transition:0.3,
-    ease: 'back.out',
-    duration: 1,
-    scrollTrigger: {
-      trigger: '.magic-div',
-      start: 'top 30%',
-      end: '40px',
-      scrub: 1,
-    }
-  });
-};
-
-onMounted(() => {
-  animateElements();
-});
+// import {onMounted,onBeforeMount} from "vue";
+// import {gsap} from 'gsap'
+// import {ScrollTrigger} from 'gsap/ScrollTrigger';
+//
+//
+// const animateElements = () => {
+//   gsap.registerPlugin(ScrollTrigger,SplitText);
+//   gsap.from('.section-img', {
+//     opacity: 0,
+//     transition:0.5,
+//     transform: 'translateX(-100px)',
+//     scrollTrigger: {
+//       trigger: '.magic-div',
+//       start: 'top 80%',
+//       end: '30px',
+//       scrub: true,
+//       lazy: true,
+//     },
+//   });
+//   gsap.from('.magic-img', {
+//     opacity: 0,
+//     transition:1,
+//     transitionDuration:0.5,
+//     transform: 'scale(0)',
+//     scrollTrigger: {
+//       trigger: '.magic-div',
+//       start: 'top 80%',
+//       end: '30px',
+//       scrub: true, // Enable smooth scrubbing during scroll
+//     },
+//   });
+//   let mySplitText = new SplitText('.description', {type: 'chars'})
+//   let chars = mySplitText.chars
+//
+//   gsap.from(chars, {
+//     yPercent: -140,
+//     stagger: 0.01,
+//     opacity:0,
+//     transition:0.3,
+//     ease: 'back.out',
+//     duration: 1,
+//     scrollTrigger: {
+//       trigger: '.magic-div',
+//       start: 'top 30%',
+//       end: '40px',
+//       scrub: 1,
+//     }
+//   });
+// };
+//
+// onMounted(() => {
+//   animateElements();
+// });
 </script>
 
 

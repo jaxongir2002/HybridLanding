@@ -1,5 +1,5 @@
 <script setup>
-import {onMounted, ref, computed} from "vue";
+import {onMounted, ref, computed, onBeforeUnmount} from "vue";
 import gsap from "gsap";
 import {ScrollTrigger} from "gsap/ScrollTrigger";
 import {Swiper, SwiperSlide} from 'swiper/vue';
@@ -151,36 +151,52 @@ onMounted(() => {
     });
 
     gsap.registerPlugin(ScrollTrigger);
+  const slides = document.querySelectorAll(".cards");
     let tl = gsap.timeline({
       scrollTrigger: {
         trigger: ".our-works-div",
         start: "top top",
-        end: "100%",
+        end: `+=${slides.length * 7}%`,
         scrub: true,
-        lazy: true,
+        pin:true,
+        pinType:'fixed'
       },
     });
-    tl.to(
-        ".cards",
-        {
-          y: -440,
-          stagger: 0.01,
-        }
-    );
+  // tl.to(
+  //     ".our-works-div", {
+  //       position:'fixed',
+  //       top:0,
+  //       bottom:0,
+  //       transition:1
+  //     });
+  tl.to(
+      ".cards", {
+        y: -480,
+        stagger: 0.01,
+      });
+
+      // tl.to(
+      //     ".our-works-div", {
+      //       position:'static',
+      //       top:0,
+      //       bottom:0,
+      //       transition:1
+      //     });
+
+
     if (showModal.value === true) {
       tl.kill();
     }
-  ScrollTrigger.refresh();
 });
 </script>
 
 <template>
-  <div class="pt-[80px] pb-[80px]">
+  <div class="pt-[80px] pb-[80px] scroll-our-works">
     <div class="our-works-div ">
-      <div class="nav relative z-[20]">
-        <div class="nav-text">Our works</div>
+      <div class="nav-our-works relative z-[20]">
+        <div class="nav-our-works-text">Our works</div>
         <div class="our-works-img">
-          <button v-show="!addTab" class="view-all w-[205px]">
+          <button v-show="!addTab" class="view-all w-[205px] mt-2">
             View all
           </button>
         </div>
@@ -205,7 +221,6 @@ onMounted(() => {
             />
           </div>
         </div>
-
       </div>
 
       <swiper v-if="addTab"
@@ -294,10 +309,12 @@ onMounted(() => {
     height: 222.751px !important;
   }
 }
-.nav {
+.nav-our-works {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  //position: page;
+
 
   &-text {
     color: #fff;
@@ -311,7 +328,9 @@ onMounted(() => {
     z-index: 33;
   }
 }
-
+.scroll-our-works{
+  transition: 2s;
+}
 .cards {
   width: 150px;
   height: 255px;
