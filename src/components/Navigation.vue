@@ -288,14 +288,14 @@ function closeMobile() {
 .menu-mobile {
   width: 100% !important;
   background: #0E0E0E;
-  height:60vh;
+  height:50vh;
   z-index: 33;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
   position: relative;
-  top: 240px;
+  top: 140px;
 
   .text-mobile {
     color:  #F9F9F9;
