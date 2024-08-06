@@ -155,26 +155,17 @@ onMounted(() => {
       scrollTrigger: {
         trigger: ".our-works-div",
         start: "top top",
-        end: "bottom 40%",
+        end: "100%",
         scrub: true,
-        pin: true,
+        pin:true,
         lazy: true,
       },
     });
-    tl.fromTo(
+    tl.to(
         ".cards",
-        {
-          y: 0,
-          onComplete: () => {
-            document.querySelector(".our-works-div").style.cssText = "";
-          },
-        },
         {
           y: -440,
           stagger: 0.01,
-          onComplete: () => {
-            document.querySelector(".our-works-div").style.cssText = "";
-          },
         }
     );
     if (showModal.value === true) {
@@ -185,7 +176,7 @@ onMounted(() => {
 
 <template>
   <div class="pt-[80px] pb-[80px]">
-    <div class="our-works-div">
+    <div class="our-works-div ">
       <div class="nav relative z-[20]">
         <div class="nav-text">Our works</div>
         <div class="our-works-img">
@@ -199,7 +190,7 @@ onMounted(() => {
         <div
           id="dev-card"
           ref="containerRef"
-          class="dev-card h-[550px]"
+          class="dev-card  h-[550px]"
         >
           <div
             v-for="(item, index) in displayedItems"
