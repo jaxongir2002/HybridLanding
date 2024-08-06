@@ -156,10 +156,9 @@ onMounted(() => {
       scrollTrigger: {
         trigger: ".our-works-div",
         start: "top top",
-        end: `+=${slides.length * 7}%`,
+        end: `bottom 20%`,
         scrub: true,
-        pin:true,
-        pinType:'fixed'
+        pin:true
       },
     });
   // tl.to(
@@ -173,10 +172,10 @@ onMounted(() => {
       ".cards", {
         y: -480,
         stagger: 0.01,
+
       });
 
-      // tl.to(
-      //     ".our-works-div", {
+      // tl.to(".our-works-div", {
       //       position:'static',
       //       top:0,
       //       bottom:0,
