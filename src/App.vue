@@ -2,7 +2,9 @@
 import Lenis from "lenis";
 
 const lenis = new Lenis();
-lenis.on("scroll", (e) => {});
+lenis.on("scroll", (e) => {
+
+});
 
 function raf(time) {
   lenis.raf(time);
