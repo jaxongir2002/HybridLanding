@@ -1,12 +1,12 @@
 <script setup>
-import {onMounted,nextTick} from "vue";
+import {onMounted} from "vue";
 import {ScrollTrigger} from "gsap/ScrollTrigger";
 import gsap from "gsap";
-import anime from "animejs";
 
 onMounted(() => {
-  nextTick(() => {
+
   gsap.registerPlugin(SplitText, ScrollTrigger);
+
   let mySplitText = new SplitText(".animation-text", { type: "chars" });
   let chars = mySplitText.chars;
 
@@ -70,7 +70,7 @@ onMounted(() => {
     });
   });
 })();
-  });
+
 });
 
 

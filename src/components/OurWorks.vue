@@ -1,12 +1,9 @@
 <script setup>
-import {onMounted, ref, computed, watchEffect, nextTick} from "vue";
+import {onMounted, ref, computed} from "vue";
 import gsap from "gsap";
 import {ScrollTrigger} from "gsap/ScrollTrigger";
 import {Swiper, SwiperSlide} from 'swiper/vue';
 import {FreeMode} from "swiper/modules";
-import 'swiper/css';
-import 'swiper/css/free-mode';
-import 'swiper/css/pagination';
 import Lenis from "lenis";
 
 const lenis = new Lenis();
@@ -92,7 +89,6 @@ function openModal(item, index) {
 }
 
 function mobile(){
-  // openMobil.value=true
   if (showModal.value===true) {
     document.body.classList.add('no-scroll');
     lenis.stop();
@@ -100,13 +96,8 @@ function mobile(){
     document.body.classList.remove('no-scroll');
     lenis.start();
   }
-}mobile()
-watchEffect(() => {
-  if (showModal.value === true) {
-    const ourWorksDiv = document.querySelector(".our-works-div");
-    ourWorksDiv.style.cssText = "";
-  }
-});
+}
+mobile()
 
 function closeModal() {
   showModal.value = false;
@@ -131,7 +122,7 @@ const displayedItems = computed(() => {
   }
 });
 onMounted(() => {
-  nextTick(()=>{
+
     const slider = document.querySelector(".dev-card");
     let isDown = false;
     let startX;
@@ -189,7 +180,6 @@ onMounted(() => {
     if (showModal.value === true) {
       tl.kill();
     }
-  })
 });
 </script>
 

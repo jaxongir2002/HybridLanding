@@ -4,6 +4,9 @@ import router from "@/router/router.js";
 import {createPinia} from 'pinia'
 import App from './App.vue'
 import 'primeicons/primeicons.css'
+import 'swiper/css';
+import 'swiper/css/free-mode';
+import 'swiper/css/pagination';
 
 const pinia = createPinia()
 const app = createApp(App)
