@@ -265,10 +265,11 @@ onMounted(() => {
   }
   .text-register {
     font-size: 30px !important;
+    width: 90% !important;
   }
-  .label-name {
-    font-size: 16px !important;
-    text-align: left !important;
+  .form-control {
+    width: 90% !important;
+    padding: 0 !important;
   }
   .text-checkbox-mobile {
     top: 35px !important;
@@ -423,7 +424,7 @@ onMounted(() => {
 
 .text-register {
   color: var(--icon-color, #fff);
-  width: 420px;
+  width: 90%;
   font-family: Alexandria, sans-serif;
   font-size: 50px;
   font-style: normal;

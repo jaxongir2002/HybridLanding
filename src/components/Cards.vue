@@ -32,7 +32,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="flex gap-[20px] justify-between max-md:flex-col md:pt-[80px] pb-[80px] " style="--hue: 220">
+  <div class="flex gap-[20px] justify-between max-md:flex-col md:pt-[80px] pb-[80px] " style="">
     <div class="flip-card glow-effect">
       <div class="card-front">
         <figure>
