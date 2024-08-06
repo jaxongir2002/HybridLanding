@@ -274,6 +274,10 @@ onMounted(() => {
   .text-checkbox-mobile {
     top: 35px !important;
     left: 40px !important;
+
+  }
+  .label-name{
+    text-align: left !important;
   }
 }
 

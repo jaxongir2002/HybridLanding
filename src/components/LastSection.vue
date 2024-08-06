@@ -214,7 +214,10 @@ const handleMousePos = (e) => {
   iframe{
     width: 100% !important;
     position: relative;
-    right: 0px !important;
+    right: 0 !important;
+  }
+  .big-div-last{
+    height: auto !important;
   }
 }
 
