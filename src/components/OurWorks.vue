@@ -155,11 +155,10 @@ onMounted(() => {
   let tl = gsap.timeline({
     scrollTrigger: {
       trigger: ".our-works-div",
-      start: "top 20%",
+      start: "top top",
       end: `+=${slides.length * 2}%`,
       scrub: true,
       isMobile: false,
-      toggleActions:'restart none none none'
     },
   });
   if (window.matchMedia("(min-width: 768px)").matches) {
@@ -175,7 +174,7 @@ onMounted(() => {
     //     });
     tl.to(
         ".cards", {
-          y: -480,
+          y: -380,
           stagger: 0.01,
           duration: 1
         });
