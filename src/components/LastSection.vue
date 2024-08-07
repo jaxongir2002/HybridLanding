@@ -217,7 +217,12 @@ const handleMousePos = (e) => {
     right: 0 !important;
   }
   .big-div-last{
-    height: auto !important;
+    //height: auto !important;
+    height: 140px !important;
+    overflow: visible !important;
+  }
+  .gradient-overlay{
+    display: none !important;
   }
 }
 
@@ -325,6 +330,6 @@ const handleMousePos = (e) => {
 .big-div-last {
   margin-bottom: 5px;
   overflow: hidden;
-  height: 420px;
+  height: 470px;
 }
 </style>
