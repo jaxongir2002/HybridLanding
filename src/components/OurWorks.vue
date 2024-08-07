@@ -152,15 +152,15 @@ onMounted(() => {
 
     gsap.registerPlugin(ScrollTrigger);
   const slides = document.querySelectorAll(".cards");
-  let tl = gsap.timeline({
-    scrollTrigger: {
-      trigger: ".our-works-div",
-      start: "top 10%",
-      end: `+=${slides.length * 2}%`,
-      scrub: true,
-      isMobile: false,
-    },
-  });
+  // let tl = gsap.timeline({
+  //   scrollTrigger: {
+  //     trigger: ".our-works-div",
+  //     start: "top 10%",
+  //     end: `+=${slides.length * 2}%`,
+  //     scrub: true,
+  //     isMobile: false,
+  //   },
+  // });
   if (window.matchMedia("(min-width: 768px)").matches) {
     // tl.to(
     //     ".our-works-div", {
@@ -170,21 +170,21 @@ onMounted(() => {
     //       duration: 1,
     //       transition:1
     //     });
-    tl.to(
-        ".cards", {
-          y: -180,
-          stagger: 0.01,
-          duration: 1
-        });
+    // tl.to(
+    //     ".cards", {
+    //       y: -180,
+    //       stagger: 0.01,
+    //       duration: 1
+    //     });
 
     // tl.to(".our-works-div", {
     //   position: 'relative',
     //   duration: 1
     // });
 
-    if (showModal.value === true) {
-      tl.kill();
-    }
+    // if (showModal.value === true) {
+    //   tl.kill();
+    // }
   }
 
 

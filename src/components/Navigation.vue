@@ -1,15 +1,31 @@
 <script setup>
-import {ref} from 'vue'
+import {onMounted, ref} from 'vue'
 import Lenis from "lenis";
 
 const lenis = new Lenis();
 
 const openMenu = ref(false)
 const openMobil = ref(false)
-const isMobile = ref(window.innerWidth < 762);
+const isNavFixed = ref(false);
+const isNavSticky = ref(false)
+onMounted(() => {
+  let prevScrollPos = window.pageYOffset;
+  window.addEventListener('scroll', () => {
+    const currentScrollPos = window.pageYOffset;
+
+    if (prevScrollPos > currentScrollPos && currentScrollPos > 900) {
+      isNavFixed.value = true;
+      isNavSticky.value = false
+    } else {
+      isNavSticky.value = true
+      isNavFixed.value = false
+    }
+    prevScrollPos = currentScrollPos;
+  });
+});
+
 
 function mobile(){
-  // openMobil.value=true
   if (openMobil.value===true) {
     document.body.classList.add('no-scroll');
     lenis.stop();
@@ -29,28 +45,31 @@ function closeMobile() {
 </script>
 
 <template>
-  <div class="navigation">
-    <div>
-      <img src="../assets/img/Logo.svg" alt="">
-    </div>
-    <div class="navigation-menu">
-      <span class="first-animation">About</span>
-      <span class="second-animation">Reels</span>
-      <span class="third-animation">Community</span>
-      <span class="four-animation">Blog</span>
-      <span class="five-animation">Brief</span>
-    </div>
-    <div class="navigation-magic" @click="openMenu=true">
+  <div class="" :class="{ fixed: isNavFixed,'header-animation': isNavFixed,'isNavStick':isNavSticky  }">
+    <div class="navigation" >
+      <div>
+        <img src="../assets/img/Logo.svg" alt="">
+      </div>
+      <div class="navigation-menu">
+        <span class="first-animation">About</span>
+        <span class="second-animation">Reels</span>
+        <span class="third-animation">Community</span>
+        <span class="four-animation">Blog</span>
+        <span class="five-animation">Brief</span>
+      </div>
+      <div class="navigation-magic" @click="openMenu=true">
       <span class="magic-animation" :class="{ 'animate': openMenu }">
          Discover magic
       </span>
-      <img src="../assets/img/MenuIcon.svg" alt="">
-    </div>
-    <div class="navigation-mobile" >
-      <img v-if="!openMobil" @click="openMobileFn" src="../assets/img/MenuIcon.svg" alt="">
-      <img v-else @click="closeMobile" class="active:scale-[0.9]" src="@/assets/img/menuClose.svg" alt="">
+        <img src="../assets/img/MenuIcon.svg" alt="">
+      </div>
+      <div class="navigation-mobile" >
+        <img v-if="!openMobil" @click="openMobileFn" src="../assets/img/MenuIcon.svg" alt="">
+        <img v-else @click="closeMobile" class="active:scale-[0.9]" src="@/assets/img/menuClose.svg" alt="">
+      </div>
     </div>
   </div>
+
   <Transition name="slide-fade">
     <div class="menu-dialog" v-show="openMenu">
       <div class="flex justify-end transition-all">
@@ -186,6 +205,41 @@ function closeMobile() {
 </style>
 
 <style scoped lang="scss">
+
+.fixed {
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 85%;
+  z-index: 999;
+  background: #0E0E0E;
+  margin: auto !important;
+  padding: 20px !important;
+}
+.isNavStick{
+  animation: header-animation-another .5s linear;
+}
+@keyframes header-animation-another {
+  from {
+    transform: translateY(0%);
+  }
+  to {
+    transform: translateY(-100%);
+  }
+}
+.header-animation {
+  animation: header-animation .5s linear;
+}
+
+@keyframes header-animation {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
 .navigation-mobile {
   display: none;
 }
@@ -339,6 +393,7 @@ function closeMobile() {
   text-transform: uppercase;
   position: relative;
   z-index: 22;
+  transition: 1s ease-in-out;
   &-menu {
     display: flex;
     gap: 60px;
