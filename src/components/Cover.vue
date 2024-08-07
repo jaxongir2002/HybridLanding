@@ -1293,9 +1293,9 @@ canvas {
     font-size: 12px !important;
     font-style: normal;
     font-weight: 700;
-    line-height: 140% !important;
+    line-height: 1.5;
     position: relative;
-    top: 380px !important;
+    top: 40% !important;
   }
  canvas{
    display: none !important;

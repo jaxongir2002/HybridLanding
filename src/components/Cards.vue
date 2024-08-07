@@ -216,7 +216,7 @@ onMounted(() => {
             X
           </div>
           <div class="img-bg-hybrid">
-            <video autoplay loop muted width="320" height="240">
+            <video autoplay loop muted width="320" height="240" playsinline>
               <source src="../assets/video/ac57976749d126f18128abad5cec0903ee50f1bcaab2b1941b03887e69ae9a29.mp4"
                       type="video/mp4">
             </video>
