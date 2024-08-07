@@ -320,7 +320,7 @@ onMounted(() => {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: 22000000000;
+  //z-index: 22000000000;
 
 }
 

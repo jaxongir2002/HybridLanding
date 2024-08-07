@@ -204,7 +204,7 @@ onMounted(() => {
   .mobile-version-animation {
     grid-column: span 12 / 12 !important;
     margin-left: 0;
-    margin-top: 40px;
+    margin-top: 40%;
 
   }
   iframe {

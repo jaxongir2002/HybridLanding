@@ -276,17 +276,14 @@ const handleMousePos = (e) => {
   width: 50px;
   height: 50px;
   mix-blend-mode: difference;
-  border-radius: 650px;
+  border-radius: 50%;
   pointer-events: none;
   z-index: 999;
-  transition: top 0.025s ease, left 0.025s ease, transform 0.25s ease;
+  transition: top 0.025s ease, left 0.025s ease, transform 0.25s ease, opacity 0.25s ease;
   opacity: 0.8;
-  background: linear-gradient(
-    var(--gradient-angle),
-    rgb(0, 43, 255) 0.94%,
-    rgb(162, 10, 255) 99.8%
-  );
+  background: linear-gradient(to top, rgb(0, 43, 255), rgb(162, 10, 255));
   filter: blur(46px);
+  -webkit-filter: blur(46px); /* For older Webkit browsers */
 }
 
 .footer-text {

@@ -155,37 +155,27 @@ onMounted(() => {
   let tl = gsap.timeline({
     scrollTrigger: {
       trigger: ".our-works-div",
-      start: "top top",
+      start: "top 20%",
       end: `+=${slides.length * 2}%`,
       scrub: true,
-      isMobile: false
+      isMobile: false,
+      toggleActions:'restart none none none'
     },
   });
   if (window.matchMedia("(min-width: 768px)").matches) {
 
-    tl.to(
-        ".cards", {
-          transform: "translateY(-480px)",
-          stagger: 0.01,
-          duration: 1,
-        });
 
     // tl.to(
     //     ".our-works-div", {
     //       position: 'fixed',
     //       top: 0,
     //       zIndex: 20,
-    //       duration: 1
+    //       duration: 1,
+    //       transition:1
     //     });
     tl.to(
         ".cards", {
           y: -480,
-          stagger: 0.01,
-          duration: 1
-        });
-    tl.to(
-        ".cards", {
-          y: -580,
           stagger: 0.01,
           duration: 1
         });
@@ -194,12 +184,6 @@ onMounted(() => {
     //   position: 'relative',
     //   duration: 1
     // });
-
-    tl.to(
-        ".cards", {
-          transform: "translateY(0px)",
-          duration: 1,
-        });
 
     if (showModal.value === true) {
       tl.kill();
