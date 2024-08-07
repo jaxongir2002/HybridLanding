@@ -1412,6 +1412,6 @@ canvas {
   margin-bottom: 101px;
   position: relative;
   z-index: 22;
-  top: 400px;
+  top: 40% !important;
 }
 </style>
