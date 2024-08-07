@@ -1,6 +1,7 @@
 <script setup>
 import {onMounted, ref} from 'vue'
 import Lenis from "lenis";
+import router from "@/router/router.js";
 
 const lenis = new Lenis();
 
@@ -42,13 +43,16 @@ function closeMobile() {
   openMobil.value=false
   mobile()
 }
+function load(){
+router.go()
+}
 </script>
 
 <template>
   <div class="" :class="{ fixed: isNavFixed,'header-animation': isNavFixed,'isNavStick':isNavSticky  }">
     <div class="navigation" >
       <div>
-        <img src="../assets/img/Logo.svg" alt="">
+        <img src="../assets/img/Logo.svg" alt="" @click="load">
       </div>
       <div class="navigation-menu">
         <span class="first-animation">About</span>
