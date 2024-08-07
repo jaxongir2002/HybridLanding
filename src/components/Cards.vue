@@ -43,10 +43,12 @@ onMounted(() => {
         flipCards[1].style.transform = 'rotateY(180deg)';
       }else flipCards[1].style.transform = 'rotateY(0)';
 
-      if (currentScrollPos >= 1575) {
+      if (currentScrollPos >= 1575 && currentScrollPos <=2000) {
         flipCards[1].style.transform = 'rotateY(0deg)';
         flipCards[2].style.transform = 'rotateY(180deg)';
-      } else flipCards[2].style.transform = 'rotateY(0)';
+      } else  {
+        flipCards[2].style.transform = 'rotateY(0deg)';
+      }
     }
   });
 })
