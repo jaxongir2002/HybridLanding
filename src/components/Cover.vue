@@ -5,6 +5,7 @@ onMounted(() => {
   "use strict";
   const canvas = document.getElementsByTagName("canvas")[0];
   resizeCanvas();
+  canvas.height = window.innerHeight;
 
   let config = {
     SIM_RESOLUTION: 128,
@@ -1242,16 +1243,38 @@ function topScroll() {
       Scroll to experience magic
       <img class="animation-arrow" src="../assets/img/Arrow.svg" alt="" />
     </span>
-    <canvas class="srt" width="" height="964"></canvas>
+
   </section>
+  <div class="canvas-outer beneath" data-splash-bg-outer="">
+    <splash-bg class="splash-bg" style="opacity: 1;"><canvas width="1602" height="964"></canvas></splash-bg>
+  </div>
 </template>
 <style>
 body::-webkit-scrollbar {
   display: block;
 }
+canvas {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
 </style>
 
 <style scoped lang="scss">
+.canvas-outer.beneath{
+  z-index: -3;
+}
+.splash-bg, .splash-bg canvas{
+  height: 100%;
+  position: absolute;
+  bottom: auto;
+  left: 0;
+  right: auto;
+  top: 0;
+  width: 100%;
+}
 @media screen and (max-width: 992px){
   .title-logo {
     font-size: 70px !important;
@@ -1322,11 +1345,7 @@ body::-webkit-scrollbar {
   transform: translate(0, -50%);
 }
 
-canvas {
-  position: absolute;
-  width: 30%;
-  height: 100%;
-}
+
 
 .title-logo {
   font-family: "Alexandria", sans-serif;

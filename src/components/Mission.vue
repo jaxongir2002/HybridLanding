@@ -58,11 +58,14 @@ onMounted(() => {
     transition: '.5s',
     transform: 'translateY(-25px)',
   })
+
   tl.to(charsTwo, { // Animate second character elements (assuming charsTwo exists)
     color: 'white',
     duration: 1,
     stagger: 0.02,
   })
+
+
   tl.to(charsThird, { // Animate third character elements (assuming charsThird exists)
     color: 'white',
     duration: 1,
@@ -76,16 +79,17 @@ onMounted(() => {
     duration: 1,
     ease: "power2.inOut",
   })
+  tl.to('.second-name', { // This will target the element again for the 2nd animation
+    delay: 0.5, // Delay by 0.5 seconds for smooth transition
+    transition: '.5s',
+    className: 'some-class'
+
+  })
 
   tl.to('.third-name', { // Move third name down
     transition: '.5s',
     transform: 'translateY(-50px)',
     duration: 1,
-    ease: "power2.inOut",
-  })
-  tl.to('.second-name', { // Move second name further down
-    transition: '.5s',
-    transform: 'translateY(-100px)',
     ease: "power2.inOut",
   })
   tl.to('.second-img', { // Fade out second image
@@ -209,7 +213,9 @@ onMounted(() => {
     transform: scaleX(-1);
   }
 }
-
+.some-class{
+  transform: translateY(-50px) !important;
+}
 .text-social {
   color: var(--White, #F9F9F9);
   text-align: left;

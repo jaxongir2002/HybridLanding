@@ -152,16 +152,17 @@ onMounted(() => {
 
     gsap.registerPlugin(ScrollTrigger);
   const slides = document.querySelectorAll(".cards");
+  let tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: ".our-works-div",
+      start: "top top",
+      end: `+=${slides.length * 2}%`,
+      scrub: true,
+      isMobile: false
+    },
+  });
   if (window.matchMedia("(min-width: 768px)").matches) {
-    let tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: ".our-works-div",
-        start: "top top",
-        end: `+=${slides.length * 2}%`,
-        scrub: true,
-        isMobile: false
-      },
-    });
+
     tl.to(
         ".cards", {
           transform: "translateY(-480px)",
