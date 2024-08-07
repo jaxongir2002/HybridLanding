@@ -61,21 +61,21 @@ const listImg = ref([
   {
     src: new URL("@/assets/img/ourworksImg2.svg", import.meta.url),
   },
-  {
-    src: new URL("@/assets/img/ourworksImg3.svg", import.meta.url),
-  },
-  {
-    src: new URL("@/assets/img/ourworksImg3.svg", import.meta.url),
-  },
-  {
-    src: new URL("@/assets/img/ourworksImg1.jpg", import.meta.url),
-  },
-  {
-    src: new URL("@/assets/img/ourworksImg2.svg", import.meta.url),
-  },
-  {
-    src: new URL("@/assets/img/ourworksImg3.svg", import.meta.url),
-  },
+  // {
+  //   src: new URL("@/assets/img/ourworksImg3.svg", import.meta.url),
+  // },
+  // {
+  //   src: new URL("@/assets/img/ourworksImg3.svg", import.meta.url),
+  // },
+  // {
+  //   src: new URL("@/assets/img/ourworksImg1.jpg", import.meta.url),
+  // },
+  // {
+  //   src: new URL("@/assets/img/ourworksImg2.svg", import.meta.url),
+  // },
+  // {
+  //   src: new URL("@/assets/img/ourworksImg3.svg", import.meta.url),
+  // },
 ]);
 const containerRef = ref(null);
 
@@ -327,6 +327,9 @@ onMounted(() => {
   .cards {
     width: 131.03px !important;
     height: 222.751px !important;
+  }
+  .nav-our-works{
+   z-index: 1;
   }
 }
 .nav-our-works {

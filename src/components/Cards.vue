@@ -320,6 +320,8 @@ onMounted(() => {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  z-index: 22;
+
 }
 
 .text-logo {
@@ -332,6 +334,7 @@ onMounted(() => {
   position: absolute;
   top: 40%;
   transform: translate(0, -40%);
+
 }
 
 .footer-content {
