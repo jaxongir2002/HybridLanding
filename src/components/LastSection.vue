@@ -124,18 +124,6 @@ const handleMousePos = (e) => {
     <div class="flex justify-between items-center">
       <div class="text-info">info@hybridinstallations.com</div>
       <div class="text-info max-sm:hidden">discover magic</div>
-      <div class="flex gap-[15px] items-center">
-        <span class="text-info max-sm:hidden"> social: </span>
-        <div>
-          <i class="pi pi-instagram text-white text-[20px] hover:text-[#FFFF00]"></i>
-        </div>
-        <div>
-          <i class="pi pi-twitter text-white text-[20px] hover:text-[#FFFF00]"></i>
-        </div>
-        <div>
-           <i class="pi pi-linkedin text-white text-[20px] hover:text-[#FFFF00]"></i>
-        </div>
-      </div>
     </div>
     <div class="hidden max-sm:flex justify-between mt-[25px]">
       <div class="text-info w-[125px]">Bay Square, Business Bay, Dubai</div>
