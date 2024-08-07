@@ -68,129 +68,131 @@ function closeMobile() {
         <img v-else @click="closeMobile" class="active:scale-[0.9]" src="@/assets/img/menuClose.svg" alt="">
       </div>
     </div>
-  </div>
-
-  <Transition name="slide-fade">
-    <div class="menu-dialog" v-show="openMenu">
-      <div class="flex justify-end transition-all">
-        <img @click="openMenu= false" class="active:scale-[0.9]" src="@/assets/img/menuClose.svg" alt="">
-      </div>
-      <div class="flex">
-        <div class="flex flex-col gap-[10px]">
-          <div class="menu-text flex gap-[15px]">
+    <Transition name="slide-fade">
+      <div class="menu-dialog" v-show="openMenu" :class="{menuUi : isNavFixed}">
+        <div class="flex justify-end transition-all">
+          <img @click="openMenu= false" class="active:scale-[0.9]" src="@/assets/img/menuClose.svg" alt="">
+        </div>
+        <div class="flex">
+          <div class="flex flex-col gap-[10px]">
+            <div class="menu-text flex gap-[15px]">
         <span>
              home
         </span>
-            <div class="menu-btn">
-              01
+              <div class="menu-btn">
+                01
+              </div>
             </div>
-          </div>
-          <div class="menu-text flex gap-[15px]">
+            <div class="menu-text flex gap-[15px]">
         <span>
              about
         </span>
-            <div class="menu-btn">
-              02
+              <div class="menu-btn">
+                02
+              </div>
             </div>
-          </div>
-          <div class="menu-text flex gap-[15px]">
+            <div class="menu-text flex gap-[15px]">
         <span>
           Reels
         </span>
-            <div class="menu-btn">
-              03
+              <div class="menu-btn">
+                03
+              </div>
             </div>
-          </div>
-          <div class="menu-text flex gap-[15px]">
+            <div class="menu-text flex gap-[15px]">
         <span>
            Community
         </span>
-            <div class="menu-btn">
-              04
+              <div class="menu-btn">
+                04
+              </div>
             </div>
-          </div>
-          <div class="menu-text flex gap-[15px]">
+            <div class="menu-text flex gap-[15px]">
         <span>
         Blog
         </span>
-            <div class="menu-btn">
-              05
+              <div class="menu-btn">
+                05
+              </div>
             </div>
-          </div>
-          <div class="menu-text flex gap-[15px]">
+            <div class="menu-text flex gap-[15px]">
         <span>
            brief
         </span>
-            <div class="menu-btn">
-              06
+              <div class="menu-btn">
+                06
+              </div>
+            </div>
+          </div>
+          <div>
+            <img src="@/assets/img/menuLogo.svg" alt="">
+          </div>
+        </div>
+        <div class="flex items-end h-[328px]">
+          <div class="flex gap-[10px]">
+            <button class="btn-links">
+              Instagram
+            </button>
+            <button class="btn-links w-[37px]">
+              <span class="">X</span>
+            </button>
+            <button class="btn-links">
+              Linkedin
+            </button>
+          </div>
+          <iframe src="https://lottie.host/embed/d12aeedd-ef05-4146-a269-e4112a1b9ca1/JJrsbqYW7T.json"></iframe>
+        </div>
+      </div>
+    </Transition>
+    <Transition name="slide-fade">
+      <div class="menu-mobile" v-show="openMobil" :class="{mobileFixed : isNavFixed}">
+        <div class="flex">
+          <div class="flex flex-col gap-[10px] relative bottom-[50px]">
+            <div class="text-mobile flex justify-center gap-[15px]">
+              <span>home</span>
+              <div class="btn-mobile">01</div>
+            </div>
+            <div class="text-mobile flex justify-center gap-[15px]">
+              <span>about</span>
+              <div class="btn-mobile">02</div>
+            </div>
+            <div class="text-mobile flex justify-center gap-[15px]">
+              <span>Reels</span>
+              <div class="btn-mobile">03</div>
+            </div>
+            <div class="text-mobile flex justify-center gap-[15px]">
+              <span>Community</span>
+              <div class="btn-mobile">04</div>
+            </div>
+            <div class="text-mobile flex justify-center gap-[15px]">
+              <span>Blog</span>
+              <div class="btn-mobile">05</div>
+            </div>
+            <div class="text-mobile flex justify-center gap-[15px]">
+              <span>brief</span>
+              <div class="btn-mobile">06</div>
             </div>
           </div>
         </div>
-        <div>
-          <img src="@/assets/img/menuLogo.svg" alt="">
-        </div>
-      </div>
-      <div class="flex items-end h-[328px]">
-        <div class="flex gap-[10px]">
-          <button class="btn-links">
-            Instagram
-          </button>
-          <button class="btn-links w-[37px]">
-            <span class="">X</span>
-          </button>
-          <button class="btn-links">
-            Linkedin
-          </button>
-        </div>
-        <iframe src="https://lottie.host/embed/d12aeedd-ef05-4146-a269-e4112a1b9ca1/JJrsbqYW7T.json"></iframe>
-      </div>
-    </div>
-  </Transition>
-  <Transition name="slide-fade">
-    <div class="menu-mobile" v-show="openMobil">
-      <div class="flex">
-        <div class="flex flex-col gap-[10px] relative bottom-[50px]">
-          <div class="text-mobile flex justify-center gap-[15px]">
-            <span>home</span>
-            <div class="btn-mobile">01</div>
-          </div>
-          <div class="text-mobile flex justify-center gap-[15px]">
-            <span>about</span>
-            <div class="btn-mobile">02</div>
-          </div>
-          <div class="text-mobile flex justify-center gap-[15px]">
-            <span>Reels</span>
-            <div class="btn-mobile">03</div>
-          </div>
-          <div class="text-mobile flex justify-center gap-[15px]">
-            <span>Community</span>
-            <div class="btn-mobile">04</div>
-          </div>
-          <div class="text-mobile flex justify-center gap-[15px]">
-            <span>Blog</span>
-            <div class="btn-mobile">05</div>
-          </div>
-          <div class="text-mobile flex justify-center gap-[15px]">
-            <span>brief</span>
-            <div class="btn-mobile">06</div>
+        <div class="flex  items-end" :class="{'relative bottom-[80px]'  : isNavFixed}">
+          <div class="flex gap-[10px] relative bottom-[30px]">
+            <button class="btn-links">
+              Instagram
+            </button>
+            <button class="btn-links w-[37px]">
+              <span class="">X</span>
+            </button>
+            <button class="btn-links">
+              Linkedin
+            </button>
           </div>
         </div>
       </div>
-      <div class="flex  items-end">
-        <div class="flex gap-[10px] relative bottom-[30px]">
-          <button class="btn-links">
-            Instagram
-          </button>
-          <button class="btn-links w-[37px]">
-            <span class="">X</span>
-          </button>
-          <button class="btn-links">
-            Linkedin
-          </button>
-        </div>
-      </div>
-    </div>
-  </Transition>
+    </Transition>
+  </div>
+
+
+
 </template>
 <style lang="scss">
 .no-scroll{
@@ -216,6 +218,11 @@ function closeMobile() {
   background: #0E0E0E;
   margin: auto !important;
   padding: 20px !important;
+}
+.menuUi{
+  height: 90vh !important;
+  top: 0;
+  right: 0 !important;
 }
 .isNavStick{
   animation: header-animation-another .5s linear;
@@ -335,6 +342,9 @@ function closeMobile() {
   }
   .navigation-mobile {
     display: block;
+  }
+  .mobileFixed{
+    height: 75vh !important;
   }
 
 }

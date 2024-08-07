@@ -1,6 +1,6 @@
 <script setup>
 
-import {onMounted} from "vue";
+import {onMounted, ref} from "vue";
 
 onMounted(() => {
   const flipCards = document.querySelectorAll('.flip-card');
@@ -28,6 +28,26 @@ onMounted(() => {
     });
   });
 })();
+
+  window.addEventListener('scroll', () => {
+    const currentScrollPos = window.pageYOffset;
+    const isMobile = window.innerWidth < 762;
+    if (isMobile) {
+      console.log(currentScrollPos)
+      if (currentScrollPos >= 595) {
+        flipCards[0].style.transform = 'rotateY(180deg)';
+      }
+      if (currentScrollPos >= 1000) {
+        flipCards[0].style.transform = 'rotateY(0deg)';
+        flipCards[1].style.transform = 'rotateY(180deg)';
+      }
+
+      if (currentScrollPos >= 1575) {
+        flipCards[1].style.transform = 'rotateY(0deg)';
+        flipCards[2].style.transform = 'rotateY(180deg)';
+      }
+    }
+  });
 })
 </script>
 

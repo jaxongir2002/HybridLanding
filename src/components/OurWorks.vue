@@ -194,9 +194,9 @@ onMounted(() => {
 <template>
   <div class="pt-[80px] pb-[80px] scroll-our-works">
     <div class="our-works-div relative">
-      <div class="nav-our-works relative z-[20]">
+      <div class="nav-our-works relative">
         <div class="nav-our-works-text">Our works</div>
-        <div class="our-works-img">
+        <div class="our-works-img relative z-[20]">
           <button v-show="!addTab" class="view-all w-[205px] mt-2">
             View all
           </button>

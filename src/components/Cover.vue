@@ -20,7 +20,7 @@ onMounted(() => {
     SPLAT_FORCE: 10000,
     SHADING: true,
     COLORFUL: true,
-    COLOR_UPDATE_SPEED: 3,
+    COLOR_UPDATE_SPEED: 2,
     BACK_COLOR: {
       r: 0.6439999938011169,
       g: 0.17599999904632568,
@@ -28,8 +28,8 @@ onMounted(() => {
     },
     TRANSPARENT: true,
     SUNRAYS: true,
-    SUNRAYS_RESOLUTION: 19,
-    SUNRAYS_WEIGHT: 0.5,
+    SUNRAYS_RESOLUTION: 15,
+    SUNRAYS_WEIGHT: 0.4,
   };
 
   function pointerPrototype() {
@@ -1256,7 +1256,7 @@ body::-webkit-scrollbar {
 canvas {
   position: absolute;
   width: 100%;
-  height: 1100% !important;
+  height: 1150% !important;
   top: 0;
   left: 0;
 }
@@ -1264,7 +1264,7 @@ canvas {
 
 <style scoped lang="scss">
 .canvas-outer.beneath{
-  z-index: -3;
+  z-index: 333;
 }
 .splash-bg, .splash-bg canvas{
   height: 100%;
@@ -1343,7 +1343,6 @@ canvas {
   position: absolute;
   top: 50%;
   transform: translate(0, -50%);
-  z-index: 333;
 }
 
 
