@@ -170,13 +170,13 @@ onMounted(() => {
           duration: 1,
         });
 
-    tl.to(
-        ".our-works-div", {
-          position: 'fixed',
-          top: 0,
-          zIndex: 20,
-          duration: 1
-        });
+    // tl.to(
+    //     ".our-works-div", {
+    //       position: 'fixed',
+    //       top: 0,
+    //       zIndex: 20,
+    //       duration: 1
+    //     });
     tl.to(
         ".cards", {
           y: -480,
@@ -190,10 +190,10 @@ onMounted(() => {
           duration: 1
         });
 
-    tl.to(".our-works-div", {
-      position: 'relative',
-      duration: 1
-    });
+    // tl.to(".our-works-div", {
+    //   position: 'relative',
+    //   duration: 1
+    // });
 
     tl.to(
         ".cards", {
