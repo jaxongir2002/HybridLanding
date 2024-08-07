@@ -84,7 +84,7 @@ onMounted(() => {
             X
           </div>
           <div class="img-bg-hybrid">
-            <video autoplay loop muted width="320" height="240">
+            <video autoplay loop muted width="320" height="240" playsinline>
               <source src="../assets/video/91ec3544e41e9afbff63c3d000a9a5296073707d839b265710597bd574d824eb.mp4"
                       type="video/mp4">
             </video>
@@ -147,7 +147,7 @@ onMounted(() => {
             X
           </div>
           <div class="img-bg-hybrid">
-            <video autoplay loop muted width="320" height="240">
+            <video autoplay loop muted width="320" height="240" playsinline>
               <source src="../assets/video/84d3ee1d02f80623a9f94aaf876be15f12f8030d7abc558fa81e43cf65067340.mp4"
                       type="video/mp4">
             </video>
