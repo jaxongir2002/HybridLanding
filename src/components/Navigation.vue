@@ -5,10 +5,16 @@ import router from "@/router/router.js";
 
 const lenis = new Lenis();
 
-const openMenu = ref(false)
-const openMobil = ref(false)
+const openMenu = ref(false);
+const openMobil = ref(false);
 const isNavFixed = ref(false);
-const isNavSticky = ref(false)
+const isNavSticky = ref(false);
+const changeFirstVideo = ref(true);
+const changeSecondVideo = ref(false);
+const changeThreeVideo = ref(false);
+const changeFourVideo = ref(false);
+const changeFiveVideo = ref(false);
+const changeSixVideo = ref(false);
 onMounted(() => {
   let prevScrollPos = window.pageYOffset;
   window.addEventListener('scroll', () => {
@@ -46,6 +52,36 @@ function closeMobile() {
 function load(){
 router.go()
 }
+
+function firstFn() {
+  changeFirstVideo.value = true
+  changeSecondVideo.value = false
+}
+
+function secondFn() {
+  changeFirstVideo.value = false
+  changeSecondVideo.value = true
+}
+
+function threeFn() {
+  changeSecondVideo.value = false
+  changeThreeVideo.value = true
+}
+
+function fourFn() {
+  changeThreeVideo.value = false
+  changeFourVideo.value = true
+}
+
+function fiveFn() {
+  changeFourVideo.value = false
+  changeFiveVideo.value = true
+}
+
+function sixFn() {
+  changeFiveVideo.value = false
+  changeSixVideo.value = true
+}
 </script>
 
 <template>
@@ -79,7 +115,7 @@ router.go()
         </div>
         <div class="flex">
           <div class="flex flex-col gap-[10px]">
-            <div class="menu-text flex gap-[15px]">
+            <div @mousemove="firstFn" class="menu-text flex gap-[15px]">
         <span>
              home
         </span>
@@ -87,7 +123,7 @@ router.go()
                 01
               </div>
             </div>
-            <div class="menu-text flex gap-[15px]">
+            <div @mousemove="secondFn" class="menu-text flex gap-[15px]">
         <span>
              about
         </span>
@@ -95,7 +131,7 @@ router.go()
                 02
               </div>
             </div>
-            <div class="menu-text flex gap-[15px]">
+            <div @mousemove="threeFn" class="menu-text flex gap-[15px]">
         <span>
           Reels
         </span>
@@ -103,7 +139,7 @@ router.go()
                 03
               </div>
             </div>
-            <div class="menu-text flex gap-[15px]">
+            <div @mousemove="fourFn" class="menu-text flex gap-[15px]">
         <span>
            Community
         </span>
@@ -111,7 +147,7 @@ router.go()
                 04
               </div>
             </div>
-            <div class="menu-text flex gap-[15px]">
+            <div @mousemove="fiveFn" class="menu-text flex gap-[15px]">
         <span>
         Blog
         </span>
@@ -119,7 +155,7 @@ router.go()
                 05
               </div>
             </div>
-            <div class="menu-text flex gap-[15px]">
+            <div @mousemove="sixFn" class="menu-text flex gap-[15px]">
         <span>
            brief
         </span>
@@ -128,10 +164,51 @@ router.go()
               </div>
             </div>
           </div>
-          <div>
-            <img src="@/assets/img/menuLogo.svg" alt="">
+          <div class="card-change-video">
+            <Transition>
+              <video autoplay loop muted width="320" height="240" playsinline v-show="changeFirstVideo">
+                <source src="../assets/video/ac57976749d126f18128abad5cec0903ee50f1bcaab2b1941b03887e69ae9a29.mp4"
+                        type="video/mp4">
+              </video>
+
+              <!--            <img src="@/assets/img/menuLogo.svg" alt="">-->
+            </Transition>
+            <Transition>
+
+            <video autoplay loop muted width="320" height="240" playsinline v-show="changeSecondVideo">
+              <source src="../assets/video/weCreateMagic.mp4"
+                      type="video/mp4">
+            </video>
+    </Transition>
+            <Transition>
+            <video autoplay loop muted width="320" height="240" playsinline v-show="changeThreeVideo">
+              <source src="../assets/video/84d3ee1d02f80623a9f94aaf876be15f12f8030d7abc558fa81e43cf65067340.mp4"
+                      type="video/mp4">
+            </video>
+            </Transition>
+            <Transition>
+            <video autoplay loop muted width="320" height="240" playsinline v-show="changeFourVideo">
+              <source src="../assets/video/ac57976749d126f18128abad5cec0903ee50f1bcaab2b1941b03887e69ae9a29.mp4"
+                      type="video/mp4">
+            </video>
+    </Transition>
+            <Transition>
+            <video autoplay loop muted width="320" height="240" playsinline v-show="changeFiveVideo">
+              <source src="../assets/video/91ec3544e41e9afbff63c3d000a9a5296073707d839b265710597bd574d824eb.mp4"
+                      type="video/mp4">
+            </video>
+              </Transition>
+            <Transition>
+            <video autoplay loop muted width="320" height="240" playsinline v-show="changeSixVideo">
+              <source src="../assets/video/lastImg.mp4"
+                      type="video/mp4">
+            </video>
+              </Transition>
           </div>
+
         </div>
+
+
         <div class="flex items-end h-[328px]">
           <div class="flex gap-[10px]">
             <button class="btn-links">
@@ -201,6 +278,7 @@ router.go()
 <style lang="scss">
 .no-scroll{
   overflow: hidden !important;
+
 }
 @media screen and (max-width: 992px){
   body{
@@ -211,6 +289,37 @@ router.go()
 </style>
 
 <style scoped lang="scss">
+/* we will explain what these classes do next! */
+.v-enter-active,
+.v-leave-active {
+  transition: opacity 0.3s linear;
+}
+
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
+}
+.card-change-video {
+  width: 100px;
+  height: 120px;
+  flex-shrink: 0;
+  box-shadow: 0 4px 50px 5px rgba(164, 45, 234, 0.25);
+  border-radius: 12px;
+  transform: matrix(0.00206186 0 0 0.00171821 0 -0.252577);
+  overflow: hidden;
+  transition: 1s;
+}
+
+.menu-text:hover:is(.card-change-video, .another-class) {
+  backdrop-filter: blur(24px);
+  opacity: 0;
+}
+
+video {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
 
 .fixed {
   position: fixed !important;
