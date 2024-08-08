@@ -253,14 +253,14 @@ onMounted(() => {
       </button>
       <div
           v-if="addTab"
-          class="w-[2%] active:scale-50 transition-all relative z-20 mt-[80px]"
+          class="w-[2%] active:scale-50 transition-all relative z-[33] mt-[80px]"
           @click="openTab"
       >
         <img alt="" src="@/assets/img/menuTabs.svg" />
       </div>
       <div
           v-else
-          class="tabs flex active:scale-50 transition-all items-center gap-[5px] w-[2%] relative z-20 mt-[80px]"
+          class="tabs flex active:scale-50 transition-all items-center gap-[5px] w-[2%] relative z-[33] mt-[80px]"
           @click="openTab"
       >
         <div class="tab w-[10px] h-[20px] rounded-[2px] bg-[#404040]"></div>
@@ -336,6 +336,11 @@ onMounted(() => {
   transition: 2s;
   animation-duration: 1s;
 }
+
+.mySwiper {
+  position: relative;
+  z-index: 22;
+}
 .cards {
   width: 150px;
   height: 255px;
@@ -348,6 +353,7 @@ onMounted(() => {
   animation: up-to-down 1s forwards;
   animation-direction: revert;
   will-change: transform;
+  z-index: 2;
 
   &-img {
     border-radius: 6px;
@@ -421,7 +427,7 @@ onMounted(() => {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  z-index: 1;
+  z-index: 22;
   border-radius: 12px;
   background: rgba(222, 222, 222, 0.05);
   backdrop-filter: blur(24px);

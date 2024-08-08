@@ -411,6 +411,7 @@ onMounted(() => {
   position: relative;
   transform-style: preserve-3d;
   transition: .6s .1s;
+  z-index: 122;
 }
 
 .card-front,
