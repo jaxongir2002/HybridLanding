@@ -109,20 +109,20 @@ onMounted(() => {
 <template>
   <div class="pt-[80px] flex justify-between scroll-register mt-[20px]">
     <div>
-      <div class="text-touch">
+      <div class="text-touch relative z-[33]">
         Get in Touch
         <div class="glass-effect"></div>
       </div>
       <div class="flex gap-[20px] mt-[136px] info-container">
         <div>
-          <label class="label-btn">
+          <label class="label-btn relative z-[33]">
             <span class="text-project">Start a project:</span>
             <button class="btn-links-text btn-links mt-[15px]">
               info@hybridinstallations.com
             </button>
           </label>
         </div>
-        <div class="flex gap-[20px]">
+        <div class="flex gap-[20px] relative z-[33]">
           <label class="label-btn">
             <span class="btn-link-text">Social:</span>
             <button class="btn-links mt-[15px] btn-animation-links">
@@ -143,14 +143,14 @@ onMounted(() => {
           </label>
         </div>
       </div>
-      <div class="description-text mt-[227px]">
+      <div class="description-text mt-[227px] relative z-[33]">
         New media art & entertainment studio creating experiences for the
         physical & digital world.
       </div>
     </div>
     <div class="line-center"></div>
     <div>
-      <div>
+      <div class="relative z-[33]">
         <div class="text-register">Tell us</div>
         <div class="text-register">everything..</div>
       </div>
@@ -410,6 +410,8 @@ onMounted(() => {
   background: transparent;
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
   outline: none;
+  position: relative;
+
 }
 
 .form-control[type="text"]:focus {
@@ -556,5 +558,9 @@ input::-webkit-inner-spin-button {
 }
 input[type="number"] {
   -moz-appearance: textfield !important;
+}
+form{
+  position: relative !important;
+  z-index: 33 !important;
 }
 </style>

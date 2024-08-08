@@ -167,7 +167,7 @@ function sixFn() {
           <div class="card-change-video">
             <Transition>
               <video autoplay loop muted width="320" height="240" playsinline v-show="changeFirstVideo">
-                <source src="../assets/video/ac57976749d126f18128abad5cec0903ee50f1bcaab2b1941b03887e69ae9a29.mp4"
+                <source src="../assets/video/ac57976749d126f18128abad5cec0903ee50f1bcaab2b1941b03887e69ae9a29_rbIGpUGF.mp4"
                         type="video/mp4">
               </video>
 
@@ -176,31 +176,31 @@ function sixFn() {
             <Transition>
 
             <video autoplay loop muted width="320" height="240" playsinline v-show="changeSecondVideo">
-              <source src="../assets/video/weCreateMagic.mp4"
+              <source src="../assets/video/wecreatemagic_lsF4u8LF.mp4"
                       type="video/mp4">
             </video>
-    </Transition>
+           </Transition>
             <Transition>
             <video autoplay loop muted width="320" height="240" playsinline v-show="changeThreeVideo">
-              <source src="../assets/video/84d3ee1d02f80623a9f94aaf876be15f12f8030d7abc558fa81e43cf65067340.mp4"
+              <source src="../assets/video/84d3ee1d02f80623a9f94aaf876be15f12f8030d7abc558fa81e43cf65067340_FU8j2xww.mp4"
                       type="video/mp4">
             </video>
             </Transition>
             <Transition>
             <video autoplay loop muted width="320" height="240" playsinline v-show="changeFourVideo">
-              <source src="../assets/video/ac57976749d126f18128abad5cec0903ee50f1bcaab2b1941b03887e69ae9a29.mp4"
+              <source src="../assets/video/ac57976749d126f18128abad5cec0903ee50f1bcaab2b1941b03887e69ae9a29_rbIGpUGF.mp4"
                       type="video/mp4">
             </video>
-    </Transition>
+           </Transition>
             <Transition>
             <video autoplay loop muted width="320" height="240" playsinline v-show="changeFiveVideo">
-              <source src="../assets/video/91ec3544e41e9afbff63c3d000a9a5296073707d839b265710597bd574d824eb.mp4"
+              <source src="../assets/video/91ec3544e41e9afbff63c3d000a9a5296073707d839b265710597bd574d824eb_ndrKpibw.mp4"
                       type="video/mp4">
             </video>
               </Transition>
             <Transition>
             <video autoplay loop muted width="320" height="240" playsinline v-show="changeSixVideo">
-              <source src="../assets/video/lastImg.mp4"
+              <source src="../assets/video/lastimg_ezUrAU63.mp4"
                       type="video/mp4">
             </video>
               </Transition>
@@ -327,14 +327,14 @@ video {
   left: 0;
   right: 0;
   width: 85%;
-  z-index: 999;
+  z-index: 334;
   background: #0E0E0E;
   margin: auto !important;
   padding: 20px !important;
 }
 .menuUi{
   height: 90vh !important;
-  top: 0;
+  top: 20px !important;
   right: 0 !important;
 }
 .isNavStick{

@@ -121,15 +121,15 @@ const handleMousePos = (e) => {
 
 <template>
   <div class="mt-[80px] scrolling-last">
-    <div class="flex justify-between items-center">
+    <div class="flex justify-between items-center relative z-[33]">
       <div class="text-info">info@hybridinstallations.com</div>
-      <div class="text-info max-sm:hidden">discover magic</div>
+      <div class="text-info max-sm:hidden relative z-[33]">discover magic</div>
     </div>
     <div class="hidden max-sm:flex justify-between mt-[25px]">
       <div class="text-info w-[125px]">Bay Square, Business Bay, Dubai</div>
       <div class="text-info">discover magic</div>
     </div>
-    <div class="flex justify-around items-center mt-[121px]">
+    <div class="flex justify-around items-center mt-[121px] relative z-[33]">
       <div class="text-content">
         Let`s make some magic
         <div class="glass-effect"></div>
@@ -141,11 +141,11 @@ const handleMousePos = (e) => {
       </div>
     </div>
     <div class="flex justify-between items-center mt-[119px] max-sm:mt-[20px]">
-      <div class="text-info max-sm:hidden">Bay Square, Business Bay, Dubai</div>
-      <div class="text-info">©2024 by HYBRID Xperience.</div>
+      <div class="text-info max-sm:hidden relative z-[33]">Bay Square, Business Bay, Dubai</div>
+      <div class="text-info relative z-[33]">©2024 by HYBRID Xperience.</div>
       <div
         @click="topScroll"
-        class="text-info flex gap-[10px] relative z-20 items-center"
+        class="text-info flex gap-[10px] relative z-20 items-center "
       >
         Back to top
         <img class="animation-arrow" src="@/assets/img/ArrowUp.svg" alt="" />
@@ -160,7 +160,7 @@ const handleMousePos = (e) => {
         <span class="second-first-letter">x</span>perience
       </div>
     </div>
-<!--    <div id="gradient" class="gradient-overlay"></div>-->
+    <div id="gradient" class="gradient-overlay"></div>
   </div>
 </template>
 

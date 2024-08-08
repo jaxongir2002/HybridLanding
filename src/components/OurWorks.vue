@@ -427,7 +427,7 @@ onMounted(() => {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  z-index: 22;
+  z-index: 999;
   border-radius: 12px;
   background: rgba(222, 222, 222, 0.05);
   backdrop-filter: blur(24px);

@@ -5,24 +5,24 @@
 <template>
   <div class="flex justify-between pt-[30px] mt-[30px] mb-[80px] pb-[30px] magic-div">
     <div class="flex flex-col justify-between">
-      <img class="section-img" src="@/assets/img/Section.svg" alt="">
-      <div class="mobile-img">
+      <img class="section-img relative z-[33]" src="@/assets/img/Section.svg" alt="">
+      <div class="mobile-img relative z-[33]">
         Who we are?
       </div>
-      <div class="description">
+      <div class="description relative z-[33]">
         We are misfits. We are not an agency, and we don’t just do production; we are a combination of both thinkers and
         doers. We’re a combination of human and more than human. A collaboration between art and tech.
       </div>
     </div>
-    <div class="relative video-div">
+    <div class="video-div relative z-[33]">
       <video autoplay loop muted class="magic-img" width="750" height="340" playsinline>
-        <source src="../assets/video/videoMission.mp4"
+        <source src="../assets/video/videomission_N9zw1KFg.mp4"
                 type="video/mp4">
       </video>
-      <div class="text-magic-video">
+      <div class="text-magic-video relative z-[33]">
         we do it for the curious
       </div>
-      <div class="text-magic-video-mobile">
+      <div class="text-magic-video-mobile relative z-[33]">
         We are misfits
       </div>
     </div>

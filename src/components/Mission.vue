@@ -80,7 +80,7 @@ onMounted(() => {
     <div class="col-span-6 w-[555px] mobile-version">
       <div class="card-mission relative">
         <video autoplay loop muted class="magic-img" width="750" height="340" playsinline>
-          <source src="@/assets/video/weCreateMagic.mp4"
+          <source src="@/assets/video/wecreatemagic_lsF4u8LF.mp4"
                   type="video/mp4">
         </video>
       </div>
@@ -103,12 +103,12 @@ onMounted(() => {
         mission & vision
       </h1>
       <div ref="missionTitle" class="text-description">
-        <span class="first-text"> We are a modern
+        <span class="first-text relative z-[33]"> We are a modern
         and innovative new media arts tech studio, creatively combining art and tech to create unique immersive experiences.</span>
-        <span class="second-text">Our mission is to bridge the gap between the virtual and physical worlds,</span>
-        <span class="third-text">offering concepts that empower you to dream beyond boundaries.</span>
+        <span class="second-text relative z-[33]">Our mission is to bridge the gap between the virtual and physical worlds,</span>
+        <span class="third-text relative z-[33]" >offering concepts that empower you to dream beyond boundaries.</span>
       </div>
-      <button class="btn-about-us flex gap-[5px] items-center">
+      <button class="btn-about-us flex gap-[5px] items-center relative z-[33]" style="position:relative; z-index: 333 !important;">
         <i class="pi pi-arrow-right text-[16px] mr-[3px] mt-[3px] h-[24px] mobile-icon"></i> About us
       </button>
     </div>
@@ -117,10 +117,10 @@ onMounted(() => {
       <div>
       </div>
       <div>
-        <div class="text-social mb-[15px]">
+        <div class="text-social mb-[15px] relative z-[33]">
           Social:
         </div>
-        <div class="flex gap-[15px]">
+        <div class="flex gap-[15px] relative z-[33]">
           <button class="btn-links">
             <i class="pi pi-instagram text-white text-[20px]"></i>
           </button>
@@ -167,7 +167,7 @@ video{
     height: 40px !important;
     padding: 12px 34px !important;
     font-size: 15px !important;
-    line-height: 140% !important; /* 21px */
+    line-height: 140% !important;
   }
   .mobile-icon {
     font-size: 14px !important;
@@ -230,6 +230,8 @@ video{
   font-weight: 500;
   margin-top: 40px;
   cursor: url("@/assets/img/Polygon.svg"), auto;
+  position: relative !important;
+  z-index: 333 !important;
 }
 
 .btn-about-us:hover {
