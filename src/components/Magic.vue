@@ -14,8 +14,18 @@
         doers. We’re a combination of human and more than human. A collaboration between art and tech.
       </div>
     </div>
-    <div>
-      <img class="magic-img" src="@/assets/img/MagicCreate.svg" alt="">
+    <div class="relative video-div">
+<!--      <img class="magic-img" src="@/assets/img/MagicCreate.svg" alt="">-->
+      <video autoplay loop muted class="magic-img" width="750" height="340" playsinline>
+        <source src="../assets/video/videoMission.mp4"
+                type="video/mp4">
+      </video>
+      <div class="text-magic-video">
+        we do it for the curious
+      </div>
+      <div class="text-magic-video-mobile">
+        We are misfits
+      </div>
     </div>
   </div>
 </template>
@@ -34,6 +44,46 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+.text-magic-video-mobile{
+  display: none;
+}
+
+.description{
+  color:  #FFF;
+  font-family: Urbanist,sans-serif;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 120%;
+  letter-spacing: -0.72px;
+  width: 477px;
+}
+.magic-img video{
+  min-width: 100%;
+  min-height: 100%;
+  width: auto !important;
+  height: auto;
+
+}
+.magic-img{
+  width: 220% !important;
+  height: 800px !important;
+  border-radius: 30px !important;
+
+}
+.text-magic-video{
+  color: var(--Yellow, #FF0);
+  text-align: right;
+  font-family: Alexandria,sans-serif;
+  font-size: 50px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 100%;
+  text-transform: uppercase;
+  position: absolute;
+  bottom: 0;
+  padding: 30px;
+}
 @media screen and (max-width: 992px){
   .mobile-img{
     display: block;
@@ -50,18 +100,41 @@
     flex-direction: column;
     gap: 30px;
   }
+  .text-magic-video-mobile{
+    color: var(--Yellow, #FF0);
+    text-align: right;
+    font-family: Alexandria,sans-serif;
+    font-size: 30px !important;
+    font-style: normal;
+    font-weight: 900;
+    line-height: 100%; /* 30px */
+    text-transform: uppercase;
+    display: block;
+    position: absolute;
+    bottom: -20px;
+    padding: 30px;
+    width: 60%;
+    right: 0%;
+  }
+  .text-magic-video{
+    display: none;
+  }
+  .magic-img{
+    border-radius: 30px !important;
+    height: auto !important;
+    width: 100%;
+    position: relative;
+    //right: 18%;
+  }
+  .magic-img video source{
+    border-radius: 30px !important;
+  }
+  .video-div{
+    border-radius: 12px !important;
+    width: 100%;
+    //overflow: hidden;
+    //border: solid white;
+  }
 }
-.description{
-  color:  #FFF;
-  font-family: Urbanist,sans-serif;
-  font-size: 24px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: 120%;
-  letter-spacing: -0.72px;
-  width: 477px;
-}
-.magic-img{
-  width: 100%;
-}
+
 </style>
