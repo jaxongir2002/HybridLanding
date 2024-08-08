@@ -1296,10 +1296,13 @@ canvas {
     font-weight: 700;
     line-height: 1.5;
     position: relative;
-    top: 40% !important;
+    top: 35% !important;
   }
   canvas{
     display: none !important;
+  }
+  .title-container{
+    top: 40% !important;
   }
 }
 .srt {

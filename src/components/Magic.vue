@@ -113,7 +113,7 @@
     position: absolute;
     bottom: -20px;
     padding: 30px;
-    width: 60%;
+    width: 80%;
     right: 0%;
   }
   .text-magic-video{

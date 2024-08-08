@@ -133,6 +133,17 @@ const interval = setInterval(() => {
   canvas{
     display: none !important;
   }
+
+  .title-container{
+    top: 40% !important;
+  }
+  .yellow-img-h{
+    top: -9% !important;
+  }
+  .yellow-img{
+    top: -9% !important;
+  }
+
 }
 .nav-logo-name {
   color: var(--White, #f9f9f9);
