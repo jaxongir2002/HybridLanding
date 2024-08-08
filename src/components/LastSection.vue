@@ -160,7 +160,7 @@ const handleMousePos = (e) => {
         <span class="second-first-letter">x</span>perience
       </div>
     </div>
-    <div id="gradient" class="gradient-overlay"></div>
+<!--    <div id="gradient" class="gradient-overlay"></div>-->
   </div>
 </template>
 

@@ -1256,7 +1256,7 @@ body::-webkit-scrollbar {
 canvas {
   position: absolute;
   width: 100%;
-  height: 1123% !important;
+  height: 1120% !important;
   top: 0;
   left: 0;
   z-index: 2;
