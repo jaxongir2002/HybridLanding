@@ -15,7 +15,6 @@
       </div>
     </div>
     <div class="relative video-div">
-<!--      <img class="magic-img" src="@/assets/img/MagicCreate.svg" alt="">-->
       <video autoplay loop muted class="magic-img" width="750" height="340" playsinline>
         <source src="../assets/video/videoMission.mp4"
                 type="video/mp4">

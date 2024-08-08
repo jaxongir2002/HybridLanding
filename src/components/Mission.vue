@@ -24,81 +24,53 @@ onMounted(() => {
   let charsThird = thirdText.chars;
 
 
-  tl.to(chars, { // Animate character elements
+  tl.to(chars, {
     color: 'white',
     duration: 1,
     stagger: 0.02,
   })
-  tl.to('.card-mission', { // Resize card mission div
-    padding: '0',
-    transition: '.5s', // Combined readability with clarity
-    duration: 1,
-    ease: "power2.inOut",
-  })
-  tl.to('.first-img', { // Fade out first image
+  tl.to('.first-img', {
     opacity: '0',
     transition: '.5s',
     duration: 1,
     ease: "power2.inOut",
-    yoyo: true, // Animate back and forth
+    yoyo: true,
   })
-  tl.to('.card-mission2', { // Move card mission 2 down
-    transform: 'translateY(-300px)',
-    transition: '.5s',
-    transitionProperty: 'all', // Ensure smooth transition
-    visibility: 'visible',
-    duration: 1,
-    ease: "power2.inOut",
-  })
-  tl.to('.first-name', { // Move first name down
+
+  tl.to('.first-name', {
     transition: '.5s',
     transform: 'translateY(-50px)',
   })
-  tl.to('.second-name', { // Move second name down
+  tl.to('.second-name', {
     transition: '.5s',
     transform: 'translateY(-25px)',
   })
 
-  tl.to(charsTwo, { // Animate second character elements (assuming charsTwo exists)
+  tl.to(charsTwo, {
     color: 'white',
     duration: 1,
     stagger: 0.02,
   })
 
 
-  tl.to(charsThird, { // Animate third character elements (assuming charsThird exists)
+  tl.to(charsThird, {
     color: 'white',
     duration: 1,
     stagger: 0.02,
   })
-  tl.to('.card-mission3', { // Move card mission 3 down
-    transform: 'translateY(-300px)',
-    transition: '.5s',
-    transitionProperty: 'all',
-    visibility: 'visible',
-    duration: 1,
-    ease: "power2.inOut",
-  })
-  tl.to('.second-name', { // This will target the element again for the 2nd animation
-    delay: 0.5, // Delay by 0.5 seconds for smooth transition
+  tl.to('.second-name', {
+    delay: 0.5,
     transition: '.5s',
     className: 'some-class'
 
   })
 
-  tl.to('.third-name', { // Move third name down
+  tl.to('.third-name', {
     transition: '.5s',
     transform: 'translateY(-50px)',
     duration: 1,
     ease: "power2.inOut",
   })
-  tl.to('.second-img', { // Fade out second image
-    opacity: '0',
-    duration: 1,
-    ease: "power2.inOut",
-  });
-
-
 
 });
 </script>
@@ -107,19 +79,16 @@ onMounted(() => {
   <div ref="logo" class="helloWorld grid grid-cols-12 pt-[80px] pb-[80px]">
     <div class="col-span-6 w-[555px] mobile-version">
       <div class="card-mission relative">
-        <img class="first-img" src="@/assets/img/monkey.svg" alt="">
-        <div class="card-mission2 ">
-          <img class="second-img" src="@/assets/img/monkey2.svg" alt="">
-        </div>
-        <div class="card-mission3">
-          <img src="@/assets/img/Monkey3.svg" alt="">
-        </div>
+        <video autoplay loop muted class="magic-img" width="750" height="340" playsinline>
+          <source src="@/assets/video/weCreateMagic.mp4"
+                  type="video/mp4">
+        </video>
       </div>
       <div class="flex text-font font-light justify-between text-white mt-[20px] leading-6">
         <ul class="overflow-hidden h-[20px]">
           <li class="first-name">WE</li>
-          <li class="second-name">MAGIC</li>
-          <li class="third-name">CREATEli</li>
+          <li class="second-name">CREATEli</li>
+          <li class="third-name">MAGIC</li>
         </ul>
         <ul class="overflow-hidden h-[20px]">
           <li class="first-name">01</li>
@@ -173,6 +142,9 @@ onMounted(() => {
 </template>
 
 <style scoped lang="scss">
+video{
+  border-radius: 8.3px !important;
+}
 @media screen and (max-width: 992px) {
   .mobile-version {
     display: none;
@@ -270,7 +242,7 @@ onMounted(() => {
   border: 1px solid #FFFFFF1A;
   padding: 10px;
   background-color: #DEDEDE0D;
-  overflow: hidden;
+  //overflow: hidden;
   width: 555px;
   height: 320px;
 }

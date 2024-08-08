@@ -276,7 +276,7 @@ const handleMousePos = (e) => {
   opacity: 0.8;
   background: linear-gradient(to top, rgb(0, 43, 255), rgb(162, 10, 255));
   filter: blur(46px);
-  -webkit-filter: blur(46px); /* For older Webkit browsers */
+  -webkit-filter: blur(46px);
 }
 
 .footer-text {
