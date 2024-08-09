@@ -80,7 +80,7 @@ onMounted(() => {
       <div class="flex text-font font-light justify-between text-white mt-[20px] leading-6">
         <ul class="overflow-hidden h-[20px]">
           <li class="first-name">WE</li>
-          <li class="second-name">CREATEli</li>
+          <li class="second-name">CREATE</li>
           <li class="third-name">MAGIC</li>
         </ul>
         <ul class="overflow-hidden h-[20px]">

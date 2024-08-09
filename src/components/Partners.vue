@@ -172,7 +172,7 @@ onMounted(() => {
               class="cards-company h-[210px] p-[80px] max-sm:p-[30px] max-sm:h-[87.761px] glow-effect">
               <img
                 class="w-full h-auto object-cover"
-                src="../assets/img/Sera.svg"
+                src="../assets/img/SelaOrginal.svg"
                 alt=""
               />
                <svg class="glow-container">
@@ -190,8 +190,7 @@ onMounted(() => {
             </div>
             <div
               class="cards-company h-[210px] p-[80px] max-sm:p-[30px] max-sm:h-[87.761px] glow-effect"
-            >
-                            <img class="w-full h-auto object-cover" src="../assets/img/empireEnter.png" alt="">
+            ><img class="w-full h-auto object-cover" src="../assets/img/empireEnter.png" alt="">
                <svg class="glow-container">
                 <rect
                   pathLength="100"
