@@ -1249,18 +1249,20 @@ function topScroll() {
     <splash-bg class="splash-bg" style="opacity: 1;"><canvas width="1602"></canvas></splash-bg>
   </div>
 </template>
-<style>
+<style lang="scss">
 body::-webkit-scrollbar {
   display: block;
 }
 canvas {
   position: absolute;
   width: 100%;
-  height: 1123vh!important;
+  height: 1120vh !important;
+  height: -webkit-calc(1120vh) !important;
+  height: -moz-calc(1120vh) !important;
+  height: calc(1135vh) !important;
   top: 0;
   left: 0;
-
-
+  background: #0e0e0e;
 }
 </style>
 
@@ -1348,6 +1350,7 @@ canvas {
   position: absolute;
   top: 50%;
   transform: translate(0, -50%);
+  z-index: 22;
 }
 
 

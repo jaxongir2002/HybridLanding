@@ -57,7 +57,7 @@ html.lenis, html.lenis body {
   --glow-blur-color: #fff;
   --glow-blur-size: 7px;
   --glow-offset: 0px;
-  --animation-speed: 9200ms;
+  --animation-speed: 40200ms;
   --container-offset: 100px;
   position: relative;
 }
@@ -85,14 +85,21 @@ html.lenis, html.lenis body {
 
 .glow-effect:is(:hover, :focus) :is(.glow-line, .glow-blur) {
   stroke-dashoffset: -600px;
-  transition: stroke-dashoffset var(--animation-speed) ease-in;
+  animation: glow-animation var(--animation-speed) linear infinite;
 }
 
 .glow-line {
   stroke: var(--glow-line-color);
   stroke-width: 2px;
 }
-
+@keyframes glow-animation {
+  0% {
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dashoffset: -600px;
+  }
+}
 .glow-blur {
   filter: blur(var(--glow-blur-size));
   stroke: var(--glow-blur-color);
@@ -100,14 +107,14 @@ html.lenis, html.lenis body {
 }
 
 .glow-effect:is(:hover, :focus) .glow-container {
-  animation: glow-visibility ease-in var(--animation-speed);
+  animation: glow-visibility 4s ease-in-out infinite;
 }
 
 @keyframes glow-visibility {
 
   0%,
   100% {
-    opacity: 0;
+    opacity: 1;
   }
 
   25%,

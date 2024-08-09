@@ -117,7 +117,7 @@ onMounted(() => {
               </div>
             </div>
           </div>
-              <svg class="glow-container">
+              <svg class="glow-container relative">
                 <rect
                   pathLength="100"
                   stroke-linecap="round"
@@ -337,11 +337,12 @@ onMounted(() => {
 .img-bg-hybrid video {
   min-width: 100%;
   min-height: 100%;
-  width: auto;
+  width: auto ;
   height: auto;
   position: absolute;
   top: 50%;
   left: 50%;
+
   transform: translate(-50%, -50%);
   //z-index: 22000000000;
 

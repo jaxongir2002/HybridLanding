@@ -1,7 +1,5 @@
 <script setup>
 import {computed, onMounted, ref} from "vue";
-import gsap from "gsap";
-import {ScrollTrigger} from "gsap/ScrollTrigger";
 import {Swiper, SwiperSlide} from 'swiper/vue';
 import {FreeMode} from "swiper/modules";
 import Lenis from "lenis";
@@ -17,66 +15,37 @@ const isMobile = ref(window.innerWidth < 762);
 let bodyOverflow = null;
 const listImg = ref([
   {
-    src: new URL("@/assets/img/OurWorks1.svg", import.meta.url),
+    src: new URL("../assets/video/firstVideo.MP4", import.meta.url),
   },
   {
-    src: new URL("@/assets/img/OurWorks2.svg", import.meta.url),
+    src: new URL("../assets/video/secondVideo.MP4", import.meta.url),
   },
   {
-    src: new URL("@/assets/img/OurWork3.svg", import.meta.url),
+    src: new URL("../assets/video/threeVideo.MP4", import.meta.url),
   },
   {
-    src: new URL("@/assets/img/OurWork4.svg", import.meta.url),
+    src: new URL("../assets/video/fiveVideo.MP4", import.meta.url),
   },
   {
-    src: new URL("@/assets/img/OurWork5.svg", import.meta.url),
+    src: new URL("../assets/video/sixVideo.MP4", import.meta.url),
   },
   {
-    src: new URL("@/assets/img/OurWork6.svg", import.meta.url),
+    src: new URL("../assets/video/sevenVideo.MP4", import.meta.url),
   },
   {
-    src: new URL("@/assets/img/OurWork7.svg", import.meta.url),
+    src: new URL("../assets/video/eightVideo.MP4", import.meta.url),
   },
   {
-    src: new URL("@/assets/img/OurWork8.svg", import.meta.url),
+    src: new URL("../assets/video/ninaVideo.MP4", import.meta.url),
   },
   {
-    src: new URL("@/assets/img/OurWork9.svg", import.meta.url),
+    src: new URL("../assets/video/thenVideo.MP4", import.meta.url),
   },
   {
-    src: new URL("@/assets/img/OurWork10.svg", import.meta.url),
+    src: new URL("../assets/video/fourVideo.MP4", import.meta.url),
   },
-  {
-    src: new URL("@/assets/img/ourworksImg1.jpg", import.meta.url),
-  },
-  {
-    src: new URL("@/assets/img/ourworksImg2.svg", import.meta.url),
-  },
-  {
-    src: new URL("@/assets/img/ourworksImg3.svg", import.meta.url),
-  },
-  {
-    src: new URL("@/assets/img/ourworksImg1.jpg", import.meta.url),
-  },
-  {
-    src: new URL("@/assets/img/ourworksImg2.svg", import.meta.url),
-  },
-  // {
-  //   src: new URL("@/assets/img/ourworksImg3.svg", import.meta.url),
-  // },
-  // {
-  //   src: new URL("@/assets/img/ourworksImg3.svg", import.meta.url),
-  // },
-  // {
-  //   src: new URL("@/assets/img/ourworksImg1.jpg", import.meta.url),
-  // },
-  // {
-  //   src: new URL("@/assets/img/ourworksImg2.svg", import.meta.url),
-  // },
-  // {
-  //   src: new URL("@/assets/img/ourworksImg3.svg", import.meta.url),
-  // },
 ]);
+const videoPlayer = ref(null);
 const containerRef = ref(null);
 
 function openModal(item, index) {
@@ -97,16 +66,29 @@ function mobile(){
     lenis.start();
   }
 }
+document.addEventListener('keydown', closeModal);
 mobile()
-
-function closeModal() {
-  showModal.value = false;
-  selectedItem.value = null;
-  document.body.style.overflow = bodyOverflow || "";
-  mobile()
+function closeModal(event) {
+  // Check if the Esc key was pressed
+  if (event.key === 'Escape') {
+    showModal.value = false;
+    selectedItem.value = null;
+    document.body.style.overflow = bodyOverflow || "";
+    mobile();
+  }else {
+    showModal.value = false;
+    selectedItem.value = null;
+    document.body.style.overflow = bodyOverflow || "";
+    mobile();
+  }
 }
 function openTab() {
   addTab.value = !addTab.value;
+  const videos = document.querySelectorAll('.cards-img');
+
+  videos.forEach(video => {
+    video;
+  });
   if (addTab.value === false) {
     document.querySelectorAll(".cards").forEach((el) => {
       el.style.transform = "translateY(0px)";
@@ -149,53 +131,16 @@ onMounted(() => {
       const walk = (x - startX) * 1.5;
       slider.scrollLeft = scrollLeft - walk;
     });
-
-    gsap.registerPlugin(ScrollTrigger);
-  const slides = document.querySelectorAll(".cards");
-  // let tl = gsap.timeline({
-  //   scrollTrigger: {
-  //     trigger: ".our-works-div",
-  //     start: "top 10%",
-  //     end: `+=${slides.length * 2}%`,
-  //     scrub: true,
-  //     isMobile: false,
-  //   },
-  // });
-  if (window.matchMedia("(min-width: 768px)").matches) {
-    // tl.to(
-    //     ".our-works-div", {
-    //       position: 'fixed',
-    //       top: 0,
-    //       zIndex: 20,
-    //       duration: 1,
-    //       transition:1
-    //     });
-    // tl.to(
-    //     ".cards", {
-    //       y: -180,
-    //       stagger: 0.01,
-    //       duration: 1
-    //     });
-
-    // tl.to(".our-works-div", {
-    //   position: 'relative',
-    //   duration: 1
-    // });
-
-    // if (showModal.value === true) {
-    //   tl.kill();
-    // }
-  }
+})
 
 
-});
 </script>
 
 <template>
   <div class="pt-[80px] pb-[80px] scroll-our-works">
     <div class="our-works-div relative">
-      <div class="nav-our-works relative">
-        <div class="nav-our-works-text">Our works</div>
+      <div class="nav-our-works relative z-[2332]">
+        <div class="nav-our-works-text relative">Our works</div>
         <div class="our-works-img relative z-[20]">
           <button v-show="!addTab" class="view-all w-[205px] mt-2">
             View all
@@ -215,11 +160,10 @@ onMounted(() => {
             class="cards"
             @click="openModal(item, index)"
           >
-            <img
-              :src="item.src"
-              alt=""
-              class="cards-img"
-            />
+            <video preload="metadata"  loop muted ref="videoPlayer" autoplay width="320" height="240" playsinline class="cards-img">
+              <source :src="item.src"
+                      type="video/mp4">
+            </video>
           </div>
         </div>
       </div>
@@ -237,11 +181,10 @@ onMounted(() => {
           <div class="cards cards-tab"
                @click="openModal(item, index)"
           >
-            <img
-                :src="item.src"
-                alt=""
-                class="cards-img cards-img-tab"
-            />
+            <video  loop muted ref="videoPlayer" autoplay width="320" height="240" playsinline class="cards-img cards-img-tab">
+              <source :src="item.src"
+                      type="video/mp4">
+            </video>
           </div>
         </swiper-slide>
       </swiper>
@@ -253,14 +196,14 @@ onMounted(() => {
       </button>
       <div
           v-if="addTab"
-          class="w-[2%] active:scale-50 transition-all relative z-[33] mt-[80px]"
+          class="w-[2%] active:scale-50 transition-all relative z-[3333] mt-[80px]"
           @click="openTab"
       >
         <img alt="" src="@/assets/img/menuTabs.svg" />
       </div>
       <div
           v-else
-          class="tabs flex active:scale-50 transition-all items-center gap-[5px] w-[2%] relative z-[33] mt-[80px]"
+          class="tabs flex active:scale-50 transition-all items-center gap-[5px] w-[2%] relative z-[3333] mt-[80px]"
           @click="openTab"
       >
         <div class="tab w-[10px] h-[20px] rounded-[2px] bg-[#404040]"></div>
@@ -273,7 +216,10 @@ onMounted(() => {
     <transition name="modal">
         <div v-if="showModal" class="modal" @click.self="closeModal">
           <div class="modal-content">
-            <img :src="selectedItem" alt="" class="modal-image" />
+            <video  loop muted autoplay ref="videoPlayer" width="320" height="240" playsinline class="modal-image">
+              <source :src="selectedItem"
+                      type="video/mp4">
+            </video>
           </div>
           <div class="name-content">Hybrid + Ferrero rocher = Result</div>
         </div>

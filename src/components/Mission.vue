@@ -29,13 +29,6 @@ onMounted(() => {
     duration: 1,
     stagger: 0.02,
   })
-  tl.to('.first-img', {
-    opacity: '0',
-    transition: '.5s',
-    duration: 1,
-    ease: "power2.inOut",
-    yoyo: true,
-  })
 
   tl.to('.first-name', {
     transition: '.5s',
