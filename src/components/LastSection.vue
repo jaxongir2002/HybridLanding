@@ -92,31 +92,6 @@ onMounted(() => {
     },
   });
 });
-const handleMousePos = (e) => {
-  const cursor = document.querySelector("#gradient");
-  const hoverElements = document.querySelectorAll(".hover-text");
-
-  const offset = cursor.offsetWidth / 2;
-  cursor.style.transition = "transform 0.2s ease-in-out";
-
-  const mouseEnterHandler = () => {
-    cursor.style.transform = "scale(5)";
-    cursor.style.backgroundColor = "#A20AFFFF";
-  };
-
-  const mouseLeaveHandler = () => {
-    cursor.style.transform = "scale(1)";
-    cursor.style.backgroundColor = "";
-  };
-
-  hoverElements.forEach((hoverElement) => {
-    hoverElement.addEventListener("mouseenter", mouseEnterHandler);
-    hoverElement.addEventListener("mouseleave", mouseLeaveHandler);
-  });
-
-  cursor.style.left = `${e.pageX - offset}px`;
-  cursor.style.top = `${e.pageY - offset}px`;
-};
 </script>
 
 <template>
@@ -151,7 +126,7 @@ const handleMousePos = (e) => {
         <img class="animation-arrow" src="@/assets/img/ArrowUp.svg" alt="" />
       </div>
     </div>
-    <div @mousemove="handleMousePos" class="big-div-last">
+    <div class="big-div-last">
       <div id="footer-text" class="footer-text hover-text">
         <span class="first-letter">H</span>
         <span class="rest-text">ybrid</span>
@@ -160,7 +135,7 @@ const handleMousePos = (e) => {
         <span class="second-first-letter">x</span>perience
       </div>
     </div>
-    <div id="gradient" class="gradient-overlay"></div>
+<!--    <div id="gradient" class="gradient-overlay"></div>-->
   </div>
 </template>
 

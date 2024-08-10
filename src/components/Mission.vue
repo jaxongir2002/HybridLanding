@@ -64,7 +64,7 @@ onMounted(() => {
     duration: 1,
     ease: "power2.inOut",
   })
-
+// document.querySelector('.pin-spacer').style.zIndex = 999;
 });
 </script>
 
@@ -101,7 +101,7 @@ onMounted(() => {
         <span class="second-text relative z-[33]">Our mission is to bridge the gap between the virtual and physical worlds,</span>
         <span class="third-text relative z-[33]" >offering concepts that empower you to dream beyond boundaries.</span>
       </div>
-      <button class="btn-about-us flex gap-[5px] items-center relative z-[33]" style="position:relative; z-index: 333 !important;">
+      <button class="btn-about-us flex gap-[5px] items-center relative z-[3399999]" style="position:relative; z-index: 333 !important;">
         <i class="pi pi-arrow-right text-[16px] mr-[3px] mt-[3px] h-[24px] mobile-icon"></i> About us
       </button>
     </div>
@@ -133,11 +133,17 @@ onMounted(() => {
   </div>
 
 </template>
-
+<style lang="scss">
+.pin-spacer{
+  position: relative;
+  z-index: 4444 !important;
+}
+</style>
 <style scoped lang="scss">
 video{
   border-radius: 8.3px !important;
 }
+
 @media screen and (max-width: 992px) {
   .mobile-version {
     display: none;

@@ -16,8 +16,11 @@ requestAnimationFrame(raf);
   <div style="background: #0e0e0e; padding: 34px 40px 34px 40px">
     <div style="max-width: 1440px; margin: auto">
       <router-view></router-view>
+
+  <canvas width="1602"></canvas>
+      </div>
     </div>
-  </div>
+
 </template>
 
 <style lang="scss" scoped>

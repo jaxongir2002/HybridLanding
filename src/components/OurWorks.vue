@@ -3,6 +3,8 @@ import {computed, onMounted, ref} from "vue";
 import {Swiper, SwiperSlide} from 'swiper/vue';
 import {FreeMode} from "swiper/modules";
 import Lenis from "lenis";
+import {ScrollTrigger} from "gsap/ScrollTrigger";
+import gsap from "gsap";
 
 const lenis = new Lenis();
 
@@ -44,10 +46,43 @@ const listImg = ref([
   {
     src: new URL("../assets/video/fourVideo.MP4", import.meta.url),
   },
+
+// keyingi 10 ta
+  {
+    src: new URL("../assets/video/firstVideo.MP4", import.meta.url),
+  },
+  {
+    src: new URL("../assets/video/secondVideo.MP4", import.meta.url),
+  },
+  {
+    src: new URL("../assets/video/threeVideo.MP4", import.meta.url),
+  },
+  {
+    src: new URL("../assets/video/fiveVideo.MP4", import.meta.url),
+  },
+  {
+    src: new URL("../assets/video/sixVideo.MP4", import.meta.url),
+  },
+  {
+    src: new URL("../assets/video/sevenVideo.MP4", import.meta.url),
+  },
+  {
+    src: new URL("../assets/video/eightVideo.MP4", import.meta.url),
+  },
+  {
+    src: new URL("../assets/video/ninaVideo.MP4", import.meta.url),
+  },
+  {
+    src: new URL("../assets/video/thenVideo.MP4", import.meta.url),
+  },
+  {
+    src: new URL("../assets/video/fourVideo.MP4", import.meta.url),
+  },
 ]);
 const videoPlayer = ref(null);
 const containerRef = ref(null);
-
+const classAddAnimation = ref(false)
+const fixNav= ref(false)
 function openModal(item, index) {
   showModal.value = true;
   selectedItem.value = item.src;
@@ -103,6 +138,7 @@ const displayedItems = computed(() => {
     return listImg.value;
   }
 });
+
 onMounted(() => {
 
     const slider = document.querySelector(".dev-card");
@@ -131,15 +167,28 @@ onMounted(() => {
       const walk = (x - startX) * 1.5;
       slider.scrollLeft = scrollLeft - walk;
     });
+
+  window.addEventListener('scroll', () => {
+    const currentScrollPos = window.pageYOffset;
+
+    if (currentScrollPos > 5900) {
+      classAddAnimation.value =true
+      fixNav.value =true
+    } else {
+      classAddAnimation.value =false
+      fixNav.value =false
+    }
+    if (currentScrollPos>6122){
+      fixNav.value =false
+    }
+  });
 })
-
-
 </script>
 
 <template>
   <div class="pt-[80px] pb-[80px] scroll-our-works">
-    <div class="our-works-div relative">
-      <div class="nav-our-works relative z-[2332]">
+    <div class="our-works-div relative" :class="{fixNav :fixNav}">
+      <div class="nav-our-works relative z-[2332]" >
         <div class="nav-our-works-text relative">Our works</div>
         <div class="our-works-img relative z-[20]">
           <button v-show="!addTab" class="view-all w-[205px] mt-2">
@@ -152,7 +201,8 @@ onMounted(() => {
         <div
           id="dev-card"
           ref="containerRef"
-          class="dev-card  h-[550px]"
+          class="dev-card h-[550px]"
+          :class="{transformTop :classAddAnimation}"
         >
           <div
             v-for="(item, index) in displayedItems"
@@ -228,6 +278,21 @@ onMounted(() => {
 </template>
 
 <style lang="scss" scoped>
+.transformTop{
+  transition: 1s;
+  transform: translateY(-500px);
+  position: relative;
+  z-index: 22;
+}
+.fixNav{
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  max-width: 1440px;
+  margin: auto;
+  z-index: 22;
+}
 @media screen and (max-width: 992px){
   .our-works-img {
     display: none;
@@ -315,11 +380,11 @@ onMounted(() => {
   flex-wrap: wrap;
   justify-content: center;
   user-select: none;
-  transition: all 0.2s;
   max-width: 75vw;
   white-space: nowrap;
   position: relative;
   right: 20px;
+  transition: 1s;
 }
 
 .dev-card-tab {

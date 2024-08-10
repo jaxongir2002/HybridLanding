@@ -1,5 +1,6 @@
 <script setup>
 import { onMounted, ref } from "vue";
+const elementRef = ref(null);
 
 onMounted(() => {
   "use strict";
@@ -1223,7 +1224,7 @@ onMounted(() => {
   }
 });
 
-const elementRef = ref(null);
+
 function topScroll() {
   window.scrollTo({
     top: 1000,
@@ -1245,24 +1246,11 @@ function topScroll() {
     </span>
 
   </section>
-  <div class="canvas-outer beneath" data-splash-bg-outer="">
-    <splash-bg class="splash-bg" style="opacity: 1;"><canvas width="1602"></canvas></splash-bg>
-  </div>
+
 </template>
 <style lang="scss">
 body::-webkit-scrollbar {
   display: block;
-}
-canvas {
-  position: absolute;
-  width: 100%;
-  height: 1120vh !important;
-  height: -webkit-calc(1120vh) !important;
-  height: -moz-calc(1120vh) !important;
-  height: calc(1135vh) !important;
-  top: 0;
-  left: 0;
-  background: #0e0e0e;
 }
 </style>
 
