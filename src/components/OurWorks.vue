@@ -3,8 +3,6 @@ import {computed, onMounted, ref} from "vue";
 import {Swiper, SwiperSlide} from 'swiper/vue';
 import {FreeMode} from "swiper/modules";
 import Lenis from "lenis";
-import {ScrollTrigger} from "gsap/ScrollTrigger";
-import gsap from "gsap";
 
 const lenis = new Lenis();
 
@@ -13,7 +11,7 @@ const showModal = ref(false);
 const selectedItem = ref(null);
 const selectedIndex = ref(-1);
 const modules = ref([FreeMode])
-const isMobile = ref(window.innerWidth < 762);
+const isMobile = window.matchMedia('(max-width: 767px)').matches;
 let bodyOverflow = null;
 const listImg = ref([
   {
@@ -132,7 +130,7 @@ function openTab() {
 }
 
 const displayedItems = computed(() => {
-  if (isMobile.value) {
+  if (isMobile) {
     return listImg.value.slice(0, 6);
   } else {
     return listImg.value;
@@ -168,9 +166,11 @@ onMounted(() => {
       slider.scrollLeft = scrollLeft - walk;
     });
 
-  window.addEventListener('scroll', () => {
+
+   window.addEventListener('scroll', () => {
     const currentScrollPos = window.pageYOffset;
 
+     if (!isMobile) {
     if (currentScrollPos > 5900) {
       classAddAnimation.value =true
       fixNav.value =true
@@ -178,10 +178,13 @@ onMounted(() => {
       classAddAnimation.value =false
       fixNav.value =false
     }
-    if (currentScrollPos>6122){
+    if (currentScrollPos > 6122){
       fixNav.value =false
     }
+     }
   });
+
+
 })
 </script>
 
