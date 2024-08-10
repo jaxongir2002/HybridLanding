@@ -330,7 +330,7 @@ video {
   left: 0;
   right: 0;
   width: 100%;
-  z-index: 3349;
+  z-index: 33499;
   background: #0E0E0E;
   margin: auto !important;
   padding: 20px !important;
@@ -405,7 +405,7 @@ video {
   padding-right: 20px;
   padding-top: 20px;
   position: absolute;
-  z-index: 33;
+  z-index: 339999;
   right: 20px;
   top: 25px;
 
