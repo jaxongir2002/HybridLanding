@@ -75,7 +75,7 @@ onMounted(() => {
 <template>
   <div class="text-center big-div relative" >
     <div class="smooth-wrapper">
-      <div class="title-containers">
+      <div class="title-containers relative z-10">
         <div class="text-work animation-text">We work with humans</div>
         <div class="text-work animation-text-two">and more than humans</div>
       </div>

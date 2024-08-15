@@ -92,7 +92,9 @@ function sixFn() {
           <img src="../assets/img/Logo.svg" alt="" @click="load">
         </div>
         <div class="navigation-menu">
-          <span class="first-animation">About</span>
+          <router-link to="/about">
+            <span class="first-animation">About</span>
+          </router-link>
           <span class="second-animation">Reels</span>
           <span class="third-animation">Community</span>
           <span class="four-animation">Blog</span>
