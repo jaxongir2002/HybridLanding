@@ -7,7 +7,6 @@
   cursor: url("../img/Polygon.svg"), auto;
 }
 
-
 canvas {
   position: fixed;
   width: 100%;
@@ -22,7 +21,6 @@ canvas {
   height: 10px !important;
 }
 
-/* Track */
 ::-webkit-scrollbar-track {
   border-radius: 10px;
   background: #000000;
@@ -33,10 +31,8 @@ canvas {
   background: #A42DEA;
   border-radius: 500px;
   width: 5px;
-
 }
 
-/* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: #A42DEA;
 }
@@ -121,7 +117,6 @@ html.lenis, html.lenis body {
 }
 
 @keyframes glow-visibility {
-
   0%,
   100% {
     opacity: 1;

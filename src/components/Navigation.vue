@@ -32,25 +32,30 @@ onMounted(() => {
 });
 
 
-function mobile(){
-  if (openMobil.value===true) {
+function mobile() {
+  if (openMobil.value === true) {
     document.body.classList.add('no-scroll');
     lenis.stop();
   } else {
     document.body.classList.remove('no-scroll');
     lenis.start();
   }
-}mobile()
+}
+
+mobile()
+
 function openMobileFn() {
-  openMobil.value=true
+  openMobil.value = true
   mobile()
 }
+
 function closeMobile() {
-  openMobil.value=false
+  openMobil.value = false
   mobile()
 }
-function load(){
-router.go()
+
+function load() {
+  router.go()
 }
 
 function firstFn() {
@@ -86,17 +91,22 @@ function sixFn() {
 
 <template>
   <div class="" :class="{ fixed: isNavFixed,'header-animation': isNavFixed,'isNavStick':isNavSticky  }">
-    <div class="" :class="{ 'w-[80%] m-auto': isNavFixed,'header-animation': 'w-[100%] m-auto','isNavStick':isNavSticky  }">
-      <div class="navigation" >
+    <div class=""
+         :class="{ 'w-[80%] m-auto': isNavFixed,'header-animation': 'w-[100%] m-auto','isNavStick':isNavSticky  }">
+      <div class="navigation">
         <div>
-          <img src="../assets/img/Logo.svg" alt="" @click="load">
+          <img src="@/assets/img/Logo.svg" alt="" @click="load">
         </div>
         <div class="navigation-menu">
           <router-link to="/about">
             <span class="first-animation">About</span>
           </router-link>
-          <span class="second-animation">Reels</span>
-          <span class="third-animation">Community</span>
+          <router-link to="/reels">
+            <span class="second-animation">Reels</span>
+          </router-link>
+          <router-link to="/community">
+            <span class="third-animation">Community</span>
+          </router-link>
           <span class="four-animation">Blog</span>
           <span class="five-animation">Brief</span>
         </div>
@@ -106,7 +116,7 @@ function sixFn() {
       </span>
           <img src="../assets/img/MenuIcon.svg" alt="">
         </div>
-        <div class="navigation-mobile" >
+        <div class="navigation-mobile">
           <img v-if="!openMobil" @click="openMobileFn" src="../assets/img/MenuIcon.svg" alt="">
           <img v-else @click="closeMobile" class="active:scale-[0.9]" src="@/assets/img/menuClose.svg" alt="">
         </div>
@@ -119,49 +129,49 @@ function sixFn() {
           <div class="flex">
             <div class="flex flex-col gap-[10px]">
               <div @mousemove="firstFn" class="menu-text flex gap-[15px]">
-        <span>
-             home
-        </span>
+              <span>
+                   home
+              </span>
                 <div class="menu-btn">
                   01
                 </div>
               </div>
               <div @mousemove="secondFn" class="menu-text flex gap-[15px]">
-        <span>
-             about
-        </span>
+              <span>
+                   about
+              </span>
                 <div class="menu-btn">
                   02
                 </div>
               </div>
               <div @mousemove="threeFn" class="menu-text flex gap-[15px]">
-        <span>
-          Reels
-        </span>
+                <span>
+                  Reels
+                </span>
                 <div class="menu-btn">
                   03
                 </div>
               </div>
               <div @mousemove="fourFn" class="menu-text flex gap-[15px]">
-        <span>
-           Community
-        </span>
+                <span>
+                   Community
+                </span>
                 <div class="menu-btn">
                   04
                 </div>
               </div>
               <div @mousemove="fiveFn" class="menu-text flex gap-[15px]">
-        <span>
-        Blog
-        </span>
+              <span>
+              Blog
+              </span>
                 <div class="menu-btn">
                   05
                 </div>
               </div>
               <div @mousemove="sixFn" class="menu-text flex gap-[15px]">
-        <span>
-           brief
-        </span>
+                <span>
+                   brief
+                </span>
                 <div class="menu-btn">
                   06
                 </div>
@@ -170,11 +180,10 @@ function sixFn() {
             <div class="card-change-video">
               <Transition>
                 <video autoplay loop muted width="320" height="240" playsinline v-show="changeFirstVideo">
-                  <source src="../assets/video/ac57976749d126f18128abad5cec0903ee50f1bcaab2b1941b03887e69ae9a29_rbIGpUGF.mp4"
-                          type="video/mp4">
+                  <source
+                      src="../assets/video/ac57976749d126f18128abad5cec0903ee50f1bcaab2b1941b03887e69ae9a29_rbIGpUGF.mp4"
+                      type="video/mp4">
                 </video>
-
-                <!--            <img src="@/assets/img/menuLogo.svg" alt="">-->
               </Transition>
               <Transition>
 
@@ -185,20 +194,23 @@ function sixFn() {
               </Transition>
               <Transition>
                 <video autoplay loop muted width="320" height="240" playsinline v-show="changeThreeVideo">
-                  <source src="../assets/video/84d3ee1d02f80623a9f94aaf876be15f12f8030d7abc558fa81e43cf65067340_FU8j2xww.mp4"
-                          type="video/mp4">
+                  <source
+                      src="../assets/video/84d3ee1d02f80623a9f94aaf876be15f12f8030d7abc558fa81e43cf65067340_FU8j2xww.mp4"
+                      type="video/mp4">
                 </video>
               </Transition>
               <Transition>
                 <video autoplay loop muted width="320" height="240" playsinline v-show="changeFourVideo">
-                  <source src="../assets/video/ac57976749d126f18128abad5cec0903ee50f1bcaab2b1941b03887e69ae9a29_rbIGpUGF.mp4"
-                          type="video/mp4">
+                  <source
+                      src="../assets/video/ac57976749d126f18128abad5cec0903ee50f1bcaab2b1941b03887e69ae9a29_rbIGpUGF.mp4"
+                      type="video/mp4">
                 </video>
               </Transition>
               <Transition>
                 <video autoplay loop muted width="320" height="240" playsinline v-show="changeFiveVideo">
-                  <source src="../assets/video/91ec3544e41e9afbff63c3d000a9a5296073707d839b265710597bd574d824eb_ndrKpibw.mp4"
-                          type="video/mp4">
+                  <source
+                      src="../assets/video/91ec3544e41e9afbff63c3d000a9a5296073707d839b265710597bd574d824eb_ndrKpibw.mp4"
+                      type="video/mp4">
                 </video>
               </Transition>
               <Transition>
@@ -278,15 +290,15 @@ function sixFn() {
   </div>
 
 
-
 </template>
 <style lang="scss">
-.no-scroll{
+.no-scroll {
   overflow: hidden !important;
 
 }
-@media screen and (max-width: 992px){
-  body{
+
+@media screen and (max-width: 992px) {
+  body {
     width: 100% !important;
     overflow-x: hidden;
   }
@@ -304,6 +316,7 @@ function sixFn() {
 .v-leave-to {
   opacity: 0;
 }
+
 .card-change-video {
   width: 100px;
   height: 120px;
@@ -337,14 +350,17 @@ video {
   margin: auto !important;
   padding: 20px !important;
 }
-.menuUi{
+
+.menuUi {
   height: 90vh !important;
   top: 20px !important;
   right: 0 !important;
 }
-.isNavStick{
+
+.isNavStick {
   animation: header-animation-another .5s linear;
 }
+
 @keyframes header-animation-another {
   from {
     transform: translateY(0%);
@@ -353,6 +369,7 @@ video {
     transform: translateY(-100%);
   }
 }
+
 .header-animation {
   animation: header-animation .5s linear;
 }
@@ -365,6 +382,7 @@ video {
     transform: translateY(0);
   }
 }
+
 .navigation-mobile {
   display: none;
 }
@@ -450,7 +468,7 @@ video {
   border-color: #BF56FF;
 }
 
-@media screen and (max-width: 992px){
+@media screen and (max-width: 992px) {
   /* Mobile styles */
   .navigation-menu {
     display: none !important;
@@ -461,7 +479,7 @@ video {
   .navigation-mobile {
     display: block;
   }
-  .mobileFixed{
+  .mobileFixed {
     height: 75vh !important;
   }
 
@@ -470,7 +488,7 @@ video {
 .menu-mobile {
   width: 100% !important;
   background: #0E0E0E;
-  height:50vh;
+  height: 50vh;
   z-index: 33;
   display: flex;
   flex-direction: column;
@@ -480,7 +498,7 @@ video {
   top: 140px;
 
   .text-mobile {
-    color:  #F9F9F9;
+    color: #F9F9F9;
     text-align: center;
     font-family: Alexandria, sans-serif;
     font-size: 25px;
@@ -514,6 +532,7 @@ video {
     color: #A42DEA;
   }
 }
+
 .navigation {
   display: flex;
   justify-content: space-between;
@@ -522,6 +541,7 @@ video {
   position: relative;
   z-index: 9999 !important;
   transition: 1s ease-in-out;
+
   &-menu {
     display: flex;
     gap: 60px;
@@ -531,10 +551,12 @@ video {
     font-weight: 700;
     color: white;
   }
+
   &-menu span {
     cursor: url("@/assets/img/Polygon.svg"), auto;
   }
-  &-magic{
+
+  &-magic {
     display: flex;
     gap: 20px;
     align-items: center;
@@ -545,6 +567,7 @@ video {
     color: white;
   }
 }
+
 .first-animation {
   opacity: 0;
   animation: up-to-down .4s forwards;
@@ -571,12 +594,13 @@ video {
   animation-delay: .6s;
   transform: translateY(10px);
 }
+
 .five-animation {
-   opacity: 0;
-   animation: up-to-down .4s forwards;
-   animation-delay: .7s;
-   transform: translateY(10px);
- }
+  opacity: 0;
+  animation: up-to-down .4s forwards;
+  animation-delay: .7s;
+  transform: translateY(10px);
+}
 
 
 @keyframes up-to-down {
@@ -589,11 +613,13 @@ video {
     opacity: 1;
   }
 }
-.magic-animation{
+
+.magic-animation {
   opacity: 0;
   animation: left-to-right .4s linear forwards;
   transform: translateX(60px);
 }
+
 @keyframes left-to-right {
   0% {
     opacity: 0;

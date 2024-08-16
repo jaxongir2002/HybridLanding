@@ -1,6 +1,5 @@
 <script setup>
-
-import {onMounted, ref} from "vue";
+import {onMounted} from "vue";
 
 onMounted(() => {
   const flipCards = document.querySelectorAll('.flip-card');
