@@ -45,7 +45,7 @@ const listImg = ref([
     src: new URL("../assets/video/fourVideo.MP4", import.meta.url),
   },
 
-// keyingi 10 ta
+// second 10
   {
     src: new URL("../assets/video/firstVideo.MP4", import.meta.url),
   },
