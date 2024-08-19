@@ -1,18 +1,19 @@
 <script setup>
 import {computed, onMounted, ref} from "vue";
 import {Swiper, SwiperSlide} from 'swiper/vue';
-import {FreeMode, Keyboard} from "swiper/modules";
+import {FreeMode, Keyboard, Navigation} from "swiper/modules";
 import Lenis from "lenis";
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
+
 const lenis = new Lenis();
 
-const addTab = ref(true);
+const addTab = ref(false);
 const showModal = ref(false);
 const selectedItem = ref(null);
 const selectedIndex = ref(-1);
-const modules = ref([FreeMode, Keyboard])
+const modules = ref([FreeMode, Keyboard, Navigation])
 const isMobile = window.matchMedia('(max-width: 767px)').matches;
 let bodyOverflow = null;
 const listImg = ref([
@@ -137,74 +138,15 @@ function openTab() {
 
 const displayedItems = computed(() => {
   if (isMobile) {
-    addTab.value = false
-    listImg.value.slice(0, 6);
+  return  listImg.value.slice(0, 6);
   } else {
     return listImg.value;
   }
 });
-
-onMounted(() => {
-  window.addEventListener('scroll', () => {
-    const currentScrollPos = window.pageYOffset;
-
-    if (!isMobile) {
-      if (currentScrollPos > 5900) {
-        classAddAnimation.value = true
-        fixNav.value = true
-      } else {
-        classAddAnimation.value = false
-        fixNav.value = false
-      }
-      if (currentScrollPos > 6122) {
-        fixNav.value = false
-      }
-    }
-  });
-
-  const nextButton = document.querySelector('.next-slider'); // Optional
-  let currentSlideIndex = 0;
-  const swiperSlide = document.querySelector('.swiper-wrapper');
-  const swiperSlides = document.querySelectorAll('.swiper-slide');
-  const prevButton = document.querySelector('.prev-slider');
-
-  function nextSlide() {
-    const slideWidth = swiperSlides[0].clientWidth;
-    swiperSlide.style.transform = `translate3d(-${currentSlideIndex * slideWidth + 15}px, 0px, 0px)`;
-    swiperSlide.style.transition = '500ms';
-    console.log('Slide moved by slide width');
-  }
-
-  nextButton.addEventListener('click', () => {
-    if (currentSlideIndex < swiperSlides.length - 4) {
-      currentSlideIndex++;
-      nextSlide();
-      nextButton.style.background = '#BF56FF'
-      nextButton.style.transition = '500ms';
-      prevButton.style.background = 'transparent'
-    } else {
-      console.warn('Cannot go to next slide (already at last slide).');
-    }
-  });
-
-  prevButton.addEventListener('click', () => {
-    if (currentSlideIndex > 0) {
-      currentSlideIndex--;
-      nextSlide();
-      nextButton.style.background = 'transparent'
-      prevButton.style.background = '#BF56FF'
-      prevButton.style.transition = '500ms';
-    } else {
-      console.warn('Cannot go to previous slide (already at first slide).');
-    }
-  });
-
-})
-
 </script>
 
 <template>
-  <div class="pt-[80px] pb-[80px] scroll-our-works">
+  <div class="pt-[80px] pb-[80px] scroll-our-works  ">
     <div class="our-works-div relative" :class="{fixNav :fixNav}">
       <div class="nav-our-works relative z-[2332]">
         <div class="nav-our-works-text relative">Our works</div>
@@ -215,7 +157,7 @@ onMounted(() => {
         </div>
       </div>
 
-      <div class="flex justify-center items-center relative" v-if="!addTab">
+      <div class="flex justify-center items-center relative " v-if="!addTab">
         <div
             id="dev-card"
             ref="containerRef"
@@ -236,29 +178,31 @@ onMounted(() => {
           </div>
         </div>
       </div>
+      <div v-if="addTab" class="reels-video">
+        <swiper
+            :slidesPerView="4"
+            :spaceBetween="5"
+            :freeMode="true"
+            :keyboard="true"
+            :navigation="true"
+            :modules="modules"
+            class="mySwiper mt-[84px]"
+        >
+          <swiper-slide v-for="(item, index) in listImg"
+                        :key="index">
+            <div class="cards cards-tab"
+                 @click="openModal(item, index)"
+            >
+              <video loop muted ref="videoPlayer" autoplay width="320" height="240" playsinline
+                     class="cards-img cards-img-tab">
+                <source :src="item.src"
+                        type="video/mp4">
+              </video>
+            </div>
+          </swiper-slide>
+        </swiper>
+      </div>
 
-      <swiper v-if="addTab"
-              :slidesPerView="4"
-              :spaceBetween="5"
-              :freeMode="true"
-              :keyboard="true"
-
-              :modules="modules"
-              class="mySwiper mt-[84px]"
-      >
-        <swiper-slide v-for="(item, index) in listImg"
-                      :key="index">
-          <div class="cards cards-tab"
-               @click="openModal(item, index)"
-          >
-            <video loop muted ref="videoPlayer" autoplay width="320" height="240" playsinline
-                   class="cards-img cards-img-tab">
-              <source :src="item.src"
-                      type="video/mp4">
-            </video>
-          </div>
-        </swiper-slide>
-      </swiper>
       <button v-show="isMobile" class="view-all m-auto absolute left-0 right-0 w-[250px] z-[1] bottom-[-180px]">
         See all
       </button>
@@ -279,14 +223,6 @@ onMounted(() => {
         <div class="active-tab w-[10px] h-[22px] rounded-[2px] bg-[#fff]"></div>
         <div class="tab w-[10px] h-[20px] rounded-[2px] bg-[#404040]"></div>
       </div>
-      <div v-show="addTab" class="flex gap-[20px] float-end left-0 relative bottom-[55px] z-10">
-        <div class="prev-slider flex justify-center items-center ">
-          <i class="pi pi-arrow-left text-white text-[22px]"></i>
-        </div>
-        <div class="next-slider prev-slider flex justify-center items-center">
-          <i class="pi pi-arrow-right text-white text-[22px]"></i>
-        </div>
-      </div>
     </div>
 
     <transition name="modal">
@@ -303,7 +239,32 @@ onMounted(() => {
   </div>
 </template>
 
+<style lang="scss">
+.reels-video {
+  position: relative;
+
+  .swiper-button-prev {
+    position: absolute !important;
+    top: 590px !important;
+    left: 85% !important;
+    z-index: 3333 !important;
+  }
+
+  .swiper-button-next {
+    position: absolute !important;
+    top: 590px !important;
+    right: 5% !important;
+    z-index: 3333 !important;
+  }
+
+  .swiper {
+    position: static !important;
+
+  }
+}
+</style>
 <style lang="scss" scoped>
+
 .prev-slider {
   width: 50px;
   height: 50px;

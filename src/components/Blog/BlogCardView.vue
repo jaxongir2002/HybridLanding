@@ -3,23 +3,37 @@ import NavigationMenu from "@/components/Navigation.vue";
 import {Swiper, SwiperSlide} from "swiper/vue";
 import {FreeMode} from "swiper/modules";
 import {ref} from "vue";
-import { Navigation } from 'swiper/modules';
+import {Navigation} from 'swiper/modules';
 import LastSection from "@/components/LastSection.vue";
 
-const modules = ref([FreeMode,Navigation])
+const modules = ref([FreeMode, Navigation])
+const isMobile = window.matchMedia('(max-width: 767px)').matches;
+
 </script>
 
 <template>
   <NavigationMenu/>
   <div class="mt-[100px] grid grid-cols-12 mb-[80px]">
-    <div class="col-span-4 flex flex-col justify-between">
+    <div class="max-sm:block col-span-12 hidden">
+      <div class="view-blog-first-text">
+        A gaming revolution of interactive and interconnected playground of fun and experiences🕹️👾🎮
+      </div>
+      <div class="text-little-first flex  gap-[32px] mt-2.5 items-center">
+        Written by:
+        <div class="flex gap-2.5 items-center">
+          <img src="@/assets/img/elllipseBlog.svg" alt="">
+          Username
+        </div>
+      </div>
+    </div>
+    <div class="col-span-4 max-sm:col-span-12 flex flex-col justify-between blog-view-video">
       <div class="card-video-blob">
         <video autoplay loop muted playsinline>
           <source src="@/assets/video/91ec3544e41e9afbff63c3d000a9a5296073707d839b265710597bd574d824eb_ndrKpibw.mp4"
                   type="video/mp4">
         </video>
       </div>
-      <div class="flex gap-[16px] mt-[12px]">
+      <div class="flex gap-[16px] mt-[12px] max-sm:hidden">
         <div class="date">
           14.06.2024
         </div>
@@ -30,11 +44,11 @@ const modules = ref([FreeMode,Navigation])
 
       </div>
     </div>
-    <div class="col-span-8">
-      <div class="view-blog-first-text">
+    <div class="col-span-8 max-sm:col-span-12">
+      <div class="view-blog-first-text max-sm:hidden">
         A gaming revolution of interactive and interconnected playground of fun and experiences🕹️👾🎮
       </div>
-      <div class="text-little-first flex  gap-[32px] mt-2.5 items-center">
+      <div class="text-little-first flex max-sm:hidden gap-[32px] mt-2.5 items-center">
         Written by:
         <div class="flex gap-2.5 items-center">
           <img src="@/assets/img/elllipseBlog.svg" alt="">
@@ -47,12 +61,22 @@ const modules = ref([FreeMode,Navigation])
         immersive worlds, connect with players globally, and enjoy endless entertainment. Get ready to redefine your
         gaming journey with cutting-edge technology and thrilling adventures.
       </div>
-      <div class="text-explore flex items-center mt-[80px]">
+      <div class="max-sm:flex gap-[16px] mt-[12px] hidden">
+        <div class="date">
+          14.06.2024
+        </div>
+        <img src="@/assets/img/LineBlog.svg" alt="">
+        <div class="date">
+          Updates
+        </div>
+
+      </div>
+      <div class="text-explore flex items-center mt-[80px] max-sm:hidden">
         Explore more <img class="me-[5px]" src="@/assets/img/Arrow.svg" alt=""/>
       </div>
     </div>
-    <div class="col-span-4"></div>
-    <div class="col-span-8">
+    <div class="col-span-4 max-sm:col-span-12 "></div>
+    <div class="col-span-8 max-sm:col-span-12">
       <div class="bg-[#F9F9F9] h-[1px] w-[120px] mt-[60px]"></div>
       <div class="description-blog mt-[40px]">
         Embark on a new era of gaming where an interactive and interconnected playground of fun and experiences awaits.
@@ -98,13 +122,31 @@ const modules = ref([FreeMode,Navigation])
     latest articles
   </div>
   <swiper
-      :slidesPerView="2"
+      :slidesPerView="1"
       :spaceBetween="20"
       :freeMode="true"
       :pagination="{ clickable: true }"
       :modules="modules"
       class="mySwiper"
-      :navigation="true"
+      :navigation="!isMobile"
+      :breakpoints="{
+      '@0.00': {
+        slidesPerView: 1,
+        spaceBetween: 10,
+      },
+      '@0.75': {
+        slidesPerView: 2,
+        spaceBetween: 20,
+      },
+      '@1.00': {
+        slidesPerView: 3,
+        spaceBetween: 40,
+      },
+      '@1.50': {
+        slidesPerView: 2,
+        spaceBetween: 50,
+      },
+    }"
   >
     <swiper-slide v-for="(item, index) in 5" :key="index">
       <div class="card-blog grid grid-cols-12 gap-5 relative z-20 mt-[40px]">
@@ -141,18 +183,7 @@ const modules = ref([FreeMode,Navigation])
 </template>
 
 <style lang="scss">
-.swiper-button-prev{
-  width: 60px !important;
-  height: 60px !important;
-  border-radius: 500px !important;
-  background: linear-gradient(#0E0E0E, #0E0E0E) padding-box,
-  linear-gradient(0deg, transparent 20%, #FFFFFF54, #FFFFFF54) border-box;
-  border: 1px solid transparent;
-  cursor: pointer;
-  transform-origin: right bottom;
-  transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
-}
-.swiper-button-next{
+.swiper-button-prev {
   width: 60px !important;
   height: 60px !important;
   border-radius: 500px !important;
@@ -164,7 +195,19 @@ const modules = ref([FreeMode,Navigation])
   transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
 }
 
- .swiper-button-next {
+.swiper-button-next {
+  width: 60px !important;
+  height: 60px !important;
+  border-radius: 500px !important;
+  background: linear-gradient(#0E0E0E, #0E0E0E) padding-box,
+  linear-gradient(0deg, transparent 20%, #FFFFFF54, #FFFFFF54) border-box;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transform-origin: right bottom;
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+}
+
+.swiper-button-next {
   &::after {
     content: '';
   }
@@ -179,12 +222,14 @@ const modules = ref([FreeMode,Navigation])
     width: 34px;
     height: 34px;
   }
-   &:hover {
-     background: var(--Purple, #BF56FF) !important;
-     cursor: url("@/assets/img/Polygon.svg"), auto;
-   }
+
+  &:hover {
+    background: var(--Purple, #BF56FF) !important;
+    cursor: url("@/assets/img/Polygon.svg"), auto;
+  }
 }
-.swiper-button-prev{
+
+.swiper-button-prev {
   &::after {
     content: '';
   }
@@ -199,6 +244,7 @@ const modules = ref([FreeMode,Navigation])
     width: 34px;
     height: 34px;
   }
+
   &:hover {
     background: var(--Purple, #BF56FF) !important;
     cursor: url("@/assets/img/Polygon.svg"), auto;
@@ -206,6 +252,29 @@ const modules = ref([FreeMode,Navigation])
 }
 </style>
 <style scoped lang="scss">
+@media screen and (max-width: 992px) {
+  .blog-view-video {
+    grid-column: span 12 / span 12;
+  }
+  .view-blog-first-text {
+    font-size: 20px !important;
+  }
+  .card-video-blob {
+    width: 100% !important;
+    height: 92% !important;
+    margin-top: 20px !important;
+  }
+  .blob-content {
+    font-size: 16px !important;
+  }
+  .header-description {
+    font-size: 20px !important;
+  }
+  .slider-header {
+    margin-top: 5px !important;
+  }
+}
+
 .card-video-blob {
   border-radius: 8.4px;
   border: 0.7px solid rgba(255, 255, 255, 0.2);

@@ -1,9 +1,11 @@
 <script setup>
 
+import BriefCoverMobile from "@/components/Brief/BriefCoverMobile.vue";
 </script>
 
 <template>
-  <div class="mt-[150px] mb-[100px]">
+  <BriefCoverMobile class="hidden max-sm:block"/>
+  <div class="mt-[150px] mb-[100px] max-sm:hidden">
     <div class="flex justify-between items-center">
       <div class="cover-text-brief">
         Let`s make

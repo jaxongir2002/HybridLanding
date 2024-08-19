@@ -1,5 +1,4 @@
 <script setup>
-
 import {onMounted} from "vue";
 import gsap from "gsap";
 import {ScrollTrigger} from "gsap/ScrollTrigger";
@@ -17,7 +16,6 @@ onMounted(() => {
   });
   let mySplitText = new SplitText(".scrolling-white-text", {type: "chars"});
   let chars = mySplitText.chars;
-
 
   tl.to(chars, {
     color: 'white',
@@ -46,6 +44,18 @@ onMounted(() => {
 </template>
 
 <style scoped lang="scss">
+@media screen and (max-width: 992px){
+  .text-header{
+    font-size: 20px !important;
+  }
+  .text-description{
+    font-size: 16px !important;
+    width: 281px !important;
+  }
+  .about-text-title{
+    margin-top: 0 !important;
+  }
+}
 .text-header {
   color: var(--White, #F9F9F9);
   font-family: Alexandria, sans-serif;

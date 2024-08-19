@@ -36,9 +36,22 @@ onMounted(() => {
 <style scoped lang="scss">
 @media screen and (max-width: 992px) {
   .card-img-slider {
-    width: 280px !important;
-    height: 429px !important;
+    height: 196px !important;
     margin-top: 20px !important;
+    animation: translateYAnimation 2s linear forwards, widthChange 2s forwards;
+    position: relative !important;
+    top: 60px !important;
+    width: 100% !important;
+    padding: 10px !important;
+  }
+  .text-breath{
+    font-size: 20px !important;
+    line-height: 100% !important;
+    font-weight: 500 !important;
+    text-align: left !important;
+  }
+  .container-breath{
+   position: relative !important;
   }
 }
 

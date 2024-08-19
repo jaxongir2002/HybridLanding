@@ -10,13 +10,13 @@ function topScroll() {
 <template>
   <section id="container">
     <div class="title-container">
-      <div class="flex justify-between items-end gap-[130px]">
+      <div class="flex justify-between items-end gap-[130px] max-sm:gap-0 max-sm:w-full">
         <div class="title-logo">Hybrid</div>
         <div class="text-magic text-left">
           Content creation
         </div>
       </div>
-      <div class="flex justify-between items-end gap-[130px]">
+      <div class="flex justify-between items-end gap-[130px] max-sm:gap-0 max-sm:w-full">
         <div class="text-magic">
           Magic creation
         </div>
@@ -35,12 +35,13 @@ function topScroll() {
 <style scoped lang="scss">
 @media screen and (max-width: 992px) {
   .title-logo {
-    font-size: 70px !important;
-    line-height: 55px !important;
+    font-size: 45px !important;
+    line-height: 98% !important;
   }
-  .title-text {
-    font-size: 46.5px !important;
+  .text-magic {
+    font-size: 12px !important;
     line-height: 100% !important;
+    width: 87px !important;
   }
   .glass-effect {
     width: 320px !important;

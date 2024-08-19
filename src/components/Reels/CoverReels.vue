@@ -1,22 +1,32 @@
+<script setup>
+function topScroll() {
+  window.scrollTo({
+    top: 1000,
+    behavior: "smooth",
+  });
+}
+</script>
+
 <template>
   <section id="container" class="">
     <div class="title-container">
       <div class="title-logo">Our Works</div>
       <div class="glass-effect"></div>
     </div>
-  </section>
 
+    <span class="text-scroll" @click="topScroll">
+      Scroll to experience magic
+      <img class="animation-arrow" src="@/assets/img/Arrow.svg" alt=""/>
+    </span>
+  </section>
 </template>
 
 <style scoped lang="scss">
-@media screen and (max-width: 992px){
+@media screen and (max-width: 992px) {
   .title-logo {
-    font-size: 70px !important;
-    line-height: 55px !important;
-  }
-  .title-text {
-    font-size: 46.5px !important;
+    font-size: 50px !important;
     line-height: 100% !important;
+    text-align: center;
   }
   .glass-effect {
     width: 320px !important;
@@ -31,13 +41,14 @@
     position: relative;
     top: 35% !important;
   }
-  canvas{
+  canvas {
     display: none !important;
   }
-  .title-container{
+  .title-container {
     top: 40% !important;
   }
 }
+
 #container {
   display: flex;
   flex-direction: column;
@@ -80,7 +91,7 @@
 }
 
 .glass-effect {
-  width: 770px;
+  width: 960px;
   height: 80px;
   border-radius: 30px;
   background: #0000000d;
@@ -101,5 +112,20 @@
   100% {
     opacity: 1;
   }
+}
+.text-scroll {
+  font-family: "Urbanist", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 19px;
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background: transparent;
+  margin-bottom: 101px;
+  position: relative;
+  z-index: 22;
+  top: 40% !important;
 }
 </style>

@@ -7,13 +7,19 @@ function topScroll() {
 }
 </script>
 
-<
 <template>
   <section id="container" class="">
     <div class="title-container">
-      <div class="title-logo">Community</div>
-      <div class="glass-effect-community hidden"></div>
-      <div class="title-text">Hybrid + Artist = magic</div>
+      <div class="title-logo">Hybrid Lab</div>
+      <div class="glass-effect"></div>
+      <div class="flex justify-between w-[965px] max-sm:w-[90%]">
+        <div class="text-trials">
+          Trials
+        </div>
+        <div class="text-trials">
+          Socials
+        </div>
+      </div>
     </div>
     <span class="text-scroll" @click="topScroll">
       Scroll to experience magic
@@ -21,29 +27,22 @@ function topScroll() {
     </span>
 
   </section>
-
 </template>
 
 <style scoped lang="scss">
-
 @media screen and (max-width: 992px) {
   .title-logo {
     font-size: 40px !important;
+    line-height: 55px !important;
+  }
+  .text-trials {
+    font-size: 16px !important;
     line-height: 100% !important;
   }
-  .title-text {
-    display: none;
-  }
-  .glass-effect-community {
+  .glass-effect {
     width: 320px !important;
     height: 40px !important;
-    transform: translateY(20px) !important;
-    display: block !important;
-    position: absolute;
-    top: 5px;
-    border-radius: 15px;
-    background: rgba(0, 0, 0, 0.05) !important;
-    backdrop-filter: blur(2px) !important;
+    transform: translateY(25px) !important;
   }
   .text-scroll {
     font-size: 12px !important;
@@ -53,23 +52,9 @@ function topScroll() {
     position: relative;
     top: 35% !important;
   }
-  canvas {
-    display: none !important;
-  }
   .title-container {
     top: 40% !important;
   }
-}
-
-.srt {
-  width: 99.5vw !important;
-  top: -75px;
-  position: absolute;
-}
-
-.project-twelve__background {
-  width: 100%;
-  height: 60%;
 }
 
 .animation-arrow {
@@ -95,6 +80,16 @@ function topScroll() {
   height: 100vh;
 }
 
+.text-trials {
+  color: var(--White, #F9F9F9);
+  font-family: Alexandria,sans-serif;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 130%; /* 41.6px */
+  text-transform: uppercase;
+}
+
 .title-container {
   display: flex;
   flex-direction: column;
@@ -103,8 +98,9 @@ function topScroll() {
   margin: 0;
   position: absolute;
   top: 50%;
-  transform: translate(0, -50%);
+  transform: translate(0, -80%);
   z-index: 22;
+  width: 100%;
 }
 
 
@@ -113,20 +109,9 @@ function topScroll() {
   text-transform: uppercase;
   color: #fff;
   font-weight: 900;
-  font-size: 130px;
-  line-height: 130px;
+  font-size: 140px;
+  line-height: 100%;
   transition: 1s;
-}
-
-.title-text {
-  font-family: "Alexandria", sans-serif;
-  text-transform: uppercase;
-  color: #fff;
-  font-weight: 500;
-  font-size: 24px;
-  line-height: 31px;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-  transition: all 0.3s ease-in-out;
 }
 
 @keyframes dashboard-animation {
@@ -136,21 +121,6 @@ function topScroll() {
   to {
     transform: scale(1);
   }
-}
-
-.glass-effect {
-  width: 770px;
-  height: 80px;
-  border-radius: 30px;
-  background: #0000000d;
-  backdrop-filter: blur(5px);
-  position: relative;
-  bottom: 45px;
-  box-shadow: 0 4px 30px #0000000d;
-  opacity: 0;
-  animation: glass-effect 0.4s forwards;
-  animation-delay: 0.5s;
-  transform: translateY(10px);
 }
 
 @keyframes glass-effect {
@@ -176,5 +146,31 @@ function topScroll() {
   position: relative;
   z-index: 22;
   top: 40% !important;
+}
+
+.text-magic {
+  color: var(--White, #F9F9F9);
+  font-family: Alexandria, sans-serif;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 130%; /* 31.2px */
+  text-transform: uppercase;
+  width: 177px;
+}
+
+.glass-effect {
+  width: 965px;
+  height: 80px;
+  border-radius: 30px;
+  background: #0000000d;
+  backdrop-filter: blur(5px);
+  position: relative;
+  bottom: 45px;
+  box-shadow: 0 4px 30px #0000000d;
+  opacity: 0;
+  animation: glass-effect 0.4s forwards;
+  animation-delay: 0.5s;
+  transform: translateY(10px);
 }
 </style>

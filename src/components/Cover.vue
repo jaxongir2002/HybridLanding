@@ -753,8 +753,8 @@ function topScroll() {
     </span>
 
   </section>
-
 </template>
+
 <style lang="scss">
 body::-webkit-scrollbar {
   display: block;
@@ -762,18 +762,6 @@ body::-webkit-scrollbar {
 </style>
 
 <style scoped lang="scss">
-.canvas-outer.beneath{
-  z-index: 333;
-}
-.splash-bg, .splash-bg canvas{
-  height: 100%;
-  position: absolute;
-  bottom: auto;
-  left: 0;
-  right: auto;
-  top: 0;
-  width: 100%;
-}
 @media screen and (max-width: 992px){
   .title-logo {
     font-size: 70px !important;
@@ -796,17 +784,9 @@ body::-webkit-scrollbar {
     position: relative;
     top: 35% !important;
   }
-  canvas{
-    display: none !important;
-  }
   .title-container{
     top: 40% !important;
   }
-}
-.srt {
-  width: 99.5vw !important;
-  top: -75px;
-  position: absolute;
 }
 
 .project-twelve__background {
@@ -847,8 +827,6 @@ body::-webkit-scrollbar {
   transform: translate(0, -50%);
   z-index: 22;
 }
-
-
 
 .title-logo {
   font-family: "Alexandria", sans-serif;

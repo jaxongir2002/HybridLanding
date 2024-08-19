@@ -22,7 +22,7 @@
                 type="video/mp4">
       </video>
     </div>
-    <div class="card-img-slider col-span-8 mt-[140px] w-full">
+    <div class="card-img-slider col-span-8 col mt-[140px] w-full">
       <video autoplay loop muted playsinline>
         <source src="@/assets/video/ac57976749d126f18128abad5cec0903ee50f1bcaab2b1941b03887e69ae9a29_rbIGpUGF.mp4"
                 type="video/mp4">
@@ -37,6 +37,7 @@
     width: 280px !important;
     height: 429px !important;
     margin-top: 20px !important;
+    grid-column: span 12 / span 12;
   }
 }
 .slider-container {

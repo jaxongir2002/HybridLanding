@@ -12,7 +12,7 @@ function topScroll() {
     <div class="title-container">
       <div class="title-logo">We are</div>
       <div ref="elementRef" class="title-logo relative lg:left-[240px] mobile-title">misfits</div>
-      <div class="glass-effect"></div>
+      <div class="glass-effect left-[190px]"></div>
     </div>
     <div class="title-footer w-[20%] title-footer-mobile hidden">
       We are misfits; we are not an agency, and we don’t just do production; we are a combination of both thinkers and

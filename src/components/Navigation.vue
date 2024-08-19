@@ -119,6 +119,9 @@ function sixFn() {
           <router-link to="/studio">
             <span class="five-animation">Studio</span>
           </router-link>
+          <router-link to="/lab">
+            <span class="five-animation">Lab</span>
+          </router-link>
         </div>
         <div class="navigation-magic" @click="openMenu=true">
       <span class="magic-animation" :class="{ 'animate': openMenu }">

@@ -17,15 +17,15 @@ const modules = ref([FreeMode, Navigation])
         :navigation="true"
     >
       <swiper-slide v-for="(item, index) in 5" :key="index">
-        <div class="card-blog gap-5 relative z-20 mt-[40px]">
-          <div class="absolute flex flex-col justify-between h-[100%] left-[40px]">
+        <div class="card-blog gap-5 relative z-20 mt-[40px] max-sm:mt-0 mb-[80px]">
+          <div class="absolute flex flex-col justify-between h-[100%] left-[40px] max-sm:left-[20px] max-sm:top-[15px]">
             <div class="text-video-header">
               Hybrid ips
             </div>
             <iframe width="140px" height="194px"
                     src="https://lottie.host/embed/8e80c604-e0af-4b03-96ce-f75675059aa0/Tyehx7Emkq.json"></iframe>
           </div>
-          <div class="rounded-[9px] overflow-hidden h-[783px]">
+          <div class="rounded-[9px] overflow-hidden h-[783px] max-sm:h-[180px]">
             <video autoplay loop muted playsinline>
               <source src="@/assets/video/91ec3544e41e9afbff63c3d000a9a5296073707d839b265710597bd574d824eb_ndrKpibw.mp4"
                       type="video/mp4">
@@ -39,25 +39,39 @@ const modules = ref([FreeMode, Navigation])
 </template>
 <style lang="scss">
 .studio-video {
-  .swiper-button-prev{
+  .swiper-button-prev {
     position: absolute !important;
     top: 770px !important;
     left: 85% !important;
   }
-  .swiper-button-next{
+
+  .swiper-button-next {
     position: absolute !important;
     top: 770px !important;
-    right:5% !important;
+    right: 5% !important;
   }
 }
 </style>
 <style scoped lang="scss">
-video{
-  width: 100%;
-  object-fit: cover;
+@media screen and (max-width: 992px) {
+  .text-video-header{
+    font-size: 20px !important;
+  }
+  iframe{
+    display: none;
+  }
+  .card-blog{
+    padding: 10px !important;
+  }
 
 }
-.card-blog{
+
+video {
+  width: 100%;
+  object-fit: cover;
+}
+
+.card-blog {
   border-radius: 16px;
   border: 1.467px solid rgba(255, 255, 255, 0.25);
   background: rgba(222, 222, 222, 0.05);
@@ -65,6 +79,7 @@ video{
   padding: 20px;
   position: relative;
 }
+
 iframe {
   transform: scaleX(-1);
 }
