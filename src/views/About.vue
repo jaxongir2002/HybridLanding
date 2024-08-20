@@ -5,9 +5,9 @@ import Cards from "@/components/Cards.vue";
 import Mission from "@/components/Mission.vue";
 import Magic from "@/components/Magic.vue";
 import OurWorks from "@/components/OurWorks.vue";
-import Partners from "@/components/Partners.vue";
 import Register from "@/components/Register.vue";
 import LastSection from "@/components/LastSection.vue";
+import AboutParners from "@/components/About/AboutParners.vue";
 
 </script>
 
@@ -19,7 +19,7 @@ import LastSection from "@/components/LastSection.vue";
     <Mission/>
     <Magic/>
     <OurWorks/>
-    <Partners/>
+    <AboutParners/>
     <Register/>
     <LastSection/>
   </div>

@@ -55,7 +55,7 @@ function closeMobile() {
 }
 
 function load() {
-  router.go()
+  router.push('/landing')
 }
 
 function firstFn() {
@@ -141,7 +141,7 @@ function sixFn() {
           </div>
           <div class="flex">
             <div class="flex flex-col gap-[10px]">
-              <div @mousemove="firstFn" class="menu-text flex gap-[15px]">
+              <div @mousemove="firstFn" class="menu-text flex gap-[15px]" @click="$router.push('/landing')">
               <span>
                    home
               </span>
@@ -149,7 +149,7 @@ function sixFn() {
                   01
                 </div>
               </div>
-              <div @mousemove="secondFn" class="menu-text flex gap-[15px]">
+              <div @mousemove="secondFn" class="menu-text flex gap-[15px]" @click="$router.push('/about')">
               <span>
                    about
               </span>
@@ -157,7 +157,7 @@ function sixFn() {
                   02
                 </div>
               </div>
-              <div @mousemove="threeFn" class="menu-text flex gap-[15px]">
+              <div @mousemove="threeFn" class="menu-text flex gap-[15px]" @click="$router.push('/reels')">
                 <span>
                   Reels
                 </span>
@@ -165,7 +165,7 @@ function sixFn() {
                   03
                 </div>
               </div>
-              <div @mousemove="fourFn" class="menu-text flex gap-[15px]">
+              <div @mousemove="fourFn" class="menu-text flex gap-[15px]" @click="$router.push('/community')">
                 <span>
                    Community
                 </span>
@@ -173,7 +173,7 @@ function sixFn() {
                   04
                 </div>
               </div>
-              <div @mousemove="fiveFn" class="menu-text flex gap-[15px]">
+              <div @mousemove="fiveFn" class="menu-text flex gap-[15px]" @click="$router.push('/blog')">
               <span>
               Blog
               </span>
@@ -181,12 +181,36 @@ function sixFn() {
                   05
                 </div>
               </div>
-              <div @mousemove="sixFn" class="menu-text flex gap-[15px]">
+              <div @mousemove="sixFn" class="menu-text flex gap-[15px]" @click="$router.push('/brief')">
                 <span>
                    brief
                 </span>
                 <div class="menu-btn">
                   06
+                </div>
+              </div>
+              <div @mousemove="sixFn" class="menu-text flex gap-[15px]" @click="$router.push('/Experience')">
+                <span>
+                   Experience
+                </span>
+                <div class="menu-btn">
+                  07
+                </div>
+              </div>
+              <div @mousemove="sixFn" class="menu-text flex gap-[15px]" @click="$router.push('/studio')">
+                <span>
+                   Studio
+                </span>
+                <div class="menu-btn">
+                  08
+                </div>
+              </div>
+              <div @mousemove="sixFn" class="menu-text flex gap-[15px]" @click="$router.push('/lab')">
+                <span>
+                   Lab
+                </span>
+                <div class="menu-btn">
+                  09
                 </div>
               </div>
             </div>
@@ -233,11 +257,9 @@ function sixFn() {
                 </video>
               </Transition>
             </div>
-
           </div>
 
-
-          <div class="flex items-end h-[328px]">
+          <div class="flex items-end ">
             <div class="flex gap-[10px]">
               <button class="btn-links">
                 Instagram
@@ -495,7 +517,6 @@ video {
   .mobileFixed {
     height: 75vh !important;
   }
-
 }
 
 .menu-mobile {
