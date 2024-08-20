@@ -15,11 +15,7 @@ requestAnimationFrame(raf);
 <template>
   <div style="background: #0e0e0e; padding: 34px 40px 34px 40px">
     <div style="max-width: 1440px; margin: auto">
-      <router-view v-slot="{ Component }">
-        <transition name="slide-fade">
-          <component :is="Component" />
-        </transition>
-      </router-view>
+      <router-view></router-view>
       <canvas></canvas>
     </div>
   </div>
