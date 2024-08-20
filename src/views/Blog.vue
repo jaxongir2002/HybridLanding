@@ -5,9 +5,11 @@ import BlogCards from "@/components/Blog/BlogCards.vue";
 </script>
 
 <template>
-  <navigation/>
-  <BlogCards/>
-  <LastSection/>
+  <div  style=" padding: 34px 40px 34px 40px; max-width: 1440px;  margin: auto">
+    <navigation/>
+    <BlogCards/>
+    <LastSection/>
+  </div>
 </template>
 
 <style scoped lang="scss">

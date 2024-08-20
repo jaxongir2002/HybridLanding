@@ -10,14 +10,17 @@ import AboutRegister from "@/components/About/AboutRegister.vue";
 </script>
 
 <template>
-  <navigation/>
-  <about-cover/>
-  <our-services/>
-  <OurProcess/>
-  <OurTeam/>
-  <AboutParners/>
-  <AboutRegister/>
-  <LastSection/>
+  <div  style=" padding: 34px 40px 34px 40px; max-width: 1440px;  margin: auto">
+    <navigation/>
+    <about-cover/>
+    <our-services/>
+    <OurProcess/>
+    <OurTeam/>
+    <AboutParners/>
+    <AboutRegister/>
+    <LastSection/>
+  </div>
+
 </template>
 
 <style scoped lang="scss">

@@ -9,13 +9,16 @@ import StudioVideoSlider from "@/components/Studio/StudioVideoSlider.vue";
 </script>
 
 <template>
-  <Navigation/>
-  <StudioCover/>
-  <StudioVideoSlider/>
-  <ExperienceAbout/>
-  <ExperienceVideos/>
-  <CommunityCuntacts/>
-  <LastSection/>
+  <div  style=" padding: 34px 40px 34px 40px; max-width: 1440px; margin: auto">
+    <Navigation/>
+    <StudioCover/>
+    <StudioVideoSlider/>
+    <ExperienceAbout/>
+    <ExperienceVideos/>
+    <CommunityCuntacts/>
+    <LastSection/>
+  </div>
+
 </template>
 
 <style scoped lang="scss">

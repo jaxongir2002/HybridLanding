@@ -12,7 +12,7 @@ import Partners from "@/components/Partners.vue";
 </script>
 
 <template>
-  <div class="container-hybrid">
+  <div class="container-hybrid" style=" padding: 34px 40px 34px 40px; max-width: 1440px;  margin: auto">
     <Navigation/>
     <Cover/>
     <Cards/>

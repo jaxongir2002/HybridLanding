@@ -6,10 +6,13 @@ import BriefCover from "@/components/Brief/BriefCover.vue";
 </script>
 
 <template>
-  <navigation/>
-  <BriefCover/>
-  <Register/>
-  <LastSection/>
+  <div  style=" padding: 34px 40px 34px 40px; max-width: 1440px; margin: auto ">
+    <navigation/>
+    <BriefCover/>
+    <Register/>
+    <LastSection/>
+  </div>
+
 </template>
 
 <style scoped lang="scss">

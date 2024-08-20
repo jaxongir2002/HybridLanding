@@ -1,4 +1,4 @@
-import {createWebHashHistory, createRouter, createWebHistory} from 'vue-router'
+import {createRouter, createWebHistory} from 'vue-router'
 import Loading from "@/components/Loading.vue";
 import About from "@/views/About.vue";
 import Home from "@/views/Home.vue";
@@ -12,7 +12,7 @@ import Studio from "@/views/Studio.vue";
 import Lab from "@/views/Lab.vue";
 
 const routes = [
-    {path: '/', component: Loading},
+    {path: '/', component: Loading,},
     {path: '/landing', component: About},
     {path: '/about', component: Home},
     {path: '/reels', component: Reels},

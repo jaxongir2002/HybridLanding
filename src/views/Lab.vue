@@ -8,12 +8,15 @@ import LabExperiments from "@/components/Lab/LabExperiments.vue";
 </script>
 
 <template>
-  <Navigation/>
-  <LabCover/>
-  <LabExperiments/>
-  <ExperienceVideos/>
-  <CommunityCuntacts/>
-  <LastSection/>
+  <div style=" padding: 34px 40px 34px 40px; max-width: 1440px; margin: auto ">
+    <Navigation/>
+    <LabCover/>
+    <LabExperiments/>
+    <ExperienceVideos/>
+    <CommunityCuntacts/>
+    <LastSection/>
+  </div>
+
 </template>
 
 <style scoped lang="scss">

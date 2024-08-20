@@ -3,7 +3,7 @@
 </script>
 
 <template>
-  <div class='relative padding-no'>
+  <div class='relative padding-no video-background-img'>
     <iframe width="200px" height="240px"
             src="https://lottie.host/embed/8e80c604-e0af-4b03-96ce-f75675059aa0/Tyehx7Emkq.json"></iframe>
     <div class="contact-us-text">
@@ -11,17 +11,6 @@
       magic together! Contact us to
       start your journey.
     </div>
-    <video autoplay loop muted playsinline class="desktop-video" >
-      <source src="@/assets/video/wecreatemagic_lsF4u8LF.mp4"
-              type="video/mp4">
-
-    </video>
-    <video autoplay loop muted playsinline class="mobile-video hidden" >
-      <source src="@/assets/video/84d3ee1d02f80623a9f94aaf876be15f12f8030d7abc558fa81e43cf65067340_FU8j2xww.mp4"
-              type="video/mp4">
-
-    </video>
-
     <div class="contact-title">
       Contact us
     </div>
@@ -63,6 +52,10 @@
   .desktop-video{
     display: none !important;
   }
+  .video-background-img{
+    height: 500px !important;
+    background-position: center;
+  }
 }
 
 iframe {
@@ -97,7 +90,20 @@ iframe {
 }
 
 video {
-  width: 1440px;
+ width: 100% !important;
+  position: sticky;
   height: 900px;
+}
+.video-background-img{
+  position: relative;
+  margin: auto;
+  left: 0;
+  right: 0;
+  height: 900px;
+  width: 100%;
+  background-repeat:no-repeat;
+  object-fit: cover;
+  background-size: cover;
+  background-image: url("@/assets/img/backgroundImg.svg");
 }
 </style>

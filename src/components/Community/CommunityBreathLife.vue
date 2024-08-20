@@ -15,7 +15,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="relative">
+  <div class="relative mb-[50px]">
     <div class="absolute top-0 z-30 left-0 right-0 container-breath">
       <div class="text-breath">
         Breathe life

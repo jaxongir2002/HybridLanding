@@ -8,12 +8,15 @@ import ReelsRegister from "@/components/Reels/ReelsRegister.vue";
 </script>
 
 <template>
-  <navigation/>
-  <cover-reels/>
-  <reels-video/>
-  <ReelsParners/>
-  <ReelsRegister/>
-  <LastSection/>
+  <div  style=" padding: 34px 40px 34px 40px; max-width: 1440px;  margin: auto">
+    <navigation/>
+    <cover-reels/>
+    <reels-video/>
+    <ReelsParners/>
+    <ReelsRegister/>
+    <LastSection/>
+  </div>
+
 </template>
 
 <style scoped lang="scss">
