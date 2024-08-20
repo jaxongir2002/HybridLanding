@@ -4,9 +4,9 @@ import AboutCover from "@/components/About/AboutCover.vue";
 import OurServices from "@/components/About/OurServices.vue";
 import OurProcess from "@/components/About/OurProcess.vue";
 import OurTeam from "@/components/About/OurTeam.vue";
-import Partners from "@/components/Partners.vue";
-import Register from "@/components/Register.vue";
 import LastSection from "@/components/LastSection.vue";
+import AboutParners from "@/components/About/AboutParners.vue";
+import AboutRegister from "@/components/About/AboutRegister.vue";
 </script>
 
 <template>
@@ -15,8 +15,8 @@ import LastSection from "@/components/LastSection.vue";
   <our-services/>
   <OurProcess/>
   <OurTeam/>
-  <Partners/>
-  <Register/>
+  <AboutParners/>
+  <AboutRegister/>
   <LastSection/>
 </template>
 

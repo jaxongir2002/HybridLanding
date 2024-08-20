@@ -7,7 +7,7 @@ import Magic from "@/components/Magic.vue";
 import OurWorks from "@/components/OurWorks.vue";
 import Register from "@/components/Register.vue";
 import LastSection from "@/components/LastSection.vue";
-import AboutParners from "@/components/About/AboutParners.vue";
+import Partners from "@/components/Partners.vue";
 
 </script>
 
@@ -19,7 +19,7 @@ import AboutParners from "@/components/About/AboutParners.vue";
     <Mission/>
     <Magic/>
     <OurWorks/>
-    <AboutParners/>
+     <Partners/>
     <Register/>
     <LastSection/>
   </div>

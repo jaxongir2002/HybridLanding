@@ -7,15 +7,15 @@ onMounted(() => {
 
   gsap.registerPlugin(SplitText, ScrollTrigger);
 
-  let mySplitText = new SplitText(".animation-text", { type: "chars" });
+  let mySplitText = new SplitText(".animation-text-home", { type: "chars" });
   let chars = mySplitText.chars;
 
-  let mySplitTextTwo = new SplitText(".animation-text-two", { type: "chars" });
+  let mySplitTextTwo = new SplitText(".animation-text-two-home", { type: "chars" });
   let charsTwo = mySplitTextTwo.chars;
-  const slides = document.querySelectorAll(".cards-company");
+  const slides = document.querySelectorAll(".cards-company-home");
   let tl = gsap.timeline({
     scrollTrigger: {
-      trigger: ".big-div",
+      trigger: ".big-div-home",
       start: "top 10%",
       end: `+=${slides.length * 5}%`,
       scrub: true,
@@ -73,11 +73,11 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="text-center big-div relative" >
+  <div class="text-center big-div-home relative" >
     <div class="smooth-wrapper">
       <div class="title-containers relative z-10">
-        <div class="text-work animation-text">We work with humans</div>
-        <div class="text-work animation-text-two">and more than humans</div>
+        <div class="text-work animation-text-home">We work with humans</div>
+        <div class="text-work animation-text-two-home">and more than humans</div>
       </div>
       <div class="relative z-20 content-div">
         <div
@@ -85,7 +85,7 @@ onMounted(() => {
         >
           <div class="first">
             <div
-              class="cards-company h-[250px] p-[80px] max-sm:h-[104.478px] max-sm:p-[30px] glow-effect"
+              class="cards-company-home h-[250px] p-[80px] max-sm:h-[104.478px] max-sm:p-[30px] glow-effect"
             >
               <img
                 class="w-full h-auto object-cover"
@@ -106,7 +106,7 @@ onMounted(() => {
               </svg>
             </div>
             <div
-              class="cards-company h-[140px] p-[80px] max-sm:p-[30px] max-sm:h-[58.508px] glow-effect"
+              class="cards-company-home h-[140px] p-[80px] max-sm:p-[30px] max-sm:h-[58.508px] glow-effect"
             >
               <img
                 class="w-full h-auto object-cover"
@@ -127,7 +127,7 @@ onMounted(() => {
               </svg>
             </div>
             <div
-              class="cards-company h-[220px] p-[120px] max-sm:p-[40px] max-sm:h-[91.94px] glow-effect"
+              class="cards-company-home h-[220px] p-[120px] max-sm:p-[40px] max-sm:h-[91.94px] glow-effect"
             >
               <img
                 class="w-full h-auto object-cover"
@@ -148,7 +148,7 @@ onMounted(() => {
               </svg>
             </div>
             <div
-              class="cards-company h-[180px] p-[80px] max-sm:p-[30px] max-sm:h-[75.224px] glow-effect"
+              class="cards-company-home h-[180px] p-[80px] max-sm:p-[30px] max-sm:h-[75.224px] glow-effect"
             >
               <img
                 class="w-full h-auto object-cover"
@@ -169,7 +169,7 @@ onMounted(() => {
               </svg>
             </div>
             <div
-              class="cards-company h-[210px] p-[80px] max-sm:p-[30px] max-sm:h-[87.761px] glow-effect">
+              class="cards-company-home h-[210px] p-[80px] max-sm:p-[30px] max-sm:h-[87.761px] glow-effect">
               <img
                 class="w-full h-auto object-cover"
                 src="../assets/img/SelaOrginal.svg"
@@ -189,7 +189,7 @@ onMounted(() => {
               </svg>
             </div>
             <div
-              class="cards-company h-[210px] p-[80px] max-sm:p-[30px] max-sm:h-[87.761px] glow-effect"
+              class="cards-company-home h-[210px] p-[80px] max-sm:p-[30px] max-sm:h-[87.761px] glow-effect"
             ><img class="w-full h-auto object-cover" src="../assets/img/empireEnter.png" alt="">
                <svg class="glow-container">
                 <rect
@@ -205,7 +205,7 @@ onMounted(() => {
               </svg>
             </div>
             <div
-              class="cards-company h-[213px] p-[100px] max-sm:p-[30px] max-sm:h-[91.94px] glow-effect"
+              class="cards-company-home h-[213px] p-[100px] max-sm:p-[30px] max-sm:h-[91.94px] glow-effect"
             >
               <img
                 class="w-full h-auto object-cover"
@@ -228,7 +228,7 @@ onMounted(() => {
           </div>
           <div class="second first">
             <div
-              class="cards-company h-[180px] p-[80px] max-sm:p-[30px] max-sm:h-[75.224px] glow-effect"
+              class="cards-company-home h-[180px] p-[80px] max-sm:p-[30px] max-sm:h-[75.224px] glow-effect"
             >
               <img
                 class="w-full h-auto object-cover"
@@ -249,7 +249,7 @@ onMounted(() => {
               </svg>
             </div>
             <div
-              class="cards-company h-[230px] p-[80px] max-sm:p-[30px] max-sm:h-[96.119px] glow-effect"
+              class="cards-company-home h-[230px] p-[80px] max-sm:p-[30px] max-sm:h-[96.119px] glow-effect"
             >
               <img
                 class="w-full h-auto object-cover"
@@ -270,7 +270,7 @@ onMounted(() => {
               </svg>
             </div>
             <div
-              class="cards-company h-[210px] p-[80px] max-sm:p-[30px] max-sm:h-[87.761px] glow-effect"
+              class="cards-company-home h-[210px] p-[80px] max-sm:p-[30px] max-sm:h-[87.761px] glow-effect"
             >
               <img
                 class="w-full h-auto object-cover"
@@ -291,7 +291,7 @@ onMounted(() => {
               </svg>
             </div>
             <div
-              class="cards-company h-[160px] p-[80px] max-sm:p-[30px] max-sm:h-[66.866px] glow-effect"
+              class="cards-company-home h-[160px] p-[80px] max-sm:p-[30px] max-sm:h-[66.866px] glow-effect"
             >
               <img
                 class="w-full h-auto object-cover"
@@ -313,7 +313,7 @@ onMounted(() => {
             </div>
 
             <div
-              class="cards-company h-[240px] p-[80px] max-sm:p-[30px] max-sm:h-[100.299px] glow-effect"
+              class="cards-company-home h-[240px] p-[80px] max-sm:p-[30px] max-sm:h-[100.299px] glow-effect"
             >
               <img
                 class="w-full h-auto object-cover"
@@ -334,7 +334,7 @@ onMounted(() => {
               </svg>
             </div>
             <div
-              class="cards-company h-[240px] p-[80px] max-sm:p-[30px] max-sm:h-[100.299px] glow-effect"
+              class="cards-company-home h-[240px] p-[80px] max-sm:p-[30px] max-sm:h-[100.299px] glow-effect"
             >
               <img
                 class="w-full h-auto object-cover"
@@ -355,7 +355,7 @@ onMounted(() => {
               </svg>
             </div>
             <div
-              class="cards-company h-[180px] p-[100px] max-sm:p-[30px] max-sm:h-[91.94px] glow-effect"
+              class="cards-company-home h-[180px] p-[100px] max-sm:p-[30px] max-sm:h-[91.94px] glow-effect"
             >
               <img
                 class="w-full h-auto object-cover"
@@ -377,7 +377,7 @@ onMounted(() => {
             </div>
           </div>
           <div class="third first">
-            <div class="cards-company h-[220px] p-[80px] max-sm:p-[30px] glow-effect">
+            <div class="cards-company-home h-[220px] p-[80px] max-sm:p-[30px] glow-effect">
               <img
                 class="w-full h-auto object-cover"
                 src="../assets/img/angahami.png"
@@ -396,7 +396,7 @@ onMounted(() => {
                 ></rect>
               </svg>
             </div>
-            <div class="cards-company h-[250px] p-[80px] max-sm:p-[30px] glow-effect">
+            <div class="cards-company-home h-[250px] p-[80px] max-sm:p-[30px] glow-effect">
               <img
                 class="w-full h-auto object-cover"
                 src="../assets/img/Ikea.svg"
@@ -415,7 +415,7 @@ onMounted(() => {
                 ></rect>
               </svg>
             </div>
-            <div class="cards-company h-[220px] p-[80px] max-sm:p-[30px] glow-effect">
+            <div class="cards-company-home h-[220px] p-[80px] max-sm:p-[30px] glow-effect">
               <img
                 class="w-full h-auto object-cover"
                 src="../assets/img/events.svg"
@@ -434,7 +434,7 @@ onMounted(() => {
                 ></rect>
               </svg>
             </div>
-            <div class="cards-company h-[200px] p-[80px] max-sm:p-[30px] glow-effect">
+            <div class="cards-company-home h-[200px] p-[80px] max-sm:p-[30px] glow-effect">
               <img
                 class="w-full h-auto object-cover"
                 src="../assets/img/Expo2020.svg"
@@ -454,7 +454,7 @@ onMounted(() => {
               </svg>
             </div>
 
-            <div class="cards-company h-[180px] p-[80px] max-sm:p-[30px] glow-effect">
+            <div class="cards-company-home h-[180px] p-[80px] max-sm:p-[30px] glow-effect">
               <img
                 class="w-full h-auto object-cover"
                 src="../assets/img/Boeker.svg"
@@ -473,7 +473,7 @@ onMounted(() => {
                 ></rect>
               </svg>
             </div>
-            <div class="cards-company h-[190px] p-[80px] max-sm:p-[30px] glow-effect">
+            <div class="cards-company-home h-[190px] p-[80px] max-sm:p-[30px] glow-effect">
               <img
                 class="w-full h-auto object-cover"
                 src="../assets/img/IRIS.svg"
@@ -492,7 +492,7 @@ onMounted(() => {
                 ></rect>
               </svg>
             </div>
-            <div class="cards-company h-[180px] p-[80px] max-sm:p-[30px] glow-effect">
+            <div class="cards-company-home h-[180px] p-[80px] max-sm:p-[30px] glow-effect">
               <img
                 class="w-full h-auto object-cover"
                 src="../assets/img/BIVWORLD.svg"
@@ -513,7 +513,7 @@ onMounted(() => {
             </div>
           </div>
           <div class="four first">
-            <div class="cards-company h-[190px] p-[80px] max-sm:p-[30px] glow-effect">
+            <div class="cards-company-home h-[190px] p-[80px] max-sm:p-[30px] glow-effect">
               <img
                 class="w-full h-auto object-cover"
                 src="../assets/img/srt.svg"
@@ -532,7 +532,7 @@ onMounted(() => {
                 ></rect>
               </svg>
             </div>
-            <div class="cards-company h-[230px] p-[80px] max-sm:p-[30px] glow-effect">
+            <div class="cards-company-home h-[230px] p-[80px] max-sm:p-[30px] glow-effect">
               <img
                 class="w-full h-auto object-cover"
                 src="../assets/img/2022Logo.svg"
@@ -551,7 +551,7 @@ onMounted(() => {
                 ></rect>
               </svg>
             </div>
-            <div class="cards-company h-[220px] p-[80px] max-sm:p-[30px] glow-effect">
+            <div class="cards-company-home h-[220px] p-[80px] max-sm:p-[30px] glow-effect">
               <img
                 class="w-full h-auto object-cover"
                 src="../assets/img/SunsetGroup.png"
@@ -570,7 +570,7 @@ onMounted(() => {
                 ></rect>
               </svg>
             </div>
-            <div class="cards-company h-[220px] p-[80px] max-sm:p-[30px] glow-effect">
+            <div class="cards-company-home h-[220px] p-[80px] max-sm:p-[30px] glow-effect">
               <img
                 class="w-full h-auto object-cover"
                 src="../assets/img/srmo.svg"
@@ -590,7 +590,7 @@ onMounted(() => {
               </svg>
             </div>
 
-            <div class="cards-company h-[170px] p-[80px] max-sm:p-[30px] glow-effect">
+            <div class="cards-company-home h-[170px] p-[80px] max-sm:p-[30px] glow-effect">
               <img
                 class="w-full h-auto object-cover"
                 src="../assets/img/RTA.svg"
@@ -609,7 +609,7 @@ onMounted(() => {
                 ></rect>
               </svg>
             </div>
-            <div class="cards-company h-[240px] p-[80px] max-sm:p-[30px] glow-effect">
+            <div class="cards-company-home h-[240px] p-[80px] max-sm:p-[30px] glow-effect">
               <img
                 class="w-full h-auto object-cover"
                 src="../assets/img/ESCWA.svg"
@@ -628,7 +628,7 @@ onMounted(() => {
                 ></rect>
               </svg>
             </div>
-            <div class="cards-company h-[170px] p-[80px] max-sm:p-[30px] glow-effect">
+            <div class="cards-company-home h-[170px] p-[80px] max-sm:p-[30px] glow-effect">
               <img
                 class="w-full h-auto object-cover"
                 src="../assets/img/lastImg.svg"
@@ -659,7 +659,7 @@ onMounted(() => {
   .text-work {
     font-size: 20px !important;
   }
-  .cards-company {
+  .cards-company-home {
     width: 135.821px !important;
     margin-top: 8px !important;
   }
@@ -697,7 +697,7 @@ onMounted(() => {
   transform: translate(0%, 65%);
 }
 
-.cards-company {
+.cards-company-home {
   border-radius: 12px;
   border: 1px solid;
   display: flex;

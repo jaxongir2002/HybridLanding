@@ -1,18 +1,18 @@
 <script setup>
 import LastSection from "@/components/LastSection.vue";
-import Partners from "@/components/Partners.vue";
-import Register from "@/components/Register.vue";
 import Navigation from "@/components/Navigation.vue";
 import CoverReels from "@/components/Reels/CoverReels.vue";
 import ReelsVideo from "@/components/Reels/ReelsVideo.vue";
+import ReelsParners from "@/components/Reels/ReelsParners.vue";
+import ReelsRegister from "@/components/Reels/ReelsRegister.vue";
 </script>
 
 <template>
   <navigation/>
   <cover-reels/>
   <reels-video/>
-  <Partners/>
-  <Register/>
+  <ReelsParners/>
+  <ReelsRegister/>
   <LastSection/>
 </template>
 

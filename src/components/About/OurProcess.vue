@@ -59,7 +59,7 @@ onMounted(()=>{
     <div class="header-text relative top-[60px]">
       Our process
     </div>
-    <div class="text-process" v-for="item in itemTitle">
+    <div class="text-process" v-for="(item,index) in itemTitle" :key="index">
       <span class="text-process-number mr-[10px] relative bottom-[28px]">{{ item.text }}</span>
       {{ item.title }}
     </div>
