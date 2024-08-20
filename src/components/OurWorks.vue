@@ -300,7 +300,6 @@ onMounted(() => {
   .our-works-img {
     display: none;
   }
-
   .dev-card {
     display: grid !important;
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -322,6 +321,7 @@ onMounted(() => {
   .cards {
     width: 131.03px !important;
     height: 222.751px !important;
+
   }
   .nav-our-works{
    z-index: 1;
