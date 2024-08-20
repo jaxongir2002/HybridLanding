@@ -7,22 +7,21 @@
   cursor: url("../img/Polygon.svg"), auto;
 }
 
-
-canvas {
-  position: fixed;
-  width: 100%;
-  height: 100vh;
-  min-height: 900%;
-  top: 0;
-  left: 0;
-  z-index: 0;
-}
+//canvas {
+//  position: fixed;
+//  width: 100%;
+//  height: 100vh;
+//  min-height: 50%;
+//  top: 0;
+//  left: 0;
+//  z-index: 0;
+//  background: #0E0E0E !important;
+//}
 ::-webkit-scrollbar {
   width: 8px;
   height: 10px !important;
 }
 
-/* Track */
 ::-webkit-scrollbar-track {
   border-radius: 10px;
   background: #000000;
@@ -33,10 +32,8 @@ canvas {
   background: #A42DEA;
   border-radius: 500px;
   width: 5px;
-
 }
 
-/* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: #A42DEA;
 }
@@ -121,7 +118,6 @@ html.lenis, html.lenis body {
 }
 
 @keyframes glow-visibility {
-
   0%,
   100% {
     opacity: 1;

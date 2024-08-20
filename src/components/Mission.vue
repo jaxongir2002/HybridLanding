@@ -243,7 +243,6 @@ video{
   border: 1px solid #FFFFFF1A;
   padding: 10px;
   background-color: #DEDEDE0D;
-  //overflow: hidden;
   width: 555px;
   height: 320px;
 }

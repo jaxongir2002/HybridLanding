@@ -126,7 +126,7 @@ onMounted(() => {
         <img class="animation-arrow" src="@/assets/img/ArrowUp.svg" alt="" />
       </div>
     </div>
-    <div class="big-div-last">
+    <div class="big-div-last relative z-10">
       <div id="footer-text" class="footer-text hover-text">
         <span class="first-letter">H</span>
         <span class="rest-text">ybrid</span>
@@ -135,7 +135,6 @@ onMounted(() => {
         <span class="second-first-letter">x</span>perience
       </div>
     </div>
-<!--    <div id="gradient" class="gradient-overlay"></div>-->
   </div>
 </template>
 

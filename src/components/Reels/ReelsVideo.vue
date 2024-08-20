@@ -1,8 +1,11 @@
 <script setup>
 import {computed, onMounted, ref} from "vue";
 import {Swiper, SwiperSlide} from 'swiper/vue';
-import {FreeMode} from "swiper/modules";
+import {FreeMode, Keyboard, Navigation} from "swiper/modules";
 import Lenis from "lenis";
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 
 const lenis = new Lenis();
 
@@ -10,77 +13,78 @@ const addTab = ref(false);
 const showModal = ref(false);
 const selectedItem = ref(null);
 const selectedIndex = ref(-1);
-const modules = ref([FreeMode])
+const modules = ref([FreeMode, Keyboard, Navigation])
 const isMobile = window.matchMedia('(max-width: 767px)').matches;
 let bodyOverflow = null;
 const listImg = ref([
   {
-    src: new URL("../assets/video/firstVideo.MP4", import.meta.url),
+    src: new URL("@/assets/video/firstVideo.MP4", import.meta.url),
   },
   {
-    src: new URL("../assets/video/secondVideo.MP4", import.meta.url),
+    src: new URL("@/assets/video/secondVideo.MP4", import.meta.url),
   },
   {
-    src: new URL("../assets/video/threeVideo.MP4", import.meta.url),
+    src: new URL("@/assets/video/threeVideo.MP4", import.meta.url),
   },
   {
-    src: new URL("../assets/video/fiveVideo.MP4", import.meta.url),
+    src: new URL("@/assets/video/fiveVideo.MP4", import.meta.url),
   },
   {
-    src: new URL("../assets/video/sixVideo.MP4", import.meta.url),
+    src: new URL("@/assets/video/sixVideo.MP4", import.meta.url),
   },
   {
-    src: new URL("../assets/video/sevenVideo.MP4", import.meta.url),
+    src: new URL("@/assets/video/sevenVideo.MP4", import.meta.url),
   },
   {
-    src: new URL("../assets/video/eightVideo.MP4", import.meta.url),
+    src: new URL("@/assets/video/eightVideo.MP4", import.meta.url),
   },
   {
-    src: new URL("../assets/video/ninaVideo.MP4", import.meta.url),
+    src: new URL("@/assets/video/ninaVideo.MP4", import.meta.url),
   },
   {
-    src: new URL("../assets/video/thenVideo.MP4", import.meta.url),
+    src: new URL("@/assets/video/thenVideo.MP4", import.meta.url),
   },
   {
-    src: new URL("../assets/video/fourVideo.MP4", import.meta.url),
+    src: new URL("@/assets/video/fourVideo.MP4", import.meta.url),
   },
 
 // second 10
   {
-    src: new URL("../assets/video/firstVideo.MP4", import.meta.url),
+    src: new URL("@/assets/video/firstVideo.MP4", import.meta.url),
   },
   {
-    src: new URL("../assets/video/secondVideo.MP4", import.meta.url),
+    src: new URL("@/assets/video/secondVideo.MP4", import.meta.url),
   },
   {
-    src: new URL("../assets/video/threeVideo.MP4", import.meta.url),
+    src: new URL("@/assets/video/threeVideo.MP4", import.meta.url),
   },
   {
-    src: new URL("../assets/video/fiveVideo.MP4", import.meta.url),
+    src: new URL("@/assets/video/fiveVideo.MP4", import.meta.url),
   },
   {
-    src: new URL("../assets/video/sixVideo.MP4", import.meta.url),
+    src: new URL("@/assets/video/sixVideo.MP4", import.meta.url),
   },
   {
-    src: new URL("../assets/video/sevenVideo.MP4", import.meta.url),
+    src: new URL("@/assets/video/sevenVideo.MP4", import.meta.url),
   },
   {
-    src: new URL("../assets/video/eightVideo.MP4", import.meta.url),
+    src: new URL("@/assets/video/eightVideo.MP4", import.meta.url),
   },
   {
-    src: new URL("../assets/video/ninaVideo.MP4", import.meta.url),
+    src: new URL("@/assets/video/ninaVideo.MP4", import.meta.url),
   },
   {
-    src: new URL("../assets/video/thenVideo.MP4", import.meta.url),
+    src: new URL("@/assets/video/thenVideo.MP4", import.meta.url),
   },
   {
-    src: new URL("../assets/video/fourVideo.MP4", import.meta.url),
+    src: new URL("@/assets/video/fourVideo.MP4", import.meta.url),
   },
 ]);
 const videoPlayer = ref(null);
 const containerRef = ref(null);
 const classAddAnimation = ref(false)
-const fixNav= ref(false)
+const fixNav = ref(false)
+
 function openModal(item, index) {
   showModal.value = true;
   selectedItem.value = item.src;
@@ -90,8 +94,8 @@ function openModal(item, index) {
   mobile()
 }
 
-function mobile(){
-  if (showModal.value===true) {
+function mobile() {
+  if (showModal.value === true) {
     document.body.classList.add('no-scroll');
     lenis.stop();
   } else {
@@ -99,8 +103,10 @@ function mobile(){
     lenis.start();
   }
 }
+
 document.addEventListener('keydown', closeModal);
 mobile()
+
 function closeModal(event) {
   // Check if the Esc key was pressed
   if (event.key === 'Escape') {
@@ -108,13 +114,14 @@ function closeModal(event) {
     selectedItem.value = null;
     document.body.style.overflow = bodyOverflow || "";
     mobile();
-  }else {
+  } else {
     showModal.value = false;
     selectedItem.value = null;
     document.body.style.overflow = bodyOverflow || "";
     mobile();
   }
 }
+
 function openTab() {
   addTab.value = !addTab.value;
   const videos = document.querySelectorAll('.cards-img');
@@ -131,128 +138,81 @@ function openTab() {
 
 const displayedItems = computed(() => {
   if (isMobile) {
-    return listImg.value.slice(0, 6);
+  return  listImg.value.slice(0, 6);
   } else {
     return listImg.value;
   }
 });
-
-onMounted(() => {
-
-    const slider = document.querySelector(".dev-card");
-    let isDown = false;
-    let startX;
-    let scrollLeft;
-
-    slider.addEventListener("mousedown", (e) => {
-      isDown = true;
-      slider.classList.add("active");
-      startX = e.pageX - slider.offsetLeft;
-      scrollLeft = slider.scrollLeft;
-    });
-    slider.addEventListener("mouseleave", () => {
-      isDown = false;
-      slider.classList.remove("active");
-    });
-    slider.addEventListener("mouseup", () => {
-      isDown = false;
-      slider.classList.remove("active");
-    });
-    slider.addEventListener("mousemove", (e) => {
-      if (!isDown) return;
-      e.preventDefault();
-      const x = e.pageX - slider.offsetLeft;
-      const walk = (x - startX) * 1.5;
-      slider.scrollLeft = scrollLeft - walk;
-    });
-
-
-   window.addEventListener('scroll', () => {
-    const currentScrollPos = window.pageYOffset;
-
-     if (!isMobile) {
-    if (currentScrollPos > 5900) {
-      classAddAnimation.value =true
-      fixNav.value =true
-    } else {
-      classAddAnimation.value =false
-      fixNav.value =false
-    }
-    if (currentScrollPos > 6122){
-      fixNav.value =false
-    }
-     }
-  });
-
-
-})
 </script>
 
 <template>
-  <div class="pt-[80px] pb-[80px] scroll-our-works">
+  <div class="pt-[80px] pb-[80px] scroll-our-works  ">
     <div class="our-works-div relative" :class="{fixNav :fixNav}">
-      <div class="nav-our-works relative z-[2332]" >
+      <div class="nav-our-works relative z-[2332]">
         <div class="nav-our-works-text relative">Our works</div>
         <div class="our-works-img relative z-[20]">
           <button v-show="!addTab" class="view-all w-[205px] mt-2">
             View all
           </button>
         </div>
-        </div>
+      </div>
 
-      <div class="flex justify-center items-center" v-show="!addTab">
+      <div class="flex justify-center items-center relative " v-if="!addTab">
         <div
-          id="dev-card"
-          ref="containerRef"
-          class="dev-card h-[550px]"
-          :class="{transformTop :classAddAnimation}"
+            id="dev-card"
+            ref="containerRef"
+            class="dev-card h-[550px]"
+            :class="{transformTop :classAddAnimation}"
         >
           <div
-            v-for="(item, index) in displayedItems"
-            :key="index"
-            class="cards"
-            @click="openModal(item, index)"
+              v-for="(item, index) in displayedItems"
+              :key="index"
+              class="cards"
+              @click="openModal(item, index)"
           >
-            <video preload="metadata"  loop muted ref="videoPlayer" autoplay width="320" height="240" playsinline class="cards-img">
+            <video preload="metadata" loop muted ref="videoPlayer" autoplay width="320" height="240" playsinline
+                   class="cards-img">
               <source :src="item.src"
                       type="video/mp4">
             </video>
           </div>
         </div>
       </div>
+      <div v-if="addTab" class="reels-video">
+        <swiper
+            :slidesPerView="4"
+            :spaceBetween="5"
+            :freeMode="true"
+            :keyboard="true"
+            :navigation="true"
+            :modules="modules"
+            class="mySwiper mt-[84px]"
+        >
+          <swiper-slide v-for="(item, index) in listImg"
+                        :key="index">
+            <div class="cards cards-tab"
+                 @click="openModal(item, index)"
+            >
+              <video loop muted ref="videoPlayer" autoplay width="320" height="240" playsinline
+                     class="cards-img cards-img-tab">
+                <source :src="item.src"
+                        type="video/mp4">
+              </video>
+            </div>
+          </swiper-slide>
+        </swiper>
+      </div>
 
-      <swiper v-if="addTab"
-              :slidesPerView="4"
-              :spaceBetween="5"
-              :freeMode="true"
-              :pagination="{ clickable: true }"
-              :modules="modules"
-              class="mySwiper mt-[84px]"
-      >
-        <swiper-slide v-for="(item, index) in listImg"
-                      :key="index">
-          <div class="cards cards-tab"
-               @click="openModal(item, index)"
-          >
-            <video  loop muted ref="videoPlayer" autoplay width="320" height="240" playsinline class="cards-img cards-img-tab">
-              <source :src="item.src"
-                      type="video/mp4">
-            </video>
-          </div>
-        </swiper-slide>
-      </swiper>
       <button v-show="isMobile" class="view-all m-auto absolute left-0 right-0 w-[250px] z-[1] bottom-[-180px]">
         See all
       </button>
-      <button v-show="addTab" class="view-all m-auto absolute left-0 right-0 w-[250px] z-[1] bottom-[-50px]">
-        View all
-      </button>
+
       <div
           v-if="addTab"
           class="w-[2%] active:scale-50 transition-all relative z-[3333] mt-[80px]"
           @click="openTab"
       >
-        <img alt="" src="@/assets/img/menuTabs.svg" />
+        <img alt="" src="@/assets/img/menuTabs.svg"/>
       </div>
       <div
           v-else
@@ -263,31 +223,63 @@ onMounted(() => {
         <div class="active-tab w-[10px] h-[22px] rounded-[2px] bg-[#fff]"></div>
         <div class="tab w-[10px] h-[20px] rounded-[2px] bg-[#404040]"></div>
       </div>
-
     </div>
 
     <transition name="modal">
-        <div v-if="showModal" class="modal" @click.self="closeModal">
-          <div class="modal-content">
-            <video  loop muted autoplay ref="videoPlayer" width="320" height="240" playsinline class="modal-image">
-              <source :src="selectedItem"
-                      type="video/mp4">
-            </video>
-          </div>
-          <div class="name-content">Hybrid + Ferrero rocher = Result</div>
+      <div v-if="showModal" class="modal" @click.self="closeModal">
+        <div class="modal-content">
+          <video loop muted autoplay ref="videoPlayer" width="320" height="240" playsinline class="modal-image">
+            <source :src="selectedItem"
+                    type="video/mp4">
+          </video>
         </div>
-      </transition>
+        <div class="name-content">Hybrid + Ferrero rocher = Result</div>
+      </div>
+    </transition>
   </div>
 </template>
 
+<style lang="scss">
+.reels-video {
+  position: relative;
+
+  .swiper-button-prev {
+    position: absolute !important;
+    top: 590px !important;
+    left: 85% !important;
+    z-index: 3333 !important;
+  }
+
+  .swiper-button-next {
+    position: absolute !important;
+    top: 590px !important;
+    right: 5% !important;
+    z-index: 3333 !important;
+  }
+
+  .swiper {
+    position: static !important;
+
+  }
+}
+</style>
 <style lang="scss" scoped>
-.transformTop{
+
+.prev-slider {
+  width: 50px;
+  height: 50px;
+  border-radius: 500px;
+  border: solid 1px #FFFFFF40;
+}
+
+.transformTop {
   transition: 1s;
   transform: translateY(-500px);
   position: relative;
   z-index: 22;
 }
-.fixNav{
+
+.fixNav {
   position: fixed;
   left: 0;
   right: 0;
@@ -296,10 +288,12 @@ onMounted(() => {
   margin: auto;
   z-index: 22;
 }
-@media screen and (max-width: 992px){
+
+@media screen and (max-width: 992px) {
   .our-works-img {
     display: none;
   }
+
   .dev-card {
     display: grid !important;
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -314,25 +308,23 @@ onMounted(() => {
     width: 250px;
     height: 400px;
   }
-  .modal-image{
+  .modal-image {
     position: relative;
     bottom: 105px;
   }
   .cards {
     width: 131.03px !important;
     height: 222.751px !important;
-
   }
-  .nav-our-works{
-   z-index: 1;
+  .nav-our-works {
+    z-index: 1;
   }
 }
+
 .nav-our-works {
   display: flex !important;
   justify-content: space-between;
   align-items: center;
-  //position: page;
-
 
   &-text {
     color: #fff;
@@ -346,7 +338,8 @@ onMounted(() => {
     z-index: 33;
   }
 }
-.scroll-our-works{
+
+.scroll-our-works {
   transition: 2s;
   animation-duration: 1s;
 }
@@ -355,6 +348,7 @@ onMounted(() => {
   position: relative;
   z-index: 22;
 }
+
 .cards {
   width: 150px;
   height: 255px;
