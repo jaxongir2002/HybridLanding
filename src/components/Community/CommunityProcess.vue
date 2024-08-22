@@ -53,8 +53,8 @@ onMounted(() => {
   font-family: Alexandria, sans-serif;
   font-size: 50px;
   font-style: normal;
-  font-weight: 500;
-  line-height: 65px;
+  font-weight: 300;
+  line-height: 130%;
   text-transform: uppercase;
   text-align: center;
   margin-top: 40px;

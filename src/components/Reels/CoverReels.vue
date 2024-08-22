@@ -1,16 +1,29 @@
 <script setup>
+import {onMounted} from "vue";
+import gsap from "gsap";
+import {ScrollTrigger} from "gsap/ScrollTrigger";
+
 function topScroll() {
   window.scrollTo({
     top: 1000,
     behavior: "smooth",
   });
 }
+gsap.registerPlugin(SplitText, ScrollTrigger);
+onMounted(() => {
+  let mySplitText = new SplitText(".test-animation", {type: "chars"});
+  let chars = mySplitText.chars;
+  gsap.from(chars, {
+    yPercent: 130,
+    stagger: 0.02,
+  });
+})
 </script>
 
 <template>
   <section id="container" class="">
     <div class="title-container">
-      <div class="title-logo">Our Works</div>
+      <div class="title-logo test-animation">Our Works</div>
       <div class="glass-effect"></div>
     </div>
 
@@ -20,7 +33,6 @@ function topScroll() {
     </span>
   </section>
 </template>
-
 <style scoped lang="scss">
 @media screen and (max-width: 992px) {
   .title-logo {

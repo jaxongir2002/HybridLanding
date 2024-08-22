@@ -3,7 +3,7 @@
 </script>
 
 <template>
-  <div class='relative padding-no video-background-img'>
+  <div class='padding-no video-background-img relative z-10'>
     <iframe width="200px" height="240px"
             src="https://lottie.host/embed/8e80c604-e0af-4b03-96ce-f75675059aa0/Tyehx7Emkq.json"></iframe>
     <div class="contact-us-text">

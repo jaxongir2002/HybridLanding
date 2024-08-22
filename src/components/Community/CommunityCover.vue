@@ -1,17 +1,31 @@
 <script setup>
+import gsap from "gsap";
+import {ScrollTrigger} from "gsap/ScrollTrigger";
+import {onMounted} from "vue";
+
 function topScroll() {
   window.scrollTo({
     top: 1000,
     behavior: "smooth",
   });
 }
+gsap.registerPlugin(SplitText, ScrollTrigger);
+onMounted(() => {
+  let mySplitText = new SplitText(".test-animation", {type: "chars"});
+  let chars = mySplitText.chars;
+  gsap.from(chars, {
+    yPercent: 130,
+    stagger: 0.02,
+    opacity:0
+  });
+})
 </script>
 
 <
 <template>
   <section id="container" class="">
     <div class="title-container">
-      <div class="title-logo">Community</div>
+      <div class="title-logo test-animation">Community</div>
       <div class="glass-effect-community hidden"></div>
       <div class="title-text">Hybrid + Artist = magic</div>
     </div>

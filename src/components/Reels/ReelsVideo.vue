@@ -83,8 +83,7 @@ const listImg = ref([
 const videoPlayer = ref(null);
 const containerRef = ref(null);
 const classAddAnimation = ref(false)
-const fixNav = ref(false)
-
+const fixNav= ref(false)
 function openModal(item, index) {
   showModal.value = true;
   selectedItem.value = item.src;
@@ -94,8 +93,8 @@ function openModal(item, index) {
   mobile()
 }
 
-function mobile() {
-  if (showModal.value === true) {
+function mobile(){
+  if (showModal.value===true) {
     document.body.classList.add('no-scroll');
     lenis.stop();
   } else {
@@ -103,10 +102,8 @@ function mobile() {
     lenis.start();
   }
 }
-
 document.addEventListener('keydown', closeModal);
 mobile()
-
 function closeModal(event) {
   // Check if the Esc key was pressed
   if (event.key === 'Escape') {
@@ -114,14 +111,13 @@ function closeModal(event) {
     selectedItem.value = null;
     document.body.style.overflow = bodyOverflow || "";
     mobile();
-  } else {
+  }else {
     showModal.value = false;
     selectedItem.value = null;
     document.body.style.overflow = bodyOverflow || "";
     mobile();
   }
 }
-
 function openTab() {
   addTab.value = !addTab.value;
   const videos = document.querySelectorAll('.cards-img');
@@ -138,13 +134,59 @@ function openTab() {
 
 const displayedItems = computed(() => {
   if (isMobile) {
-  return  listImg.value.slice(0, 6);
+    return listImg.value.slice(0, 6);
   } else {
     return listImg.value;
   }
 });
-</script>
 
+onMounted(() => {
+
+  const slider = document.querySelector(".dev-card");
+  let isDown = false;
+  let startX;
+  let scrollLeft;
+
+  slider.addEventListener("mousedown", (e) => {
+    isDown = true;
+    slider.classList.add("active");
+    startX = e.pageX - slider.offsetLeft;
+    scrollLeft = slider.scrollLeft;
+  });
+  slider.addEventListener("mouseleave", () => {
+    isDown = false;
+    slider.classList.remove("active");
+  });
+  slider.addEventListener("mouseup", () => {
+    isDown = false;
+    slider.classList.remove("active");
+  });
+  slider.addEventListener("mousemove", (e) => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - slider.offsetLeft;
+    const walk = (x - startX) * 1.5;
+    slider.scrollLeft = scrollLeft - walk;
+  });
+
+
+  window.addEventListener('scroll', () => {
+    const currentScrollPos = window.pageYOffset;
+      if (!isMobile) {
+      if (currentScrollPos > 1000) {
+        classAddAnimation.value =true
+        fixNav.value =true
+      } else {
+        classAddAnimation.value =false
+        fixNav.value =false
+      }
+      if (currentScrollPos > 1400){
+        fixNav.value =false
+      }
+    }
+  });
+})
+</script>
 <template>
   <div class="pt-[80px] pb-[80px] scroll-our-works  ">
     <div class="our-works-div relative" :class="{fixNav :fixNav}">
@@ -260,6 +302,17 @@ const displayedItems = computed(() => {
   .swiper {
     position: static !important;
 
+  }
+}
+.swiper-button-next {
+  &::after {
+    content: '';
+  }
+}
+
+.swiper-button-prev {
+  &::after {
+    content: '';
   }
 }
 </style>

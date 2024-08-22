@@ -7,7 +7,7 @@ import BriefCover from "@/components/Brief/BriefCover.vue";
 
 <template>
   <div  style=" padding: 34px 40px 34px 40px; max-width: 1440px; margin: auto ">
-    <navigation/>
+<!--    <navigation/>-->
     <BriefCover/>
     <Register/>
     <LastSection/>

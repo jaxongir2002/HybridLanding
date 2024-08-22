@@ -11,14 +11,14 @@ import CommunityCuntacts from "@/components/Community/CommunityCuntacts.vue";
 </script>
 
 <template>
-  <div  style=" padding: 34px 40px 34px 40px; max-width: 1440px;  margin: auto">
-    <Navigation/>
-    <Cover/>
-    <ExperienceAbout/>
-    <ExperienceService/>
-    <ExperienceVideos/>
+  <div  >
+<!--    <Navigation/>-->
+    <Cover style=" padding: 34px 40px 34px 40px; max-width: 1440px;  margin: auto"/>
+    <ExperienceAbout style=" padding: 34px 40px 34px 40px; max-width: 1440px;  margin: auto"/>
+    <ExperienceService style=" padding: 34px 40px 34px 40px; max-width: 1440px;  margin: auto"/>
+    <ExperienceVideos style="padding: 34px 40px 34px 40px; max-width: 1440px;  margin: auto"/>
     <CommunityCuntacts/>
-    <LastSection/>
+    <LastSection style=" padding: 34px 40px 34px 40px; max-width: 1440px;  margin: auto"/>
   </div>
 
 </template>

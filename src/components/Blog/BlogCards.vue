@@ -21,10 +21,10 @@ const btnBlog = ref([
 <template>
   <div class="grid grid-cols-12 mt-[90px]">
     <div class="filter-blog col-span-4">
-      <div class="blog-logo">
+      <div class="blog-logo relative z-10">
         Blog
       </div>
-      <div class="flex gap-[10px] mt-[15px]">
+      <div class="flex gap-[10px] mt-[15px] relative z-10">
         <button class="btn-blog-filter" v-for="item in btnBlog" :key="item">
           {{ item.title }}
         </button>
@@ -62,7 +62,7 @@ const btnBlog = ref([
             </div>
 
       </div>
-      <button class="learn-btn col-span-4 relative left-[100%]">
+      <button class="learn-btn col-span-4 left-[100%] relative z-10">
         Learn more
       </button>
 

@@ -1,17 +1,47 @@
 <script setup>
+import gsap from "gsap";
+import {ScrollTrigger} from "gsap/ScrollTrigger";
+import {onMounted} from "vue";
+import anime from "animejs";
+
+gsap.registerPlugin(SplitText, ScrollTrigger);
+
 function topScroll() {
   window.scrollTo({
     top: 1000,
     behavior: "smooth",
   });
 }
+onMounted(()=>{
+  let textWrapper = document.querySelector('.test-animation-about');
+  textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+  anime.timeline()
+      .add({
+        targets: '.test-animation-about',
+        translateY: ["1.1em", 0],
+        translateX: ["0.55em", 0],
+        translateZ: 0,
+        rotateZ: [180, 0],
+        duration: 750,
+        opacity:1,
+        easing: "easeOutExpo",
+        delay: (el, i) => 50 * i
+      }).add({
+    targets: '.ml7',
+    opacity: 0,
+    duration: 1000,
+    easing: "easeOutExpo",
+    delay: 1000
+  });
+})
+
 </script>
 
 <template>
-  <section id="container" class="">
+  <section id="container">
     <div class="title-container">
-      <div class="title-logo">We are</div>
-      <div ref="elementRef" class="title-logo relative lg:left-[240px] mobile-title">misfits</div>
+      <div class="title-logo test-animation-about">We are</div>
+      <div ref="elementRef" class="title-logo relative lg:left-[240px] mobile-title test-animation-about">misfits</div>
       <div class="glass-effect left-[190px]"></div>
     </div>
     <div class="title-footer w-[20%] title-footer-mobile hidden">
@@ -45,20 +75,20 @@ body::-webkit-scrollbar {
     font-size: 50px !important;
     line-height: 55px !important;
   }
-  .mobile-title{
+  .mobile-title {
     left: 55px !important;
   }
-  .title-footer{
+  .title-footer {
     display: none;
   }
 
-  .title-footer-mobile{
+  .title-footer-mobile {
     position: relative;
     display: block;
     top: 40%;
     width: 75%;
   }
-  iframe{
+  iframe {
     display: none;
   }
   .glass-effect {
@@ -113,6 +143,7 @@ body::-webkit-scrollbar {
   top: 50%;
   transform: translate(0, -50%);
   z-index: 22;
+  //transition: 0.3s;
 }
 
 
@@ -122,8 +153,10 @@ body::-webkit-scrollbar {
   color: #fff;
   font-weight: 900;
   font-size: 140px;
-  line-height: 140px;
+  //line-height: 140px;
   transition: 1s;
+  overflow: hidden;
+  line-height: 1em;
 }
 
 @keyframes dashboard-animation {
@@ -170,21 +203,24 @@ body::-webkit-scrollbar {
   gap: 5px;
   background: transparent;
 }
-.title-footer{
+
+.title-footer {
   color: var(--White, #F9F9F9);
-  font-family: Urbanist,sans-serif;
+  font-family: Urbanist, sans-serif;
   font-size: 16px;
   font-style: normal;
   font-weight: 600;
   line-height: 120%; /* 19.2px */
   letter-spacing: -0.48px;
 }
-.footer-cover{
+
+.footer-cover {
   position: relative;
   z-index: 22;
-  bottom: 250px !important;
+  bottom: 310px !important;
 }
-iframe{
+
+iframe {
   transform: scaleX(-1);
 }
 </style>

@@ -3,26 +3,26 @@
 </script>
 
 <template>
-  <div class="grid grid-cols-12 slider-container gap-[20px] mt-[20%] z-10">
-    <div class="card-img-slider col-span-8">
+  <div class="grid grid-cols-12 slider-container gap-[20px] mt-[20%] ">
+    <div class="card-img-slider col-span-8 relative z-10">
       <video autoplay loop muted playsinline>
         <source src="@/assets/video/91ec3544e41e9afbff63c3d000a9a5296073707d839b265710597bd574d824eb_ndrKpibw.mp4"
                 type="video/mp4">
       </video>
     </div>
-    <div class="card-img-slider col-span-4">
+    <div class="card-img-slider col-span-4 relative z-10">
       <video autoplay loop muted playsinline>
         <source src="@/assets/video/wecreatemagic_lsF4u8LF.mp4"
                 type="video/mp4">
       </video>
     </div>
-    <div class="card-img-slider col-span-4 mt-[140px]">
+    <div class="card-img-slider col-span-4 mt-[140px] relative z-10">
       <video autoplay loop muted playsinline>
         <source src="@/assets/video/ac57976749d126f18128abad5cec0903ee50f1bcaab2b1941b03887e69ae9a29_rbIGpUGF.mp4"
                 type="video/mp4">
       </video>
     </div>
-    <div class="card-img-slider col-span-8 col mt-[140px] w-full">
+    <div class="card-img-slider col-span-8 col mt-[140px] w-full relative z-10">
       <video autoplay loop muted playsinline>
         <source src="@/assets/video/ac57976749d126f18128abad5cec0903ee50f1bcaab2b1941b03887e69ae9a29_rbIGpUGF.mp4"
                 type="video/mp4">

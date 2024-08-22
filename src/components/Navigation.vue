@@ -29,6 +29,16 @@ onMounted(() => {
     }
     prevScrollPos = currentScrollPos;
   });
+  const element = document.getElementById("renderSurface");
+
+// Create the onclick event handler function
+  function handleClick() {
+    openMenu.value = false
+  }
+
+// Attach the onclick event handler to the element
+  element.onclick = handleClick;
+
 });
 
 
@@ -90,10 +100,9 @@ function sixFn() {
 </script>
 
 <template>
-  <div class="" :class="{ fixed: isNavFixed,'header-animation': isNavFixed,'isNavStick':isNavSticky  }">
-    <div class=""
-         :class="{ 'w-[80%] m-auto': isNavFixed,'header-animation': 'w-[100%] m-auto','isNavStick':isNavSticky  }">
-      <div class="navigation">
+  <div :class="{ fixed: isNavFixed,'header-animation': isNavFixed,'isNavStick':isNavSticky  }">
+    <div :class="{ 'w-[100%]': isNavFixed,'header-animation': 'w-[100%]','isNavStick':isNavSticky  }">
+      <div class="navigation" style=" padding: 34px 40px 34px 40px; max-width: 1440px; margin: auto">
         <div>
           <img src="@/assets/img/Logo.svg" alt="" @click="load">
         </div>
@@ -111,7 +120,7 @@ function sixFn() {
             <span class="four-animation">Blog</span>
           </router-link>
           <router-link to="/brief">
-          <span class="five-animation">Brief</span>
+            <span class="five-animation">Brief</span>
           </router-link>
           <router-link to="/experience">
             <span class="five-animation">Experience</span>
@@ -124,9 +133,9 @@ function sixFn() {
           </router-link>
         </div>
         <div class="navigation-magic" @click="openMenu=true">
-      <span class="magic-animation" :class="{ 'animate': openMenu }">
-         Discover magic
-      </span>
+          <span class="magic-animation" :class="{ 'animate': openMenu }">
+             Discover magic
+          </span>
           <img src="../assets/img/MenuIcon.svg" alt="">
         </div>
         <div class="navigation-mobile">
@@ -279,28 +288,41 @@ function sixFn() {
         <div class="menu-mobile" v-show="openMobil" :class="{mobileFixed : isNavFixed}">
           <div class="flex">
             <div class="flex flex-col gap-[10px] relative bottom-[50px]">
-              <div class="text-mobile flex justify-center gap-[15px]">
+              <div class="text-mobile flex justify-center gap-[15px]" @click="$router.push('/landing')">
                 <span>home</span>
                 <div class="btn-mobile">01</div>
               </div>
-              <div class="text-mobile flex justify-center gap-[15px]">
+              <div class="text-mobile flex justify-center gap-[15px]" @click="$router.push('/about')">>
                 <span>about</span>
                 <div class="btn-mobile">02</div>
               </div>
-              <div class="text-mobile flex justify-center gap-[15px]">
+              <div class="text-mobile flex justify-center gap-[15px]" @click="$router.push('/reels')">>
                 <span>Reels</span>
                 <div class="btn-mobile">03</div>
               </div>
-              <div class="text-mobile flex justify-center gap-[15px]">
+              <div class="text-mobile flex justify-center gap-[15px]" @click="$router.push('/community')">>
                 <span>Community</span>
                 <div class="btn-mobile">04</div>
               </div>
-              <div class="text-mobile flex justify-center gap-[15px]">
+              <div class="text-mobile flex justify-center gap-[15px]" @click="$router.push('/blog')">>
                 <span>Blog</span>
                 <div class="btn-mobile">05</div>
               </div>
-              <div class="text-mobile flex justify-center gap-[15px]">
+              <div class="text-mobile flex justify-center gap-[15px]" @click="$router.push('/brief')">>
                 <span>brief</span>
+                <div class="btn-mobile">06</div>
+              </div>
+
+              <div class="text-mobile flex justify-center gap-[15px]" @click="$router.push('/experience')">>
+                <span>experience</span>
+                <div class="btn-mobile">04</div>
+              </div>
+              <div class="text-mobile flex justify-center gap-[15px]" @click="$router.push('/studio')">>
+                <span>studio</span>
+                <div class="btn-mobile">05</div>
+              </div>
+              <div class="text-mobile flex justify-center gap-[15px]" @click="$router.push('/lab')">>
+                <span>lab</span>
                 <div class="btn-mobile">06</div>
               </div>
             </div>
@@ -381,13 +403,13 @@ video {
   right: 0;
   width: 100%;
   z-index: 33499;
+  height: 90px !important;
   background: #0E0E0E;
   margin: auto !important;
-  padding: 20px !important;
 }
 
 .menuUi {
-  height: 90vh !important;
+  height: 95vh !important;
   top: 20px !important;
   right: 0 !important;
 }
@@ -449,7 +471,39 @@ video {
   text-transform: uppercase;
 }
 
+.btn-links:hover {
+  border-color: #BF56FF;
+  color: #BF56FF!important;
+}
+//
+.navigation-menu span {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 2px;
+  transition: all 0.5s ease;
+}
 
+.navigation-menu span:before {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: auto;
+  right: 0;
+  background-color: currentColor;
+  visibility: hidden;
+  transition: all 0.5s ease;
+}
+
+.navigation-menu span:hover:before,
+.router-link-active:before {
+  visibility: visible;
+  width: 100%;
+  left: 0;
+  right: auto;
+}
+//nav hover
 .menu-dialog {
   width: 602px;
   height: 95%;
@@ -599,6 +653,7 @@ video {
     font-family: "Alexandria", sans-serif;
     font-weight: 700;
     color: white;
+    transition: 0.5s;
   }
 }
 
@@ -679,4 +734,5 @@ video {
     opacity: 1;
   }
 }
+
 </style>

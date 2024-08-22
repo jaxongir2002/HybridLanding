@@ -40,7 +40,7 @@ onMounted(() => {
 
 <template>
   <div class="flex justify-between items-center max-sm:hidden">
-    <div class="text-left-right">
+    <div class="text-left-right relative z-10">
       Team
     </div>
     <div class="flex flex-col slider-container items-center mt-[20%] relative z-10">
@@ -66,12 +66,14 @@ onMounted(() => {
         </div>
       </div>
     </div>
-    <div class="text-left-right">
-      Lets create magic!
+    <div class="text-left-right relative z-10">
+      Lets create
+      <br>
+     <div class="text-right">magic!</div>
     </div>
   </div>
-  <div class="mobile-version mt-[80px]">
-    <div class="text-left-right">
+  <div class="mobile-version mt-[80px] relative z-10">
+    <div class="text-left-right relative z-10">
       Department
     </div>
     <div class="flex flex-col items-center mt-[20%] relative z-10">

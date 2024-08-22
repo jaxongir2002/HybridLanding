@@ -61,7 +61,6 @@ onMounted(() => {
   tl.to('.third-name', {
     transition: '.5s',
     transform: 'translateY(-50px)',
-    duration: 1,
     ease: "power2.inOut",
   })
 // document.querySelector('.pin-spacer').style.zIndex = 999;

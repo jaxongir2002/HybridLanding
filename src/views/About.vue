@@ -12,16 +12,16 @@ import Partners from "@/components/Partners.vue";
 </script>
 
 <template>
-  <div class="container-hybrid" style=" padding: 34px 40px 34px 40px; max-width: 1440px;  margin: auto">
-    <Navigation/>
-    <Cover/>
-    <Cards/>
-    <Mission/>
-    <Magic/>
-    <OurWorks/>
-     <Partners/>
-    <Register/>
-    <LastSection/>
+  <div class="container-hybrid" style="padding: 34px 40px 34px 40px; max-width: 1440px; margin: auto">
+    <Cover />
+    <Cards />
+    <Mission />
+    <Magic />
+    <OurWorks />
+    <Partners />
+    <Register />
+    <LastSection />
+    <div id="smoke-background"></div>
   </div>
 </template>
 

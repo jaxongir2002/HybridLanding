@@ -24,7 +24,7 @@ onMounted(() => {
         Into your ideas
       </div>
     </div>
-    <div id="idSlider" class="card-img-slider col-span-4 mt-[80px] m-auto">
+    <div id="idSlider" class="card-img-slider col-span-4 mt-[80px] m-auto relative z-10">
       <video autoplay loop muted playsinline>
         <source src="@/assets/video/wecreatemagic_lsF4u8LF.mp4"
                 type="video/mp4">

@@ -2,12 +2,16 @@
 import {Swiper, SwiperSlide} from "swiper/vue";
 import {ref} from "vue";
 import {FreeMode, Navigation} from "swiper/modules";
-
+import WatermelonJSON from "@/assets/animation/whiteAnimation.json";
+import {LottieAnimation} from "lottie-web-vue";
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 const modules = ref([FreeMode, Navigation])
 </script>
 
 <template>
-  <div class="studio-video">
+  <div class="studio-video relative z-10">
     <swiper
         :slidesPerView="1"
         :spaceBetween="20"
@@ -22,8 +26,15 @@ const modules = ref([FreeMode, Navigation])
             <div class="text-video-header">
               Hybrid ips
             </div>
-            <iframe width="140px" height="194px"
-                    src="https://lottie.host/embed/8e80c604-e0af-4b03-96ce-f75675059aa0/Tyehx7Emkq.json"></iframe>
+            <div class="lottie-animate">
+              <LottieAnimation
+                  :animation-data="WatermelonJSON"
+                  :auto-play="true"
+                  :loop="true"
+                  :speed="1"
+                  width="140px" height="194px"
+                  ref="anim" />
+            </div>
           </div>
           <div class="rounded-[9px] overflow-hidden h-[783px] max-sm:h-[180px]">
             <video autoplay loop muted playsinline>

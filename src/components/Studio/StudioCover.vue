@@ -1,17 +1,30 @@
 <script setup>
+import gsap from "gsap";
+import {ScrollTrigger} from "gsap/ScrollTrigger";
+import {onMounted} from "vue";
+
 function topScroll() {
   window.scrollTo({
     top: 1000,
     behavior: "smooth",
   });
 }
+gsap.registerPlugin(SplitText, ScrollTrigger);
+onMounted(() => {
+  let mySplitText = new SplitText(".test-animation", {type: "chars"});
+  let chars = mySplitText.chars;
+  gsap.from(chars, {
+    yPercent: 130,
+    stagger: 0.02,
+  });
+})
 </script>
 
 <template>
   <section id="container">
     <div class="title-container">
       <div class="flex justify-between items-end gap-[130px] max-sm:gap-0 max-sm:w-full">
-        <div class="title-logo">Hybrid</div>
+        <div class="title-logo test-animation">Hybrid</div>
         <div class="text-magic text-left">
           Content creation
         </div>
@@ -20,7 +33,7 @@ function topScroll() {
         <div class="text-magic">
           Magic creation
         </div>
-        <div class="title-logo">Studio</div>
+        <div class="title-logo test-animation">Studio</div>
       </div>
     </div>
     <span class="text-scroll" @click="topScroll">

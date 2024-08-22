@@ -1,4 +1,11 @@
-<script setup></script>
+<script setup>
+function topScroll() {
+  window.scrollTo({
+    top: 1000,
+    behavior: "smooth",
+  });
+}
+</script>
 
 <template>
   <section id="container" class="">
@@ -7,7 +14,7 @@
       <div ref="elementRef" class="title-text">xperience</div>
       <div class="glass-effect"></div>
     </div>
-    <span class="text-scroll" >
+    <span class="text-scroll" @click="topScroll" >
       Scroll to experience magic
       <img class="animation-arrow" src="../assets/img/Arrow.svg" alt="" />
     </span>
@@ -153,6 +160,6 @@ body::-webkit-scrollbar {
   margin-bottom: 101px;
   position: relative;
   z-index: 22;
-  top: 40% !important;
+  top: 35% !important;
 }
 </style>

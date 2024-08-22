@@ -1,13 +1,25 @@
 <script setup>
 
 import BriefCoverMobile from "@/components/Brief/BriefCoverMobile.vue";
+import gsap from "gsap";
+import {ScrollTrigger} from "gsap/ScrollTrigger";
+import {onMounted} from "vue";
+gsap.registerPlugin(SplitText, ScrollTrigger);
+onMounted(() => {
+  let mySplitText = new SplitText(".test-animation", {type: "chars"});
+  let chars = mySplitText.chars;
+  gsap.from(chars, {
+    yPercent: 130,
+    stagger: 0.02,
+  });
+})
 </script>
 
 <template>
   <BriefCoverMobile class="hidden max-sm:block"/>
-  <div class="mt-[150px] mb-[100px] max-sm:hidden">
-    <div class="flex justify-between items-center">
-      <div class="cover-text-brief">
+  <div class="mt-[150px] mb-[100px] max-sm:hidden ">
+    <div class="flex justify-between items-center relative z-10">
+      <div class="cover-text-brief test-animation">
         Let`s make
       </div>
       <iframe
@@ -16,26 +28,26 @@ import BriefCoverMobile from "@/components/Brief/BriefCoverMobile.vue";
     </div>
     <div class="grid grid-cols-12 mt-[40px]">
       <div class="col-span-4">
-        <div class="card-magic">
+        <div class="card-magic relative z-10">
           <video autoplay loop muted playsinline>
             <source src="@/assets/video/91ec3544e41e9afbff63c3d000a9a5296073707d839b265710597bd574d824eb_ndrKpibw.mp4"
                     type="video/mp4">
           </video>
         </div>
-        <div class="magic-text mt-2"> WE CREATE MAGIC</div>
+        <div class="magic-text mt-2 relative z-10"> WE CREATE MAGIC</div>
       </div>
       <div class="col-span-8 flex flex-col justify-between">
         <div>
-          <div class="cover-text-brief">
+          <div class="cover-text-brief relative z-10 test-animation">
             Some magic !
           </div>
-          <button class="contact-us mt-[40px]">
+          <button class="contact-us mt-[40px] relative z-10">
             <img src="@/assets/img/smsTracking.svg" alt=""> Contact us
           </button>
         </div>
 
         <div class="flex justify-between">
-          <div class="description-text w-[397px]">
+          <div class="description-text-brief w-[397px] relative z-10">
             We are misfits; we are not an agency,
             and we don’t just do production; we are
             a combination of both thinkers and
@@ -43,7 +55,7 @@ import BriefCoverMobile from "@/components/Brief/BriefCoverMobile.vue";
             and more than human. A collaboration
             between art and tech.
           </div>
-          <span class="text-scroll flex items-center mt-[50px]">
+          <span class="text-scroll flex items-center mt-[50px] relative z-10">
               Contact form
             <img class="animation-arrow" src="@/assets/img/Arrow.svg" alt=""/>
           </span>
@@ -110,7 +122,7 @@ iframe {
   line-height: 140%;
 }
 
-.description-text {
+.description-text-brief {
   color: #F9F9F9;
   font-family: Urbanist, sans-serif;
   font-size: 16px;
