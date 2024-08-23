@@ -1,5 +1,6 @@
 <script setup>
-import {ref} from 'vue'
+import {onMounted, ref} from 'vue'
+import gsap from "gsap";
 
 const btnBlog = ref([
   {
@@ -15,13 +16,23 @@ const btnBlog = ref([
     title: 'Insights'
   },
 ]);
+gsap.registerPlugin(SplitText);
+onMounted(() => {
+  let mySplitText = new SplitText(".test-animation-blog", {type: "chars"});
+  let chars = mySplitText.chars;
+  gsap.from(chars, {
+    yPercent: 130,
+    stagger: 0.02,
+    opacity:0
+  });
 
+})
 </script>
 
 <template>
   <div class="grid grid-cols-12 mt-[90px]">
     <div class="filter-blog col-span-4">
-      <div class="blog-logo relative z-10">
+      <div class="blog-logo relative z-10 test-animation-blog">
         Blog
       </div>
       <div class="flex gap-[10px] mt-[15px] relative z-10">
@@ -31,35 +42,36 @@ const btnBlog = ref([
       </div>
     </div>
     <div class="col-span-8 grid grid-cols-12 gap-[20px] cards-info-blog">
-      <div v-for="item in 8" class="card-blog flex flex-col justify-between col-span-6 relative z-20  max-sm:mt-[20px]" @click="$router.push({name: 'blogView', params: { id: item }})">
-            <div class="flex justify-between items-start">
-              <div class="rounded-[9px] overflow-hidden">
-                <video autoplay loop muted playsinline>
-                  <source
-                      src="@/assets/video/91ec3544e41e9afbff63c3d000a9a5296073707d839b265710597bd574d824eb_ndrKpibw.mp4"
-                      type="video/mp4">
-                </video>
-              </div>
-              <img src="@/assets/img/Arrow_right.svg" alt="">
-            </div>
-            <div class="">
-              <div class="text-blog">
-                A gaming revolution of interactive and interconnected playground of fun and experiences <span
-                  class="emoji">
+      <div v-for="item in 8" class="card-blog flex flex-col justify-between col-span-6 relative z-20  max-sm:mt-[20px]"
+           @click="$router.push({name: 'blogView', params: { id: item }})">
+        <div class="flex justify-between items-start">
+          <div class="rounded-[9px] overflow-hidden">
+            <video autoplay loop muted playsinline>
+              <source
+                  src="@/assets/video/91ec3544e41e9afbff63c3d000a9a5296073707d839b265710597bd574d824eb_ndrKpibw.mp4"
+                  type="video/mp4">
+            </video>
+          </div>
+          <img src="@/assets/img/Arrow_right.svg" alt="">
+        </div>
+        <div class="">
+          <div class="text-blog">
+            A gaming revolution of interactive and interconnected playground of fun and experiences <span
+              class="emoji">
             🕹️👾🎮
           </span>
-              </div>
-              <div class="flex gap-[16px] mt-[12px]">
-                <div class="date">
-                  14.06.2024
-                </div>
-                <img src="@/assets/img/LineBlog.svg" alt="">
-                <div class="date">
-                  News
-                </div>
-
-              </div>
+          </div>
+          <div class="flex gap-[16px] mt-[12px]">
+            <div class="date">
+              14.06.2024
             </div>
+            <img src="@/assets/img/LineBlog.svg" alt="">
+            <div class="date">
+              News
+            </div>
+
+          </div>
+        </div>
 
       </div>
       <button class="learn-btn col-span-4 left-[100%] relative z-10">

@@ -100,7 +100,7 @@ onMounted(() => {
         <span class="second-text relative z-[33]">Our mission is to bridge the gap between the virtual and physical worlds,</span>
         <span class="third-text relative z-[33]" >offering concepts that empower you to dream beyond boundaries.</span>
       </div>
-      <button class="btn-about-us flex gap-[5px] items-center relative z-[3399999]" style="position:relative; z-index: 333 !important;">
+      <button class="btn-about-us flex gap-[5px] items-center" style="position:relative; z-index: 33 !important;">
         <i class="pi pi-arrow-right text-[16px] mr-[3px] mt-[3px] h-[24px] mobile-icon"></i> About us
       </button>
     </div>
@@ -135,7 +135,7 @@ onMounted(() => {
 <style lang="scss">
 .pin-spacer{
   position: relative;
-  z-index: 4444 !important;
+  z-index: 33 !important;
 }
 </style>
 <style scoped lang="scss">
@@ -229,7 +229,7 @@ video{
   margin-top: 40px;
   cursor: url("@/assets/img/Polygon.svg"), auto;
   position: relative !important;
-  z-index: 333 !important;
+  z-index: 33 !important;
 }
 
 .btn-about-us:hover {

@@ -6,6 +6,7 @@ import ExperienceAbout from "@/components/Experience/ExperienceAbout.vue";
 import ExperienceService from "@/components/Experience/ExperienceService.vue";
 import ExperienceVideos from "@/components/Experience/ExperienceVideos.vue";
 import CommunityCuntacts from "@/components/Community/CommunityCuntacts.vue";
+import ExperienceCover from "@/components/Experience/ExperienceCover.vue";
 
 
 </script>
@@ -13,7 +14,7 @@ import CommunityCuntacts from "@/components/Community/CommunityCuntacts.vue";
 <template>
   <div  >
 <!--    <Navigation/>-->
-    <Cover style=" padding: 34px 40px 34px 40px; max-width: 1440px;  margin: auto"/>
+    <experience-cover style=" padding: 34px 40px 34px 40px; max-width: 1440px;  margin: auto"/>
     <ExperienceAbout style=" padding: 34px 40px 34px 40px; max-width: 1440px;  margin: auto"/>
     <ExperienceService style=" padding: 34px 40px 34px 40px; max-width: 1440px;  margin: auto"/>
     <ExperienceVideos style="padding: 34px 40px 34px 40px; max-width: 1440px;  margin: auto"/>

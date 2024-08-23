@@ -39,11 +39,11 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="flex justify-between items-center max-sm:hidden">
+  <div class="flex justify-between items-center max-sm:hidden m-auto">
     <div class="text-left-right relative z-10">
       Team
     </div>
-    <div class="flex flex-col slider-container items-center mt-[20%] relative z-10">
+    <div class="flex flex-col slider-container items-center mt-[20%] relative z-10" >
       <div class="card-img-slider relative" v-for="(item, index) in items" :key="index">
         <div class="nav-title">
           {{ item.title }}

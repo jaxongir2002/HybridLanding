@@ -694,7 +694,7 @@ onMounted(() => {
   position: sticky;
   left: 0;
   top: 0;
-  transform: translate(0%, 65%);
+  transform: translate(0%, 85%);
 }
 
 .cards-company-reels {

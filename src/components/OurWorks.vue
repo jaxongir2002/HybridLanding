@@ -10,6 +10,7 @@ const addTab = ref(false);
 const showModal = ref(false);
 const selectedItem = ref(null);
 const selectedIndex = ref(-1);
+const anotherClass = ref(false)
 const modules = ref([FreeMode])
 const isMobile = window.matchMedia('(max-width: 767px)').matches;
 let bodyOverflow = null;
@@ -80,7 +81,8 @@ const listImg = ref([
 const videoPlayer = ref(null);
 const containerRef = ref(null);
 const classAddAnimation = ref(false)
-const fixNav= ref(false)
+const fixNav = ref(false)
+
 function openModal(item, index) {
   showModal.value = true;
   selectedItem.value = item.src;
@@ -90,8 +92,8 @@ function openModal(item, index) {
   mobile()
 }
 
-function mobile(){
-  if (showModal.value===true) {
+function mobile() {
+  if (showModal.value === true) {
     document.body.classList.add('no-scroll');
     lenis.stop();
   } else {
@@ -99,8 +101,10 @@ function mobile(){
     lenis.start();
   }
 }
+
 document.addEventListener('keydown', closeModal);
 mobile()
+
 function closeModal(event) {
   // Check if the Esc key was pressed
   if (event.key === 'Escape') {
@@ -108,13 +112,14 @@ function closeModal(event) {
     selectedItem.value = null;
     document.body.style.overflow = bodyOverflow || "";
     mobile();
-  }else {
+  } else {
     showModal.value = false;
     selectedItem.value = null;
     document.body.style.overflow = bodyOverflow || "";
     mobile();
   }
 }
+
 function openTab() {
   addTab.value = !addTab.value;
   const videos = document.querySelectorAll('.cards-img');
@@ -139,49 +144,53 @@ const displayedItems = computed(() => {
 
 onMounted(() => {
 
-    const slider = document.querySelector(".dev-card");
-    let isDown = false;
-    let startX;
-    let scrollLeft;
+  const slider = document.querySelector(".dev-card");
+  let isDown = false;
+  let startX;
+  let scrollLeft;
 
-    slider.addEventListener("mousedown", (e) => {
-      isDown = true;
-      slider.classList.add("active");
-      startX = e.pageX - slider.offsetLeft;
-      scrollLeft = slider.scrollLeft;
-    });
-    slider.addEventListener("mouseleave", () => {
-      isDown = false;
-      slider.classList.remove("active");
-    });
-    slider.addEventListener("mouseup", () => {
-      isDown = false;
-      slider.classList.remove("active");
-    });
-    slider.addEventListener("mousemove", (e) => {
-      if (!isDown) return;
-      e.preventDefault();
-      const x = e.pageX - slider.offsetLeft;
-      const walk = (x - startX) * 1.5;
-      slider.scrollLeft = scrollLeft - walk;
-    });
+  slider.addEventListener("mousedown", (e) => {
+    isDown = true;
+    slider.classList.add("active");
+    startX = e.pageX - slider.offsetLeft;
+    scrollLeft = slider.scrollLeft;
+  });
+  slider.addEventListener("mouseleave", () => {
+    isDown = false;
+    slider.classList.remove("active");
+  });
+  slider.addEventListener("mouseup", () => {
+    isDown = false;
+    slider.classList.remove("active");
+  });
+  slider.addEventListener("mousemove", (e) => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - slider.offsetLeft;
+    const walk = (x - startX) * 1.5;
+    slider.scrollLeft = scrollLeft - walk;
+  });
 
 
-   window.addEventListener('scroll', () => {
+  window.addEventListener('scroll', () => {
     const currentScrollPos = window.pageYOffset;
 
-     if (!isMobile) {
-    if (currentScrollPos > 5900) {
-      classAddAnimation.value =true
-      fixNav.value =true
-    } else {
-      classAddAnimation.value =false
-      fixNav.value =false
+    if (!isMobile) {
+      if (currentScrollPos > 5900) {
+        classAddAnimation.value = true
+        anotherClass.value = false
+        if (addTab) {
+          fixNav.value = false
+        } else fixNav.value = true
+      } else {
+        classAddAnimation.value = false
+        fixNav.value = false
+        anotherClass.value = true
+      }
+      if (currentScrollPos > 6122) {
+        fixNav.value = false
+      }
     }
-    if (currentScrollPos > 6122){
-      fixNav.value =false
-    }
-     }
   });
 
 
@@ -191,29 +200,33 @@ onMounted(() => {
 <template>
   <div class="pt-[80px] pb-[80px] scroll-our-works">
     <div class="our-works-div relative" :class="{fixNav :fixNav}">
-      <div class="nav-our-works relative z-[2332]" >
+      <div class="nav-our-works relative z-[2332]">
         <div class="nav-our-works-text relative">Our works</div>
         <div class="our-works-img relative z-[20]">
           <button v-show="!addTab" class="view-all w-[205px] mt-2">
             View all
           </button>
         </div>
-        </div>
+      </div>
 
       <div class="flex justify-center items-center" v-show="!addTab">
         <div
-          id="dev-card"
-          ref="containerRef"
-          class="dev-card h-[550px]"
-          :class="{transformTop :classAddAnimation}"
+            id="dev-card"
+            ref="containerRef"
+            class="dev-card h-[550px]"
+            :class="{
+    transformTop: classAddAnimation,
+    transformBottom: anotherClass
+     }"
         >
           <div
-            v-for="(item, index) in displayedItems"
-            :key="index"
-            class="cards"
-            @click="openModal(item, index)"
+              v-for="(item, index) in displayedItems"
+              :key="index"
+              class="cards"
+              @click="openModal(item, index)"
           >
-            <video preload="metadata"  loop muted ref="videoPlayer" autoplay width="320" height="240" playsinline class="cards-img">
+            <video preload="metadata" loop muted ref="videoPlayer" autoplay width="320" height="240" playsinline
+                   class="cards-img">
               <source :src="item.src"
                       type="video/mp4">
             </video>
@@ -234,7 +247,8 @@ onMounted(() => {
           <div class="cards cards-tab"
                @click="openModal(item, index)"
           >
-            <video  loop muted ref="videoPlayer" autoplay width="320" height="240" playsinline class="cards-img cards-img-tab">
+            <video loop muted ref="videoPlayer" autoplay width="320" height="240" playsinline
+                   class="cards-img cards-img-tab">
               <source :src="item.src"
                       type="video/mp4">
             </video>
@@ -252,7 +266,7 @@ onMounted(() => {
           class="w-[2%] active:scale-50 transition-all relative z-[3333] mt-[80px]"
           @click="openTab"
       >
-        <img alt="" src="@/assets/img/menuTabs.svg" />
+        <img alt="" src="@/assets/img/menuTabs.svg"/>
       </div>
       <div
           v-else
@@ -267,27 +281,35 @@ onMounted(() => {
     </div>
 
     <transition name="modal">
-        <div v-if="showModal" class="modal" @click.self="closeModal">
-          <div class="modal-content">
-            <video  loop muted autoplay ref="videoPlayer" width="320" height="240" playsinline class="modal-image">
-              <source :src="selectedItem"
-                      type="video/mp4">
-            </video>
-          </div>
-          <div class="name-content">Hybrid + Ferrero rocher = Result</div>
+      <div v-if="showModal" class="modal" @click.self="closeModal">
+        <div class="modal-content">
+          <video loop muted autoplay ref="videoPlayer" width="320" height="240" playsinline class="modal-image">
+            <source :src="selectedItem"
+                    type="video/mp4">
+          </video>
         </div>
-      </transition>
+        <div class="name-content">Hybrid + Ferrero rocher = Result</div>
+      </div>
+    </transition>
   </div>
 </template>
 
 <style lang="scss" scoped>
-.transformTop{
+.transformTop {
   transition: 1s;
   transform: translateY(-500px);
   position: relative;
   z-index: 22;
 }
-.fixNav{
+
+.transformBottom {
+  transition: 1s;
+  transform: translateY(0px);
+  position: relative;
+  z-index: 22;
+}
+
+.fixNav {
   position: fixed;
   left: 0;
   right: 0;
@@ -296,7 +318,8 @@ onMounted(() => {
   margin: auto;
   z-index: 22;
 }
-@media screen and (max-width: 992px){
+
+@media screen and (max-width: 992px) {
   .our-works-img {
     display: none;
   }
@@ -314,7 +337,7 @@ onMounted(() => {
     width: 250px;
     height: 400px;
   }
-  .modal-image{
+  .modal-image {
     position: relative;
     bottom: 105px;
   }
@@ -323,10 +346,11 @@ onMounted(() => {
     height: 222.751px !important;
 
   }
-  .nav-our-works{
-   z-index: 1;
+  .nav-our-works {
+    z-index: 1;
   }
 }
+
 .nav-our-works {
   display: flex !important;
   justify-content: space-between;
@@ -346,7 +370,8 @@ onMounted(() => {
     z-index: 33;
   }
 }
-.scroll-our-works{
+
+.scroll-our-works {
   transition: 2s;
   animation-duration: 1s;
 }
@@ -355,6 +380,7 @@ onMounted(() => {
   position: relative;
   z-index: 22;
 }
+
 .cards {
   width: 150px;
   height: 255px;

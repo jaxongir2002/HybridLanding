@@ -73,7 +73,7 @@ onMounted(() => {
       <div class="card-back">
         <figure class="video-background">
           <div class="text-logo text-logo-mobile-back"
-               style="color: white; position:relative; z-index: 3333; font-size: 48px; text-align: center; float: left; top: 40px">
+               style="color: white; position:relative; z-index: 33; font-size: 48px; text-align: center; float: left; top: 40px">
             H
             <p class="center-logo-hybrid center-logo-back-mobile" style="color: white; font-size: 15px">
               Experience
@@ -104,7 +104,7 @@ onMounted(() => {
       <div class="card-back">
         <figure class="video-background">
           <div class="text-logo text-logo-mobile-back"
-               style="color: white; position:relative; z-index: 3333; font-size: 48px; text-align: center; float: left; top: 40px">
+               style="color: white; position:relative; z-index: 33; font-size: 48px; text-align: center; float: left; top: 40px">
             H
             <p class="center-logo-hybrid center-logo-back-mobile" style="color: white; font-size: 15px">
               Experience
@@ -135,7 +135,7 @@ onMounted(() => {
       <div class="card-back">
         <figure class="video-background">
           <div class="text-logo text-logo-mobile-back"
-               style="color: white; position:relative; z-index: 3333; font-size: 48px; text-align: center; float: left; top: 40px">
+               style="color: white; position:relative; z-index: 33; font-size: 48px; text-align: center; float: left; top: 40px">
             H
             <p class="center-logo-hybrid center-logo-back-mobile" style="color: white; font-size: 15px">
               Experience
@@ -167,7 +167,7 @@ onMounted(() => {
       <div class="card-back">
         <figure class="video-background">
           <div class="text-logo text-logo-mobile-back"
-               style="color: white; position:relative; z-index: 3333; font-size: 48px; text-align: center; float: left; top: 40px">
+               style="color: white; position:relative; z-index: 33; font-size: 48px; text-align: center; float: left; top: 40px">
             H
             <p class="center-logo-hybrid center-logo-back-mobile" style="color: white; font-size: 15px">
               Experience
@@ -198,7 +198,7 @@ onMounted(() => {
       <div class="card-back">
         <figure class="video-background">
           <div class="text-logo text-logo-mobile-back"
-               style="color: white; position:relative; z-index: 3333; font-size: 48px; text-align: center; float: left; top: 40px">
+               style="color: white; position:relative; z-index: 33; font-size: 48px; text-align: center; float: left; top: 40px">
             H
             <p class="center-logo-hybrid center-logo-back-mobile" style="color: white; font-size: 15px">
               Experience
@@ -229,7 +229,7 @@ onMounted(() => {
       <div class="card-back">
         <figure class="video-background">
           <div class="text-logo text-logo-mobile-back"
-               style="color: white; position:relative; z-index: 3333; font-size: 48px; text-align: center; float: left; top: 40px">
+               style="color: white; position:relative; z-index: 33; font-size: 48px; text-align: center; float: left; top: 40px">
             H
             <p class="center-logo-hybrid center-logo-back-mobile" style="color: white; font-size: 15px">
               Experience
@@ -260,7 +260,7 @@ onMounted(() => {
       <div class="card-back">
         <figure class="video-background">
           <div class="text-logo text-logo-mobile-back"
-               style="color: white; position:relative; z-index: 3333; font-size: 48px; text-align: center; float: left; top: 40px">
+               style="color: white; position:relative; z-index: 33; font-size: 48px; text-align: center; float: left; top: 40px">
             H
             <p class="center-logo-hybrid center-logo-back-mobile" style="color: white; font-size: 15px">
               Experience
@@ -394,7 +394,7 @@ onMounted(() => {
   position: relative;
   transform-style: preserve-3d;
   transition: .6s .1s;
-  z-index: 122;
+  z-index: 33;
 }
 
 .card-front,
@@ -444,8 +444,6 @@ onMounted(() => {
   font-weight: 400;
   line-height: 160%; /* 25.6px */
 }
-
-
 figure {
   position: absolute;
   top: 0;

@@ -13,6 +13,13 @@ onMounted(() => {
     stagger: 0.02,
   });
 })
+function clickTop() {
+  console.log('sss')
+  window.scrollTo({
+    top: 850,
+    behavior: "smooth",
+  });
+}
 </script>
 
 <template>
@@ -55,7 +62,7 @@ onMounted(() => {
             and more than human. A collaboration
             between art and tech.
           </div>
-          <span class="text-scroll flex items-center mt-[50px] relative z-10">
+          <span class="text-scroll flex items-center mt-[50px] relative z-10"  @click="clickTop">
               Contact form
             <img class="animation-arrow" src="@/assets/img/Arrow.svg" alt=""/>
           </span>

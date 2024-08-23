@@ -138,6 +138,6 @@ onMounted(() => {
   margin-bottom: 101px;
   position: relative;
   z-index: 22;
-  top: 40% !important;
+  top: 35% !important;
 }
 </style>

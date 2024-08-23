@@ -20,12 +20,19 @@ const routes = [
     {path: '/blog', component: Blog},
     {path: '/blog/:id', name: 'blogView', component: BlogCardView},
     {path: '/brief', component: Brief},
-    {path: '/experience', component: Experience},
+    {path: '/installations', component: Experience},
     {path: '/studio', component: Studio},
     {path: '/lab', component: Lab},
 ]
 
 const router = createRouter({
+    scrollBehavior(to, from, savedPosition) {
+        return new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve({ left: 0, top: 0 })
+            }, 500)
+        })
+    },
     history: createWebHashHistory(),
     routes,
 });

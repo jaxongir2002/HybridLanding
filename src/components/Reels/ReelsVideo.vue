@@ -83,7 +83,9 @@ const listImg = ref([
 const videoPlayer = ref(null);
 const containerRef = ref(null);
 const classAddAnimation = ref(false)
-const fixNav= ref(false)
+const fixNav = ref(false);
+const anotherClass = ref(false)
+
 function openModal(item, index) {
   showModal.value = true;
   selectedItem.value = item.src;
@@ -93,8 +95,8 @@ function openModal(item, index) {
   mobile()
 }
 
-function mobile(){
-  if (showModal.value===true) {
+function mobile() {
+  if (showModal.value === true) {
     document.body.classList.add('no-scroll');
     lenis.stop();
   } else {
@@ -102,8 +104,10 @@ function mobile(){
     lenis.start();
   }
 }
+
 document.addEventListener('keydown', closeModal);
 mobile()
+
 function closeModal(event) {
   // Check if the Esc key was pressed
   if (event.key === 'Escape') {
@@ -111,13 +115,14 @@ function closeModal(event) {
     selectedItem.value = null;
     document.body.style.overflow = bodyOverflow || "";
     mobile();
-  }else {
+  } else {
     showModal.value = false;
     selectedItem.value = null;
     document.body.style.overflow = bodyOverflow || "";
     mobile();
   }
 }
+
 function openTab() {
   addTab.value = !addTab.value;
   const videos = document.querySelectorAll('.cards-img');
@@ -172,16 +177,21 @@ onMounted(() => {
 
   window.addEventListener('scroll', () => {
     const currentScrollPos = window.pageYOffset;
-      if (!isMobile) {
+    if (!isMobile) {
       if (currentScrollPos > 1000) {
-        classAddAnimation.value =true
-        fixNav.value =true
+        classAddAnimation.value = true
+        anotherClass.value = false
+
+        if (addTab) {
+          fixNav.value = false
+        }else fixNav.value = true
       } else {
-        classAddAnimation.value =false
-        fixNav.value =false
+        classAddAnimation.value = false
+        anotherClass.value = true
+        fixNav.value = false
       }
-      if (currentScrollPos > 1400){
-        fixNav.value =false
+      if (currentScrollPos > 1400) {
+        fixNav.value = false
       }
     }
   });
@@ -204,7 +214,10 @@ onMounted(() => {
             id="dev-card"
             ref="containerRef"
             class="dev-card h-[550px]"
-            :class="{transformTop :classAddAnimation}"
+            :class="{
+    transformTop: classAddAnimation,
+    transformBottom: anotherClass
+     }"
         >
           <div
               v-for="(item, index) in displayedItems"
@@ -304,6 +317,7 @@ onMounted(() => {
 
   }
 }
+
 .swiper-button-next {
   &::after {
     content: '';
@@ -318,6 +332,7 @@ onMounted(() => {
 </style>
 <style lang="scss" scoped>
 
+
 .prev-slider {
   width: 50px;
   height: 50px;
@@ -331,7 +346,12 @@ onMounted(() => {
   position: relative;
   z-index: 22;
 }
-
+.transformBottom {
+  transform: translateY(0);
+  position: relative;
+  z-index: 22;
+  transition: 1s;
+}
 .fixNav {
   position: fixed;
   left: 0;

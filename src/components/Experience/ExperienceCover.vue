@@ -1,10 +1,6 @@
 <script setup>
+import {onMounted} from 'vue'
 import gsap from "gsap";
-import {ScrollTrigger} from "gsap/ScrollTrigger";
-import {onMounted} from "vue";
-
-gsap.registerPlugin(SplitText, ScrollTrigger);
-
 function topScroll() {
   window.scrollTo({
     top: 1000,
@@ -13,10 +9,11 @@ function topScroll() {
 }
 gsap.registerPlugin(SplitText);
 onMounted(() => {
-  let mySplitText = new SplitText(".test-animation-about", {type: "chars"});
+  let mySplitText = new SplitText(".test-animation-installations", {type: "chars"});
   let chars = mySplitText.chars;
   gsap.from(chars, {
     yPercent: 130,
+    stagger: 0.02,
     opacity:0
   });
 
@@ -24,58 +21,30 @@ onMounted(() => {
 </script>
 
 <template>
-  <section id="container">
+  <section id="container" class="">
     <div class="title-container">
-      <div class="title-logo test-animation-about">We are</div>
-      <div ref="elementRef" class="title-logo relative lg:left-[240px] mobile-title test-animation-about">misfits</div>
-      <div class="glass-effect left-[190px]"></div>
+      <div class="title-logo test-animation-installations">Hybrid</div>
+      <div ref="elementRef" class="title-text test-animation-installations"> Installations </div>
+      <div class="glass-effect"></div>
     </div>
-    <div class="title-footer w-[20%] title-footer-mobile hidden">
-      We are misfits; we are not an agency, and we don’t just do production; we are a combination of both thinkers and
-      doers.
-    </div>
-  </section>
-
-  <div class="footer-cover flex justify-between items-center">
-    <iframe width="140px" height="194px"
-            src="https://lottie.host/embed/8e80c604-e0af-4b03-96ce-f75675059aa0/Tyehx7Emkq.json"></iframe>
-    <div class="title-footer w-[20%]">
-      We are misfits; we are not an agency, and we don’t just do production; we are a combination of both thinkers and
-      doers.
-    </div>
-    <span class="text-scroll" @click="topScroll">
+    <span class="text-scroll" @click="topScroll" >
       Scroll to experience magic
-      <img class="animation-arrow" src="@/assets/img/Arrow.svg" alt=""/>
+      <img class="animation-arrow" src="@/assets/img/Arrow.svg" alt="" />
     </span>
-  </div>
+
+  </section>
 </template>
-<style lang="scss">
-body::-webkit-scrollbar {
-  display: block;
-}
-</style>
+
 
 <style scoped lang="scss">
-@media screen and (max-width: 992px) {
+@media screen and (max-width: 992px){
   .title-logo {
-    font-size: 50px !important;
+    font-size: 70px !important;
     line-height: 55px !important;
   }
-  .mobile-title {
-    left: 55px !important;
-  }
-  .title-footer {
-    display: none;
-  }
-
-  .title-footer-mobile {
-    position: relative;
-    display: block;
-    top: 40%;
-    width: 75%;
-  }
-  iframe {
-    display: none;
+  .title-text {
+    font-size: 46.5px !important;
+    line-height: 100% !important;
   }
   .glass-effect {
     width: 320px !important;
@@ -89,14 +58,15 @@ body::-webkit-scrollbar {
     line-height: 1.5;
     position: relative;
     top: 35% !important;
-    left: 80px;
   }
-  canvas {
-    display: none !important;
-  }
-  .title-container {
+  .title-container{
     top: 40% !important;
   }
+}
+
+.project-twelve__background {
+  width: 100%;
+  height: 60%;
 }
 
 .animation-arrow {
@@ -111,11 +81,13 @@ body::-webkit-scrollbar {
     transform: translateY(-2px);
   }
 }
-
 #container {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
+  align-content: center;
+  position: relative;
   height: 100vh;
 }
 
@@ -131,16 +103,24 @@ body::-webkit-scrollbar {
   z-index: 22;
 }
 
-
 .title-logo {
   font-family: "Alexandria", sans-serif;
   text-transform: uppercase;
   color: #fff;
   font-weight: 900;
   font-size: 140px;
+  line-height: 140px;
   transition: 1s;
-  overflow: hidden;
-  line-height: 1em;
+}
+.title-text {
+  font-family: "Alexandria", sans-serif;
+  text-transform: uppercase;
+  color: #fff;
+  font-weight: 900;
+  font-size: 93px;
+  line-height: 93px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease-in-out;
 }
 
 @keyframes dashboard-animation {
@@ -175,7 +155,6 @@ body::-webkit-scrollbar {
     opacity: 1;
   }
 }
-
 .text-scroll {
   font-family: "Urbanist", sans-serif;
   font-size: 16px;
@@ -186,25 +165,9 @@ body::-webkit-scrollbar {
   align-items: center;
   gap: 5px;
   background: transparent;
-}
-
-.title-footer {
-  color: var(--White, #F9F9F9);
-  font-family: Urbanist, sans-serif;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: 120%; /* 19.2px */
-  letter-spacing: -0.48px;
-}
-
-.footer-cover {
+  margin-bottom: 101px;
   position: relative;
   z-index: 22;
-  bottom: 310px !important;
-}
-
-iframe {
-  transform: scaleX(-1);
+  top: 35% !important;
 }
 </style>

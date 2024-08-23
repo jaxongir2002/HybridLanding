@@ -16,18 +16,18 @@ onMounted(() => {
       }, 500)
     });
   });
-    (function setGlowEffectRx() {
-  const glowEffects = document.querySelectorAll(".glow-effect");
+  (function setGlowEffectRx() {
+    const glowEffects = document.querySelectorAll(".glow-effect");
 
-  glowEffects.forEach((glowEffect) => {
-    const glowLines = glowEffect.querySelectorAll("rect");
-    const rx = getComputedStyle(glowEffect).borderRadius;
+    glowEffects.forEach((glowEffect) => {
+      const glowLines = glowEffect.querySelectorAll("rect");
+      const rx = getComputedStyle(glowEffect).borderRadius;
 
-    glowLines.forEach((line) => {
-      line.setAttribute("rx", rx);
+      glowLines.forEach((line) => {
+        line.setAttribute("rx", rx);
+      });
     });
-  });
-})();
+  })();
 
   window.addEventListener('scroll', () => {
     const currentScrollPos = window.pageYOffset;
@@ -36,17 +36,17 @@ onMounted(() => {
       console.log(currentScrollPos)
       if (currentScrollPos >= 595) {
         flipCards[0].style.transform = 'rotateY(180deg)';
-      }else  flipCards[0].style.transform = 'rotateY(0)';
+      } else flipCards[0].style.transform = 'rotateY(0)';
 
       if (currentScrollPos >= 1000) {
         flipCards[0].style.transform = 'rotateY(0deg)';
         flipCards[1].style.transform = 'rotateY(180deg)';
-      }else flipCards[1].style.transform = 'rotateY(0)';
+      } else flipCards[1].style.transform = 'rotateY(0)';
 
-      if (currentScrollPos >= 1575 && currentScrollPos <=2000) {
+      if (currentScrollPos >= 1575 && currentScrollPos <= 2000) {
         flipCards[1].style.transform = 'rotateY(0deg)';
         flipCards[2].style.transform = 'rotateY(180deg)';
-      } else  {
+      } else {
         flipCards[2].style.transform = 'rotateY(0deg)';
       }
     }
@@ -56,33 +56,173 @@ onMounted(() => {
 
 <template>
   <div class="flex gap-[20px] justify-between max-md:flex-col md:pt-[80px] pb-[80px] " style="">
-    <div class="flip-card glow-effect">
-      <div class="card-front">
-        <figure>
-          <div class="card-front-text">
-            THE TECH / INTERACTIVE
-          </div>
-          <div class="text-all-hybrid">
-            <div class="text-logo">
+    <router-link to="/installations">
+      <div class="flip-card glow-effect">
+        <div class="card-front">
+          <figure>
+            <div class="card-front-text">
+              THE TECH / INTERACTIVE
+            </div>
+            <div class="text-all-hybrid">
+              <div class="text-logo">
+                H
+                <p class="center-logo-hybrid">
+                  Installations
+                </p>
+                X
+              </div>
+            </div>
+            <div class="footer-btn relative bottom-[46px]">
+              <img class="relative top-[20px] img-mobile-first" src="../assets/img/Arrow_right.svg" alt="">
+              <div>
+                <div>
+                  <button class="btn-content-hybrid">
+                    Holograms
+                  </button>
+                  <button class="btn-content-hybrid">
+                    Interactive
+                  </button>
+                </div>
+                <div class="footer-content mt-[10px]">
+                  <button class="btn-content-hybrid">
+                    Gaming
+                  </button>
+                  <button class="btn-content-hybrid">
+                    Hybrid IPS
+                  </button>
+                </div>
+              </div>
+            </div>
+          </figure>
+        </div>
+
+        <div class="card-back">
+          <figure class="video-background">
+
+            <div class="text-logo text-logo-mobile-back"
+                 style="color: white; position:relative; z-index: 33; font-size: 48px; text-align: center; float: left; top: 80px">
               H
-              <p class="center-logo-hybrid">
+              <p class="center-logo-hybrid center-logo-back-mobile" style="color: white; font-size: 15px">
                 Installations
               </p>
               X
             </div>
-          </div>
-          <div class="footer-btn relative bottom-[46px]">
-            <img class="relative top-[20px] img-mobile-first" src="../assets/img/Arrow_right.svg" alt="">
-            <div>
-              <div>
+            <div class="img-bg-hybrid">
+              <video autoplay loop muted width="320" height="240" playsinline>
+                <source
+                    src="../assets/video/91ec3544e41e9afbff63c3d000a9a5296073707d839b265710597bd574d824eb_ndrKpibw.mp4"
+                    type="video/mp4">
+              </video>
+              <div class="footer-btn absolute  bottom-[20px]">
+                <img src="../assets/img/Arrow_right.svg" alt="">
+                <div class="footer-content ">
+                </div>
+              </div>
+            </div>
+            <svg class="glow-container relative">
+              <rect
+                  pathLength="100"
+                  stroke-linecap="round"
+                  class="glow-blur"
+              ></rect>
+              <rect
+                  pathLength="100"
+                  stroke-linecap="round"
+                  class="glow-line"
+              ></rect>
+            </svg>
+          </figure>
+        </div>
+      </div>
+    </router-link>
+    <router-link to="/studio">
+      <div class="flip-card glow-effect">
+        <div class="card-front">
+          <figure>
+            <div class="card-front-text">
+              THE
+              <br>
+              Content
+            </div>
+            <div class="text-all-hybrid">
+              <div class="text-logo " style="color: #FF0000 !important;">
+                H
+                <p class="center-logo-hybrid " style="color: #FF0000 !important;">
+                  Studio
+                </p>
+                X
+              </div>
+            </div>
+            <div class="footer-btn relative bottom-[4px]">
+              <img class="img-mobile" src="../assets/img/Arrow_right.svg" alt="">
+              <div class="footer-content ">
                 <button class="btn-content-hybrid">
-                  Holograms
-                </button>
-                <button class="btn-content-hybrid">
-                  Interactive
+                  Content
                 </button>
               </div>
-              <div class="footer-content mt-[10px]">
+            </div>
+          </figure>
+        </div>
+        <div class="card-back ">
+          <figure class="video-background">
+            <div class="text-logo text-logo-mobile-back"
+                 style="color: white; position:relative; z-index: 33; font-size: 48px; text-align: center; float: left; top: 80px">
+              H
+              <p class="center-logo-hybrid center-logo-back-mobile" style="color: white; font-size: 15px">
+                Studio
+              </p>
+              X
+            </div>
+            <div class="img-bg-hybrid">
+              <video autoplay loop muted width="320" height="240" playsinline>
+                <source
+                    src="../assets/video/84d3ee1d02f80623a9f94aaf876be15f12f8030d7abc558fa81e43cf65067340_FU8j2xww.mp4"
+                    type="video/mp4">
+              </video>
+              <div class="footer-btn absolute  bottom-[20px]">
+                <img src="../assets/img/Arrow_right.svg" alt="">
+                <div class="footer-content ">
+                </div>
+              </div>
+            </div>
+            <svg class="glow-container">
+              <rect
+                  pathLength="100"
+                  stroke-linecap="round"
+                  class="glow-blur"
+              ></rect>
+              <rect
+                  pathLength="100"
+                  stroke-linecap="round"
+                  class="glow-line"
+              ></rect>
+            </svg>
+          </figure>
+
+        </div>
+      </div>
+    </router-link>
+    <router-link to="/lab">
+      <div class="flip-card glow-effect">
+        <div class="card-front">
+          <figure>
+            <div class="card-front-text">
+              THE
+              <br>
+              Experiments
+            </div>
+            <div class="text-all-hybrid">
+              <div class="text-logo" style="color:#FFFF00 ">
+                H
+                <p class="center-logo-hybrid" style="color:#FFFF00 ">
+                  lab
+                </p>
+                X
+              </div>
+            </div>
+            <div class="footer-btn relative bottom-[5px]">
+              <img class="img-mobile" src="../assets/img/Arrow_right.svg" alt="">
+              <div class="footer-content mt-[10px] ">
                 <button class="btn-content-hybrid">
                   Gaming
                 </button>
@@ -90,189 +230,59 @@ onMounted(() => {
                   Hybrid IPS
                 </button>
               </div>
-            </div>
-          </div>
-        </figure>
-      </div>
 
-      <div class="card-back">
-        <figure class="video-background">
-          
-          <div class="text-logo text-logo-mobile-back"
-               style="color: white; position:relative; z-index: 3333; font-size: 48px; text-align: center; float: left; top: 80px">
-            H
-            <p class="center-logo-hybrid center-logo-back-mobile" style="color: white; font-size: 15px">
-              Experience
-            </p>
-            X
-          </div>
-          <div class="img-bg-hybrid">
-            <video autoplay loop muted width="320" height="240" playsinline>
-              <source src="../assets/video/91ec3544e41e9afbff63c3d000a9a5296073707d839b265710597bd574d824eb_ndrKpibw.mp4"
-                      type="video/mp4">
-            </video>
-            <div class="footer-btn absolute  bottom-[20px]">
-              <img src="../assets/img/Arrow_right.svg" alt="">
-              <div class="footer-content ">
-              </div>
             </div>
-          </div>
-              <svg class="glow-container relative">
-                <rect
-                  pathLength="100"
-                  stroke-linecap="round"
-                  class="glow-blur"
-                ></rect>
-                <rect
-                  pathLength="100"
-                  stroke-linecap="round"
-                  class="glow-line"
-                ></rect>
-              </svg>
-        </figure>
-      </div>
-    </div>
-    <div class="flip-card glow-effect">
-      <div class="card-front">
-        <figure>
-          <div class="card-front-text">
-            THE
-            <br>
-            Content
-          </div>
-          <div class="text-all-hybrid">
-            <div class="text-logo " style="color: #FF0000 !important;">
-              H
-              <p class="center-logo-hybrid " style="color: #FF0000 !important;">
-                Studio
-              </p>
-              X
-            </div>
-          </div>
-          <div class="footer-btn relative bottom-[4px]">
-            <img class="img-mobile" src="../assets/img/Arrow_right.svg" alt="">
-            <div class="footer-content ">
-              <button class="btn-content-hybrid">
-                Content
-              </button>
-            </div>
-          </div>
-        </figure>
-      </div>
-      <div class="card-back ">
-        <figure class="video-background">
-          <div class="text-logo text-logo-mobile-back"
-               style="color: white; position:relative; z-index: 3333; font-size: 48px; text-align: center; float: left; top: 80px">
-            H
-            <p class="center-logo-hybrid center-logo-back-mobile" style="color: white; font-size: 15px">
-              Studio
-            </p>
-            X
-          </div>
-          <div class="img-bg-hybrid">
-            <video autoplay loop muted width="320" height="240" playsinline>
-              <source src="../assets/video/84d3ee1d02f80623a9f94aaf876be15f12f8030d7abc558fa81e43cf65067340_FU8j2xww.mp4"
-                      type="video/mp4">
-            </video>
-            <div class="footer-btn absolute  bottom-[20px]">
-              <img src="../assets/img/Arrow_right.svg" alt="">
-              <div class="footer-content ">
-              </div>
-            </div>
-          </div>
-               <svg class="glow-container">
-                <rect
-                  pathLength="100"
-                  stroke-linecap="round"
-                  class="glow-blur"
-                ></rect>
-                <rect
-                  pathLength="100"
-                  stroke-linecap="round"
-                  class="glow-line"
-                ></rect>
-              </svg>
-        </figure>
+          </figure>
+        </div>
 
-      </div>
-    </div>
-    <div class="flip-card glow-effect">
-      <div class="card-front">
-        <figure>
-          <div class="card-front-text">
-            THE
-            <br>
-            Experiments
-          </div>
-          <div class="text-all-hybrid">
-            <div class="text-logo" style="color:#FFFF00 ">
+        <div class="card-back ">
+          <figure class="video-background">
+            <div class="text-logo text-logo-mobile-back"
+                 style="color: white; position:relative; z-index: 33; font-size: 48px; text-align: center; float: left; top: 80px">
               H
-              <p class="center-logo-hybrid" style="color:#FFFF00 ">
+              <p class="center-logo-hybrid center-logo-back-mobile" style="color: white; font-size: 15px">
                 lab
               </p>
               X
             </div>
-          </div>
-          <div class="footer-btn relative bottom-[5px]">
-            <img class="img-mobile" src="../assets/img/Arrow_right.svg" alt="">
-            <div class="footer-content mt-[10px] ">
-              <button class="btn-content-hybrid">
-                Gaming
-              </button>
-              <button class="btn-content-hybrid">
-                Hybrid IPS
-              </button>
-            </div>
-
-          </div>
-        </figure>
-      </div>
-
-      <div class="card-back ">
-        <figure class="video-background">
-          <div class="text-logo text-logo-mobile-back"
-               style="color: white; position:relative; z-index: 3333; font-size: 48px; text-align: center; float: left; top: 80px">
-            H
-            <p class="center-logo-hybrid center-logo-back-mobile" style="color: white; font-size: 15px">
-              lab
-            </p>
-            X
-          </div>
-          <div class="img-bg-hybrid">
-            <video autoplay loop muted width="320" height="240" playsinline>
-              <source src="../assets/video/ac57976749d126f18128abad5cec0903ee50f1bcaab2b1941b03887e69ae9a29_rbIGpUGF.mp4"
-                      type="video/mp4">
-            </video>
-            <div class="footer-btn absolute bottom-[20px]">
-              <img src="../assets/img/Arrow_right.svg" alt="">
-              <div class="footer-content ">
+            <div class="img-bg-hybrid">
+              <video autoplay loop muted width="320" height="240" playsinline>
+                <source
+                    src="../assets/video/ac57976749d126f18128abad5cec0903ee50f1bcaab2b1941b03887e69ae9a29_rbIGpUGF.mp4"
+                    type="video/mp4">
+              </video>
+              <div class="footer-btn absolute bottom-[20px]">
+                <img src="../assets/img/Arrow_right.svg" alt="">
+                <div class="footer-content ">
+                </div>
               </div>
             </div>
-          </div>
             <svg class="glow-container">
-                <rect
+              <rect
                   pathLength="100"
                   stroke-linecap="round"
                   class="glow-blur"
-                ></rect>
-                <rect
+              ></rect>
+              <rect
                   pathLength="100"
                   stroke-linecap="round"
                   class="glow-line"
-                ></rect>
-              </svg>
-        </figure>
+              ></rect>
+            </svg>
+          </figure>
+
+        </div>
 
       </div>
+    </router-link>
 
-    </div>
   </div>
 </template>
 
 <style scoped lang="scss">
 @import url('https://fonts.googleapis.com/css?family=Lato');
 
-@media screen and (max-width: 992px){
+@media screen and (max-width: 992px) {
   .flip-card {
     width: 280px !important;
     height: 470px !important;
@@ -313,10 +323,11 @@ onMounted(() => {
     font-size: 8px !important;
     line-height: 20px !important;
   }
-  .glow-container{
+  .glow-container {
     display: none;
   }
 }
+
 .video-background {
   position: relative;
   width: 100%;
@@ -337,7 +348,7 @@ onMounted(() => {
 .img-bg-hybrid video {
   min-width: 100%;
   min-height: 100%;
-  width: auto ;
+  width: auto;
   height: auto;
   position: absolute;
   top: 50%;
@@ -412,7 +423,7 @@ onMounted(() => {
   position: relative;
   transform-style: preserve-3d;
   transition: .6s .1s;
-  z-index: 122;
+  z-index: 33;
 }
 
 .card-front,

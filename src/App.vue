@@ -1,9 +1,10 @@
 <script setup>
 import Lenis from "lenis";
-
-import {onMounted} from "vue";
+import {onMounted, ref} from "vue";
 import Navigation from "@/components/Navigation.vue";
+import router from "@/router/router.js";
 
+const activeCanvas = ref(false)
 onMounted(() => {
   const lenis = new Lenis();
   lenis.on("scroll", (e) => {
@@ -17,13 +18,18 @@ onMounted(() => {
   requestAnimationFrame(raf);
 })
 
+
+setTimeout(() => {
+  activeCanvas.value = true
+}, 5500)
 </script>
 
 <template>
   <div style="background: #0e0e0e;">
-    <Navigation v-if="!($route.path ==='/')"/>
+    <Navigation v-show="!($route.path ==='/')"/>
     <router-view>
     </router-view>
+    <canvas id="renderSurface" class="opacity-0" :class="{'opacity-[1]':activeCanvas}"></canvas>
   </div>
 </template>
 

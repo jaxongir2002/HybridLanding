@@ -24,7 +24,7 @@ onMounted(() => {
         Into your ideas
       </div>
     </div>
-    <div id="idSlider" class="card-img-slider col-span-4 mt-[80px] m-auto relative z-10">
+    <div id="idSlider" class="card-img-slider col-span-4 mt-[40px] m-auto relative z-10">
       <video autoplay loop muted playsinline>
         <source src="@/assets/video/wecreatemagic_lsF4u8LF.mp4"
                 type="video/mp4">
@@ -72,7 +72,7 @@ onMounted(() => {
   transform: translateY(600px);
 }
 .container-breath{
-  transform: translateY(130%);
+  transform: translateY(200%);
 }
 .card-img-slider video {
   border-radius: 12px;

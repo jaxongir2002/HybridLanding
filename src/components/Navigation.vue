@@ -1,8 +1,9 @@
 <script setup>
 import {onMounted, ref} from 'vue'
 import Lenis from "lenis";
-import router from "@/router/router.js";
+import {useRouter} from "vue-router";
 
+const router = useRouter()
 const lenis = new Lenis();
 
 const openMenu = ref(false);
@@ -97,6 +98,11 @@ function sixFn() {
   changeFiveVideo.value = false
   changeSixVideo.value = true
 }
+
+function changePages(url) {
+  router.push(`/${url}`)
+  openMenu.value = false
+}
 </script>
 
 <template>
@@ -108,28 +114,19 @@ function sixFn() {
         </div>
         <div class="navigation-menu">
           <router-link to="/about">
-            <span class="first-animation">About</span>
+            <span class="first-animation" :class="{'active':$route.path === '/about'}">About</span>
           </router-link>
           <router-link to="/reels">
-            <span class="second-animation">Reels</span>
+            <span class="second-animation" :class="{'active':$route.path === '/reels'}">Reels</span>
           </router-link>
           <router-link to="/community">
-            <span class="third-animation">Community</span>
+            <span class="third-animation" :class="{'active':$route.path === '/community'}">Community</span>
           </router-link>
           <router-link to="/blog">
-            <span class="four-animation">Blog</span>
+            <span class="four-animation" :class="{'active':$route.path === '/blog'}">Blog</span>
           </router-link>
           <router-link to="/brief">
-            <span class="five-animation">Brief</span>
-          </router-link>
-          <router-link to="/experience">
-            <span class="five-animation">Experience</span>
-          </router-link>
-          <router-link to="/studio">
-            <span class="five-animation">Studio</span>
-          </router-link>
-          <router-link to="/lab">
-            <span class="five-animation">Lab</span>
+            <span class="five-animation" :class="{'active':$route.path === '/brief'}">Brief</span>
           </router-link>
         </div>
         <div class="navigation-magic" @click="openMenu=true">
@@ -150,7 +147,7 @@ function sixFn() {
           </div>
           <div class="flex">
             <div class="flex flex-col gap-[10px]">
-              <div @mousemove="firstFn" class="menu-text flex gap-[15px]" @click="$router.push('/landing')">
+              <div @mousemove="firstFn" class="menu-text flex gap-[15px]" @click="changePages('landing')">
               <span>
                    home
               </span>
@@ -158,7 +155,7 @@ function sixFn() {
                   01
                 </div>
               </div>
-              <div @mousemove="secondFn" class="menu-text flex gap-[15px]" @click="$router.push('/about')">
+              <div @mousemove="secondFn" class="menu-text flex gap-[15px]" @click="changePages('about')">
               <span>
                    about
               </span>
@@ -166,7 +163,7 @@ function sixFn() {
                   02
                 </div>
               </div>
-              <div @mousemove="threeFn" class="menu-text flex gap-[15px]" @click="$router.push('/reels')">
+              <div @mousemove="threeFn" class="menu-text flex gap-[15px]" @click="changePages('reels')">
                 <span>
                   Reels
                 </span>
@@ -174,7 +171,7 @@ function sixFn() {
                   03
                 </div>
               </div>
-              <div @mousemove="fourFn" class="menu-text flex gap-[15px]" @click="$router.push('/community')">
+              <div @mousemove="fourFn" class="menu-text flex gap-[15px]" @click="changePages('community')">
                 <span>
                    Community
                 </span>
@@ -182,7 +179,7 @@ function sixFn() {
                   04
                 </div>
               </div>
-              <div @mousemove="fiveFn" class="menu-text flex gap-[15px]" @click="$router.push('/blog')">
+              <div @mousemove="fiveFn" class="menu-text flex gap-[15px]" @click="changePages('blog')">
               <span>
               Blog
               </span>
@@ -190,7 +187,7 @@ function sixFn() {
                   05
                 </div>
               </div>
-              <div @mousemove="sixFn" class="menu-text flex gap-[15px]" @click="$router.push('/brief')">
+              <div @mousemove="sixFn" class="menu-text flex gap-[15px]" @click="changePages('brief')">
                 <span>
                    brief
                 </span>
@@ -198,15 +195,15 @@ function sixFn() {
                   06
                 </div>
               </div>
-              <div @mousemove="sixFn" class="menu-text flex gap-[15px]" @click="$router.push('/Experience')">
+              <div @mousemove="sixFn" class="menu-text flex gap-[15px]" @click="changePages('installations')">
                 <span>
-                   Experience
+                 Installations
                 </span>
                 <div class="menu-btn">
                   07
                 </div>
               </div>
-              <div @mousemove="sixFn" class="menu-text flex gap-[15px]" @click="$router.push('/studio')">
+              <div @mousemove="sixFn" class="menu-text flex gap-[15px]" @click="changePages('studio')">
                 <span>
                    Studio
                 </span>
@@ -214,7 +211,7 @@ function sixFn() {
                   08
                 </div>
               </div>
-              <div @mousemove="sixFn" class="menu-text flex gap-[15px]" @click="$router.push('/lab')">
+              <div @mousemove="sixFn" class="menu-text flex gap-[15px]" @click="changePages('lab')">
                 <span>
                    Lab
                 </span>
@@ -313,8 +310,8 @@ function sixFn() {
                 <div class="btn-mobile">06</div>
               </div>
 
-              <div class="text-mobile flex justify-center gap-[15px]" @click="$router.push('/experience')">>
-                <span>experience</span>
+              <div class="text-mobile flex justify-center gap-[15px]" @click="$router.push('/installations ')">>
+                <span>Installations</span>
                 <div class="btn-mobile">04</div>
               </div>
               <div class="text-mobile flex justify-center gap-[15px]" @click="$router.push('/studio')">>
@@ -383,6 +380,8 @@ function sixFn() {
   transform: matrix(0.00206186 0 0 0.00171821 0 -0.252577);
   overflow: hidden;
   transition: 1s;
+  position: relative;
+  right: 80px;
 }
 
 .menu-text:hover:is(.card-change-video, .another-class) {
@@ -402,7 +401,7 @@ video {
   left: 0;
   right: 0;
   width: 100%;
-  z-index: 33499;
+  z-index: 70;
   height: 90px !important;
   background: #0E0E0E;
   margin: auto !important;
@@ -473,8 +472,9 @@ video {
 
 .btn-links:hover {
   border-color: #BF56FF;
-  color: #BF56FF!important;
+  color: #BF56FF !important;
 }
+
 //
 .navigation-menu span {
   position: relative;
@@ -496,13 +496,20 @@ video {
   transition: all 0.5s ease;
 }
 
-.navigation-menu span:hover:before,
-.router-link-active:before {
+.navigation-menu span:hover:before {
   visibility: visible;
   width: 100%;
   left: 0;
   right: auto;
 }
+
+.navigation-menu span.active:before {
+  visibility: visible;
+  width: 100%;
+  left: 0;
+  right: auto;
+}
+
 //nav hover
 .menu-dialog {
   width: 602px;
