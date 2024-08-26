@@ -291,7 +291,7 @@ function changeMobilePages(url) {
         </div>
       </Transition>
       <Transition name="slide-fade">
-        <div class="menu-mobile  relative z-[33]" v-show="openMobil" :class="{mobileFixed : isNavFixed}">
+        <div class="menu-mobile relative z-[33]" v-show="openMobil" :class="{mobileFixed : isNavFixed}">
           <div class="flex">
             <div class="flex flex-col gap-[10px] relative justify-center">
               <div class="text-mobile flex justify-center gap-[15px]" @click="changeMobilePages('landing')">

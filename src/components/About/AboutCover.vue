@@ -33,6 +33,10 @@ onMounted(() => {
       We are misfits; we are not an agency, and we don’t just do production; we are a combination of both thinkers and
       doers.
     </div>
+    <span class="text-scroll" @click="topScroll">
+      Scroll to experience magic
+      <img class="animation-arrow" src="@/assets/img/Arrow.svg" alt=""/>
+    </span>
   </section>
 
   <div class="footer-cover flex justify-between items-center">
@@ -42,10 +46,7 @@ onMounted(() => {
       We are misfits; we are not an agency, and we don’t just do production; we are a combination of both thinkers and
       doers.
     </div>
-    <span class="text-scroll" @click="topScroll">
-      Scroll to experience magic
-      <img class="animation-arrow" src="@/assets/img/Arrow.svg" alt=""/>
-    </span>
+
   </div>
 </template>
 <style lang="scss">
@@ -88,8 +89,7 @@ body::-webkit-scrollbar {
     font-weight: 700;
     line-height: 1.5;
     position: relative;
-    top: 35% !important;
-    left: 80px;
+    top: 65% !important;
   }
   canvas {
     display: none !important;
