@@ -350,19 +350,19 @@ function changeMobilePages(url) {
 
 
 </template>
-<style lang="scss">
-.no-scroll {
-  overflow: hidden !important;
+<!--<style lang="scss">-->
+<!--.no-scroll {-->
+<!--  overflow: hidden !important;-->
 
-}
+<!--}-->
 
-@media screen and (max-width: 992px) {
-  body {
-    width: 100% !important;
-    overflow-x: hidden;
-  }
-}
-</style>
+<!--@media screen and (max-width: 992px) {-->
+<!--  body {-->
+<!--    width: 100% !important;-->
+<!--    overflow-x: hidden;-->
+<!--  }-->
+<!--}-->
+<!--</style>-->
 
 <style scoped lang="scss">
 /* we will explain what these classes do next! */
@@ -375,10 +375,6 @@ function changeMobilePages(url) {
 .v-leave-to {
   opacity: 0;
 }
-
-//.hover-animate:hover{
-//  background: white;
-//}
 
 .card-change-video {
   width: 100px;
