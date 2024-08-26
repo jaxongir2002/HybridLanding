@@ -4,7 +4,6 @@ import {onMounted, ref} from "vue";
 import Navigation from "@/components/Navigation.vue";
 
 const activeCanvas = ref(false);
-const isMobile = window.innerWidth < 762;
 onMounted(() => {
   const lenis = new Lenis();
   lenis.on("scroll", (e) => {
