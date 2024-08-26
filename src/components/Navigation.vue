@@ -292,7 +292,7 @@ function changeMobilePages(url) {
       </Transition>
       <Transition name="slide-fade">
         <div class="menu-mobile relative z-[33]" v-show="openMobil" :class="{mobileFixed : isNavFixed}">
-          <div class="flex">
+          <div class="flex " :class="{topMenu : isNavFixed}">
             <div class="flex flex-col gap-[10px] relative justify-center">
               <div class="text-mobile flex justify-center gap-[15px]" @click="changeMobilePages('landing')">
                 <span>home</span>
@@ -588,6 +588,11 @@ video {
     min-height: 100vh !important;
     scrollbar-width: none !important;
     width: 100vw !important;
+    justify-content: space-between !important;
+  }
+  .topMenu{
+    position: relative;
+    top: 80px !important;
   }
   .navMobile {
     padding-bottom: 0 !important;
