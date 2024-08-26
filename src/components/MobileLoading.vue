@@ -134,10 +134,10 @@ const interval = setInterval(() => {
     top: 52.2% !important;
   }
   .yellow-img-h{
-    top: 1.5% !important;
+    top: 2% !important;
   }
   .yellow-img{
-    top: 1.5% !important;
+    top: 2% !important;
   }
 
 }
