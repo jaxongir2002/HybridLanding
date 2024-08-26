@@ -1,4 +1,4 @@
-import {createRouter, createWebHashHistory} from 'vue-router'
+import {createRouter, createWebHashHistory, createWebHistory} from 'vue-router'
 import Loading from "@/components/Loading.vue";
 import About from "@/views/About.vue";
 import Home from "@/views/Home.vue";
@@ -33,7 +33,7 @@ const router = createRouter({
             }, 500)
         })
     },
-    history: createWebHashHistory(),
+    history: createWebHistory(),
     routes,
 });
 export default router

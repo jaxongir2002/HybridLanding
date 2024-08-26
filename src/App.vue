@@ -3,7 +3,8 @@ import Lenis from "lenis";
 import {onMounted, ref} from "vue";
 import Navigation from "@/components/Navigation.vue";
 
-const activeCanvas = ref(false)
+const activeCanvas = ref(false);
+const isMobile = window.innerWidth < 762;
 onMounted(() => {
   const lenis = new Lenis();
   lenis.on("scroll", (e) => {
@@ -16,8 +17,6 @@ onMounted(() => {
 
   requestAnimationFrame(raf);
 })
-
-
 setTimeout(() => {
   activeCanvas.value = true
 }, 5500)
@@ -28,7 +27,7 @@ setTimeout(() => {
     <Navigation v-show="!($route.path ==='/')"/>
     <router-view>
     </router-view>
-    <canvas id="renderSurface" class="opacity-0" :class="{'opacity-[1]':activeCanvas}"></canvas>
+    <canvas v-if="!isMobile" id="renderSurface" class="opacity-0" :class="{'opacity-[1]':activeCanvas}"></canvas>
   </div>
 </template>
 
