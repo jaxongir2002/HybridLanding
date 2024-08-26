@@ -1,9 +1,8 @@
 <script setup>
 import gsap from "gsap";
-import {ScrollTrigger} from "gsap/ScrollTrigger";
 import {onMounted} from "vue";
 
-gsap.registerPlugin(SplitText, ScrollTrigger);
+gsap.registerPlugin(SplitText);
 
 function topScroll() {
   window.scrollTo({
@@ -11,13 +10,13 @@ function topScroll() {
     behavior: "smooth",
   });
 }
-gsap.registerPlugin(SplitText);
+
 onMounted(() => {
   let mySplitText = new SplitText(".test-animation-about", {type: "chars"});
   let chars = mySplitText.chars;
   gsap.from(chars, {
     yPercent: 130,
-    opacity:0
+    opacity: 0
   });
 
 })

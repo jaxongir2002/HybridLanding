@@ -27,7 +27,7 @@ setTimeout(() => {
     <Navigation v-show="!($route.path ==='/')"/>
     <router-view>
     </router-view>
-    <canvas v-if="!isMobile" id="renderSurface" class="opacity-0" :class="{'opacity-[1]':activeCanvas}"></canvas>
+    <canvas id="renderSurface" class="opacity-0" :class="{'opacity-[1]':activeCanvas}"></canvas>
   </div>
 </template>
 

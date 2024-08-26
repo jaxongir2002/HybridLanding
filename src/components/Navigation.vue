@@ -44,13 +44,13 @@ onMounted(() => {
 
 
 function mobile() {
-  if (openMobil.value === true) {
-    document.body.classList.add('no-scroll');
-    lenis.stop();
-  } else {
-    document.body.classList.remove('no-scroll');
-    lenis.start();
-  }
+  // if (openMobil.value === true) {
+  //   document.body.classList.add('no-scroll');
+  //   lenis.stop();
+  // } else {
+  //   document.body.classList.remove('no-scroll');
+  //   lenis.start();
+  // }
 }
 
 mobile()
