@@ -25,7 +25,7 @@ onMounted(() => {
     <div class="title-container">
       <div class="title-logo test-animation">Hybrid Lab</div>
       <div class="glass-effect"></div>
-      <div class="flex justify-between w-[965px] max-sm:w-[90%]">
+      <div class="flex justify-between w-[965px] max-sm:w-[80%]">
         <div class="text-trials">
           Trials
         </div>

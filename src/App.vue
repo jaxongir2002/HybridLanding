@@ -2,7 +2,6 @@
 import Lenis from "lenis";
 import {onMounted, ref} from "vue";
 import Navigation from "@/components/Navigation.vue";
-import router from "@/router/router.js";
 
 const activeCanvas = ref(false)
 onMounted(() => {

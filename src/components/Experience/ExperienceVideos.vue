@@ -102,7 +102,7 @@ onMounted(() => {
       </div>
     </div>
     <div class="flex justify-center mb-[40px]">
-      <button class="see-more relative z-10">
+      <button class="see-more relative z-[33]">
         See more
       </button>
     </div>
@@ -116,7 +116,6 @@ onMounted(() => {
   .card-img-slider {
     width: 280px !important;
     height: 429px !important;
-
     padding: 10px !important;
   }
   .text-video-header {
@@ -156,7 +155,6 @@ onMounted(() => {
   font-weight: 500;
   line-height: 140%;
   margin-top: 43px;
-  z-index: 333;
 }
 
 .see-more:hover {

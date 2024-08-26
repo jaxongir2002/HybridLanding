@@ -33,7 +33,6 @@ onMounted(() => {
     const currentScrollPos = window.pageYOffset;
     const isMobile = window.innerWidth < 762;
     if (isMobile) {
-      console.log(currentScrollPos)
       if (currentScrollPos >= 595) {
         flipCards[0].style.transform = 'rotateY(180deg)';
       } else flipCards[0].style.transform = 'rotateY(0)';

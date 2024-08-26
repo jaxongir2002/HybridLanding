@@ -30,7 +30,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="grid grid-cols-12 mt-[90px]">
+  <div class="grid grid-cols-12 mt-[90px] max-sm:mt-0">
     <div class="filter-blog col-span-4">
       <div class="blog-logo relative z-10 test-animation-blog">
         Blog

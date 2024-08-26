@@ -23,13 +23,13 @@ onMounted(() => {
 <template>
   <section id="container">
     <div class="title-container">
-      <div class="flex justify-between items-end gap-[130px] max-sm:gap-0 max-sm:w-full">
+      <div class="flex justify-between items-end gap-[130px] max-sm:gap-0 max-sm:w-[80%]">
         <div class="title-logo test-animation">Hybrid</div>
         <div class="text-magic text-left">
           Content creation
         </div>
       </div>
-      <div class="flex justify-between items-end gap-[130px] max-sm:gap-0 max-sm:w-full">
+      <div class="flex justify-between items-end gap-[130px] max-sm:gap-0 max-sm:w-[80%]">
         <div class="text-magic">
           Magic creation
         </div>

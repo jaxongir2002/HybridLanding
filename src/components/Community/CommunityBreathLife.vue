@@ -40,18 +40,19 @@ onMounted(() => {
     margin-top: 20px !important;
     animation: translateYAnimation 2s linear forwards, widthChange 2s forwards;
     position: relative !important;
-    top: 60px !important;
+    top: -10px !important;
     width: 100% !important;
     padding: 10px !important;
   }
-  .text-breath{
+  .text-breath {
     font-size: 20px !important;
     line-height: 100% !important;
     font-weight: 500 !important;
     text-align: left !important;
   }
-  .container-breath{
-   position: relative !important;
+  .container-breath {
+    position: relative !important;
+    top: -110px !important;
   }
 }
 
@@ -71,9 +72,11 @@ onMounted(() => {
   transition: 0.5s;
   transform: translateY(600px);
 }
-.container-breath{
+
+.container-breath {
   transform: translateY(200%);
 }
+
 .card-img-slider video {
   border-radius: 12px;
   object-fit: cover;
@@ -91,6 +94,7 @@ onMounted(() => {
   text-transform: uppercase;
   text-align: center;
 }
+
 .animateClass {
   animation: translateYAnimation 2s linear forwards, widthChange 2s forwards;
 }

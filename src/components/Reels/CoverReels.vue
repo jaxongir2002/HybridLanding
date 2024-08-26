@@ -23,7 +23,7 @@ onMounted(() => {
 <template>
   <section id="container" class="">
     <div class="title-container">
-      <div class="title-logo test-animation">Our Works</div>
+      <div class="title-logo test-animation">Our  <span class="mobile-works">Works</span></div>
       <div class="glass-effect"></div>
     </div>
 
@@ -39,6 +39,10 @@ onMounted(() => {
     font-size: 50px !important;
     line-height: 100% !important;
     text-align: center;
+    width:  100%!important;
+  }
+  .mobile-works{
+    display: block;
   }
   .glass-effect {
     width: 320px !important;
@@ -57,7 +61,7 @@ onMounted(() => {
     display: none !important;
   }
   .title-container {
-    top: 40% !important;
+    top: 35% !important;
   }
 }
 
@@ -138,6 +142,6 @@ onMounted(() => {
   margin-bottom: 101px;
   position: relative;
   z-index: 22;
-  top: 35% !important;
+  top: 30% !important;
 }
 </style>

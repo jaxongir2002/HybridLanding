@@ -38,8 +38,10 @@
     height: 429px !important;
     margin-top: 20px !important;
     grid-column: span 12 / span 12;
+    padding: 10px !important;
   }
 }
+
 .slider-container {
   transition: 1s;
 }
@@ -54,6 +56,7 @@
   height: 740px;
   flex-shrink: 0;
   transition: 0.5s all;
+
 
   video {
     border-radius: 12px;

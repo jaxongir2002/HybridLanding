@@ -84,12 +84,6 @@ onMounted(() => {
     transition: 0.3,
     yoyo: true,
     ease: "power1.inOut",
-    scrollTrigger: {
-      trigger: ".scrolling-last",
-      start: "top 80%",
-      end: "bottom bottom",
-      scrub: true,
-    },
   });
 });
 </script>

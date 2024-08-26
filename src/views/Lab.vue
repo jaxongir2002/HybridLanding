@@ -7,14 +7,11 @@ import LabExperiments from "@/components/Lab/LabExperiments.vue";
 </script>
 
 <template>
-  <div>
-    <LabCover  style=" padding: 34px 40px 34px 40px; max-width: 1440px; margin: auto "/>
-    <LabExperiments  style=" padding: 34px 40px 34px 40px; max-width: 1440px; margin: auto "/>
-    <ExperienceVideos  style=" padding: 34px 40px 34px 40px; max-width: 1440px; margin: auto "/>
+    <LabCover  style="padding: 34px 40px 34px 40px; max-width: 1440px; margin: auto"/>
+    <LabExperiments  style="padding: 34px 40px 34px 40px; max-width: 1440px; margin: auto"/>
+    <ExperienceVideos  style="padding: 34px 40px 34px 40px; max-width: 1440px; margin: auto"/>
     <CommunityCuntacts/>
-    <LastSection  style=" padding: 34px 40px 34px 40px; max-width: 1440px; margin: auto "/>
-  </div>
-
+    <LastSection  style="padding: 34px 40px 34px 40px; max-width: 1440px; margin: auto"/>
 </template>
 
 <style scoped lang="scss">

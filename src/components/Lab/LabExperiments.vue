@@ -45,7 +45,7 @@ onMounted(() => {
   <div ref="logo" class="helloWorld flex justify-between pt-[80px] max-sm:block">
     <div class="mobile-version-animation max-sm:block hidden">
         <div class="card-lab-video">
-          <video autoplay loop muted class="magic-img" width="750" height="340" playsinline>
+          <video autoplay loop muted class="magic-img"  playsinline>
             <source src="@/assets/video/wecreatemagic_lsF4u8LF.mp4"
                     type="video/mp4">
           </video>
@@ -55,7 +55,7 @@ onMounted(() => {
         </div>
     </div>
     <div class="flex flex-col justify-between h-[80vh] max-sm:h-[25vh] max-sm:block">
-      <div class="text-mobile-lab uppercase text-font font-bold text-[50px] max-sm:text-[20px leading-[50px] text-white title-mobile w-[396px]">
+      <div class="text-mobile-lab uppercase text-font font-bold text-[50px] max-sm:text-[20px leading-[50px] text-white title-mobile w-[396px] max-sm:w-full">
         THE Experiments
       </div>
       <div class="text-description">
@@ -118,12 +118,25 @@ video {
     height: 180px !important;
     padding: 10px !important;
   }
+  .card-mission{
+    border-radius: 12px;
+    border: 1px solid #FFF;
+    background: rgba(222, 222, 222, 0.05);
+    backdrop-filter: blur(59px);
+    padding: 10px !important;
+  }
 }
 
 .some-class {
   transform: translateY(-50px) !important;
 }
-
+.card-mission{
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: rgba(222, 222, 222, 0.05);
+  backdrop-filter: blur(59px);
+  padding: 15px;
+}
 .text-magic-lab {
   font-family: Alexandria, sans-serif;
   font-size: 32px;

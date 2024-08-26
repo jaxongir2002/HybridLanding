@@ -215,9 +215,9 @@ onMounted(() => {
             ref="containerRef"
             class="dev-card h-[550px]"
             :class="{
-    transformTop: classAddAnimation,
-    transformBottom: anotherClass
-     }"
+            transformTop: classAddAnimation,
+            transformBottom: anotherClass
+             }"
         >
           <div
               v-for="(item, index) in displayedItems"
@@ -372,6 +372,7 @@ onMounted(() => {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     width: 600px !important;
     margin-top: 20px;
+    right: 0 !important;
   }
   .modal-content {
     border-radius: 8px;

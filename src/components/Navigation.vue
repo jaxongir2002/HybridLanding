@@ -103,12 +103,17 @@ function changePages(url) {
   router.push(`/${url}`)
   openMenu.value = false
 }
+function changeMobilePages(url) {
+  router.push(`/${url}`)
+  openMobil.value = false
+}
 </script>
 
 <template>
   <div :class="{ fixed: isNavFixed,'header-animation': isNavFixed,'isNavStick':isNavSticky  }">
     <div :class="{ 'w-[100%]': isNavFixed,'header-animation': 'w-[100%]','isNavStick':isNavSticky  }">
-      <div class="navigation" style=" padding: 34px 40px 34px 40px; max-width: 1440px; margin: auto">
+      <div class="navigation" :class="{navMobile: isNavFixed}"
+           style=" padding: 34px 40px 34px 40px; max-width: 1440px; margin: auto">
         <div>
           <img src="@/assets/img/Logo.svg" alt="" @click="load">
         </div>
@@ -142,7 +147,7 @@ function changePages(url) {
       </div>
       <Transition name="slide-fade">
         <div class="menu-dialog" v-show="openMenu" :class="{menuUi : isNavFixed}">
-          <div class="flex justify-end transition-all">
+          <div class="flex justify-end transition-all hover-animate">
             <img @click="openMenu= false" class="active:scale-[0.9]" src="@/assets/img/menuClose.svg" alt="">
           </div>
           <div class="flex">
@@ -282,49 +287,49 @@ function changePages(url) {
         </div>
       </Transition>
       <Transition name="slide-fade">
-        <div class="menu-mobile" v-show="openMobil" :class="{mobileFixed : isNavFixed}">
+        <div class="menu-mobile  relative z-[33]" v-show="openMobil" :class="{mobileFixed : isNavFixed}">
           <div class="flex">
-            <div class="flex flex-col gap-[10px] relative bottom-[50px]">
-              <div class="text-mobile flex justify-center gap-[15px]" @click="$router.push('/landing')">
+            <div class="flex flex-col gap-[10px] relative justify-center">
+              <div class="text-mobile flex justify-center gap-[15px]" @click="changeMobilePages('landing')">
                 <span>home</span>
                 <div class="btn-mobile">01</div>
               </div>
-              <div class="text-mobile flex justify-center gap-[15px]" @click="$router.push('/about')">>
+              <div class="text-mobile flex justify-center gap-[15px]" @click="changeMobilePages('about')">
                 <span>about</span>
                 <div class="btn-mobile">02</div>
               </div>
-              <div class="text-mobile flex justify-center gap-[15px]" @click="$router.push('/reels')">>
+              <div class="text-mobile flex justify-center gap-[15px]" @click="changeMobilePages('reels')">
                 <span>Reels</span>
                 <div class="btn-mobile">03</div>
               </div>
-              <div class="text-mobile flex justify-center gap-[15px]" @click="$router.push('/community')">>
+              <div class="text-mobile flex justify-center gap-[15px]" @click="changeMobilePages('community')">
                 <span>Community</span>
                 <div class="btn-mobile">04</div>
               </div>
-              <div class="text-mobile flex justify-center gap-[15px]" @click="$router.push('/blog')">>
+              <div class="text-mobile flex justify-center gap-[15px]" @click="changeMobilePages('blog')">
                 <span>Blog</span>
                 <div class="btn-mobile">05</div>
               </div>
-              <div class="text-mobile flex justify-center gap-[15px]" @click="$router.push('/brief')">>
+              <div class="text-mobile flex justify-center gap-[15px]" @click="changeMobilePages('brief')">
                 <span>brief</span>
                 <div class="btn-mobile">06</div>
               </div>
 
-              <div class="text-mobile flex justify-center gap-[15px]" @click="$router.push('/installations ')">>
+              <div class="text-mobile flex justify-center gap-[15px]" @click="changeMobilePages('installations')">
                 <span>Installations</span>
                 <div class="btn-mobile">04</div>
               </div>
-              <div class="text-mobile flex justify-center gap-[15px]" @click="$router.push('/studio')">>
+              <div class="text-mobile flex justify-center gap-[15px]" @click="changeMobilePages('studio')">
                 <span>studio</span>
                 <div class="btn-mobile">05</div>
               </div>
-              <div class="text-mobile flex justify-center gap-[15px]" @click="$router.push('/lab')">>
+              <div class="text-mobile flex justify-center gap-[15px]" @click="changeMobilePages('lab')">
                 <span>lab</span>
                 <div class="btn-mobile">06</div>
               </div>
             </div>
           </div>
-          <div class="flex  items-end" :class="{'relative bottom-[80px]'  : isNavFixed}">
+          <div class="flex  items-end" :class="{'relative bottom-[100px]'  : isNavFixed}">
             <div class="flex gap-[10px] relative bottom-[30px]">
               <button class="btn-links">
                 Instagram
@@ -370,6 +375,10 @@ function changePages(url) {
 .v-leave-to {
   opacity: 0;
 }
+
+//.hover-animate:hover{
+//  background: white;
+//}
 
 .card-change-video {
   width: 100px;
@@ -576,21 +585,25 @@ video {
     display: block;
   }
   .mobileFixed {
-    height: 75vh !important;
+    top: 0 !important;
+    min-height: 100vh !important;
+    scrollbar-width: none !important;
+    width: 100vw !important;
+  }
+  .navMobile {
+    padding-bottom: 0 !important;
   }
 }
 
 .menu-mobile {
   width: 100% !important;
   background: #0E0E0E;
-  height: 50vh;
   z-index: 33;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
-  position: relative;
-  top: 140px;
+  min-height: 100vh;
 
   .text-mobile {
     color: #F9F9F9;

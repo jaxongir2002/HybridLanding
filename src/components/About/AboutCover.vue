@@ -78,9 +78,10 @@ body::-webkit-scrollbar {
     display: none;
   }
   .glass-effect {
-    width: 320px !important;
+    width: 239px !important;
     height: 40px !important;
     transform: translateY(20px) !important;
+    left: 60px !important;
   }
   .text-scroll {
     font-size: 12px !important;

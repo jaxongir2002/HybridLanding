@@ -43,13 +43,14 @@ onMounted(() => {
     line-height: 55px !important;
   }
   .title-text {
-    font-size: 46.5px !important;
+    font-size: 34px !important;
     line-height: 100% !important;
   }
   .glass-effect {
     width: 320px !important;
     height: 40px !important;
-    transform: translateY(20px) !important;
+    transform: translateY(35px) !important;
+    backdrop-filter: blur(2px)!important;
   }
   .text-scroll {
     font-size: 12px !important;
