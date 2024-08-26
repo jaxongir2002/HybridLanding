@@ -669,6 +669,9 @@ onMounted(() => {
   .four {
     display: none;
   }
+  .glow-container{
+    display: none !important;
+  }
 }
 
 .text-work {
@@ -722,7 +725,5 @@ onMounted(() => {
     transform: translateY(0);
   }
 }
-
-
 </style>
 

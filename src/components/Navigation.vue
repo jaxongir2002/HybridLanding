@@ -1,5 +1,5 @@
 <script setup>
-import {onMounted, ref} from 'vue'
+import {onMounted, ref, watchEffect} from 'vue'
 import Lenis from "lenis";
 import {useRouter} from "vue-router";
 
@@ -44,16 +44,19 @@ onMounted(() => {
 
 
 function mobile() {
-  // if (openMobil.value === true) {
-  //   document.body.classList.add('no-scroll');
-  //   lenis.stop();
-  // } else {
-  //   document.body.classList.remove('no-scroll');
-  //   lenis.start();
-  // }
+  if (openMobil.value === true) {
+    document.body.classList.add('no-scroll');
+    lenis.stop();
+  } else if (openMobil.value === false) {
+    document.body.classList.remove('no-scroll');
+    lenis.start();
+  }
 }
 
-mobile()
+watchEffect(() => {
+  mobile()
+})
+
 
 function openMobileFn() {
   openMobil.value = true
@@ -354,7 +357,6 @@ function changeMobilePages(url) {
 <style lang="scss">
 .no-scroll {
   overflow: hidden !important;
-
 }
 
 @media screen and (max-width: 992px) {

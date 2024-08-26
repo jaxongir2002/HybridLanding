@@ -33,8 +33,8 @@ const itemTitle = ref([
     title: 'Magic out'
   },
 ]);
-onMounted(()=>{
-  gsap.registerPlugin(ScrollTrigger,SplitText);
+gsap.registerPlugin(ScrollTrigger, SplitText);
+onMounted(() => {
   let tl = gsap.timeline({
     scrollTrigger: {
       trigger: '.our-process',
@@ -47,7 +47,7 @@ onMounted(()=>{
   let mySplitText = new SplitText(".text-process", {type: "chars"});
   let chars = mySplitText.chars;
   tl.to(chars, {
-    color:'#F9F9F9',
+    color: '#F9F9F9',
     duration: 1,
     stagger: 0.02,
   })
@@ -68,21 +68,23 @@ onMounted(()=>{
 </template>
 
 <style scoped lang="scss">
-@media screen and (max-width: 992px){
-  .text-process{
+@media screen and (max-width: 992px) {
+  .text-process {
     font-size: 20px !important;
     position: relative;
     top: 70px;
     margin-top: 15px !important;
-    &-number{
+
+    &-number {
       font-size: 8px !important;
       bottom: 10px !important;
     }
   }
-  .header-text{
+  .header-text {
     font-size: 20px !important;
   }
 }
+
 .text-process {
   color: rgba(249, 249, 249, 0.28);
   font-family: Alexandria, sans-serif;
@@ -104,9 +106,10 @@ onMounted(()=>{
     line-height: 160%;
   }
 }
-.header-text{
+
+.header-text {
   color: #F9F9F9;
-  font-family: Alexandria,sans-serif;
+  font-family: Alexandria, sans-serif;
   font-size: 24px;
   font-style: normal;
   font-weight: 500;
