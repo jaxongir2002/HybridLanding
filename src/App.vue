@@ -33,5 +33,9 @@ setTimeout(() => {
 </template>
 
 <style lang="scss">
-
+@media screen and (max-width: 992px){
+  canvas{
+    display: none !important;
+  }
+}
 </style>
