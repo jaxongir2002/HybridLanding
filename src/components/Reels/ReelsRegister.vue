@@ -6,6 +6,9 @@ import { onMounted } from "vue";
 gsap.registerPlugin(SplitText, ScrollTrigger);
 
 onMounted(() => {
+  const isMobile = window.matchMedia('(max-width: 767px)').matches;
+
+if (!isMobile){
   let mySplitText = new SplitText(".text-register", { type: "chars" });
   let mySplit = new SplitText(".btn-link-text", { type: "chars" });
 
@@ -103,6 +106,8 @@ onMounted(() => {
       scrub: true,
     },
   });
+}
+
 });
 </script>
 

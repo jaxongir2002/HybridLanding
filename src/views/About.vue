@@ -7,9 +7,11 @@ import OurWorks from "@/components/OurWorks.vue";
 import Register from "@/components/Register.vue";
 import LastSection from "@/components/LastSection.vue";
 import Partners from "@/components/Partners.vue";
+import Navigation from "@/components/Navigation.vue";
 </script>
 
 <template>
+  <Navigation v-show="!($route.path ==='/landing')"/>
   <div class="container-hybrid" style="padding: 34px 40px 34px 40px; max-width: 1440px; margin: auto">
     <Cover />
     <Cards />

@@ -128,20 +128,16 @@ const interval = setInterval(() => {
     font-weight: 700;
     line-height: 140% !important;
     position: relative;
-    top: 380px !important;
+    top: 35% !important;
   }
-  canvas{
-    display: none !important;
-  }
-
   .title-container{
-    top: 40% !important;
+    top: 52.2% !important;
   }
   .yellow-img-h{
-    top: -9% !important;
+    top: 1.5% !important;
   }
   .yellow-img{
-    top: -9% !important;
+    top: 1.5% !important;
   }
 
 }
@@ -321,7 +317,6 @@ const interval = setInterval(() => {
   align-content: center;
   position: relative;
   height: 100vh;
-  transition: 1s;
 }
 
 .title-container {
@@ -332,8 +327,9 @@ const interval = setInterval(() => {
   margin: 0;
   position: absolute;
   top: 50%;
+  transform: translate(0, -50%);
+  z-index: 22;
   opacity: 0;
-  transition: transform 0.4s linear;
 }
 
 .title-container.animate {
