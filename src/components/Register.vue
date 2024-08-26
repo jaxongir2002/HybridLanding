@@ -1,108 +1,111 @@
 <script setup>
 import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { onMounted } from "vue";
+import {ScrollTrigger} from "gsap/ScrollTrigger";
+import {onMounted} from "vue";
 
-gsap.registerPlugin(SplitText, ScrollTrigger);
 
 onMounted(() => {
-  let mySplitText = new SplitText(".text-register", { type: "chars" });
-  let mySplit = new SplitText(".btn-link-text", { type: "chars" });
+  const isMobile = window.innerWidth < 762;
+  gsap.registerPlugin(SplitText, ScrollTrigger);
+  if (!isMobile){
+    let mySplitText = new SplitText(".text-register", {type: "chars"});
+    let mySplit = new SplitText(".btn-link-text", {type: "chars"});
 
-  let mayChars = mySplit.chars;
-  let chars = mySplitText.chars;
+    let mayChars = mySplit.chars;
+    let chars = mySplitText.chars;
 
-  let tl = gsap.timeline({
-    scrollTrigger: {
-      trigger: ".scroll-register",
-      start: "top 50%",
-      end: "bottom bottom",
-      scrub: 1,
-    },
-  });
+    let tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".scroll-register",
+        start: "top 50%",
+        end: "bottom bottom",
+        scrub: 1,
+      },
+    });
 
-  tl.from(chars, {
-    yPercent: 130,
-    stagger: 0.02,
-  });
+    tl.from(chars, {
+      yPercent: 130,
+      stagger: 0.02,
+    });
 
-  tl.from(".label-name", {
-    yPercent: -40,
-    opacity: 0,
-    stagger: 0.5,
-    duration: 1,
-    yoyo: true,
-    transition: 1,
-  });
+    tl.from(".label-name", {
+      yPercent: -40,
+      opacity: 0,
+      stagger: 0.5,
+      duration: 1,
+      yoyo: true,
+      transition: 1,
+    });
 
-  gsap.from(mayChars, {
-    yPercent: 130,
-    stagger: 0.02,
-    opacity: 0,
-    scrollTrigger: {
-      trigger: ".scroll-register",
-      start: "top 50%",
-      end: "bottom bottom",
-      scrub: 1,
-    },
-  });
-  gsap.from(".text-project", {
-    opacity: 0,
-    scrollTrigger: {
-      trigger: ".scroll-register",
-      start: "top 50%",
-      end: "bottom 50%",
-      scrub: 1,
-    },
-  });
-  gsap.from(".description-text", {
-    opacity: 0,
-    yPercent: 130,
-    stagger: 0.02,
-    scrollTrigger: {
-      trigger: ".scroll-register",
-      start: "top 50%",
-      end: "bottom 50%",
-      scrub: 1,
-    },
-  });
-  gsap.from(".btn-sent", {
-    duration: 0.5,
-    y: "0",
-    scale: 0.3,
-    transition: 0.3,
-    yoyo: true,
-    ease: "power1.inOut",
-    scrollTrigger: {
-      trigger: ".scroll-register",
-      start: "top 50%",
-      end: "bottom bottom",
-      scrub: true,
-    },
-  });
-  gsap.from(".btn-animation-links", {
-    duration: 0.5,
-    y: "0",
-    scale: 0.3,
-    transition: 0.3,
-    yoyo: true,
-    ease: "power1.inOut",
-    scrollTrigger: {
-      trigger: ".scroll-register",
-      start: "top 50%",
-      end: "bottom bottom",
-      scrub: true,
-    },
-  });
-  tl.from(".checkbox-animation", {
-    animation: "check-animation 1s linear infinite",
-    scrollTrigger: {
-      trigger: ".scroll-register",
-      start: "top 50%",
-      end: "bottom bottom",
-      scrub: true,
-    },
-  });
+    gsap.from(mayChars, {
+      yPercent: 130,
+      stagger: 0.02,
+      opacity: 0,
+      scrollTrigger: {
+        trigger: ".scroll-register",
+        start: "top 50%",
+        end: "bottom bottom",
+        scrub: 1,
+      },
+    });
+    gsap.from(".text-project", {
+      opacity: 0,
+      scrollTrigger: {
+        trigger: ".scroll-register",
+        start: "top 50%",
+        end: "bottom 50%",
+        scrub: 1,
+      },
+    });
+    gsap.from(".description-text", {
+      opacity: 0,
+      yPercent: 130,
+      stagger: 0.02,
+      scrollTrigger: {
+        trigger: ".scroll-register",
+        start: "top 50%",
+        end: "bottom 50%",
+        scrub: 1,
+      },
+    });
+    gsap.from(".btn-sent", {
+      duration: 0.5,
+      y: "0",
+      scale: 0.3,
+      transition: 0.3,
+      yoyo: true,
+      ease: "power1.inOut",
+      scrollTrigger: {
+        trigger: ".scroll-register",
+        start: "top 50%",
+        end: "bottom bottom",
+        scrub: true,
+      },
+    });
+    gsap.from(".btn-animation-links", {
+      duration: 0.5,
+      y: "0",
+      scale: 0.3,
+      transition: 0.3,
+      yoyo: true,
+      ease: "power1.inOut",
+      scrollTrigger: {
+        trigger: ".scroll-register",
+        start: "top 50%",
+        end: "bottom bottom",
+        scrub: true,
+      },
+    });
+    tl.from(".checkbox-animation", {
+      animation: "check-animation 1s linear infinite",
+      scrollTrigger: {
+        trigger: ".scroll-register",
+        start: "top 50%",
+        end: "bottom bottom",
+        scrub: true,
+      },
+    });
+  }
 });
 </script>
 
@@ -158,45 +161,45 @@ onMounted(() => {
       <form>
         <div class="form-group mt-[30px]">
           <label for="name" class="label-name"
-            >Name
+          >Name
             <input
-              type="text"
-              class="form-control"
-              id="name"
-              placeholder="John Smith"
+                type="text"
+                class="form-control"
+                id="name"
+                placeholder="John Smith"
             />
           </label>
         </div>
         <div class="form-group mt-[30px]">
           <label for="Email" class="label-name"
-            >Your Email
+          >Your Email
             <input
-              type="email"
-              class="form-control"
-              id="Email"
-              placeholder="email@gmail.com"
+                type="email"
+                class="form-control"
+                id="Email"
+                placeholder="email@gmail.com"
             />
           </label>
         </div>
         <div class="form-group mt-[30px]">
           <label for="Phone" class="label-name"
-            >Your Phone
+          >Your Phone
             <input
-              type="number"
-              class="form-control number-input"
-              id="Phone"
-              placeholder="Enter your phone"
+                type="number"
+                class="form-control number-input"
+                id="Phone"
+                placeholder="Enter your phone"
             />
           </label>
         </div>
         <div class="form-group mt-[30px]">
           <label for="Message" class="label-name"
-            >Message
+          >Message
             <input
-              type="text"
-              class="form-control"
-              id="Message"
-              placeholder="Write about your project"
+                type="text"
+                class="form-control"
+                id="Message"
+                placeholder="Write about your project"
             />
           </label>
         </div>
@@ -206,12 +209,12 @@ onMounted(() => {
             <span class="relative top-[27px] left-[15px] text-checkbox-mobile">
               I agree to use and processing of my personal data</span
             >
-            <input type="checkbox" checked="checked" />
+            <input type="checkbox" checked="checked"/>
             <div class="checkmark checkbox-animation"></div>
           </label>
         </div>
         <button type="submit" class="btn-sent">
-          <img src="@/assets/img/rightArrow.svg" alt="" />Send
+          <img src="@/assets/img/rightArrow.svg" alt=""/>Send
         </button>
       </form>
     </div>
@@ -219,7 +222,7 @@ onMounted(() => {
 </template>
 
 <style scoped lang="scss">
-@media screen and (max-width: 992px){
+@media screen and (max-width: 992px) {
   .text-touch {
     font-size: 40px !important;
     width: 188px !important;
@@ -276,7 +279,7 @@ onMounted(() => {
     left: 40px !important;
 
   }
-  .label-name{
+  .label-name {
     text-align: left !important;
   }
 }
@@ -327,6 +330,7 @@ onMounted(() => {
   border-width: 0 2.5px 2.5px 0;
   transform: rotate(45deg);
 }
+
 .container input:checked ~ .checkmark:after {
   display: block;
 }
@@ -556,10 +560,12 @@ input::-webkit-inner-spin-button {
   -webkit-appearance: none !important;
   margin: 0;
 }
+
 input[type="number"] {
   -moz-appearance: textfield !important;
 }
-form{
+
+form {
   position: relative !important;
   z-index: 33 !important;
 }

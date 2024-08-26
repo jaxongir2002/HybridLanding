@@ -41,6 +41,7 @@ onMounted(() => {
       start: 'top top',
       pin: true,
       end: '200%',
+      anticipatePin: 1,
       scrub: 1,
     }
   });
