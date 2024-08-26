@@ -3,11 +3,10 @@ import gsap from "gsap";
 import {ScrollTrigger} from "gsap/ScrollTrigger";
 import {onMounted} from "vue";
 
-
+const isMobile = window.matchMedia('(max-width: 767px)').matches;
 onMounted(() => {
-  const isMobile = window.innerWidth < 762;
-  gsap.registerPlugin(SplitText, ScrollTrigger);
-  if (!isMobile){
+  if (!isMobile) {
+    gsap.registerPlugin(SplitText, ScrollTrigger);
     let mySplitText = new SplitText(".text-register", {type: "chars"});
     let mySplit = new SplitText(".btn-link-text", {type: "chars"});
 

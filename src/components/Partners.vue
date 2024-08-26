@@ -1,10 +1,10 @@
 <script setup>
-import {onMounted, watchEffect} from "vue";
+import {onMounted} from "vue";
 import {ScrollTrigger} from "gsap/ScrollTrigger";
 import gsap from "gsap";
 
 onMounted(() => {
-  const isMobile = window.innerWidth < 762;
+  const isMobile = window.matchMedia('(max-width: 767px)').matches;
   if (!isMobile) {
     gsap.registerPlugin(SplitText, ScrollTrigger);
     let mySplitText = new SplitText(".animation-text-home", {type: "chars"});

@@ -6,103 +6,106 @@ import { onMounted } from "vue";
 gsap.registerPlugin(SplitText, ScrollTrigger);
 
 onMounted(() => {
-  let mySplitText = new SplitText(".text-register", { type: "chars" });
-  let mySplit = new SplitText(".btn-link-text", { type: "chars" });
+  const isMobile = window.matchMedia('(max-width: 767px)').matches;
+  if (!isMobile){
+    let mySplitText = new SplitText(".text-register", { type: "chars" });
+    let mySplit = new SplitText(".btn-link-text", { type: "chars" });
 
-  let mayChars = mySplit.chars;
-  let chars = mySplitText.chars;
+    let mayChars = mySplit.chars;
+    let chars = mySplitText.chars;
 
-  let tl = gsap.timeline({
-    scrollTrigger: {
-      trigger: ".scroll-register-aboutP",
-      start: "top 50%",
-      end: "bottom bottom",
-      scrub: 1,
-    },
-  });
+    let tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".scroll-register-aboutP",
+        start: "top 50%",
+        end: "bottom bottom",
+        scrub: 1,
+      },
+    });
 
-  tl.from(chars, {
-    yPercent: 130,
-    stagger: 0.02,
-  });
+    tl.from(chars, {
+      yPercent: 130,
+      stagger: 0.02,
+    });
 
-  tl.from(".label-name", {
-    yPercent: -40,
-    opacity: 0,
-    stagger: 0.5,
-    duration: 1,
-    yoyo: true,
-    transition: 1,
-  });
+    tl.from(".label-name", {
+      yPercent: -40,
+      opacity: 0,
+      stagger: 0.5,
+      duration: 1,
+      yoyo: true,
+      transition: 1,
+    });
 
-  gsap.from(mayChars, {
-    yPercent: 130,
-    stagger: 0.02,
-    opacity: 0,
-    scrollTrigger: {
-      trigger: ".scroll-register-aboutP",
-      start: "top 50%",
-      end: "bottom bottom",
-      scrub: 1,
-    },
-  });
-  gsap.from(".text-project", {
-    opacity: 0,
-    scrollTrigger: {
-      trigger: ".scroll-register-aboutP",
-      start: "top 50%",
-      end: "bottom 50%",
-      scrub: 1,
-    },
-  });
-  gsap.from(".description-text", {
-    opacity: 0,
-    yPercent: 130,
-    stagger: 0.02,
-    scrollTrigger: {
-      trigger: ".scroll-register-aboutP",
-      start: "top 50%",
-      end: "bottom 50%",
-      scrub: 1,
-    },
-  });
-  gsap.from(".btn-sent", {
-    duration: 0.5,
-    y: "0",
-    scale: 0.3,
-    transition: 0.3,
-    yoyo: true,
-    ease: "power1.inOut",
-    scrollTrigger: {
-      trigger: ".scroll-register-aboutP",
-      start: "top 50%",
-      end: "bottom bottom",
-      scrub: true,
-    },
-  });
-  gsap.from(".btn-animation-links", {
-    duration: 0.5,
-    y: "0",
-    scale: 0.3,
-    transition: 0.3,
-    yoyo: true,
-    ease: "power1.inOut",
-    scrollTrigger: {
-      trigger: ".scroll-register-aboutP",
-      start: "top 50%",
-      end: "bottom bottom",
-      scrub: true,
-    },
-  });
-  tl.from(".checkbox-animation", {
-    animation: "check-animation 1s linear infinite",
-    scrollTrigger: {
-      trigger: ".scroll-register-aboutP",
-      start: "top 50%",
-      end: "bottom bottom",
-      scrub: true,
-    },
-  });
+    gsap.from(mayChars, {
+      yPercent: 130,
+      stagger: 0.02,
+      opacity: 0,
+      scrollTrigger: {
+        trigger: ".scroll-register-aboutP",
+        start: "top 50%",
+        end: "bottom bottom",
+        scrub: 1,
+      },
+    });
+    gsap.from(".text-project", {
+      opacity: 0,
+      scrollTrigger: {
+        trigger: ".scroll-register-aboutP",
+        start: "top 50%",
+        end: "bottom 50%",
+        scrub: 1,
+      },
+    });
+    gsap.from(".description-text", {
+      opacity: 0,
+      yPercent: 130,
+      stagger: 0.02,
+      scrollTrigger: {
+        trigger: ".scroll-register-aboutP",
+        start: "top 50%",
+        end: "bottom 50%",
+        scrub: 1,
+      },
+    });
+    gsap.from(".btn-sent", {
+      duration: 0.5,
+      y: "0",
+      scale: 0.3,
+      transition: 0.3,
+      yoyo: true,
+      ease: "power1.inOut",
+      scrollTrigger: {
+        trigger: ".scroll-register-aboutP",
+        start: "top 50%",
+        end: "bottom bottom",
+        scrub: true,
+      },
+    });
+    gsap.from(".btn-animation-links", {
+      duration: 0.5,
+      y: "0",
+      scale: 0.3,
+      transition: 0.3,
+      yoyo: true,
+      ease: "power1.inOut",
+      scrollTrigger: {
+        trigger: ".scroll-register-aboutP",
+        start: "top 50%",
+        end: "bottom bottom",
+        scrub: true,
+      },
+    });
+    tl.from(".checkbox-animation", {
+      animation: "check-animation 1s linear infinite",
+      scrollTrigger: {
+        trigger: ".scroll-register-aboutP",
+        start: "top 50%",
+        end: "bottom bottom",
+        scrub: true,
+      },
+    })
+  }
 });
 </script>
 

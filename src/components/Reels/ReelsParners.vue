@@ -4,58 +4,60 @@ import {ScrollTrigger} from "gsap/ScrollTrigger";
 import gsap from "gsap";
 
 onMounted(() => {
+  const isMobile = window.matchMedia('(max-width: 767px)').matches;
+  if (!isMobile) {
+    gsap.registerPlugin(SplitText, ScrollTrigger);
 
-  gsap.registerPlugin(SplitText, ScrollTrigger);
+    let mySplitText = new SplitText(".animation-text-reels", {type: "chars"});
+    let chars = mySplitText.chars;
 
-  let mySplitText = new SplitText(".animation-text-reels", { type: "chars" });
-  let chars = mySplitText.chars;
-
-  let mySplitTextTwo = new SplitText(".animation-text-two-reels", { type: "chars" });
-  let charsTwo = mySplitTextTwo.chars;
-  const slides = document.querySelectorAll(".cards-company-reels");
-  let tl = gsap.timeline({
-    scrollTrigger: {
-      trigger: ".big-div-reels",
-      start: "top 10%",
-      end: `+=${slides.length * 5}%`,
-      scrub: true,
-      lazy: true,
-    },
-    defaults: { ease: "none" },
-  });
-  tl.from(chars, {
-    yPercent: -140,
-    stagger: 0.02,
-    ease: "back.out",
-    opacity: 0,
-  });
-
-  tl.from(
-      charsTwo,
-      {
-        yPercent: 140,
-        stagger: 0.02,
-        ease: "back.out",
-        opacity: 0,
-        yoyo: true,
+    let mySplitTextTwo = new SplitText(".animation-text-two-reels", {type: "chars"});
+    let charsTwo = mySplitTextTwo.chars;
+    const slides = document.querySelectorAll(".cards-company-reels");
+    let tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".big-div-reels",
+        start: "top 10%",
+        end: `+=${slides.length * 5}%`,
+        scrub: true,
+        lazy: true,
       },
-      0);
-  tl.fromTo(
-      ".first-reels",
-      {
-        yPercent: 55,
-        yoyo: true,
-        transition: 2.5,
-        stagger: 0.2,
-      },
-      {
-        yPercent: 0,
-        stagger: 0.2,
-        yoyo: true,
-        transition: 2.5,
-      }
-  );
+      defaults: {ease: "none"},
+    });
+    tl.from(chars, {
+      yPercent: -140,
+      stagger: 0.02,
+      ease: "back.out",
+      opacity: 0,
+    });
 
+    tl.from(
+        charsTwo,
+        {
+          yPercent: 140,
+          stagger: 0.02,
+          ease: "back.out",
+          opacity: 0,
+          yoyo: true,
+        },
+        0);
+    tl.fromTo(
+        ".first-reels",
+        {
+          yPercent: 55,
+          yoyo: true,
+          transition: 2.5,
+          stagger: 0.2,
+        },
+        {
+          yPercent: 0,
+          stagger: 0.2,
+          yoyo: true,
+          transition: 2.5,
+        }
+    );
+  }
+  
   (function setGlowEffectRx() {
     const glowEffects = document.querySelectorAll(".glow-effect");
 
@@ -73,7 +75,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="text-center big-div-reels relative" >
+  <div class="text-center big-div-reels relative">
     <div class="smooth-wrapper">
       <div class="title-containers relative z-10">
         <div class="text-work animation-text-reels">We work with humans</div>
@@ -655,7 +657,7 @@ onMounted(() => {
 </template>
 
 <style scoped lang="scss">
-@media screen and (max-width: 992px){
+@media screen and (max-width: 992px) {
   .text-work {
     font-size: 20px !important;
   }
@@ -680,9 +682,11 @@ onMounted(() => {
   line-height: 130%;
   text-transform: uppercase;
 }
+
 .grid-sizer {
   width: 20%;
 }
+
 .first-reels {
   transition: 0.5s;
   position: sticky;

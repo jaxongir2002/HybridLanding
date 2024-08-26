@@ -7,7 +7,7 @@ onMounted(() => {
   gsap.registerPlugin(ScrollTrigger, SplitText);
   let tl = gsap.timeline({
     scrollTrigger: {
-      trigger: '.community-process',
+      trigger: '.scroll-community-process',
       start: 'top top',
       pin: true,
       end: '200%',
@@ -27,11 +27,14 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="mt-[60px] community-process flex justify-center items-center">
-    <div class="community-process-text w-[877px]">
-      We collaborate with global brands to craft unique and captivating stories that wow every audience.
+  <div class="scroll-community-process">
+    <div class="mt-[60px] community-process flex justify-center items-center">
+      <div class="community-process-text w-[877px]">
+        We collaborate with global brands to craft unique and captivating stories that wow every audience.
+      </div>
     </div>
   </div>
+
 
 </template>
 

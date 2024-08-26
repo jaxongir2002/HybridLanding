@@ -35,23 +35,27 @@ const itemTitle = ref([
 ]);
 gsap.registerPlugin(ScrollTrigger, SplitText);
 onMounted(() => {
-  let tl = gsap.timeline({
-    scrollTrigger: {
-      trigger: '.our-process',
-      start: 'top top',
-      pin: true,
-      end: '200%',
-      anticipatePin: 1,
-      scrub: 1,
-    }
-  });
-  let mySplitText = new SplitText(".text-process", {type: "chars"});
-  let chars = mySplitText.chars;
-  tl.to(chars, {
-    color: '#F9F9F9',
-    duration: 1,
-    stagger: 0.02,
-  })
+  const isMobile = window.matchMedia('(max-width: 767px)').matches;
+  if (!isMobile){
+    let tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: '.our-process',
+        start: 'top top',
+        pin: true,
+        end: '200%',
+        anticipatePin: 1,
+        scrub: 1,
+      }
+    });
+    let mySplitText = new SplitText(".text-process", {type: "chars"});
+    let chars = mySplitText.chars;
+    tl.to(chars, {
+      color: '#F9F9F9',
+      duration: 1,
+      stagger: 0.02,
+    })
+  }
+
 })
 </script>
 
@@ -65,7 +69,6 @@ onMounted(() => {
       {{ item.title }}
     </div>
   </div>
-
 </template>
 
 <style scoped lang="scss">
@@ -75,10 +78,12 @@ onMounted(() => {
     position: relative;
     top: 70px;
     margin-top: 15px !important;
+    color: white !important;
 
     &-number {
       font-size: 8px !important;
       bottom: 10px !important;
+      color: white !important;
     }
   }
   .header-text {

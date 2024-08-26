@@ -9,9 +9,10 @@ function topScroll() {
     behavior: "smooth",
   });
 }
-const isMobile = window.innerWidth < 762;
+
+const isMobile = window.matchMedia('(max-width: 767px)').matches;
 onMounted(() => {
-  if (!isMobile){
+  if (!isMobile) {
     gsap.registerPlugin(SplitText, ScrollTrigger);
     let tl = gsap.timeline({
       scrollTrigger: {
