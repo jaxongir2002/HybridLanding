@@ -2,6 +2,7 @@
 import Lenis from "lenis";
 import {onMounted, ref} from "vue";
 import Navigation from "@/components/Navigation.vue";
+import {ScrollTrigger} from "gsap/ScrollTrigger";
 
 const activeCanvas = ref(false);
 onMounted(() => {
@@ -16,9 +17,12 @@ onMounted(() => {
 
   requestAnimationFrame(raf);
 })
-setTimeout(() => {
-  activeCanvas.value = true
-}, 5500)
+  setTimeout(() => {
+    activeCanvas.value = true
+  }, 5500)
+document.addEventListener('DOMContentLoaded', () => {
+  ScrollTrigger.refresh(true);
+});
 </script>
 
 <template>

@@ -16,16 +16,16 @@ const btnBlog = ref([
     title: 'Insights'
   },
 ]);
-gsap.registerPlugin(SplitText);
+
 onMounted(() => {
+  gsap.registerPlugin(SplitText);
   let mySplitText = new SplitText(".test-animation-blog", {type: "chars"});
   let chars = mySplitText.chars;
   gsap.from(chars, {
     yPercent: 130,
     stagger: 0.02,
-    opacity:0
+    opacity: 0
   });
-
 })
 </script>
 

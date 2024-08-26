@@ -1,5 +1,4 @@
 <script setup>
-import Navigation from "@/components/Navigation.vue";
 import Cover from "@/components/Cover.vue";
 import Cards from "@/components/Cards.vue";
 import Mission from "@/components/Mission.vue";
@@ -8,7 +7,6 @@ import OurWorks from "@/components/OurWorks.vue";
 import Register from "@/components/Register.vue";
 import LastSection from "@/components/LastSection.vue";
 import Partners from "@/components/Partners.vue";
-
 </script>
 
 <template>
@@ -18,7 +16,7 @@ import Partners from "@/components/Partners.vue";
     <Mission />
     <Magic />
     <OurWorks />
-    <Partners />
+    <Partners/>
     <Register />
     <LastSection />
     <div id="smoke-background"></div>

@@ -9,7 +9,7 @@ import AboutRegister from "@/components/About/AboutRegister.vue";
 </script>
 
 <template>
-  <div style=" padding: 34px 40px 34px 40px; max-width: 1440px;  margin: auto">
+  <div style="padding: 34px 40px 34px 40px; max-width: 1440px;  margin: auto">
     <about-cover/>
     <our-services/>
     <OurProcess/>
@@ -18,7 +18,6 @@ import AboutRegister from "@/components/About/AboutRegister.vue";
     <AboutRegister/>
     <LastSection/>
   </div>
-
 </template>
 
 <style scoped lang="scss">

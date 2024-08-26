@@ -1,5 +1,5 @@
 <script setup>
-import {onMounted} from "vue";
+import {onMounted, watchEffect} from "vue";
 import {ScrollTrigger} from "gsap/ScrollTrigger";
 import gsap from "gsap";
 
@@ -69,6 +69,7 @@ onMounted(() => {
   });
 })();
 })
+
 
 </script>
 

@@ -55,7 +55,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="mt-[60px] our-process">
+  <div class="mt-[60px] our-process relative z-[33]">
     <div class="header-text relative top-[60px]">
       Our process
     </div>

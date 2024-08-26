@@ -5,7 +5,7 @@ import gsap from "gsap";
 
 onMounted(() => {
 
-  gsap.registerPlugin(SplitText, ScrollTrigger);
+  gsap.registerPlugin(ScrollTrigger);
 
   let mySplitText = new SplitText(".animation-text-aboutP", { type: "chars" });
   let chars = mySplitText.chars;
