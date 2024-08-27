@@ -28,28 +28,6 @@ onMounted(() => {
     });
   })();
 
-  window.addEventListener('scroll', () => {
-    const currentScrollPos = window.pageYOffset;
-    const isMobile = window.innerWidth < 762;
-    if (isMobile) {
-      console.log(currentScrollPos)
-      if (currentScrollPos >= 595) {
-        flipCards[0].style.transform = 'rotateY(180deg)';
-      }else  flipCards[0].style.transform = 'rotateY(0)';
-
-      if (currentScrollPos >= 1000) {
-        flipCards[0].style.transform = 'rotateY(0deg)';
-        flipCards[1].style.transform = 'rotateY(180deg)';
-      }else flipCards[1].style.transform = 'rotateY(0)';
-
-      if (currentScrollPos >= 1575 && currentScrollPos <=2000) {
-        flipCards[1].style.transform = 'rotateY(0deg)';
-        flipCards[2].style.transform = 'rotateY(180deg)';
-      } else  {
-        flipCards[2].style.transform = 'rotateY(0deg)';
-      }
-    }
-  });
 })
 </script>
 
@@ -287,7 +265,7 @@ onMounted(() => {
     display: none;
   }
   .flip-card {
-    width: 280px !important;
+    width: 100% !important;
     height: 470px !important;
     justify-content: center !important;
     margin: auto !important;

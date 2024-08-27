@@ -9,12 +9,12 @@ import StudioVideoSlider from "@/components/Studio/StudioVideoSlider.vue";
 
 <template>
   <div>
-    <StudioCover style=" padding: 34px 40px 34px 40px; max-width: 1440px; margin: auto"/>
-    <StudioVideoSlider style=" padding: 34px 40px 34px 40px; max-width: 1440px; margin: auto"/>
-    <ExperienceAbout style=" padding: 34px 40px 34px 40px; max-width: 1440px; margin: auto"/>
-    <ExperienceVideos style=" padding: 34px 40px 34px 40px; max-width: 1440px; margin: auto"/>
+    <StudioCover class="screen-width" style=" padding: 34px 40px 34px 40px; max-width: 1440px; margin: auto"/>
+    <StudioVideoSlider class="screen-width" style=" padding: 34px 40px 34px 40px; max-width: 1440px; margin: auto"/>
+    <ExperienceAbout class="screen-width" style=" padding: 34px 40px 34px 40px; max-width: 1440px; margin: auto"/>
+    <ExperienceVideos class="screen-width" style=" padding: 34px 40px 34px 40px; max-width: 1440px; margin: auto"/>
     <CommunityCuntacts/>
-    <LastSection style=" padding: 34px 40px 34px 40px; max-width: 1440px; margin: auto"/>
+    <LastSection class="screen-width" style=" padding: 34px 40px 34px 40px; max-width: 1440px; margin: auto"/>
   </div>
 
 </template>

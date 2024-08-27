@@ -12,7 +12,7 @@ import Navigation from "@/components/Navigation.vue";
 
 <template>
   <Navigation v-show="!($route.path ==='/landing')"/>
-  <div class="container-hybrid" style="padding: 34px 40px 34px 40px; max-width: 1440px; margin: auto">
+  <div class="container-hybrid screen-width" style="padding: 34px 40px 34px 40px; max-width: 1440px; margin: auto">
     <Cover />
     <Cards />
     <Mission />

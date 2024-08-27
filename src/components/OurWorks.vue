@@ -215,9 +215,9 @@ onMounted(() => {
             ref="containerRef"
             class="dev-card h-[550px]"
             :class="{
-    transformTop: classAddAnimation,
-    transformBottom: anotherClass
-     }"
+            transformTop: classAddAnimation,
+            transformBottom: anotherClass
+                   }"
         >
           <div
               v-for="(item, index) in displayedItems"
@@ -255,7 +255,7 @@ onMounted(() => {
           </div>
         </swiper-slide>
       </swiper>
-      <button v-show="isMobile" class="view-all m-auto absolute left-0 right-0 w-[250px] z-[1] bottom-[-180px]">
+      <button v-show="isMobile" class="view-all m-auto absolute left-0 right-0 w-[250px] z-[1] bottom-[-270px]">
         See all
       </button>
       <button v-show="addTab" class="view-all m-auto absolute left-0 right-0 w-[250px] z-[1] bottom-[-50px]">
@@ -326,8 +326,9 @@ onMounted(() => {
   .dev-card {
     display: grid !important;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    width: 600px !important;
+    width: 100% !important;
     margin-top: 20px;
+    right: 15px !important;
   }
   .modal-content {
     border-radius: 8px;
@@ -341,11 +342,7 @@ onMounted(() => {
     position: relative;
     bottom: 105px;
   }
-  .cards {
-    width: 131.03px !important;
-    height: 222.751px !important;
 
-  }
   .nav-our-works {
     z-index: 1;
   }
@@ -355,8 +352,6 @@ onMounted(() => {
   display: flex !important;
   justify-content: space-between;
   align-items: center;
-  //position: page;
-
 
   &-text {
     color: #fff;
@@ -387,6 +382,7 @@ onMounted(() => {
   flex-shrink: 0;
   border-radius: 6px;
   padding: 7.5px;
+  border: 0.5px solid #DEDEDE0D;
   background: rgba(222, 222, 222, 0.05);
   backdrop-filter: blur(29.5px);
   transition: transform 1s !important;

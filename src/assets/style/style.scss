@@ -8,9 +8,12 @@
   cursor: url("../img/Polygon.svg"), auto;
 }
 
-@media screen and (max-width: 992px){
-  .glow-container{
+@media screen and (max-width: 992px) {
+  .glow-container {
     display: none !important;
+  }
+  .screen-width {
+    padding: 20px !important;
   }
 }
 

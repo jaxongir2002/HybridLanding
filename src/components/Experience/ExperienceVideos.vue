@@ -114,7 +114,7 @@ onMounted(() => {
 
 @media screen and (max-width: 992px) {
   .card-img-slider {
-    width: 280px !important;
+    width: 100% !important;
     height: 429px !important;
     padding: 10px !important;
   }
@@ -124,7 +124,7 @@ onMounted(() => {
     right: 10px;
     top: 10px;
   }
-  iframe {
+  .lottie-animate {
     display: none !important;
   }
   .mobile-version {

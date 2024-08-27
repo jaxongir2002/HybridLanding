@@ -283,7 +283,7 @@ onMounted(() => {
 
 @media screen and (max-width: 992px) {
   .flip-card {
-    width: 280px !important;
+    width: 100% !important;
     height: 470px !important;
     justify-content: center !important;
     margin: auto !important;

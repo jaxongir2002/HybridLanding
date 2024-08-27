@@ -8,13 +8,13 @@ import CommunityCuntacts from "@/components/Community/CommunityCuntacts.vue";
 </script>
 
 <template>
-  <div  >
-    <community-cover style=" padding: 34px 40px 34px 40px; max-width: 1440px;  margin: auto"/>
-    <community-process style=" padding: 34px 40px 34px 40px; max-width: 1440px;  margin: auto"/>
-    <community-team style=" padding: 34px 40px 34px 40px; max-width: 1440px;  margin: auto"/>
-    <community-breath-life style=" padding: 34px 40px 34px 40px; max-width: 1440px;  margin: auto"/>
+  <div>
+    <community-cover class="screen-width" style="padding: 34px 40px 34px 40px; max-width: 1440px;  margin: auto"/>
+    <community-process class="screen-width" style="padding: 34px 40px 34px 40px; max-width: 1440px;  margin: auto"/>
+    <community-team class="screen-width" style=" padding: 34px 40px 34px 40px; max-width: 1440px;  margin: auto"/>
+    <community-breath-life class="screen-width" style=" padding: 34px 40px 34px 40px; max-width: 1440px;  margin: auto"/>
     <CommunityCuntacts/>
-    <LastSection style=" padding: 34px 40px 34px 40px; max-width: 1440px;  margin: auto"/>
+    <LastSection class="screen-width" style=" padding: 34px 40px 34px 40px; max-width: 1440px;  margin: auto"/>
   </div>
 
 </template>

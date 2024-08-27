@@ -114,8 +114,8 @@ video {
     width: 280px !important;
   }
   .card-lab-video{
-    width: 300px !important;
-    height: 180px !important;
+    width:100% !important;
+    height: 100% !important;
     padding: 10px !important;
   }
   .card-mission{

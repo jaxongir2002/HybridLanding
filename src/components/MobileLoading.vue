@@ -37,7 +37,7 @@ const interval = setInterval(() => {
 
 <template>
   <!--  navigation-->
-  <div class="navigation">
+  <div class="navigation screen-width">
     <div class="big-logo-name">
       <img src="../assets/img/Logo.svg" alt="" />
     </div>

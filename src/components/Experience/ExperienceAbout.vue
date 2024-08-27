@@ -60,7 +60,7 @@ onMounted(() => {
   }
   .text-description {
     font-size: 16px !important;
-    width: 281px !important;
+    width: 100% !important;
   }
   .about-text-title {
     margin-top: 0 !important;

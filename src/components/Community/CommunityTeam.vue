@@ -4,7 +4,7 @@
 
 <template>
   <div class="grid grid-cols-12 slider-container gap-[20px] mt-[20%] ">
-    <div class="card-img-slider col-span-8 relative z-10">
+    <div class="card-img-slider col-span-8 relative z-10 max-sm:top-[15px]">
       <video autoplay loop muted playsinline>
         <source src="@/assets/video/91ec3544e41e9afbff63c3d000a9a5296073707d839b265710597bd574d824eb_ndrKpibw.mp4"
                 type="video/mp4">
@@ -34,11 +34,11 @@
 <style lang="scss" scoped>
 @media screen and (max-width: 992px) {
   .card-img-slider {
-    width: 280px !important;
     height: 429px !important;
-    margin-top: 20px !important;
-    grid-column: span 12 / span 12;
+    grid-column: span 12 / span 12 !important;
     padding: 10px !important;
+    margin-top: 20px !important;
+    margin: auto;
   }
 }
 

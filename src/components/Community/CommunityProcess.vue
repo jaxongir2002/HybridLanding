@@ -1,5 +1,5 @@
 <script setup>
-import {onMounted, ref} from 'vue'
+import {onMounted} from 'vue'
 import gsap from "gsap";
 import {ScrollTrigger} from "gsap/ScrollTrigger";
 
@@ -34,8 +34,6 @@ onMounted(() => {
       </div>
     </div>
   </div>
-
-
 </template>
 
 <style scoped lang="scss">
@@ -47,7 +45,6 @@ onMounted(() => {
     font-weight: 300 !important;
     line-height: 140% !important;
     margin-top: 15px !important;
-    width: 280px !important;
   }
 }
 

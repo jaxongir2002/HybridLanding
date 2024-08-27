@@ -258,8 +258,8 @@ onMounted(() => {
         </swiper>
       </div>
 
-      <button v-show="isMobile" class="view-all m-auto absolute left-0 right-0 w-[250px] z-[1] bottom-[-180px]">
-        See all
+      <button v-show="isMobile" class="view-all m-auto absolute left-0 right-0 w-[250px] z-[1] bottom-[-270px]">
+        See more
       </button>
 
       <div
@@ -370,9 +370,9 @@ onMounted(() => {
   .dev-card {
     display: grid !important;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    width: 600px !important;
+    width: 100% !important;
     margin-top: 20px;
-    right: 0 !important;
+    right: 15px !important;
   }
   .modal-content {
     border-radius: 8px;
@@ -386,10 +386,7 @@ onMounted(() => {
     position: relative;
     bottom: 105px;
   }
-  .cards {
-    width: 131.03px !important;
-    height: 222.751px !important;
-  }
+
   .nav-our-works {
     z-index: 1;
   }
@@ -428,6 +425,7 @@ onMounted(() => {
   height: 255px;
   flex-shrink: 0;
   border-radius: 6px;
+  border:0.5px solid #DEDEDE0D;
   padding: 7.5px;
   background: rgba(222, 222, 222, 0.05);
   backdrop-filter: blur(29.5px);

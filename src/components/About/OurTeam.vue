@@ -110,7 +110,7 @@ onMounted(() => {
   .card-img-slider{
     opacity: 1 !important;
     transform: scale(1) !important;
-    width: 280px !important;
+    width:100% !important;
     height: 429px !important;
     margin-top: 20px !important;
   }
@@ -144,7 +144,7 @@ onMounted(() => {
 }
 .card-img-slider {
   border-radius: 12px;
-  border: 1.2px solid rgba(255, 255, 255, 0.17);
+  border: 1.2px solid rgba(255, 255, 255, 0.05);
   background: rgba(222, 222, 222, 0.05);
   backdrop-filter: blur(70.80000305175781px);
   padding: 18px;

@@ -44,7 +44,7 @@ const computedColor = computed(() => {
   <MobileLoading v-if="isMobile"/>
   <div v-else style=" padding: 34px 40px 34px 40px; max-width: 1440px;  margin: auto;position: relative; z-index: 1">
     <!--  navigation-->
-    <div class="navigation">
+    <div class="navigation screen-width">
       <div class="big-logo-name">
         <img src="../assets/img/Logo.svg" alt="" />
       </div>

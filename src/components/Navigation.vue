@@ -116,7 +116,7 @@ function changeMobilePages(url) {
 <template>
   <div :class="{ fixed: isNavFixed,'header-animation': isNavFixed,'isNavStick':isNavSticky  }">
     <div :class="{ 'w-[100%]': isNavFixed,'header-animation': 'w-[100%]','isNavStick':isNavSticky  }">
-      <div class="navigation" :class="{navMobile: isNavFixed}"
+      <div class="navigation screen-width" :class="{navMobile: isNavFixed}"
            style=" padding: 34px 40px 34px 40px; max-width: 1440px; margin: auto">
         <div>
           <img src="@/assets/img/Logo.svg" alt="" @click="load">

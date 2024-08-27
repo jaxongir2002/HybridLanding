@@ -211,7 +211,7 @@ onMounted(() => {
                 class="cards-company-home h-[213px] p-[100px] max-sm:p-[30px] max-sm:h-[91.94px] glow-effect"
             >
               <img
-                  class="w-full h-auto object-cover"
+                  class="w-full h-auto object-cover last-img"
                   src="../assets/img/NOZOMI.svg"
                   alt=""
               />
@@ -361,7 +361,7 @@ onMounted(() => {
                 class="cards-company-home h-[180px] p-[100px] max-sm:p-[30px] max-sm:h-[91.94px] glow-effect"
             >
               <img
-                  class="w-full h-auto object-cover"
+                  class="w-full h-auto object-cover last-img"
                   src="../assets/img/DubaiPlace.png"
                   alt=""
               />
@@ -633,7 +633,7 @@ onMounted(() => {
             </div>
             <div class="cards-company-home h-[170px] p-[80px] max-sm:p-[30px] glow-effect">
               <img
-                  class="w-full h-auto object-cover"
+                  class="w-full h-auto object-cover "
                   src="../assets/img/lastImg.svg"
                   alt=""
               />
@@ -663,7 +663,7 @@ onMounted(() => {
     font-size: 20px !important;
   }
   .cards-company-home {
-    width: 135.821px !important;
+    width: 100% !important;
     margin-top: 8px !important;
   }
   .third {
@@ -671,6 +671,10 @@ onMounted(() => {
   }
   .four {
     display: none;
+  }
+  .last-img{
+    width: 70.833px;
+    height: 70.881px;
   }
 }
 
@@ -704,7 +708,7 @@ onMounted(() => {
 
 .cards-company-home {
   border-radius: 12px;
-  border: 1px solid;
+  border: 1px solid rgba(255, 255, 255, 0.05);
   display: flex;
   justify-content: center;
   align-items: center;
