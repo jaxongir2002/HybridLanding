@@ -13,9 +13,9 @@ onMounted(() => {
     lenis.raf(time);
     requestAnimationFrame(raf);
   }
-
   requestAnimationFrame(raf);
 })
+
   setTimeout(() => {
     activeCanvas.value = true
   }, 5500)

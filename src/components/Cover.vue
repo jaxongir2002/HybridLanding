@@ -96,18 +96,22 @@ body::-webkit-scrollbar {
 }
 
 .title-logo {
+  background: linear-gradient(170deg, #0037C3 13.85%, #7E06BD 105.14%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   font-family: "Alexandria", sans-serif;
   text-transform: uppercase;
-  color: #fff;
   font-weight: 900;
   font-size: 140px;
-  line-height: 140px;
+  line-height: 100px;
   transition: 1s;
 }
 .title-text {
   font-family: "Alexandria", sans-serif;
   text-transform: uppercase;
-  color: #fff;
+  background: linear-gradient(170deg, #0037C3 1.85%, #7E06BD 40.14%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   font-weight: 900;
   font-size: 93px;
   line-height: 93px;

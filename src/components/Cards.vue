@@ -64,11 +64,15 @@ onMounted(() => {
             </div>
             <div class="text-all-hybrid">
               <div class="text-logo">
-                H
+                 <span class="gradient-h">
+                  H
+               </span>
                 <p class="center-logo-hybrid">
                   Installations
                 </p>
-                X
+                <span class="gradient-x">
+                   X
+               </span>
               </div>
             </div>
             <div class="footer-btn relative bottom-[46px]">
@@ -145,11 +149,15 @@ onMounted(() => {
             </div>
             <div class="text-all-hybrid">
               <div class="text-logo " style="color: #FF0000 !important;">
-                H
-                <p class="center-logo-hybrid " style="color: #FF0000 !important;">
+                 <span class="gradient-h">
+                  H
+               </span>
+                <p class="center-logo-hybrid ">
                   Studio
                 </p>
-                X
+                <span class="gradient-x">
+                  X
+               </span>
               </div>
             </div>
             <div class="footer-btn relative bottom-[4px]">
@@ -212,11 +220,13 @@ onMounted(() => {
             </div>
             <div class="text-all-hybrid">
               <div class="text-logo" style="color:#FFFF00 ">
-                H
-                <p class="center-logo-hybrid" style="color:#FFFF00 ">
+               <span class="gradient-h">
+                  H
+               </span>
+                <p class="center-logo-hybrid">
                   lab
                 </p>
-                X
+                <span class="gradient-x">X</span>
               </div>
             </div>
             <div class="footer-btn relative bottom-[5px]">
@@ -359,7 +369,7 @@ onMounted(() => {
 }
 
 .text-logo {
-  color: #CC11B2;
+
   font-family: Alexandria, sans-serif;
   font-size: 96px;
   font-weight: 900;
@@ -368,7 +378,6 @@ onMounted(() => {
   position: absolute;
   top: 40%;
   transform: translate(0, -40%);
-
 }
 
 .footer-content {
@@ -394,7 +403,7 @@ onMounted(() => {
   font-weight: 900;
   font-size: 30px;
   line-height: 36px;
-  color: #CC11B2;
+  color: white;
   padding: 0;
   margin: 0;
   text-transform: uppercase;
@@ -403,7 +412,6 @@ onMounted(() => {
 .footer-btn {
   display: flex;
   justify-content: space-between;
-
 }
 
 .text-all-hybrid {
@@ -473,4 +481,15 @@ figure {
   z-index: -1;
 }
 
+.gradient-h {
+  background: linear-gradient(160deg, #0037C3 15.85%, #7E06BD 105.14%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gradient-x {
+  background: linear-gradient(160deg, #0037C3 13.85%, #7E06BD 55.14%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
 </style>

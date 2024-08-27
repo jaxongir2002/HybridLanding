@@ -14,9 +14,8 @@ onMounted(() => {
   });
 })
 function clickTop() {
-  console.log('sss')
   window.scrollTo({
-    top: 850,
+    top: 900,
     behavior: "smooth",
   });
 }
@@ -48,7 +47,7 @@ function clickTop() {
           <div class="cover-text-brief relative z-10 test-animation">
             Some magic !
           </div>
-          <button class="contact-us mt-[40px] relative z-10">
+          <button class="contact-us mt-[40px] relative z-10" @click="clickTop">
             <img src="@/assets/img/smsTracking.svg" alt=""> Contact us
           </button>
         </div>

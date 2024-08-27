@@ -1,7 +1,11 @@
 <script setup>
 import {onMounted, ref} from 'vue'
 import gsap from "gsap";
+import LoaderBlog from "@/components/LoaderBlog.vue";
 
+const active = ref(0);
+const activeBlogs = ref(8);
+const loading = ref(false);
 const btnBlog = ref([
   {
     title: 'All'
@@ -16,6 +20,18 @@ const btnBlog = ref([
     title: 'Insights'
   },
 ]);
+
+function activeFn(index) {
+  active.value = index
+}
+
+function loadMoreItems() {
+  loading.value = true
+  setTimeout(() => {
+    activeBlogs.value += 4
+    loading.value = false
+  }, 1000)
+}
 
 onMounted(() => {
   gsap.registerPlugin(SplitText);
@@ -36,49 +52,56 @@ onMounted(() => {
         Blog
       </div>
       <div class="flex gap-[10px] mt-[15px] relative z-10">
-        <button class="btn-blog-filter" v-for="item in btnBlog" :key="item">
+        <button class="btn-blog-filter" v-for="(item,index) in btnBlog" :key="index" @click="activeFn(index)"
+                :class="{ 'active': active === index }">
           {{ item.title }}
         </button>
       </div>
     </div>
-    <div class="col-span-8 grid grid-cols-12 gap-[20px] cards-info-blog">
-      <div v-for="item in 8" class="card-blog flex flex-col justify-between col-span-6 relative z-20  max-sm:mt-[20px]"
-           @click="$router.push({name: 'blogView', params: { id: item }})">
-        <div class="flex justify-between items-start">
-          <div class="rounded-[9px] overflow-hidden">
-            <video autoplay loop muted playsinline>
-              <source
-                  src="@/assets/video/91ec3544e41e9afbff63c3d000a9a5296073707d839b265710597bd574d824eb_ndrKpibw.mp4"
-                  type="video/mp4">
-            </video>
+      <div class="col-span-8 grid grid-cols-12 gap-[20px] cards-info-blog">
+        <div v-for="item in activeBlogs"
+             :key="item"
+             class="card-blog flex flex-col justify-between col-span-6 relative z-20  max-sm:mt-[20px]"
+             @click="$router.push({name: 'blogView', params: { id: item }})">
+          <div class="flex justify-between items-start">
+            <div class="rounded-[9px] overflow-hidden">
+              <video autoplay loop muted playsinline>
+                <source
+                    src="@/assets/video/91ec3544e41e9afbff63c3d000a9a5296073707d839b265710597bd574d824eb_ndrKpibw.mp4"
+                    type="video/mp4">
+              </video>
+            </div>
+            <img src="@/assets/img/Arrow_right.svg" alt="">
           </div>
-          <img src="@/assets/img/Arrow_right.svg" alt="">
-        </div>
-        <div class="">
-          <div class="text-blog">
-            A gaming revolution of interactive and interconnected playground of fun and experiences <span
-              class="emoji">
+          <div>
+            <div class="text-blog">
+              A gaming revolution of interactive and interconnected playground of fun and experiences <span
+                class="emoji">
             🕹️👾🎮
           </span>
-          </div>
-          <div class="flex gap-[16px] mt-[12px]">
-            <div class="date">
-              14.06.2024
             </div>
-            <img src="@/assets/img/LineBlog.svg" alt="">
-            <div class="date">
-              News
-            </div>
+            <div class="flex gap-[16px] mt-[12px]">
+              <div class="date">
+                14.06.2024
+              </div>
+              <img src="@/assets/img/LineBlog.svg" alt="">
+              <div class="date">
+                News
+              </div>
 
+            </div>
           </div>
         </div>
 
-      </div>
-      <button class="learn-btn col-span-4 left-[100%] relative z-10">
-        Learn more
-      </button>
+        <div class="col-span-12 grid grid-cols-12">
+          <LoaderBlog class="col-span-6 m-auto" v-if="loading"/>
+          <LoaderBlog class="col-span-6 m-auto" v-if="loading"/>
+        </div>
 
-    </div>
+        <button class="learn-btn col-span-4 left-[100%] relative z-10" @click="loadMoreItems">
+          See more
+        </button>
+      </div>
   </div>
 </template>
 
@@ -110,6 +133,15 @@ onMounted(() => {
   text-transform: uppercase;
 }
 
+.active {
+  border-radius: 500px;
+  border: 0.5px solid #828282;
+  background: var(--White, #F9F9F9);
+  backdrop-filter: blur(64.44999694824219px);
+  color: #0E0E0E !important;
+  font-weight: 700 !important;
+}
+
 .learn-btn {
   color: #FFF;
   text-align: center;
@@ -125,9 +157,16 @@ onMounted(() => {
   padding: 12px 64px;
   justify-content: center;
   align-items: center;
+  transition: 0.3s;
 
 }
-
+.learn-btn:hover{
+  color: #A20AFF;
+  border-color: #A20AFF;
+}
+.learn-btn:active{
+  transform: scale(0.9);
+}
 .btn-blog-filter {
   color: var(--Black, #F9F9F9);
   font-family: Alexandria, sans-serif;
@@ -144,6 +183,7 @@ onMounted(() => {
   border-radius: 500px;
   border: 0.5px solid #828282;
   backdrop-filter: blur(64.44999694824219px);
+  transition: 0.5s;
 }
 
 .card-blog {
