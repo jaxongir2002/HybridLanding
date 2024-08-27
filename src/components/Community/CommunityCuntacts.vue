@@ -11,7 +11,7 @@
       magic together! Contact us to
       start your journey.
     </div>
-    <div class="contact-title">
+    <div class="contact-title underline" @click="$router.push('/brief')">
       Contact us
     </div>
   </div>

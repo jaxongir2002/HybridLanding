@@ -129,7 +129,7 @@ const isMobile = window.matchMedia('(max-width: 767px)').matches;
         </div>
       </div>
     </div>
-    <div class="slider-header mt-[150px] relative  z-[33]">
+    <div class="slider-header mt-[150px] relative z-[33]">
       latest articles
     </div>
     <swiper
@@ -160,7 +160,8 @@ const isMobile = window.matchMedia('(max-width: 767px)').matches;
     }"
     >
       <swiper-slide v-for="(item, index) in 5" :key="index">
-        <div class="card-blog grid grid-cols-12 gap-5 relative z-20 mt-[40px]">
+        <div class="card-blog grid grid-cols-12 gap-5 relative z-20 mt-[40px]"
+             @click="$router.push({name: 'blogView', params: { id: item }})">
           <div class="rounded-[9px] overflow-hidden col-span-4">
             <video autoplay loop muted playsinline>
               <source src="@/assets/video/91ec3544e41e9afbff63c3d000a9a5296073707d839b265710597bd574d824eb_ndrKpibw.mp4"
@@ -190,7 +191,7 @@ const isMobile = window.matchMedia('(max-width: 767px)').matches;
         </div>
       </swiper-slide>
     </swiper>
-    <LastSection/>
+    <LastSection id="srt"/>
   </div>
 
 </template>
