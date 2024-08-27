@@ -94,8 +94,8 @@ onMounted(() => {
         </div>
 
         <div class="col-span-12 grid grid-cols-12">
-          <LoaderBlog class="col-span-6 m-auto" v-if="loading"/>
-          <LoaderBlog class="col-span-6 m-auto" v-if="loading"/>
+          <LoaderBlog class="col-span-6 m-auto max-sm:col-span-12" v-if="loading"/>
+          <LoaderBlog class="col-span-6 m-auto max-sm:hidden" v-if="loading"/>
         </div>
 
         <button class="learn-btn col-span-4 left-[100%] relative z-10" @click="loadMoreItems">

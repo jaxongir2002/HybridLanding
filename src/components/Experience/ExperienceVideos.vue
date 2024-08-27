@@ -155,11 +155,13 @@ onMounted(() => {
   font-weight: 500;
   line-height: 140%;
   margin-top: 43px;
+  transition: 0.3s all;
 }
 
 .see-more:hover {
   border-color: #BF56FF;
   color: #BF56FF;
+  transform: scale(1.1);
 }
 
 .text-video-header {

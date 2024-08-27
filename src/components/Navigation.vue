@@ -142,7 +142,7 @@ function changeMobilePages(url) {
           <span class="magic-animation" :class="{ 'animate': openMenu }">
              Discover magic
           </span>
-          <img src="../assets/img/MenuIcon.svg" alt="">
+        <img src="@/assets/img/MenuIcon.svg" alt="">
         </div>
         <div class="navigation-mobile">
           <img v-if="!openMobil" @click="openMobileFn" src="../assets/img/MenuIcon.svg" alt="">
@@ -294,40 +294,49 @@ function changeMobilePages(url) {
         <div class="menu-mobile relative z-[33]" v-show="openMobil" :class="{mobileFixed : isNavFixed}">
           <div class="flex" :class="{topMenu : isNavFixed}">
             <div class="flex flex-col gap-[10px] relative justify-center">
-              <div class="text-mobile flex justify-center gap-[15px]" @click="changeMobilePages('landing')" :class="{'active-mobile':$route.path === '/landing'}">
+              <div class="text-mobile flex justify-center gap-[15px]" @click="changeMobilePages('landing')"
+                   :class="{'active-mobile':$route.path === '/landing'}">
                 <span>home</span>
                 <div class="btn-mobile">01</div>
               </div>
-              <div class="text-mobile flex justify-center gap-[15px]" @click="changeMobilePages('about')" :class="{'active-mobile':$route.path === '/about'}">
+              <div class="text-mobile flex justify-center gap-[15px]" @click="changeMobilePages('about')"
+                   :class="{'active-mobile':$route.path === '/about'}">
                 <span>about</span>
                 <div class="btn-mobile">02</div>
               </div>
-              <div class="text-mobile flex justify-center gap-[15px]" @click="changeMobilePages('reels')" :class="{'active-mobile':$route.path === '/reels'}">
+              <div class="text-mobile flex justify-center gap-[15px]" @click="changeMobilePages('reels')"
+                   :class="{'active-mobile':$route.path === '/reels'}">
                 <span>Reels</span>
                 <div class="btn-mobile">03</div>
               </div>
-              <div class="text-mobile flex justify-center gap-[15px]" @click="changeMobilePages('community')" :class="{'active-mobile':$route.path === '/community'}">
+              <div class="text-mobile flex justify-center gap-[15px]" @click="changeMobilePages('community')"
+                   :class="{'active-mobile':$route.path === '/community'}">
                 <span>Community</span>
                 <div class="btn-mobile">04</div>
               </div>
-              <div class="text-mobile flex justify-center gap-[15px]" @click="changeMobilePages('blog')" :class="{'active-mobile':$route.path === '/blog'}">
+              <div class="text-mobile flex justify-center gap-[15px]" @click="changeMobilePages('blog')"
+                   :class="{'active-mobile':$route.path === '/blog'}">
                 <span>Blog</span>
                 <div class="btn-mobile">05</div>
               </div>
-              <div class="text-mobile flex justify-center gap-[15px]" @click="changeMobilePages('brief')" :class="{'active-mobile':$route.path === '/brief'}">
+              <div class="text-mobile flex justify-center gap-[15px]" @click="changeMobilePages('brief')"
+                   :class="{'active-mobile':$route.path === '/brief'}">
                 <span>brief</span>
                 <div class="btn-mobile">06</div>
               </div>
 
-              <div class="text-mobile flex justify-center gap-[15px]" @click="changeMobilePages('installations')" :class="{'active-mobile':$route.path === '/installations'}">
+              <div class="text-mobile flex justify-center gap-[15px]" @click="changeMobilePages('installations')"
+                   :class="{'active-mobile':$route.path === '/installations'}">
                 <span>Installations</span>
                 <div class="btn-mobile">04</div>
               </div>
-              <div class="text-mobile flex justify-center gap-[15px]" @click="changeMobilePages('studio')" :class="{'active-mobile':$route.path === '/studio'}">
+              <div class="text-mobile flex justify-center gap-[15px]" @click="changeMobilePages('studio')"
+                   :class="{'active-mobile':$route.path === '/studio'}">
                 <span>studio</span>
                 <div class="btn-mobile">05</div>
               </div>
-              <div class="text-mobile flex justify-center gap-[15px]" @click="changeMobilePages('lab')" :class="{'active-mobile':$route.path === '/lab'}">
+              <div class="text-mobile flex justify-center gap-[15px]" @click="changeMobilePages('lab')"
+                   :class="{'active-mobile':$route.path === '/lab'}">
                 <span>lab</span>
                 <div class="btn-mobile">06</div>
               </div>
@@ -368,7 +377,13 @@ function changeMobilePages(url) {
 </style>
 
 <style scoped lang="scss">
-/* we will explain what these classes do next! */
+.menu-nav {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid #F9F9F9;
+}
+
 .v-enter-active,
 .v-leave-active {
   transition: opacity 0.3s linear;
@@ -590,7 +605,7 @@ video {
     width: 100vw !important;
     justify-content: space-between !important;
   }
-  .topMenu{
+  .topMenu {
     position: relative;
     top: 80px !important;
   }
@@ -643,7 +658,8 @@ video {
   .text-mobile:hover {
     color: #A42DEA;
   }
-  .active-mobile{
+
+  .active-mobile {
     color: #A42DEA;
   }
 }

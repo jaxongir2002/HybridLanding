@@ -32,7 +32,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="text-header">
+  <div class="text-header relative z-[33]">
     Our Services
   </div>
   <div class="grid grid-cols-12 gap-[20px] " style="">

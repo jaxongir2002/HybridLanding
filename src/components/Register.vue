@@ -382,8 +382,11 @@ onMounted(() => {
   font-style: normal;
   font-weight: 500;
   line-height: 140%;
-  transition: 0.3s;
   cursor: url("@/assets/img/Polygon.svg"), auto;
+  transition: 0.3s all;
+}
+.btn-sent:hover{
+  transform: scale(1.1) !important;
 }
 
 .line-center {
