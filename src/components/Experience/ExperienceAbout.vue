@@ -24,10 +24,47 @@ onMounted(() => {
   let mySplitText = new SplitText(".scrolling-white-text", {type: "chars"});
   let chars = mySplitText.chars;
 
-  tl.to(chars, {
+  tl.to('.first-about-experience', {
     color: 'white',
     duration: 1,
     stagger: 0.02,
+    fontWeight: 400
+  })
+  tl.to('.second-about-experience', {
+    color: 'white',
+    duration: 1,
+    stagger: 0.02,
+    fontWeight: 400
+  })
+  tl.to('.third-about-experience', {
+    color: 'white',
+    duration: 1,
+    stagger: 0.02,
+    fontWeight: 400
+  })
+  tl.to('.four-about-experience', {
+    color: 'white',
+    duration: 1,
+    stagger: 0.02,
+    fontWeight: 400
+  })
+  tl.to('.five-about-experience', {
+    color: 'white',
+    duration: 1,
+    stagger: 0.02,
+    fontWeight: 400
+  })
+  tl.to('.six-about-experience', {
+    color: 'white',
+    duration: 1,
+    stagger: 0.02,
+    fontWeight: 400
+  })
+  tl.to('.scrolling-white-text', {
+    color: 'white',
+    duration: 1,
+    stagger: 0.02,
+    fontWeight: 400
   })
 });
 </script>
@@ -39,10 +76,13 @@ onMounted(() => {
         Who we are
       </div>
       <div class="text-description w-[913px] m-auto mt-[10px] ">
-     <span class="scrolling-white-text"> Hybrid Xperience is a tech studio that creates immersive, interactive installations for physical and digital
-      spaces.
-      We specialize in 3D projection mapping, real-time interactivity, holograms, AI, and VFX/CGI. We have projects
-       blend art and technology, offering unique experiences through</span>
+        <span class="first-about-experience"> Hybrid Xperience is a </span>
+        <span class="second-about-experience"> tech studio that creates </span>
+        <span class="third-about-experience"> immersive, interactive installations </span>
+        <span class="four-about-experience"> for physical and digital </span>
+        <span class="five-about-experience"> spaces. We specialize in </span>
+        <span class="six-about-experience"> 3D projection mapping, real-time interactivity, holograms,
+          AI, and VFX/CGI. We have projects blend art and technology, offering unique experiences through</span>
         <span class="text-[#FF0]"> #technology</span>, <span class="text-[#A42DEA]">#interactive</span>
         <span class="scrolling-white-text"> solutions, and memorable</span>
 

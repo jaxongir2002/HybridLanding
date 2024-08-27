@@ -203,7 +203,7 @@ onMounted(() => {
       <div class="nav-our-works relative z-[2332]">
         <div class="nav-our-works-text relative">Our works</div>
         <div class="our-works-img relative z-[20]">
-          <button v-show="!addTab" class="view-all w-[205px] mt-2">
+          <button v-show="!addTab" class="view-all w-[205px] mt-2" @click="$router.push('/reels')">
             View all
           </button>
         </div>
@@ -255,10 +255,10 @@ onMounted(() => {
           </div>
         </swiper-slide>
       </swiper>
-      <button v-show="isMobile" class="view-all m-auto absolute left-0 right-0 w-[250px] z-[1] bottom-[-270px]">
+      <button v-show="isMobile" class="view-all m-auto absolute left-0 right-0 w-[250px] z-[1] bottom-[-270px]" @click="$router.push('/reels')">
         See all
       </button>
-      <button v-show="addTab" class="view-all m-auto absolute left-0 right-0 w-[250px] z-[1] bottom-[-50px]">
+      <button v-show="addTab" class="view-all m-auto absolute left-0 right-0 w-[250px] z-[33] bottom-[-50px]" @click="$router.push('/reels')">
         View all
       </button>
       <div
