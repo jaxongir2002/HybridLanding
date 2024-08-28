@@ -1,63 +1,60 @@
 <script setup>
-import {onMounted} from "vue";
+import {onMounted, onBeforeUnmount, ref} from "vue";
 import {ScrollTrigger} from "gsap/ScrollTrigger";
 import gsap from "gsap";
 
+gsap.registerPlugin(SplitText, ScrollTrigger);
+
+let tl;
+const bigDiv = ref(null);
+
+const initAnimations = () => {
+  const mySplitText = new SplitText(".animation-text-home", {type: "chars"});
+  const chars = mySplitText.chars;
+
+  const mySplitTextTwo = new SplitText(".animation-text-two-home", {type: "chars"});
+  const charsTwo = mySplitTextTwo.chars;
+
+  const slides = document.querySelectorAll(".cards-company-home");
+  const first = document.querySelectorAll('.first');
+
+  tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: bigDiv.value,
+      start: "top 10%",
+      end: `+=${slides.length * 5}%`,
+      scrub: true,
+    },
+    defaults: {ease: "none"},
+  });
+
+  tl.from(chars, {
+    yPercent: -140,
+    stagger: 0.02,
+    ease: "back.out",
+    opacity: 0,
+  });
+
+  tl.from(charsTwo, {
+    yPercent: 140,
+    stagger: 0.02,
+    ease: "back.out",
+    opacity: 0,
+  }, 0);
+
+  tl.fromTo(first,
+      {yPercent: 55, transition: 2.5,},
+      {yPercent: 0, transition: 2.5, duration: 2.5, stagger: 0.2}
+  );
+
+  return tl;
+};
+
 onMounted(() => {
-  const isMobile = window.matchMedia('(max-width: 767px)').matches;
-  if (!isMobile) {
-    gsap.registerPlugin(SplitText, ScrollTrigger);
-    let mySplitText = new SplitText(".animation-text-home", {type: "chars"});
-    let chars = mySplitText.chars;
-
-    let mySplitTextTwo = new SplitText(".animation-text-two-home", {type: "chars"});
-    let charsTwo = mySplitTextTwo.chars;
-    const slides = document.querySelectorAll(".cards-company-home");
-    let tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: ".big-div-home",
-        start: "top 10%",
-        end: `+=${slides.length * 5}%`,
-        scrub: true,
-        lazy: true,
-      },
-      defaults: {ease: "none"},
-    });
-    tl.from(chars, {
-      yPercent: -140,
-      stagger: 0.02,
-      ease: "back.out",
-      opacity: 0,
-    });
-
-    tl.from(
-        charsTwo,
-        {
-          yPercent: 140,
-          stagger: 0.02,
-          ease: "back.out",
-          opacity: 0,
-          yoyo: true,
-        },
-        0);
-    tl.fromTo(
-        ".first",
-        {
-          yPercent: 55,
-          yoyo: true,
-          transition: 2.5,
-          stagger: 0.2,
-        },
-        {
-          yPercent: 0,
-          stagger: 0.2,
-          yoyo: true,
-          transition: 2.5,
-        }
-    );
-  }
-
-
+  tl = initAnimations();
+  window.addEventListener('popstate', () => {
+    tl = initAnimations();
+  });
   (function setGlowEffectRx() {
     const glowEffects = document.querySelectorAll(".glow-effect");
 
@@ -70,13 +67,18 @@ onMounted(() => {
       });
     });
   })();
-})
+});
 
-
+onBeforeUnmount(() => {
+  if (tl) {
+    tl.kill(); // Kill the timeline if it exists
+  }
+  ScrollTrigger.getAll().forEach(trigger => trigger.kill()); // Kill all ScrollTriggers
+});
 </script>
 
 <template>
-  <div class="text-center big-div-home relative">
+  <div class="text-center big-div-home relative" ref="bigDiv">
     <div class="smooth-wrapper">
       <div class="title-containers relative z-10">
         <div class="text-work animation-text-home">We work with humans</div>
@@ -86,7 +88,7 @@ onMounted(() => {
         <div
             class="flex gap-[20px] all-cards-partners max-sm:gap-[8px] max-sm:justify-center"
         >
-          <div class="first">
+          <div ref="first" class="first">
             <div
                 class="cards-company-home h-[250px] p-[80px] max-sm:h-[104.478px] max-sm:p-[30px] glow-effect"
             >
@@ -229,7 +231,7 @@ onMounted(() => {
               </svg>
             </div>
           </div>
-          <div class="second first">
+          <div ref="first"  class="second first">
             <div
                 class="cards-company-home h-[180px] p-[80px] max-sm:p-[30px] max-sm:h-[75.224px] glow-effect"
             >
@@ -379,7 +381,7 @@ onMounted(() => {
               </svg>
             </div>
           </div>
-          <div class="third first">
+          <div ref="first"  class="third first">
             <div class="cards-company-home h-[220px] p-[80px] max-sm:p-[30px] glow-effect">
               <img
                   class="w-full h-auto object-cover"
@@ -515,7 +517,7 @@ onMounted(() => {
               </svg>
             </div>
           </div>
-          <div class="four first">
+          <div ref="first"  class="four first">
             <div class="cards-company-home h-[190px] p-[80px] max-sm:p-[30px] glow-effect">
               <img
                   class="w-full h-auto object-cover"
@@ -672,7 +674,7 @@ onMounted(() => {
   .four {
     display: none;
   }
-  .last-img{
+  .last-img {
     width: 70.833px;
     height: 70.881px;
   }

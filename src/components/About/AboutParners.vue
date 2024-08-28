@@ -1,64 +1,121 @@
+<!--<script setup>-->
+<!--import {onMounted} from "vue";-->
+<!--import {ScrollTrigger} from "gsap/ScrollTrigger";-->
+<!--import gsap from "gsap";-->
+
+<!--onMounted(() => {-->
+<!--  const isMobile = window.matchMedia('(max-width: 767px)').matches;-->
+<!--  if (!isMobile){-->
+<!--    gsap.registerPlugin(ScrollTrigger);-->
+
+<!--    let mySplitText = new SplitText(".animation-text-aboutP", { type: "chars" });-->
+<!--    let chars = mySplitText.chars;-->
+
+<!--    let mySplitTextTwo = new SplitText(".animation-text-two-aboutP", { type: "chars" });-->
+<!--    let charsTwo = mySplitTextTwo.chars;-->
+<!--    const slides = document.querySelectorAll(".cards-company-aboutP");-->
+<!--    let tl = gsap.timeline({-->
+<!--      scrollTrigger: {-->
+<!--        trigger: ".big-div-aboutP",-->
+<!--        start: "top 10%",-->
+<!--        end: `+=${slides.length * 5}%`,-->
+<!--        scrub: true,-->
+<!--        lazy: true,-->
+<!--      },-->
+<!--      defaults: { ease: "none" },-->
+<!--    });-->
+<!--    tl.from(chars, {-->
+<!--      yPercent: -140,-->
+<!--      stagger: 0.02,-->
+<!--      ease: "back.out",-->
+<!--      opacity: 0,-->
+<!--    });-->
+
+<!--    tl.from(-->
+<!--        charsTwo,-->
+<!--        {-->
+<!--          yPercent: 140,-->
+<!--          stagger: 0.02,-->
+<!--          ease: "back.out",-->
+<!--          opacity: 0,-->
+<!--          yoyo: true,-->
+<!--        },-->
+<!--        0);-->
+<!--    tl.fromTo(-->
+<!--        ".first-aboutP",-->
+<!--        {-->
+<!--          yPercent: 55,-->
+<!--          yoyo: true,-->
+<!--          transition: 2.5,-->
+<!--          stagger: 0.2,-->
+<!--        },-->
+<!--        {-->
+<!--          yPercent: 0,-->
+<!--          stagger: 0.2,-->
+<!--          yoyo: true,-->
+<!--          transition: 2.5,-->
+<!--        }-->
+<!--    );-->
+<!--  }-->
+<!--})-->
+
+<!--</script>-->
 <script setup>
-import {onMounted} from "vue";
+import {onMounted, onBeforeUnmount} from "vue";
 import {ScrollTrigger} from "gsap/ScrollTrigger";
 import gsap from "gsap";
 
+gsap.registerPlugin(SplitText, ScrollTrigger);
+
+const initAnimations = () => {
+  const mySplitText = new SplitText(".animation-text-aboutP", {type: "chars"});
+  const chars = mySplitText.chars;
+
+  const mySplitTextTwo = new SplitText(".animation-text-two-aboutP", {type: "chars"});
+  const charsTwo = mySplitTextTwo.chars;
+
+  const slides = document.querySelectorAll(".cards-company-aboutP");
+
+  const tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: ".big-div-aboutP",
+      start: "top 10%",
+      end: `+=${slides.length * 5}%`,
+      scrub: true,
+    },
+    defaults: {ease: "none"},
+  });
+
+  tl.from(chars, {
+    yPercent: -140,
+    stagger: 0.02,
+    ease: "back.out",
+    opacity: 0,
+    transition: 2.5,
+  });
+
+  tl.from(charsTwo, {
+    yPercent: 140,
+    stagger: 0.02,
+    ease: "back.out",
+    opacity: 0,
+    transition: 2.5,
+  }, 0);
+
+  tl.fromTo(
+      ".first-aboutP",
+      {yPercent: 55, transition: 2.5,},
+      {yPercent: 0, transition: 2.5, stagger: 0.2},
+      0
+  );
+
+  return tl;
+};
+
+let tl;
+
 onMounted(() => {
-  const isMobile = window.matchMedia('(max-width: 767px)').matches;
-  if (!isMobile){
-    gsap.registerPlugin(ScrollTrigger);
-
-    let mySplitText = new SplitText(".animation-text-aboutP", { type: "chars" });
-    let chars = mySplitText.chars;
-
-    let mySplitTextTwo = new SplitText(".animation-text-two-aboutP", { type: "chars" });
-    let charsTwo = mySplitTextTwo.chars;
-    const slides = document.querySelectorAll(".cards-company-aboutP");
-    let tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: ".big-div-aboutP",
-        start: "top 10%",
-        end: `+=${slides.length * 5}%`,
-        scrub: true,
-        lazy: true,
-      },
-      defaults: { ease: "none" },
-    });
-    tl.from(chars, {
-      yPercent: -140,
-      stagger: 0.02,
-      ease: "back.out",
-      opacity: 0,
-    });
-
-    tl.from(
-        charsTwo,
-        {
-          yPercent: 140,
-          stagger: 0.02,
-          ease: "back.out",
-          opacity: 0,
-          yoyo: true,
-        },
-        0);
-    tl.fromTo(
-        ".first-aboutP",
-        {
-          yPercent: 55,
-          yoyo: true,
-          transition: 2.5,
-          stagger: 0.2,
-        },
-        {
-          yPercent: 0,
-          stagger: 0.2,
-          yoyo: true,
-          transition: 2.5,
-        }
-    );
-  }
-
-
+  tl = initAnimations();
   (function setGlowEffectRx() {
     const glowEffects = document.querySelectorAll(".glow-effect");
 
@@ -71,10 +128,16 @@ onMounted(() => {
       });
     });
   })();
-})
+});
+
+onBeforeUnmount(() => {
+  if (tl) {
+    tl.kill(); // Kill the timeline if it exists
+  }
+  ScrollTrigger.getAll().forEach(trigger => trigger.kill()); // Kill all ScrollTriggers
+});
 
 </script>
-
 <template>
   <div class="text-center big-div-aboutP relative" >
     <div class="smooth-wrapper">
