@@ -57,7 +57,6 @@ watchEffect(() => {
   mobile()
 })
 
-
 function openMobileFn() {
   openMobil.value = true
   mobile()
@@ -115,7 +114,7 @@ function changeMobilePages(url) {
 
 <template>
   <div :class="{ fixed: isNavFixed,'header-animation': isNavFixed,'isNavStick':isNavSticky  }">
-    <div :class="{ 'w-[100%]': isNavFixed,'header-animation': 'w-[100%]','isNavStick':isNavSticky  }">
+
       <div class="navigation screen-width" :class="{navMobile: isNavFixed}"
            style=" padding: 34px 40px 34px 40px; max-width: 1440px; margin: auto">
         <div>
@@ -142,7 +141,7 @@ function changeMobilePages(url) {
           <span class="magic-animation" :class="{ 'animate': openMenu }">
              Discover magic
           </span>
-        <img src="@/assets/img/MenuIcon.svg" alt="">
+          <img src="@/assets/img/MenuIcon.svg" alt="">
         </div>
         <div class="navigation-mobile">
           <img v-if="!openMobil" @click="openMobileFn" src="../assets/img/MenuIcon.svg" alt="">
@@ -357,11 +356,8 @@ function changeMobilePages(url) {
           </div>
         </div>
       </Transition>
-    </div>
 
   </div>
-
-
 </template>
 <style lang="scss">
 .no-scroll {
@@ -377,23 +373,6 @@ function changeMobilePages(url) {
 </style>
 
 <style scoped lang="scss">
-.menu-nav {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  border: 1px solid #F9F9F9;
-}
-
-.v-enter-active,
-.v-leave-active {
-  transition: opacity 0.3s linear;
-}
-
-.v-enter-from,
-.v-leave-to {
-  opacity: 0;
-}
-
 .card-change-video {
   width: 100px;
   height: 120px;

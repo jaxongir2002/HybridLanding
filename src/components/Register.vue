@@ -1,10 +1,18 @@
 <script setup>
 import gsap from "gsap";
 import {ScrollTrigger} from "gsap/ScrollTrigger";
-import {onMounted} from "vue";
+import {onBeforeUnmount, onMounted, ref} from "vue";
 
 const isMobile = window.matchMedia('(max-width: 767px)').matches;
-onMounted(() => {
+let tl;
+const btnSent = ref(null);
+const btnAnimationLinks = ref(null);
+const checkBox = ref(null);
+const textProject = ref(null);
+const labelName = ref(null);
+const descriptionText = ref(null);
+const scrollRegister = ref(null);
+function initRegisterAnimation() {
   if (!isMobile) {
     gsap.registerPlugin(SplitText, ScrollTrigger);
     let mySplitText = new SplitText(".text-register", {type: "chars"});
@@ -13,9 +21,9 @@ onMounted(() => {
     let mayChars = mySplit.chars;
     let chars = mySplitText.chars;
 
-    let tl = gsap.timeline({
+    tl = gsap.timeline({
       scrollTrigger: {
-        trigger: ".scroll-register",
+        trigger: scrollRegister.value,
         start: "top 50%",
         end: "bottom bottom",
         scrub: 1,
@@ -27,27 +35,20 @@ onMounted(() => {
       stagger: 0.02,
     });
 
-    tl.from(".label-name", {
+    tl.from(labelName.value, {
       yPercent: -40,
       opacity: 0,
       stagger: 0.5,
       duration: 1,
-      yoyo: true,
       transition: 1,
     });
 
-    gsap.from(mayChars, {
+    tl.from(mayChars, {
       yPercent: 130,
       stagger: 0.02,
       opacity: 0,
-      scrollTrigger: {
-        trigger: ".scroll-register",
-        start: "top 50%",
-        end: "bottom bottom",
-        scrub: 1,
-      },
     });
-    gsap.from(".text-project", {
+    gsap.from(textProject.value, {
       opacity: 0,
       scrollTrigger: {
         trigger: ".scroll-register",
@@ -56,7 +57,7 @@ onMounted(() => {
         scrub: 1,
       },
     });
-    gsap.from(".description-text", {
+    gsap.from(descriptionText.value, {
       opacity: 0,
       yPercent: 130,
       stagger: 0.02,
@@ -67,49 +68,57 @@ onMounted(() => {
         scrub: 1,
       },
     });
-    gsap.from(".btn-sent", {
+
+    gsap.from(btnSent.value, {
       duration: 0.5,
       y: "0",
       scale: 0.3,
       transition: 0.3,
-      yoyo: true,
       ease: "power1.inOut",
       scrollTrigger: {
         trigger: ".scroll-register",
         start: "top 50%",
         end: "bottom bottom",
-        scrub: true,
-      },
+        scrub: 1,
+      }
     });
-    gsap.from(".btn-animation-links", {
+
+    gsap.from(btnAnimationLinks.value, {
       duration: 0.5,
       y: "0",
       scale: 0.3,
       transition: 0.3,
-      yoyo: true,
       ease: "power1.inOut",
       scrollTrigger: {
         trigger: ".scroll-register",
         start: "top 50%",
         end: "bottom bottom",
-        scrub: true,
-      },
+        scrub: 1,
+      }
     });
-    tl.from(".checkbox-animation", {
+    tl.from(checkBox.value, {
       animation: "check-animation 1s linear infinite",
-      scrollTrigger: {
-        trigger: ".scroll-register",
-        start: "top 50%",
-        end: "bottom bottom",
-        scrub: true,
-      },
     });
   }
+  return tl;
+}
+
+onMounted(() => {
+  tl = initRegisterAnimation();
+  window.addEventListener('popstate', () => {
+    tl = initRegisterAnimation();
+  });
+});
+onBeforeUnmount(() => {
+  if (tl) {
+    tl.kill(); // Kill the timeline if it exists
+  }
+  ScrollTrigger.getAll().forEach(trigger => trigger.kill()); // Kill all ScrollTriggers
 });
 </script>
 
 <template>
-  <div class="pt-[80px] flex justify-between scroll-register mt-[20px]">
+  <div ref="scrollRegister" class="pt-[80px] flex justify-between scroll-register mt-[80px]">
     <div>
       <div class="text-touch relative z-[33]">
         Get in Touch
@@ -118,7 +127,7 @@ onMounted(() => {
       <div class="flex gap-[20px] mt-[136px] info-container">
         <div>
           <label class="label-btn relative z-[33]">
-            <span class="text-project">Start a project:</span>
+            <span ref="textProject" class="text-project">Start a project:</span>
             <button class="btn-links-text btn-links mt-[15px]">
               info@hybridinstallations.com
             </button>
@@ -145,7 +154,7 @@ onMounted(() => {
           </label>
         </div>
       </div>
-      <div class="description-text mt-[227px] relative z-[33]">
+      <div ref="descriptionText" class="description-text mt-[227px] relative z-[33]">
         New media art & entertainment studio creating experiences for the
         physical & digital world.
       </div>
@@ -159,7 +168,7 @@ onMounted(() => {
 
       <form>
         <div class="form-group mt-[30px]">
-          <label for="name" class="label-name"
+          <label ref="labelName" for="name" class="label-name"
           >Name
             <input
                 type="text"
@@ -170,7 +179,7 @@ onMounted(() => {
           </label>
         </div>
         <div class="form-group mt-[30px]">
-          <label for="Email" class="label-name"
+          <label ref="labelName" for="Email" class="label-name"
           >Your Email
             <input
                 type="email"
@@ -181,7 +190,7 @@ onMounted(() => {
           </label>
         </div>
         <div class="form-group mt-[30px]">
-          <label for="Phone" class="label-name"
+          <label ref="labelName" for="Phone" class="label-name"
           >Your Phone
             <input
                 type="number"
@@ -192,7 +201,7 @@ onMounted(() => {
           </label>
         </div>
         <div class="form-group mt-[30px]">
-          <label for="Message" class="label-name"
+          <label ref="labelName" for="Message" class="label-name"
           >Message
             <input
                 type="text"
@@ -203,7 +212,7 @@ onMounted(() => {
           </label>
         </div>
 
-        <div class="checkbox-container mt-[32px] mb-[32px]">
+        <div ref="checkBox" class="checkbox-container mt-[32px] mb-[32px]">
           <label class="container label-name">
             <span class="relative top-[27px] left-[15px] text-checkbox-mobile">
               I agree to use and processing of my personal data</span
@@ -212,7 +221,7 @@ onMounted(() => {
             <div class="checkmark checkbox-animation"></div>
           </label>
         </div>
-        <button type="submit" class="btn-sent">
+        <button ref="btnSent" type="submit" class="btn-sent">
           <img src="@/assets/img/rightArrow.svg" alt=""/>Send
         </button>
       </form>
@@ -385,7 +394,8 @@ onMounted(() => {
   cursor: url("@/assets/img/Polygon.svg"), auto;
   transition: 0.3s all;
 }
-.btn-sent:hover{
+
+.btn-sent:hover {
   transform: scale(1.1) !important;
 }
 

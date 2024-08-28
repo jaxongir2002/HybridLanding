@@ -1,4 +1,6 @@
 <script setup>
+import Navigation from "@/components/Navigation.vue";
+
 function topScroll() {
   window.scrollTo({
     top: 1000,
@@ -8,7 +10,8 @@ function topScroll() {
 </script>
 
 <template>
-  <section id="container" class="">
+
+  <section id="container" class=""  style="padding: 34px 40px 34px 40px; max-width: 1440px; margin: auto">
     <div class="title-container">
       <div class="title-logo">Hybrid</div>
       <div ref="elementRef" class="title-text">xperience</div>
@@ -91,7 +94,7 @@ body::-webkit-scrollbar {
   margin: 0;
   position: absolute;
   top: 50%;
-  transform: translate(0, -50%);
+  transform: translate(0, -75%);
   z-index: 22;
 }
 

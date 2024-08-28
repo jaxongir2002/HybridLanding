@@ -19,19 +19,16 @@ onMounted(() => {
     color: '#F9F9F9',
     duration: 1,
     stagger: 0.03,
-    fontWeight: 600
   })
   tl.to('.second-text-process', {
     color: '#F9F9F9',
     duration: 1,
     stagger: 0.03,
-    fontWeight: 600
   })
   tl.to('.third-text-process', {
     color: '#F9F9F9',
     duration: 1,
     stagger: 0.03,
-    fontWeight: 600
   })
 })
 </script>

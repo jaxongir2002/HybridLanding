@@ -16,17 +16,14 @@ onMounted(() => {
   requestAnimationFrame(raf);
 })
 
-  setTimeout(() => {
-    activeCanvas.value = true
-  }, 5500)
 </script>
 
 <template>
   <div style="background: #0e0e0e;">
-    <Navigation v-show="!($route.path ==='/')"/>
+    <Navigation v-if="!($route.path ==='/')"/>
     <router-view>
     </router-view>
-    <canvas id="renderSurface" class="opacity-0" :class="{'opacity-[1]':activeCanvas}"></canvas>
+    <canvas id="renderSurface" class="opacity-1"></canvas>
   </div>
 </template>
 

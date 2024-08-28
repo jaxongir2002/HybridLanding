@@ -28,43 +28,36 @@ onMounted(() => {
     color: 'white',
     duration: 1,
     stagger: 0.02,
-    fontWeight: 400
   })
   tl.to('.second-about-experience', {
     color: 'white',
     duration: 1,
     stagger: 0.02,
-    fontWeight: 400
   })
   tl.to('.third-about-experience', {
     color: 'white',
     duration: 1,
     stagger: 0.02,
-    fontWeight: 400
   })
   tl.to('.four-about-experience', {
     color: 'white',
     duration: 1,
     stagger: 0.02,
-    fontWeight: 400
   })
   tl.to('.five-about-experience', {
     color: 'white',
     duration: 1,
     stagger: 0.02,
-    fontWeight: 400
   })
   tl.to('.six-about-experience', {
     color: 'white',
     duration: 1,
     stagger: 0.02,
-    fontWeight: 400
   })
   tl.to('.scrolling-white-text', {
     color: 'white',
     duration: 1,
     stagger: 0.02,
-    fontWeight: 400
   })
 });
 </script>

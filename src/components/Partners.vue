@@ -705,7 +705,7 @@ onBeforeUnmount(() => {
   position: sticky;
   left: 0;
   top: 0;
-  transform: translate(0%, 85%);
+  transform: translate(0%, 70%);
 }
 
 .cards-company-home {
