@@ -1,5 +1,5 @@
 <script setup>
-import {onMounted, ref, watchEffect} from 'vue'
+import {onMounted, ref, watch, watchEffect} from 'vue'
 import Lenis from "lenis";
 import {useRouter} from "vue-router";
 
@@ -110,6 +110,10 @@ function changeMobilePages(url) {
   router.push(`/${url}`)
   openMobil.value = false
 }
+
+watch(isNavSticky, (newVal) => {
+  if (newVal === true) openMenu.value = false
+})
 </script>
 
 <template>
@@ -534,7 +538,7 @@ video {
 //nav hover
 .menu-dialog {
   width: 602px;
-  height: 95%;
+  height: 95vh;
   flex-shrink: 0;
   border-radius: 30px;
   background: #181818;
@@ -606,6 +610,9 @@ video {
   .topMenu {
     position: relative;
     top: 80px !important;
+  }
+  .sticky-header--fixed {
+    height: 8%;
   }
   .navMobile {
     padding-bottom: 0 !important;

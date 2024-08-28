@@ -3,7 +3,7 @@
 </script>
 
 <template>
-  <div class="mt-[45px] ">
+  <div class="mt-[75px] ">
     <div>
       <div class="cover-text-brief">
         Let`s make

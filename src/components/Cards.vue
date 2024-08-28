@@ -122,18 +122,6 @@ onMounted(() => {
                 </div>
               </div>
             </div>
-            <svg class="glow-container relative">
-              <rect
-                  pathLength="100"
-                  stroke-linecap="round"
-                  class="glow-blur"
-              ></rect>
-              <rect
-                  pathLength="100"
-                  stroke-linecap="round"
-                  class="glow-line"
-              ></rect>
-            </svg>
           </figure>
         </div>
       </div>
@@ -192,18 +180,6 @@ onMounted(() => {
                 </div>
               </div>
             </div>
-            <svg class="glow-container">
-              <rect
-                  pathLength="100"
-                  stroke-linecap="round"
-                  class="glow-blur"
-              ></rect>
-              <rect
-                  pathLength="100"
-                  stroke-linecap="round"
-                  class="glow-line"
-              ></rect>
-            </svg>
           </figure>
 
         </div>
@@ -266,18 +242,6 @@ onMounted(() => {
                 </div>
               </div>
             </div>
-            <svg class="glow-container">
-              <rect
-                  pathLength="100"
-                  stroke-linecap="round"
-                  class="glow-blur"
-              ></rect>
-              <rect
-                  pathLength="100"
-                  stroke-linecap="round"
-                  class="glow-line"
-              ></rect>
-            </svg>
           </figure>
 
         </div>

@@ -71,10 +71,9 @@ body::-webkit-scrollbar {
   .title-footer-mobile {
     position: relative;
     display: block;
-    top: 40%;
-    width: 75%;
-
-
+    top: 45%;
+    width: 65%;
+    left: 17%;
   }
   iframe {
     display: none;
@@ -90,8 +89,8 @@ body::-webkit-scrollbar {
     font-style: normal;
     font-weight: 700;
     line-height: 1.5;
-    position: relative;
-    top: 70% !important;
+    position: relative !important;
+    top: 100px !important;
     justify-content: center;
     left: 25%;
   }
@@ -161,7 +160,7 @@ body::-webkit-scrollbar {
   height: 80px;
   border-radius: 30px;
   background: #0000000d;
-  backdrop-filter: blur(5px);
+  backdrop-filter: blur(2px);
   position: relative;
   bottom: 45px;
   box-shadow: 0 4px 30px #0000000d;

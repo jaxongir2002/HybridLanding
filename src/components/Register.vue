@@ -285,10 +285,14 @@ onBeforeUnmount(() => {
   .text-checkbox-mobile {
     top: 35px !important;
     left: 40px !important;
-
+  }
+  .checkbox-container{
+    font-size: 14px !important;
+    width: 90%!important;
   }
   .label-name {
     text-align: left !important;
+
   }
 }
 

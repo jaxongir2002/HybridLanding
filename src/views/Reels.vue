@@ -4,6 +4,7 @@ import CoverReels from "@/components/Reels/CoverReels.vue";
 import ReelsVideo from "@/components/Reels/ReelsVideo.vue";
 import ReelsRegister from "@/components/Reels/ReelsRegister.vue";
 import Partners from "@/components/Partners.vue";
+import Register from "@/components/Register.vue";
 </script>
 
 <template>
@@ -11,7 +12,7 @@ import Partners from "@/components/Partners.vue";
     <cover-reels/>
     <reels-video/>
     <Partners/>
-    <ReelsRegister/>
+    <Register/>
     <LastSection/>
   </div>
 </template>
