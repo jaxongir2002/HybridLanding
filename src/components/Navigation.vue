@@ -20,7 +20,6 @@ onMounted(() => {
   let prevScrollPos = window.pageYOffset;
   window.addEventListener('scroll', () => {
     const currentScrollPos = window.pageYOffset;
-
     if (prevScrollPos > currentScrollPos && currentScrollPos > 900) {
       isNavFixed.value = true;
       isNavSticky.value = false
@@ -28,6 +27,7 @@ onMounted(() => {
       isNavSticky.value = true
       isNavFixed.value = false
     }
+    if (currentScrollPos < 100) isNavSticky.value = false
     prevScrollPos = currentScrollPos;
   });
   const element = document.getElementById("renderSurface");
@@ -113,249 +113,252 @@ function changeMobilePages(url) {
 </script>
 
 <template>
-  <div :class="{ fixed: isNavFixed,'header-animation': isNavFixed,'isNavStick':isNavSticky  }">
+  <div class="sticky-header" :class="{
+      'sticky-header--fixed': isNavFixed,
+      'sticky-header--fixed-back': isNavSticky
+    }">
 
-      <div class="navigation screen-width" :class="{navMobile: isNavFixed}"
-           style=" padding: 34px 40px 34px 40px; max-width: 1440px; margin: auto">
-        <div>
-          <img src="@/assets/img/Logo.svg" alt="" @click="load">
-        </div>
-        <div class="navigation-menu">
-          <router-link to="/about">
-            <span class="first-animation" :class="{'active':$route.path === '/about'}">About</span>
-          </router-link>
-          <router-link to="/reels">
-            <span class="second-animation" :class="{'active':$route.path === '/reels'}">Reels</span>
-          </router-link>
-          <router-link to="/community">
-            <span class="third-animation" :class="{'active':$route.path === '/community'}">Community</span>
-          </router-link>
-          <router-link to="/blog">
-            <span class="four-animation" :class="{'active':$route.path === '/blog'}">Blog</span>
-          </router-link>
-          <router-link to="/brief">
-            <span class="five-animation" :class="{'active':$route.path === '/brief'}">Brief</span>
-          </router-link>
-        </div>
-        <div class="navigation-magic" @click="openMenu=true">
+    <div class="navigation screen-width" :class="{navMobile: isNavFixed}"
+         style=" padding: 34px 40px 34px 40px; max-width: 1440px; margin: auto">
+      <div>
+        <img src="@/assets/img/Logo.svg" alt="" @click="load">
+      </div>
+      <div class="navigation-menu">
+        <router-link to="/about">
+          <span class="first-animation" :class="{'active':$route.path === '/about'}">About</span>
+        </router-link>
+        <router-link to="/reels">
+          <span class="second-animation" :class="{'active':$route.path === '/reels'}">Reels</span>
+        </router-link>
+        <router-link to="/community">
+          <span class="third-animation" :class="{'active':$route.path === '/community'}">Community</span>
+        </router-link>
+        <router-link to="/blog">
+          <span class="four-animation" :class="{'active':$route.path === '/blog'}">Blog</span>
+        </router-link>
+        <router-link to="/brief">
+          <span class="five-animation" :class="{'active':$route.path === '/brief'}">Brief</span>
+        </router-link>
+      </div>
+      <div class="navigation-magic" @click="openMenu=true">
           <span class="magic-animation" :class="{ 'animate': openMenu }">
              Discover magic
           </span>
-          <img src="@/assets/img/MenuIcon.svg" alt="">
-        </div>
-        <div class="navigation-mobile">
-          <img v-if="!openMobil" @click="openMobileFn" src="../assets/img/MenuIcon.svg" alt="">
-          <img v-else @click="closeMobile" class="active:scale-[0.9]" src="@/assets/img/menuClose.svg" alt="">
-        </div>
+        <img src="@/assets/img/MenuIcon.svg" alt="">
       </div>
-      <Transition name="slide-fade">
-        <div class="menu-dialog" v-show="openMenu" :class="{menuUi : isNavFixed}">
-          <div class="flex justify-end transition-all hover-animate">
-            <img @click="openMenu= false" class="active:scale-[0.9]" src="@/assets/img/menuClose.svg" alt="">
-          </div>
-          <div class="flex">
-            <div class="flex flex-col gap-[10px]">
-              <div @mousemove="firstFn" class="menu-text flex gap-[15px]" @click="changePages('landing')">
+      <div class="navigation-mobile">
+        <img v-if="!openMobil" @click="openMobileFn" src="../assets/img/MenuIcon.svg" alt="">
+        <img v-else @click="closeMobile" class="active:scale-[0.9]" src="@/assets/img/menuClose.svg" alt="">
+      </div>
+    </div>
+    <Transition name="slide-fade">
+      <div class="menu-dialog" v-show="openMenu" :class="{menuUi : isNavFixed}">
+        <div class="flex justify-end transition-all hover-animate">
+          <img @click="openMenu= false" class="active:scale-[0.9]" src="@/assets/img/menuClose.svg" alt="">
+        </div>
+        <div class="flex">
+          <div class="flex flex-col gap-[10px]">
+            <div @mousemove="firstFn" class="menu-text flex gap-[15px]" @click="changePages('landing')">
               <span>
                    home
               </span>
-                <div class="menu-btn">
-                  01
-                </div>
+              <div class="menu-btn">
+                01
               </div>
-              <div @mousemove="secondFn" class="menu-text flex gap-[15px]" @click="changePages('about')">
+            </div>
+            <div @mousemove="secondFn" class="menu-text flex gap-[15px]" @click="changePages('about')">
               <span>
                    about
               </span>
-                <div class="menu-btn">
-                  02
-                </div>
+              <div class="menu-btn">
+                02
               </div>
-              <div @mousemove="threeFn" class="menu-text flex gap-[15px]" @click="changePages('reels')">
+            </div>
+            <div @mousemove="threeFn" class="menu-text flex gap-[15px]" @click="changePages('reels')">
                 <span>
                   Reels
                 </span>
-                <div class="menu-btn">
-                  03
-                </div>
+              <div class="menu-btn">
+                03
               </div>
-              <div @mousemove="fourFn" class="menu-text flex gap-[15px]" @click="changePages('community')">
+            </div>
+            <div @mousemove="fourFn" class="menu-text flex gap-[15px]" @click="changePages('community')">
                 <span>
                    Community
                 </span>
-                <div class="menu-btn">
-                  04
-                </div>
+              <div class="menu-btn">
+                04
               </div>
-              <div @mousemove="fiveFn" class="menu-text flex gap-[15px]" @click="changePages('blog')">
+            </div>
+            <div @mousemove="fiveFn" class="menu-text flex gap-[15px]" @click="changePages('blog')">
               <span>
               Blog
               </span>
-                <div class="menu-btn">
-                  05
-                </div>
+              <div class="menu-btn">
+                05
               </div>
-              <div @mousemove="sixFn" class="menu-text flex gap-[15px]" @click="changePages('brief')">
+            </div>
+            <div @mousemove="sixFn" class="menu-text flex gap-[15px]" @click="changePages('brief')">
                 <span>
                    brief
                 </span>
-                <div class="menu-btn">
-                  06
-                </div>
+              <div class="menu-btn">
+                06
               </div>
-              <div @mousemove="sixFn" class="menu-text flex gap-[15px]" @click="changePages('installations')">
+            </div>
+            <div @mousemove="sixFn" class="menu-text flex gap-[15px]" @click="changePages('installations')">
                 <span>
                  Installations
                 </span>
-                <div class="menu-btn">
-                  07
-                </div>
+              <div class="menu-btn">
+                07
               </div>
-              <div @mousemove="sixFn" class="menu-text flex gap-[15px]" @click="changePages('studio')">
+            </div>
+            <div @mousemove="sixFn" class="menu-text flex gap-[15px]" @click="changePages('studio')">
                 <span>
                    Studio
                 </span>
-                <div class="menu-btn">
-                  08
-                </div>
+              <div class="menu-btn">
+                08
               </div>
-              <div @mousemove="sixFn" class="menu-text flex gap-[15px]" @click="changePages('lab')">
+            </div>
+            <div @mousemove="sixFn" class="menu-text flex gap-[15px]" @click="changePages('lab')">
                 <span>
                    Lab
                 </span>
-                <div class="menu-btn">
-                  09
-                </div>
+              <div class="menu-btn">
+                09
               </div>
             </div>
-            <div class="card-change-video">
-              <Transition>
-                <video autoplay loop muted width="320" height="240" playsinline v-show="changeFirstVideo">
-                  <source
-                      src="../assets/video/ac57976749d126f18128abad5cec0903ee50f1bcaab2b1941b03887e69ae9a29_rbIGpUGF.mp4"
-                      type="video/mp4">
-                </video>
-              </Transition>
-              <Transition>
-
-                <video autoplay loop muted width="320" height="240" playsinline v-show="changeSecondVideo">
-                  <source src="../assets/video/wecreatemagic_lsF4u8LF.mp4"
-                          type="video/mp4">
-                </video>
-              </Transition>
-              <Transition>
-                <video autoplay loop muted width="320" height="240" playsinline v-show="changeThreeVideo">
-                  <source
-                      src="../assets/video/84d3ee1d02f80623a9f94aaf876be15f12f8030d7abc558fa81e43cf65067340_FU8j2xww.mp4"
-                      type="video/mp4">
-                </video>
-              </Transition>
-              <Transition>
-                <video autoplay loop muted width="320" height="240" playsinline v-show="changeFourVideo">
-                  <source
-                      src="../assets/video/ac57976749d126f18128abad5cec0903ee50f1bcaab2b1941b03887e69ae9a29_rbIGpUGF.mp4"
-                      type="video/mp4">
-                </video>
-              </Transition>
-              <Transition>
-                <video autoplay loop muted width="320" height="240" playsinline v-show="changeFiveVideo">
-                  <source
-                      src="../assets/video/91ec3544e41e9afbff63c3d000a9a5296073707d839b265710597bd574d824eb_ndrKpibw.mp4"
-                      type="video/mp4">
-                </video>
-              </Transition>
-              <Transition>
-                <video autoplay loop muted width="320" height="240" playsinline v-show="changeSixVideo">
-                  <source src="../assets/video/lastimg_ezUrAU63.mp4"
-                          type="video/mp4">
-                </video>
-              </Transition>
-            </div>
           </div>
+          <div class="card-change-video">
+            <Transition>
+              <video autoplay loop muted width="320" height="240" playsinline v-show="changeFirstVideo">
+                <source
+                    src="../assets/video/ac57976749d126f18128abad5cec0903ee50f1bcaab2b1941b03887e69ae9a29_rbIGpUGF.mp4"
+                    type="video/mp4">
+              </video>
+            </Transition>
+            <Transition>
 
-          <div class="flex items-end ">
-            <div class="flex gap-[10px]">
-              <button class="btn-links">
-                Instagram
-              </button>
-              <button class="btn-links w-[37px]">
-                <span class="">X</span>
-              </button>
-              <button class="btn-links">
-                Linkedin
-              </button>
-            </div>
-            <iframe src="https://lottie.host/embed/d12aeedd-ef05-4146-a269-e4112a1b9ca1/JJrsbqYW7T.json"></iframe>
+              <video autoplay loop muted width="320" height="240" playsinline v-show="changeSecondVideo">
+                <source src="../assets/video/wecreatemagic_lsF4u8LF.mp4"
+                        type="video/mp4">
+              </video>
+            </Transition>
+            <Transition>
+              <video autoplay loop muted width="320" height="240" playsinline v-show="changeThreeVideo">
+                <source
+                    src="../assets/video/84d3ee1d02f80623a9f94aaf876be15f12f8030d7abc558fa81e43cf65067340_FU8j2xww.mp4"
+                    type="video/mp4">
+              </video>
+            </Transition>
+            <Transition>
+              <video autoplay loop muted width="320" height="240" playsinline v-show="changeFourVideo">
+                <source
+                    src="../assets/video/ac57976749d126f18128abad5cec0903ee50f1bcaab2b1941b03887e69ae9a29_rbIGpUGF.mp4"
+                    type="video/mp4">
+              </video>
+            </Transition>
+            <Transition>
+              <video autoplay loop muted width="320" height="240" playsinline v-show="changeFiveVideo">
+                <source
+                    src="../assets/video/91ec3544e41e9afbff63c3d000a9a5296073707d839b265710597bd574d824eb_ndrKpibw.mp4"
+                    type="video/mp4">
+              </video>
+            </Transition>
+            <Transition>
+              <video autoplay loop muted width="320" height="240" playsinline v-show="changeSixVideo">
+                <source src="../assets/video/lastimg_ezUrAU63.mp4"
+                        type="video/mp4">
+              </video>
+            </Transition>
           </div>
         </div>
-      </Transition>
-      <Transition name="slide-fade">
-        <div class="menu-mobile relative z-[33]" v-show="openMobil" :class="{mobileFixed : isNavFixed}">
-          <div class="flex" :class="{topMenu : isNavFixed}">
-            <div class="flex flex-col gap-[10px] relative justify-center">
-              <div class="text-mobile flex justify-center gap-[15px]" @click="changeMobilePages('landing')"
-                   :class="{'active-mobile':$route.path === '/landing'}">
-                <span>home</span>
-                <div class="btn-mobile">01</div>
-              </div>
-              <div class="text-mobile flex justify-center gap-[15px]" @click="changeMobilePages('about')"
-                   :class="{'active-mobile':$route.path === '/about'}">
-                <span>about</span>
-                <div class="btn-mobile">02</div>
-              </div>
-              <div class="text-mobile flex justify-center gap-[15px]" @click="changeMobilePages('reels')"
-                   :class="{'active-mobile':$route.path === '/reels'}">
-                <span>Reels</span>
-                <div class="btn-mobile">03</div>
-              </div>
-              <div class="text-mobile flex justify-center gap-[15px]" @click="changeMobilePages('community')"
-                   :class="{'active-mobile':$route.path === '/community'}">
-                <span>Community</span>
-                <div class="btn-mobile">04</div>
-              </div>
-              <div class="text-mobile flex justify-center gap-[15px]" @click="changeMobilePages('blog')"
-                   :class="{'active-mobile':$route.path === '/blog'}">
-                <span>Blog</span>
-                <div class="btn-mobile">05</div>
-              </div>
-              <div class="text-mobile flex justify-center gap-[15px]" @click="changeMobilePages('brief')"
-                   :class="{'active-mobile':$route.path === '/brief'}">
-                <span>brief</span>
-                <div class="btn-mobile">06</div>
-              </div>
 
-              <div class="text-mobile flex justify-center gap-[15px]" @click="changeMobilePages('installations')"
-                   :class="{'active-mobile':$route.path === '/installations'}">
-                <span>Installations</span>
-                <div class="btn-mobile">04</div>
-              </div>
-              <div class="text-mobile flex justify-center gap-[15px]" @click="changeMobilePages('studio')"
-                   :class="{'active-mobile':$route.path === '/studio'}">
-                <span>studio</span>
-                <div class="btn-mobile">05</div>
-              </div>
-              <div class="text-mobile flex justify-center gap-[15px]" @click="changeMobilePages('lab')"
-                   :class="{'active-mobile':$route.path === '/lab'}">
-                <span>lab</span>
-                <div class="btn-mobile">06</div>
-              </div>
-            </div>
+        <div class="flex items-end ">
+          <div class="flex gap-[10px]">
+            <button class="btn-links">
+              Instagram
+            </button>
+            <button class="btn-links w-[37px]">
+              <span class="">X</span>
+            </button>
+            <button class="btn-links">
+              Linkedin
+            </button>
           </div>
-          <div class="flex  items-end" :class="{'relative bottom-[100px]'  : isNavFixed}">
-            <div class="flex gap-[10px] relative bottom-[30px]">
-              <button class="btn-links">
-                Instagram
-              </button>
-              <button class="btn-links w-[37px]">
-                <span class="">X</span>
-              </button>
-              <button class="btn-links">
-                Linkedin
-              </button>
+          <iframe src="https://lottie.host/embed/d12aeedd-ef05-4146-a269-e4112a1b9ca1/JJrsbqYW7T.json"></iframe>
+        </div>
+      </div>
+    </Transition>
+    <Transition name="slide-fade">
+      <div class="menu-mobile relative z-[33]" v-show="openMobil" :class="{mobileFixed : isNavFixed}">
+        <div class="flex" :class="{topMenu : isNavFixed}">
+          <div class="flex flex-col gap-[10px] relative justify-center">
+            <div class="text-mobile flex justify-center gap-[15px]" @click="changeMobilePages('landing')"
+                 :class="{'active-mobile':$route.path === '/landing'}">
+              <span>home</span>
+              <div class="btn-mobile">01</div>
+            </div>
+            <div class="text-mobile flex justify-center gap-[15px]" @click="changeMobilePages('about')"
+                 :class="{'active-mobile':$route.path === '/about'}">
+              <span>about</span>
+              <div class="btn-mobile">02</div>
+            </div>
+            <div class="text-mobile flex justify-center gap-[15px]" @click="changeMobilePages('reels')"
+                 :class="{'active-mobile':$route.path === '/reels'}">
+              <span>Reels</span>
+              <div class="btn-mobile">03</div>
+            </div>
+            <div class="text-mobile flex justify-center gap-[15px]" @click="changeMobilePages('community')"
+                 :class="{'active-mobile':$route.path === '/community'}">
+              <span>Community</span>
+              <div class="btn-mobile">04</div>
+            </div>
+            <div class="text-mobile flex justify-center gap-[15px]" @click="changeMobilePages('blog')"
+                 :class="{'active-mobile':$route.path === '/blog'}">
+              <span>Blog</span>
+              <div class="btn-mobile">05</div>
+            </div>
+            <div class="text-mobile flex justify-center gap-[15px]" @click="changeMobilePages('brief')"
+                 :class="{'active-mobile':$route.path === '/brief'}">
+              <span>brief</span>
+              <div class="btn-mobile">06</div>
+            </div>
+
+            <div class="text-mobile flex justify-center gap-[15px]" @click="changeMobilePages('installations')"
+                 :class="{'active-mobile':$route.path === '/installations'}">
+              <span>Installations</span>
+              <div class="btn-mobile">04</div>
+            </div>
+            <div class="text-mobile flex justify-center gap-[15px]" @click="changeMobilePages('studio')"
+                 :class="{'active-mobile':$route.path === '/studio'}">
+              <span>studio</span>
+              <div class="btn-mobile">05</div>
+            </div>
+            <div class="text-mobile flex justify-center gap-[15px]" @click="changeMobilePages('lab')"
+                 :class="{'active-mobile':$route.path === '/lab'}">
+              <span>lab</span>
+              <div class="btn-mobile">06</div>
             </div>
           </div>
         </div>
-      </Transition>
+        <div class="flex  items-end" :class="{'relative bottom-[100px]'  : isNavFixed}">
+          <div class="flex gap-[10px] relative bottom-[30px]">
+            <button class="btn-links">
+              Instagram
+            </button>
+            <button class="btn-links w-[37px]">
+              <span class="">X</span>
+            </button>
+            <button class="btn-links">
+              Linkedin
+            </button>
+          </div>
+        </div>
+      </div>
+    </Transition>
 
   </div>
 </template>
@@ -373,6 +376,16 @@ function changeMobilePages(url) {
 </style>
 
 <style scoped lang="scss">
+.sticky-header {
+  transition: all .5s ease;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 3333;
+  background: #0e0e0e;
+}
+
 .card-change-video {
   width: 100px;
   height: 120px;
@@ -415,29 +428,35 @@ video {
   right: 0 !important;
 }
 
-.isNavStick {
-  animation: header-animation-another .5s linear;
+
+.sticky-header--fixed {
+  animation-duration: .5s;
+  animation-name: header-animation;
+  top: 0;
 }
 
-@keyframes header-animation-another {
-  from {
-    transform: translateY(0%);
-  }
-  to {
-    transform: translateY(-100%);
-  }
-}
+.sticky-header--fixed-back {
+  animation-duration: .5s;
+  animation-name: header-animation-back;
+  top: -100px;
 
-.header-animation {
-  animation: header-animation .5s linear;
 }
 
 @keyframes header-animation {
-  from {
-    transform: translateY(-100%);
+  0% {
+    top: -100px;
   }
-  to {
-    transform: translateY(0);
+  100% {
+    top: 0;
+  }
+}
+
+@keyframes header-animation-back {
+  0% {
+    top: 0;
+  }
+  100% {
+    top: -100px;
   }
 }
 

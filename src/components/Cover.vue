@@ -94,7 +94,7 @@ body::-webkit-scrollbar {
   margin: 0;
   position: absolute;
   top: 50%;
-  transform: translate(0, -75%);
+  transform: translate(0, -35%);
   z-index: 22;
 }
 
@@ -167,6 +167,6 @@ body::-webkit-scrollbar {
   margin-bottom: 101px;
   position: relative;
   z-index: 22;
-  top: 35% !important;
+  top: 45% !important;
 }
 </style>
