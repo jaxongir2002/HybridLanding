@@ -83,8 +83,10 @@ onMounted(() => {
         <div class="nav-title">
           {{ item.title }}
         </div>
-        <img :src="item.srcImg"
-             alt="">
+        <video preload="metadata" loop muted  autoplay  playsinline>
+          <source :src="item.srcImg"
+                  type="video/mp4">
+        </video>
         <div class="btn-container grid grid-cols-12 gap-[10px] absolute bottom-[40px] left-[30px]">
           <button class="button-team col-span-6">
             Holograms

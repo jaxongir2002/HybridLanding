@@ -18,7 +18,7 @@ function animationInstallations() {
     scrollTrigger: {
       trigger: '.scroll-studio-text',
       start: 'top top',
-      pin: pin,
+      pin: true,
       end: '200%',
       scrub: 1,
     }
