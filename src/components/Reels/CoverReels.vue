@@ -3,12 +3,6 @@ import {onMounted} from "vue";
 import gsap from "gsap";
 import {ScrollTrigger} from "gsap/ScrollTrigger";
 
-function topScroll() {
-  window.scrollTo({
-    top: 1000,
-    behavior: "smooth",
-  });
-}
 gsap.registerPlugin(SplitText, ScrollTrigger);
 onMounted(() => {
   let mySplitText = new SplitText(".test-animation", {type: "chars"});
@@ -21,16 +15,11 @@ onMounted(() => {
 </script>
 
 <template>
-  <section id="container" class="">
+  <section id="container">
     <div class="title-container">
       <div class="title-logo test-animation">Our  <span class="mobile-works">Works</span></div>
       <div class="glass-effect"></div>
     </div>
-
-    <span class="text-scroll" @click="topScroll">
-      Scroll to experience magic
-      <img class="animation-arrow" src="@/assets/img/Arrow.svg" alt=""/>
-    </span>
   </section>
 </template>
 <style scoped lang="scss">
@@ -49,17 +38,7 @@ onMounted(() => {
     height: 40px !important;
     transform: translateY(20px) !important;
   }
-  .text-scroll {
-    font-size: 12px !important;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 1.5;
-    position: relative;
-    top: 35% !important;
-  }
-  canvas {
-    display: none !important;
-  }
+
   .title-container {
     top: 35% !important;
   }
@@ -118,7 +97,7 @@ onMounted(() => {
   opacity: 0;
   animation: glass-effect 0.4s forwards;
   animation-delay: 0.5s;
-  transform: translateY(10px);
+  transform: translateY(-5px);
 }
 
 @keyframes glass-effect {
@@ -128,20 +107,5 @@ onMounted(() => {
   100% {
     opacity: 1;
   }
-}
-.text-scroll {
-  font-family: "Urbanist", sans-serif;
-  font-size: 16px;
-  font-weight: 600;
-  line-height: 19px;
-  color: white;
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  background: transparent;
-  margin-bottom: 101px;
-  position: relative;
-  z-index: 22;
-  top: 30% !important;
 }
 </style>

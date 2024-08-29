@@ -2,6 +2,9 @@
 import gsap from "gsap";
 import {ScrollTrigger} from "gsap/ScrollTrigger";
 import {onBeforeUnmount, onMounted, ref} from "vue";
+import Lenis from "lenis";
+
+const lenis = new Lenis();
 
 const isMobile = window.matchMedia('(max-width: 767px)').matches;
 let tl;
@@ -12,6 +15,9 @@ const textProject = ref(null);
 const labelName = ref(null);
 const descriptionText = ref(null);
 const scrollRegister = ref(null);
+const showModal = ref(false);
+let bodyOverflow = null;
+
 function initRegisterAnimation() {
   if (!isMobile) {
     gsap.registerPlugin(SplitText, ScrollTrigger);
@@ -115,6 +121,34 @@ onBeforeUnmount(() => {
   }
   ScrollTrigger.getAll().forEach(trigger => trigger.kill()); // Kill all ScrollTriggers
 });
+function openModal(item, index) {
+  showModal.value = true;
+
+  bodyOverflow = document.body.style.overflow;
+  document.body.style.overflow = "hidden";
+  mobile()
+}
+function mobile() {
+  if (showModal.value === true) {
+    document.body.classList.add('no-scroll');
+    lenis.stop();
+  } else {
+    document.body.classList.remove('no-scroll');
+    lenis.start();
+  }
+}
+function closeModal(event) {
+  // Check if the Esc key was pressed
+  if (event.key === 'Escape') {
+    showModal.value = false;
+    document.body.style.overflow = bodyOverflow || "";
+    mobile();
+  } else {
+    showModal.value = false;
+    document.body.style.overflow = bodyOverflow || "";
+    mobile();
+  }
+}
 </script>
 
 <template>
@@ -221,15 +255,126 @@ onBeforeUnmount(() => {
             <div class="checkmark checkbox-animation"></div>
           </label>
         </div>
-        <button ref="btnSent" type="submit" class="btn-sent">
-          <img src="@/assets/img/rightArrow.svg" alt=""/>Send
-        </button>
+
       </form>
+      <button ref="btnSent" @click="openModal"  class="btn-sent relative z-[33]">
+        <img src="@/assets/img/rightArrow.svg" alt=""/>Send
+      </button>
     </div>
   </div>
+  <transition name="modal">
+    <div v-if="showModal" class="modal" @click.self="closeModal">
+      <div class="modal-content">
+      <div class="text-modal-form px-[90px] py-[80px] w-[80%] m-auto">
+        Thank you for completing the form!
+        <div class="text-description-form text-center mt-[24px] w-[70%] m-auto">
+          We will definitely get in touch with you soon.
+          Please stay tuned.
+        </div>
+        <button ref="btnSent" @click="closeModal" class="btn-sent relative z-[33] mt-[34px]">
+          Got it!
+        </button>
+      </div>
+      </div>
+    </div>
+  </transition>
 </template>
 
 <style scoped lang="scss">
+.text-description-form{
+  color: var(--White, #F9F9F9);
+  text-align: center;
+  font-family: Urbanist,sans-serif;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 120%; /* 28.8px */
+  letter-spacing: -0.72px;
+}
+.text-modal-form{
+  color: var(--White, #F9F9F9);
+  text-align: center;
+  font-family: Alexandria,sans-serif;
+  font-size: 50px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 130%; /* 65px */
+  text-transform: uppercase;
+}
+.modal {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  z-index: 999;
+  border-radius: 12px;
+  background: rgba(11, 11, 11, 0.70);
+  transition: opacity 0.3s ease-in-out;
+  animation-name: fadeIn;
+  animation-duration: 0.4s;
+}
+
+.modal::-webkit-scrollbar {
+  position: fixed;
+  width: 0;
+  height: 0;
+  display: none;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.modal-enter-active,
+.modal-leave-active {
+  transition: opacity 0.3s ease-in-out;
+}
+
+.modal-enter,
+.modal-leave-to {
+  opacity: 0;
+}
+
+.modal-enter-active .modal-content,
+.modal-leave-active .modal-content {
+  transition: transform 0.3s ease-in-out;
+}
+
+.modal-enter .modal-content,
+.modal-leave-to .modal-content {
+  transform: scale(0.8);
+}
+
+.modal-content {
+  border-radius: 12px;
+  background: #181818;
+  backdrop-filter: blur(70.80000305175781px);
+  padding: 18px;
+  animation-name: openModal;
+  animation-duration: 0.5s;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+@keyframes openModal {
+  from {
+    transform: scale(0.5);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
 @media screen and (max-width: 992px) {
   .text-touch {
     font-size: 40px !important;
@@ -292,7 +437,6 @@ onBeforeUnmount(() => {
   }
   .label-name {
     text-align: left !important;
-
   }
 }
 

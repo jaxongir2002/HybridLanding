@@ -6,6 +6,7 @@ import Lenis from "lenis";
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
+import LoaderBlog from "@/components/LoaderBlog.vue";
 
 const lenis = new Lenis();
 
@@ -84,7 +85,8 @@ const videoPlayer = ref(null);
 const containerRef = ref(null);
 const classAddAnimation = ref(false)
 const fixNav = ref(false);
-const anotherClass = ref(false)
+const anotherClass = ref(false);
+const loading = ref(false);
 
 function openModal(item, index) {
   showModal.value = true;
@@ -184,7 +186,7 @@ onMounted(() => {
 
         if (addTab) {
           fixNav.value = false
-        }else fixNav.value = true
+        } else fixNav.value = true
       } else {
         classAddAnimation.value = false
         anotherClass.value = true
@@ -196,6 +198,28 @@ onMounted(() => {
     }
   });
 })
+
+function loadMoreItems() {
+  loading.value = true
+  setTimeout(() => {
+    displayedItems.value.push({
+          src: new URL("@/assets/video/eightVideo.MP4", import.meta.url),
+        },
+        {
+          src: new URL("@/assets/video/ninaVideo.MP4", import.meta.url),
+        },
+        {
+          src: new URL("@/assets/video/thenVideo.MP4", import.meta.url),
+        },
+        {
+          src: new URL("@/assets/video/fourVideo.MP4", import.meta.url),
+        },
+        {
+          src: new URL("@/assets/video/fourVideo.MP4", import.meta.url),
+        },)
+    loading.value = false
+  }, 1000)
+}
 </script>
 <template>
   <div class="pt-[80px] pb-[80px] scroll-our-works  ">
@@ -203,7 +227,7 @@ onMounted(() => {
       <div class="nav-our-works relative z-[6060]">
         <div class="nav-our-works-text relative">Our works</div>
         <div class="our-works-img relative z-[20]">
-          <button v-show="!addTab" class="view-all w-[205px] mt-2">
+          <button @click="loadMoreItems" v-show="!addTab" class="view-all w-[205px] mt-2">
             View all
           </button>
         </div>
@@ -231,8 +255,10 @@ onMounted(() => {
                       type="video/mp4">
             </video>
           </div>
+          <LoaderBlog v-if="loading"/>
         </div>
       </div>
+
       <div v-if="addTab" class="reels-video">
         <swiper
             :slidesPerView="4"
@@ -346,12 +372,14 @@ onMounted(() => {
   position: relative;
   z-index: 22;
 }
+
 .transformBottom {
   transform: translateY(0);
   position: relative;
   z-index: 22;
   transition: 1s;
 }
+
 .fixNav {
   position: fixed;
   left: 0;
@@ -425,7 +453,7 @@ onMounted(() => {
   height: 255px;
   flex-shrink: 0;
   border-radius: 6px;
-  border:0.5px solid #DEDEDE0D;
+  border: 0.5px solid #DEDEDE0D;
   padding: 7.5px;
   background: rgba(222, 222, 222, 0.05);
   backdrop-filter: blur(29.5px);

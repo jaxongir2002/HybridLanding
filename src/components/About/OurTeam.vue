@@ -3,15 +3,15 @@ import {onMounted,ref} from "vue";
 const items = ref([
   {
     title:'Design',
-    srcImg:new URL("@/assets/img/About/TeamFoto.png", import.meta.url)
+    srcImg:new URL("@/assets/video/ac57976749d126f18128abad5cec0903ee50f1bcaab2b1941b03887e69ae9a29_rbIGpUGF.MP4", import.meta.url)
   },
   {
     title:'Content',
-    srcImg:new URL("@/assets/img/About/Content.svg ", import.meta.url)
+    srcImg:new URL("@/assets/video/91ec3544e41e9afbff63c3d000a9a5296073707d839b265710597bd574d824eb_ndrKpibw.MP4 ", import.meta.url)
   },
   {
     title:'Coding',
-    srcImg:new URL("@/assets/img/About/coding.svg", import.meta.url)
+    srcImg:new URL("@/assets/video/84d3ee1d02f80623a9f94aaf876be15f12f8030d7abc558fa81e43cf65067340_FU8j2xww.MP4", import.meta.url)
   },
 ])
 onMounted(() => {
@@ -48,8 +48,10 @@ onMounted(() => {
         <div class="nav-title">
           {{ item.title }}
         </div>
-        <img :src="item.srcImg"
-             alt="">
+        <video preload="metadata" loop muted  autoplay  playsinline>
+          <source :src="item.srcImg"
+                  type="video/mp4">
+        </video>
         <div class="btn-container grid grid-cols-12 gap-[10px] absolute bottom-[40px] left-[30px]">
           <button class="button-team col-span-6">
             Holograms
@@ -155,10 +157,11 @@ onMounted(() => {
   transform: scale(0.8);
   opacity: 0.5;
 
-  img {
+  video {
     border-radius: 12px;
     object-fit: cover;
     height: 100%;
+    width: 100%;
     flex-shrink: 0;
   }
 

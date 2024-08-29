@@ -10,6 +10,7 @@ import Brief from "@/views/Brief.vue";
 import Experience from "@/views/Experience.vue";
 import Studio from "@/views/Studio.vue";
 import Lab from "@/views/Lab.vue";
+import NotFound from "@/components/NotFound.vue";
 
 const routes = [
     {path: '/', component: Loading,},
@@ -23,13 +24,14 @@ const routes = [
     {path: '/installations', component: Experience},
     {path: '/studio', component: Studio},
     {path: '/lab', component: Lab},
+    { path: '/:pathMatch(.*)*', name: 'NotFound', component: NotFound},
 ]
 
 const router = createRouter({
     scrollBehavior(to, from, savedPosition) {
         return new Promise((resolve, reject) => {
             setTimeout(() => {
-                resolve({ left: 0, top: 0 })
+                resolve({left: 0, top: 0})
             }, 500)
         })
     },

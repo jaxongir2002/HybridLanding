@@ -1,9 +1,11 @@
 <script setup>
-import {onMounted} from "vue";
+import {onBeforeUnmount, onMounted} from "vue";
 import gsap from "gsap";
 import {ScrollTrigger} from "gsap/ScrollTrigger";
 
-onMounted(() => {
+let tl;
+
+function animationInstallations() {
   const isMobile = window.matchMedia('(max-width: 767px)').matches;
   gsap.registerPlugin(ScrollTrigger, SplitText);
   let pin = true;
@@ -12,7 +14,7 @@ onMounted(() => {
   } else {
     pin = true;
   }
-  let tl = gsap.timeline({
+  tl = gsap.timeline({
     scrollTrigger: {
       trigger: '.scroll-studio-text',
       start: 'top top',
@@ -21,8 +23,6 @@ onMounted(() => {
       scrub: 1,
     }
   });
-  let mySplitText = new SplitText(".scrolling-white-text", {type: "chars"});
-  let chars = mySplitText.chars;
 
   tl.to('.first-about-experience', {
     color: 'white',
@@ -59,6 +59,15 @@ onMounted(() => {
     duration: 1,
     stagger: 0.02,
   })
+};
+onMounted(() => {
+  tl = animationInstallations()
+});
+onBeforeUnmount(() => {
+  if (tl) {
+    tl.kill(); // Kill the timeline if it exists
+  }
+  ScrollTrigger.getAll().forEach(trigger => trigger.kill()); // Kill all ScrollTriggers
 });
 </script>
 
@@ -111,7 +120,7 @@ onMounted(() => {
 }
 
 .text-description {
-  color: rgba(255, 255, 255, 0.60);
+  color: rgba(255, 255, 255, 0.2);
   font-family: Alexandria, sans-serif;
   font-size: 32px;
   font-style: normal;

@@ -167,7 +167,7 @@ body::-webkit-scrollbar {
   opacity: 0;
   animation: glass-effect 0.4s forwards;
   animation-delay: 0.5s;
-  transform: translateY(10px);
+  transform: translateY(-15px);
 }
 
 @keyframes glass-effect {

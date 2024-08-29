@@ -58,7 +58,7 @@ onMounted(() => {
 }
 
 .community-process-text {
-  color: #FFFFFF99;
+  color: rgba(255, 255, 255, 0.2);
   font-family: Alexandria, sans-serif;
   font-size: 50px;
   font-style: normal;

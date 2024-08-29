@@ -426,11 +426,7 @@ video {
   margin: auto !important;
 }
 
-.menuUi {
-  height: 95vh !important;
-  top: 20px !important;
-  right: 0 !important;
-}
+
 
 
 .sticky-header--fixed {
@@ -536,9 +532,16 @@ video {
 }
 
 //nav hover
+.menuUi {
+  min-height: 95vh !important;
+  top: 20px !important;
+  right: 0 !important;
+  height: 850%;
+}
 .menu-dialog {
   width: 602px;
-  height: 95vh;
+  max-height: 100vh;
+  height: 850%;
   flex-shrink: 0;
   border-radius: 30px;
   background: #181818;

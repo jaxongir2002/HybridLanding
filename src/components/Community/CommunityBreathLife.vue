@@ -66,11 +66,11 @@ onMounted(() => {
   background: rgba(222, 222, 222, 0.05);
   backdrop-filter: blur(70.80000305175781px);
   padding: 18px;
-  width: 300px;
+  width: 100%;
   height: 510px;
   flex-shrink: 0;
   transition: 0.5s;
-  transform: translateY(600px);
+
 }
 
 .container-breath {
@@ -95,26 +95,5 @@ onMounted(() => {
   text-align: center;
 }
 
-.animateClass {
-  animation: translateYAnimation 2s linear forwards, widthChange 2s forwards;
-}
-
-@keyframes translateYAnimation {
-  0% {
-    transform: translateY(600px);
-  }
-  50% {
-    transform: translateY(0);
-  }
-  100% {
-    transform: translateY(0);
-  }
-}
-
-@keyframes widthChange {
-  100% {
-    width: 100%;
-  }
-}
 
 </style>

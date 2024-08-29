@@ -21,7 +21,6 @@ onMounted(() => {
 })
 </script>
 
-<
 <template>
   <section id="container" class="">
     <div class="title-container">
@@ -188,6 +187,6 @@ onMounted(() => {
   margin-bottom: 101px;
   position: relative;
   z-index: 22;
-  top: 40% !important;
+  top: 45% !important;
 }
 </style>

@@ -1,108 +1,102 @@
 <script setup>
-import { LottieAnimation } from "lottie-web-vue"
-import {onMounted,ref} from "vue";
+import {LottieAnimation} from "lottie-web-vue"
+import {onMounted, ref} from "vue";
 import WatermelonJSON from "@/assets/animation/whiteAnimation.json"
-let anim = ref()
+import LoaderBlog from "@/components/LoaderBlog.vue";
 
+let anim = ref()
+const loading = ref(false);
 onMounted(() => {
   setTimeout(() => {
     anim.value
   }, 500)
 })
 
+const videos = ref([
+  {
+    title: 'Holograms',
+    src: new URL('@/assets/video/91ec3544e41e9afbff63c3d000a9a5296073707d839b265710597bd574d824eb_ndrKpibw.mp4', import.meta.url),
+    animationData: WatermelonJSON,
+  },
+  {
+    title: 'Interactive',
+    src: new URL('@/assets/video/wecreatemagic_lsF4u8LF.mp4', import.meta.url),
+    animationData: WatermelonJSON,
+  },
+  {
+    title: 'Gaming',
+    src: new URL('@/assets/video/ac57976749d126f18128abad5cec0903ee50f1bcaab2b1941b03887e69ae9a29_rbIGpUGF.mp4', import.meta.url),
+    animationData: WatermelonJSON,
+  },
+  {
+    title: 'Hybrid ips',
+    src: new URL('@/assets/video/ac57976749d126f18128abad5cec0903ee50f1bcaab2b1941b03887e69ae9a29_rbIGpUGF.mp4', import.meta.url),
+    animationData: WatermelonJSON,
+  },
+]);
+const getColumnClass = (index) => {
+  if (index === 0) {
+    return 'col-span-12'; // First item
+  } else if (index % 3 === 0) {
+    return 'col-span-12'; // Every third item after the first
+  } else {
+    return 'col-span-6'; // All others in pairs
+  }
+};
 
-
+function loadMoreItems() {
+  loading.value = true
+  setTimeout(() => {
+    videos.value.push({
+          title: 'Hybrid ips',
+          src: new URL('@/assets/video/ac57976749d126f18128abad5cec0903ee50f1bcaab2b1941b03887e69ae9a29_rbIGpUGF.mp4', import.meta.url),
+          animationData: WatermelonJSON,
+        },
+        {
+          title: 'Hybrid ips',
+          src: new URL('@/assets/video/ac57976749d126f18128abad5cec0903ee50f1bcaab2b1941b03887e69ae9a29_rbIGpUGF.mp4', import.meta.url),
+          animationData: WatermelonJSON,
+        },)
+    loading.value = false
+  }, 1000)
+}
 </script>
 
 <template>
   <div style=" padding: 34px 40px 34px 40px; max-width: 1440px;  margin: auto">
+
     <div class="grid grid-cols-12 slider-container gap-[20px] mt-[20%]">
-      <div class="card-img-slider mobile-version col-span-12 relative z-10">
+      <div
+          v-for="(video, index) in videos"
+          :key="index"
+          :class="getColumnClass(index)"
+          class="card-img-slider mobile-version relative z-10"
+      >
         <div class="absolute flex flex-col justify-between h-[100%] left-[40px]">
           <div class="text-video-header">
-            Holograms
+            {{ video.title }}
           </div>
           <div class="lottie-animate">
             <LottieAnimation
-                :animation-data="WatermelonJSON"
+                :animation-data="video.animationData"
                 :auto-play="true"
                 :loop="true"
                 :speed="1"
-                width="140px" height="194px"
-                ref="anim" />
+                width="140px"
+                height="194px"
+                ref="anim"
+            />
           </div>
         </div>
         <video autoplay loop muted playsinline>
-          <source src="@/assets/video/91ec3544e41e9afbff63c3d000a9a5296073707d839b265710597bd574d824eb_ndrKpibw.mp4"
-                  type="video/mp4">
-        </video>
-      </div>
-      <div class="card-img-slider mobile-version-center col-span-6 max-sm:col-span-12 mt-[70px] max-sm:mt-[20px] relative z-10">
-        <div class="absolute flex flex-col justify-between h-[100%] left-[40px] z-10">
-          <div class="text-video-header">
-            Interactive
-          </div>
-
-          <div class="lottie-animate">
-            <LottieAnimation
-                :animation-data="WatermelonJSON"
-                :auto-play="true"
-                :loop="true"
-                :speed="1"
-                width="140px" height="194px"
-                ref="anim" />
-          </div>
-        </div>
-        <video autoplay loop muted playsinline>
-          <source src="@/assets/video/wecreatemagic_lsF4u8LF.mp4"
-                  type="video/mp4">
-        </video>
-      </div>
-      <div class="card-img-slider mobile-version-center col-span-6 max-sm:col-span-12 mt-[70px] max-sm:mt-[20px] relative z-10">
-        <div class="absolute flex flex-col justify-between h-[100%] left-[40px] z-10">
-          <div class="text-video-header">
-            Gaming
-          </div>
-
-          <div class="lottie-animate">
-            <LottieAnimation
-                :animation-data="WatermelonJSON"
-                :auto-play="true"
-                :loop="true"
-                :speed="1"
-                width="140px" height="194px"
-                ref="anim" />
-          </div>
-        </div>
-        <video autoplay loop muted playsinline>
-          <source src="@/assets/video/ac57976749d126f18128abad5cec0903ee50f1bcaab2b1941b03887e69ae9a29_rbIGpUGF.mp4"
-                  type="video/mp4">
-        </video>
-      </div>
-      <div class="card-img-slider mobile-version col-span-12 w-full mt-[70px] max-sm:mt-[20px] relative z-10">
-        <div class="absolute flex flex-col justify-between h-[100%] left-[40px] z-10">
-          <div class="text-video-header">
-            Hybrid ips
-          </div>
-
-          <div class="lottie-animate">
-            <LottieAnimation
-                :animation-data="WatermelonJSON"
-                :auto-play="true"
-                :loop="true"
-                :speed="1"
-                width="140px" height="194px"
-                ref="anim" />
-          </div>
-        </div>
-        <video autoplay loop muted playsinline>
-          <source src="@/assets/video/ac57976749d126f18128abad5cec0903ee50f1bcaab2b1941b03887e69ae9a29_rbIGpUGF.mp4"
-                  type="video/mp4">
+          <source :src="video.src" type="video/mp4"/>
         </video>
       </div>
     </div>
+    <LoaderBlog v-if="loading" class="mt-[24px] m-auto"/>
+
     <div class="flex justify-center mb-[40px]">
-      <button class="see-more relative z-[33]">
+      <button @click="loadMoreItems" class="see-more relative z-[33]">
         See more
       </button>
     </div>

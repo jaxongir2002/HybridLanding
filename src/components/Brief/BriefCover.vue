@@ -23,7 +23,7 @@ function clickTop() {
 
 <template>
   <BriefCoverMobile class="hidden max-sm:block relative z-[33]"/>
-  <div class="mt-[150px] mb-[100px] max-sm:hidden">
+  <div class="mt-[170px] mb-[100px] max-sm:hidden">
     <div class="flex justify-between items-center relative z-10">
       <div class="cover-text-brief test-animation">
         Let`s make

@@ -118,7 +118,6 @@ body::-webkit-scrollbar {
   font-weight: 900;
   font-size: 93px;
   line-height: 93px;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
   transition: all 0.3s ease-in-out;
 }
 
@@ -136,14 +135,14 @@ body::-webkit-scrollbar {
   height: 80px;
   border-radius: 30px;
   background: #0000000d;
-  backdrop-filter: blur(5px);
+  backdrop-filter: blur(4px);
   position: relative;
   bottom: 45px;
   box-shadow: 0 4px 30px #0000000d;
   opacity: 0;
   animation: glass-effect 0.4s forwards;
   animation-delay: 0.5s;
-  transform: translateY(10px);
+  transform: translateY(5px);
 }
 
 @keyframes glass-effect {

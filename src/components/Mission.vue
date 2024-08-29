@@ -278,7 +278,7 @@ video{
   font-size: 24px;
   line-height: 28px;
   letter-spacing: -3%;
-  color: #FFFFFF99;
+  color: rgba(255, 255, 255, 0.2);
   margin-top: 30px;
   width: 640px;
 }

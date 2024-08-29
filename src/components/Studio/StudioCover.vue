@@ -105,7 +105,7 @@ onMounted(() => {
   margin: 0;
   position: absolute;
   top: 50%;
-  transform: translate(0, -80%);
+  transform: translate(0, -55%);
   z-index: 22;
   width: 100%;
 }
@@ -152,7 +152,7 @@ onMounted(() => {
   margin-bottom: 101px;
   position: relative;
   z-index: 22;
-  top: 40% !important;
+  top: 45% !important;
 }
 
 .text-magic {
