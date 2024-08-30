@@ -55,7 +55,7 @@ body::-webkit-scrollbar {
     top: 35% !important;
   }
   .title-container{
-    top: 40% !important;
+    top: 47% !important;
   }
 }
 

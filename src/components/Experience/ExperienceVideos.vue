@@ -35,12 +35,26 @@ const videos = ref([
   },
 ]);
 const getColumnClass = (index) => {
-  if (index === 0) {
-    return 'col-span-12'; // First item
-  } else if (index % 3 === 0) {
-    return 'col-span-12'; // Every third item after the first
+  const isMobile = window.matchMedia('(max-width: 767px)').matches;
+
+  if (isMobile) {
+    // Mobile version logic
+    if (index === 0) {
+      return 'col-span-12 h-[196px]'; // First item
+    } else if (index % 3 === 0) {
+      return 'col-span-12 h-[196px]'; // Every third item after the first
+    } else {
+      return 'col-span-12 h-[413px]'; // All others in pairs
+    }
   } else {
-    return 'col-span-6'; // All others in pairs
+    // Desktop version logic
+    if (index === 0) {
+      return 'col-span-12 h-[740px]'; // First item
+    } else if (index % 3 === 0) {
+      return 'col-span-12 h-[740px]'; // Every third item after the first
+    } else {
+      return 'col-span-6 h-[740px]'; // All others in pairs
+    }
   }
 };
 
@@ -70,9 +84,9 @@ function loadMoreItems() {
           v-for="(video, index) in videos"
           :key="index"
           :class="getColumnClass(index)"
-          class="card-img-slider mobile-version relative z-10"
+          class="card-img-slider mobile-version  relative z-10"
       >
-        <div class="absolute flex flex-col justify-between h-[100%] left-[40px]">
+        <div class="absolute flex flex-col  justify-between h-[100%] left-[40px]">
           <div class="text-video-header">
             {{ video.title }}
           </div>
@@ -109,7 +123,7 @@ function loadMoreItems() {
 @media screen and (max-width: 992px) {
   .card-img-slider {
     width: 100% !important;
-    height: 429px !important;
+
     padding: 10px !important;
   }
   .text-video-header {
@@ -120,9 +134,6 @@ function loadMoreItems() {
   }
   .lottie-animate {
     display: none !important;
-  }
-  .mobile-version {
-    height: 196px !important;
   }
   .mobile-version-center {
     height: 413px !important;
@@ -175,7 +186,6 @@ function loadMoreItems() {
   backdrop-filter: blur(70.80000305175781px);
   padding: 18px;
   width: 100%;
-  height: 740px;
   flex-shrink: 0;
   transition: 0.5s all;
   position: relative;

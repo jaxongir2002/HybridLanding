@@ -40,7 +40,10 @@ onMounted(() => {
   }
 
   .title-container {
-    top: 35% !important;
+    top: 55% !important;
+  }
+  #container{
+    height: 80vh !important;
   }
 }
 
