@@ -275,9 +275,10 @@ const isMobile = window.matchMedia('(max-width: 767px)').matches;
   }
   .card-video-blob {
     width: 100% !important;
-    height: 92% !important;
+    height: 99% !important;
     margin-top: 20px !important;
   }
+
   .blob-content {
     font-size: 16px !important;
   }
@@ -310,7 +311,8 @@ const isMobile = window.matchMedia('(max-width: 767px)').matches;
 }
 
 .card-video-blob video {
-  border-radius: 8.4px;
+  border-radius: 8.4px !important;
+
 }
 
 .date {
