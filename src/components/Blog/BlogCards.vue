@@ -61,10 +61,10 @@ onMounted(() => {
       <div class="col-span-8 grid grid-cols-12 gap-[20px] cards-info-blog">
         <div v-for="item in activeBlogs"
              :key="item"
-             class="card-blog flex flex-col justify-between col-span-6 relative z-20  max-sm:mt-[20px]"
+             class="card-blog flex flex-col justify-between col-span-6 relative z-20 max-sm:mt-[20px]"
              @click="$router.push({name: 'blogView', params: { id: item }})">
-          <div class="flex justify-between items-start">
-            <div class="rounded-[9px] overflow-hidden">
+          <div class="flex justify-between items-start max-sm:justify-between max-sm:items-start">
+            <div class="rounded-[9px] max-sm:rounded-[9px] overflow-hidden">
               <video autoplay loop muted playsinline>
                 <source
                     src="@/assets/video/91ec3544e41e9afbff63c3d000a9a5296073707d839b265710597bd574d824eb_ndrKpibw.mp4"

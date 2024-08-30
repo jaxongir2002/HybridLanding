@@ -122,7 +122,7 @@ watch(isNavSticky, (newVal) => {
       'sticky-header--fixed-back': isNavSticky
     }">
 
-    <div class="navigation screen-width" :class="{navMobile: isNavFixed}"
+    <div class="navigation" :class="{navMobile: isNavFixed}"
          style=" padding: 34px 40px 34px 40px; max-width: 1440px; margin: auto">
       <div>
         <img src="@/assets/img/Logo.svg" alt="" @click="load">
@@ -426,9 +426,6 @@ video {
   margin: auto !important;
 }
 
-
-
-
 .sticky-header--fixed {
   animation-duration: .5s;
   animation-name: header-animation;
@@ -615,7 +612,7 @@ video {
     top: 80px !important;
   }
   .sticky-header--fixed {
-    height: 8%;
+    height: 12%;
   }
   .navMobile {
     padding-bottom: 0 !important;

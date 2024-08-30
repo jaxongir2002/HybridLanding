@@ -62,11 +62,8 @@ onMounted(() => {
     font-style: normal;
     font-weight: 700;
     line-height: 1.5;
-    position: relative;
-    top: 35% !important;
-  }
-  canvas {
-    display: none !important;
+    position: relative !important;
+    top: 45% !important;
   }
   .title-container {
     top: 40% !important;
