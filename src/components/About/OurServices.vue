@@ -4,31 +4,31 @@ import {onMounted, ref} from "vue";
 const cards = ref([
   {
     title: '3D Projection Mapping',
-    videoSrc: new URL('@/assets/video/91ec3544e41e9afbff63c3d000a9a5296073707d839b265710597bd574d824eb_ndrKpibw.MP4', import.meta.url,)
+    videoSrc: new URL('@/assets/video/91ec3544e41e9afbff63c3d000a9a5296073707d839b265710597bd574d824eb_ndrKpibw.MP4', import.meta.url)
   },
   {
     title: 'Real-time Interactivity',
-    videoSrc: new URL('@/assets/video/91ec3544e41e9afbff63c3d000a9a5296073707d839b265710597bd574d824eb_ndrKpibw.MP4', import.meta.url,)
+    videoSrc: new URL('@/assets/video/91ec3544e41e9afbff63c3d000a9a5296073707d839b265710597bd574d824eb_ndrKpibw.MP4', import.meta.url)
   },
   {
     title: 'Holograms',
-    videoSrc: new URL('@/assets/video/91ec3544e41e9afbff63c3d000a9a5296073707d839b265710597bd574d824eb_ndrKpibw.MP4', import.meta.url,)
+    videoSrc: new URL('@/assets/video/91ec3544e41e9afbff63c3d000a9a5296073707d839b265710597bd574d824eb_ndrKpibw.MP4', import.meta.url)
   },
   {
     title: 'Artificial Intelligence',
-    videoSrc: new URL('@/assets/video/91ec3544e41e9afbff63c3d000a9a5296073707d839b265710597bd574d824eb_ndrKpibw.MP4', import.meta.url,)
+    videoSrc: new URL('@/assets/video/91ec3544e41e9afbff63c3d000a9a5296073707d839b265710597bd574d824eb_ndrKpibw.MP4', import.meta.url)
   },
   {
     title: 'Content Creation',
-    videoSrc: new URL('@/assets/video/91ec3544e41e9afbff63c3d000a9a5296073707d839b265710597bd574d824eb_ndrKpibw.MP4', import.meta.url,)
+    videoSrc: new URL('@/assets/video/91ec3544e41e9afbff63c3d000a9a5296073707d839b265710597bd574d824eb_ndrKpibw.MP4', import.meta.url)
   },
   {
     title: '3D Animation',
-    videoSrc: new URL('@/assets/video/91ec3544e41e9afbff63c3d000a9a5296073707d839b265710597bd574d824eb_ndrKpibw.MP4', import.meta.url,)
+    videoSrc: new URL('@/assets/video/91ec3544e41e9afbff63c3d000a9a5296073707d839b265710597bd574d824eb_ndrKpibw.MP4', import.meta.url)
   },
   {
     title: 'VFX & CGI',
-    videoSrc: new URL('@/assets/video/91ec3544e41e9afbff63c3d000a9a5296073707d839b265710597bd574d824eb_ndrKpibw.MP4', import.meta.url,)
+    videoSrc: new URL('@/assets/video/91ec3544e41e9afbff63c3d000a9a5296073707d839b265710597bd574d824eb_ndrKpibw.MP4', import.meta.url)
   }
 ]);
 const isMobile = ref(window.matchMedia('(max-width: 992px)').matches);
