@@ -3,15 +3,15 @@ import {onMounted,ref} from "vue";
 const items = ref([
   {
     title:'Design',
-    srcImg:new URL("@/assets/video/ac57976749d126f18128abad5cec0903ee50f1bcaab2b1941b03887e69ae9a29_rbIGpUGF.MP4", import.meta.url)
+    srcImg: new URL("@/assets/video/threeVideo.MP4", import.meta.url)
   },
   {
     title:'Content',
-    srcImg:new URL("@/assets/video/91ec3544e41e9afbff63c3d000a9a5296073707d839b265710597bd574d824eb_ndrKpibw.MP4 ", import.meta.url)
+    srcImg:new URL("@/assets/video/fiveVideo.MP4", import.meta.url)
   },
   {
     title:'Coding',
-    srcImg:new URL("@/assets/video/84d3ee1d02f80623a9f94aaf876be15f12f8030d7abc558fa81e43cf65067340_FU8j2xww.MP4", import.meta.url)
+    srcImg: new URL("@/assets/video/sixVideo.MP4", import.meta.url)
   },
 ])
 onMounted(() => {
