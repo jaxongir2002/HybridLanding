@@ -31,10 +31,11 @@ const cards = ref([
     videoSrc: new URL('@/assets/video/91ec3544e41e9afbff63c3d000a9a5296073707d839b265710597bd574d824eb_ndrKpibw.MP4', import.meta.url,)
   }
 ]);
+const isMobile = window.matchMedia('(max-width: 992px)').matches;
 onMounted(() => {
   const flipCards = document.querySelectorAll('.flip-card');
 
-  const isMobile = window.matchMedia('(max-width: 767px)').matches;
+
   if (isMobile) {
     flipCards.forEach(card => {
       card.style.transform = 'rotateY(180deg)';
