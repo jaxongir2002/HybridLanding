@@ -57,28 +57,30 @@ onMounted(() => {
 <style scoped lang="scss">
 @media screen and (max-width: 992px) {
   .title-logo {
-    font-size: 70px !important;
+    font-size:137.09px!important;
     line-height: 55px !important;
   }
-  .title-text {
-    font-size: 46.5px !important;
-    line-height: 100% !important;
-  }
+
   .glass-effect {
-    width: 320px !important;
-    height: 40px !important;
-    transform: translateY(20px) !important;
+   display: none;
   }
-  .text-scroll {
-    font-size: 12px !important;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 1.5;
-    position: relative;
-    top: 35% !important;
+  .oops-sorry{
+    font-size: 14px !important;
+    margin-top: 16px !important;
+  }
+  .btn-go-home{
+    width:160px !important;
+    height: 40px !important;
+    font-size: 14px !important;
+    line-height: 140% !important;
+    padding: 12px 34px !important;
   }
   .title-container {
     top: 40% !important;
+    height: 90% !important;
+  }
+  #container{
+    height: 100vh !important;
   }
 }
 

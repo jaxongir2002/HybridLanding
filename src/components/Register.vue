@@ -265,7 +265,7 @@ function closeModal(event) {
   <transition name="modal">
     <div v-if="showModal" class="modal" @click.self="closeModal">
       <div class="modal-content">
-      <div class="text-modal-form px-[90px] py-[80px] w-[80%] m-auto">
+      <div class="text-modal-form px-[90px] py-[80px] max-sm:px-[10px] max-sm:py-[48px] max-sm:w-[100%] w-[80%] m-auto">
         Thank you for completing the form!
         <div class="text-description-form text-center mt-[24px] w-[70%] m-auto">
           We will definitely get in touch with you soon.
@@ -376,6 +376,23 @@ function closeModal(event) {
 }
 
 @media screen and (max-width: 992px) {
+  .text-modal-form{
+    font-size: 24px !important;
+
+  }
+  .btn-sent{
+    font-size: 14px !important;
+    height: 40px !important;
+    width: 160px !important;
+    padding: 12px 34px !important;
+  }
+  .modal-content{
+    padding: 0 !important;
+    width: 90% !important;
+  }
+  .text-description-form{
+    font-size: 14px !important;
+  }
   .text-touch {
     font-size: 40px !important;
     width: 188px !important;
