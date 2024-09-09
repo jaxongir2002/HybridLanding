@@ -9,6 +9,12 @@ import 'swiper/css/pagination';
 import LoaderBlog from "@/components/LoaderBlog.vue";
 
 const lenis = new Lenis();
+const props = defineProps({
+  videos: {
+    type: Array,
+    default: []
+  }
+})
 
 const addTab = ref(false);
 const showModal = ref(false);
@@ -17,70 +23,6 @@ const selectedIndex = ref(-1);
 const modules = ref([FreeMode, Keyboard, Navigation])
 const isMobile = window.matchMedia('(max-width: 767px)').matches;
 let bodyOverflow = null;
-const listImg = ref([
-  {
-    src: new URL("@/assets/video/firstVideo.MP4", import.meta.url),
-  },
-  {
-    src: new URL("@/assets/video/secondVideo.MP4", import.meta.url),
-  },
-  {
-    src: new URL("@/assets/video/threeVideo.MP4", import.meta.url),
-  },
-  {
-    src: new URL("@/assets/video/fiveVideo.MP4", import.meta.url),
-  },
-  {
-    src: new URL("@/assets/video/sixVideo.MP4", import.meta.url),
-  },
-  {
-    src: new URL("@/assets/video/sevenVideo.MP4", import.meta.url),
-  },
-  {
-    src: new URL("@/assets/video/eightVideo.MP4", import.meta.url),
-  },
-  {
-    src: new URL("@/assets/video/ninaVideo.MP4", import.meta.url),
-  },
-  {
-    src: new URL("@/assets/video/thenVideo.MP4", import.meta.url),
-  },
-  {
-    src: new URL("@/assets/video/fourVideo.MP4", import.meta.url),
-  },
-
-// second 10
-  {
-    src: new URL("@/assets/video/firstVideo.MP4", import.meta.url),
-  },
-  {
-    src: new URL("@/assets/video/secondVideo.MP4", import.meta.url),
-  },
-  {
-    src: new URL("@/assets/video/threeVideo.MP4", import.meta.url),
-  },
-  {
-    src: new URL("@/assets/video/fiveVideo.MP4", import.meta.url),
-  },
-  {
-    src: new URL("@/assets/video/sixVideo.MP4", import.meta.url),
-  },
-  {
-    src: new URL("@/assets/video/sevenVideo.MP4", import.meta.url),
-  },
-  {
-    src: new URL("@/assets/video/eightVideo.MP4", import.meta.url),
-  },
-  {
-    src: new URL("@/assets/video/ninaVideo.MP4", import.meta.url),
-  },
-  {
-    src: new URL("@/assets/video/thenVideo.MP4", import.meta.url),
-  },
-  {
-    src: new URL("@/assets/video/fourVideo.MP4", import.meta.url),
-  },
-]);
 const videoPlayer = ref(null);
 const containerRef = ref(null);
 const classAddAnimation = ref(false)
@@ -90,7 +32,7 @@ const loading = ref(false);
 
 function openModal(item, index) {
   showModal.value = true;
-  selectedItem.value = item.src;
+  selectedItem.value = item;
   selectedIndex.value = index;
   bodyOverflow = document.body.style.overflow;
   document.body.style.overflow = "hidden";
@@ -141,9 +83,9 @@ function openTab() {
 
 const displayedItems = computed(() => {
   if (isMobile) {
-    return listImg.value.slice(0, 6);
+    return props.videos.slice(0, 6);
   } else {
-    return listImg.value;
+    return props.videos;
   }
 });
 
@@ -251,7 +193,7 @@ function loadMoreItems() {
           >
             <video preload="metadata" loop muted ref="videoPlayer" autoplay width="320" height="240" playsinline
                    class="cards-img">
-              <source :src="item.src"
+              <source :src="item.video"
                       type="video/mp4">
             </video>
           </div>
@@ -269,14 +211,14 @@ function loadMoreItems() {
             :modules="modules"
             class="mySwiper mt-[84px]"
         >
-          <swiper-slide v-for="(item, index) in listImg"
+          <swiper-slide v-for="(item, index) in props.videos"
                         :key="index">
             <div class="cards cards-tab"
                  @click="openModal(item, index)"
             >
               <video loop muted ref="videoPlayer" autoplay width="320" height="240" playsinline
                      class="cards-img cards-img-tab">
-                <source :src="item.src"
+                <source :src="item.video"
                         type="video/mp4">
               </video>
             </div>
@@ -310,11 +252,11 @@ function loadMoreItems() {
       <div v-if="showModal" class="modal" @click.self="closeModal">
         <div class="modal-content">
           <video loop muted autoplay ref="videoPlayer" width="320" height="240" playsinline class="modal-image">
-            <source :src="selectedItem"
+            <source :src="selectedItem.video"
                     type="video/mp4">
           </video>
         </div>
-        <div class="name-content">Hybrid + Ferrero rocher = Result</div>
+        <div class="name-content">{{selectedItem.name}}</div>
       </div>
     </transition>
   </div>

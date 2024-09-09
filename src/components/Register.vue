@@ -1,6 +1,7 @@
 <script setup>
 import gsap from "gsap";
 import {ScrollTrigger} from "gsap/ScrollTrigger";
+import useFormApi from '@/composable/useFormApi.js';
 import {onBeforeUnmount, onMounted, ref} from "vue";
 import Lenis from "lenis";
 
@@ -9,7 +10,7 @@ const lenis = new Lenis();
 const isMobile = window.matchMedia('(max-width: 767px)').matches;
 let tl;
 const btnSent = ref(null);
-const btnAnimationLinks = ref(null);
+
 const checkBox = ref(null);
 const textProject = ref(null);
 const labelName = ref(null);
@@ -57,7 +58,7 @@ function initRegisterAnimation() {
     gsap.from(textProject.value, {
       opacity: 0,
       scrollTrigger: {
-        trigger: ".scroll-register",
+        trigger: scrollRegister.value,
         start: "top 50%",
         end: "bottom 50%",
         scrub: 1,
@@ -68,7 +69,7 @@ function initRegisterAnimation() {
       yPercent: 130,
       stagger: 0.02,
       scrollTrigger: {
-        trigger: ".scroll-register",
+        trigger: scrollRegister.value,
         start: "top 50%",
         end: "bottom 50%",
         scrub: 1,
@@ -82,26 +83,13 @@ function initRegisterAnimation() {
       transition: 0.3,
       ease: "power1.inOut",
       scrollTrigger: {
-        trigger: ".scroll-register",
+        trigger: scrollRegister.value,
         start: "top 50%",
         end: "bottom bottom",
         scrub: 1,
       }
     });
 
-    gsap.from(btnAnimationLinks.value, {
-      duration: 0.5,
-      y: "0",
-      scale: 0.3,
-      transition: 0.3,
-      ease: "power1.inOut",
-      scrollTrigger: {
-        trigger: ".scroll-register",
-        start: "top 50%",
-        end: "bottom bottom",
-        scrub: 1,
-      }
-    });
     tl.from(checkBox.value, {
       animation: "check-animation 1s linear infinite",
     });
@@ -121,13 +109,7 @@ onBeforeUnmount(() => {
   }
   ScrollTrigger.getAll().forEach(trigger => trigger.kill()); // Kill all ScrollTriggers
 });
-function openModal(item, index) {
-  showModal.value = true;
 
-  bodyOverflow = document.body.style.overflow;
-  document.body.style.overflow = "hidden";
-  mobile()
-}
 function mobile() {
   if (showModal.value === true) {
     document.body.classList.add('no-scroll');
@@ -137,6 +119,7 @@ function mobile() {
     lenis.start();
   }
 }
+
 function closeModal(event) {
   // Check if the Esc key was pressed
   if (event.key === 'Escape') {
@@ -149,6 +132,51 @@ function closeModal(event) {
     mobile();
   }
 }
+
+const formData = ref({
+  name: '',
+  email: '',
+  phone: '',
+  message: ''
+});
+
+const {doPost} = useFormApi();
+const isValid = ref({
+  name: true,
+  email: true,
+  phone: true,
+  message: true
+});
+const validateForm = () => {
+  isValid.value.name = !!formData.value.name;
+  isValid.value.email = !!formData.value.email;
+  isValid.value.phone = !!formData.value.phone;
+  isValid.value.message = !!formData.value.message;
+
+  return Object.values(isValid.value).every(Boolean);
+};
+const submitForm = () => {
+  try {
+    if (!validateForm()) {
+      console.log('Form is invalid');
+      return; // Prevent submission if validation fails
+    }
+    doPost(formData.value);
+    showModal.value = true;
+    bodyOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    mobile()
+    formData.value = {
+      name: '',
+      email: '',
+      phone: '',
+      message: ''
+    }
+  } catch (e) {
+    console.log(e)
+  }
+};
+
 </script>
 
 <template>
@@ -202,46 +230,54 @@ function closeModal(event) {
 
       <form>
         <div class="form-group mt-[30px]">
-          <label ref="labelName" for="name" class="label-name"
-          >Name
+          <label :class="{ required: !isValid.name }" for="name" class="label-name">Name
             <input
+                v-model="formData.name"
                 type="text"
                 class="form-control"
                 id="name"
+                :class="{ requiredInput: !isValid.name }"
                 placeholder="John Smith"
+
             />
           </label>
         </div>
         <div class="form-group mt-[30px]">
-          <label ref="labelName" for="Email" class="label-name"
-          >Your Email
+          <label :class="{ required: !isValid.email }" for="Email" class="label-name">Your Email
             <input
+                v-model="formData.email"
                 type="email"
                 class="form-control"
                 id="Email"
+                :class="{ requiredInput: !isValid.email }"
                 placeholder="email@gmail.com"
+
             />
           </label>
         </div>
         <div class="form-group mt-[30px]">
-          <label ref="labelName" for="Phone" class="label-name"
-          >Your Phone
+          <label :class="{ required: !isValid.phone }" for="Phone" class="label-name">Your Phone
             <input
+                v-model="formData.phone"
                 type="number"
                 class="form-control number-input"
                 id="Phone"
+                :class="{ requiredInput: !isValid.phone }"
                 placeholder="Enter your phone"
+
             />
           </label>
         </div>
         <div class="form-group mt-[30px]">
-          <label ref="labelName" for="Message" class="label-name"
-          >Message
+          <label :class="{ required: !isValid.message }" for="Message" class="label-name">Message
             <input
+                v-model="formData.message"
                 type="text"
                 class="form-control"
                 id="Message"
+                :class="{ requiredInput: !isValid.message }"
                 placeholder="Write about your project"
+
             />
           </label>
         </div>
@@ -257,7 +293,7 @@ function closeModal(event) {
         </div>
 
       </form>
-      <button ref="btnSent" @click="openModal"  class="btn-sent relative z-[33]">
+      <button ref="btnSent" @click="submitForm" class="btn-sent relative z-[33]">
         <img src="@/assets/img/rightArrow.svg" alt=""/>Send
       </button>
     </div>
@@ -265,42 +301,45 @@ function closeModal(event) {
   <transition name="modal">
     <div v-if="showModal" class="modal" @click.self="closeModal">
       <div class="modal-content">
-      <div class="text-modal-form px-[90px] py-[80px] max-sm:px-[10px] max-sm:py-[48px] max-sm:w-[100%] w-[80%] m-auto">
-        Thank you for completing the form!
-        <div class="text-description-form text-center mt-[24px] w-[70%] m-auto">
-          We will definitely get in touch with you soon.
-          Please stay tuned.
+        <div
+            class="text-modal-form px-[90px] py-[80px] max-sm:px-[10px] max-sm:py-[48px] max-sm:w-[100%] w-[80%] m-auto">
+          Thank you for completing the form!
+          <div class="text-description-form text-center mt-[24px] w-[70%] m-auto">
+            We will definitely get in touch with you soon.
+            Please stay tuned.
+          </div>
+          <button ref="btnSent" @click="closeModal" class="btn-sent relative z-[33] mt-[34px]">
+            Got it!
+          </button>
         </div>
-        <button ref="btnSent" @click="closeModal" class="btn-sent relative z-[33] mt-[34px]">
-          Got it!
-        </button>
-      </div>
       </div>
     </div>
   </transition>
 </template>
 
 <style scoped lang="scss">
-.text-description-form{
+.text-description-form {
   color: var(--White, #F9F9F9);
   text-align: center;
-  font-family: Urbanist,sans-serif;
+  font-family: Urbanist, sans-serif;
   font-size: 24px;
   font-style: normal;
   font-weight: 600;
   line-height: 120%; /* 28.8px */
   letter-spacing: -0.72px;
 }
-.text-modal-form{
+
+.text-modal-form {
   color: var(--White, #F9F9F9);
   text-align: center;
-  font-family: Alexandria,sans-serif;
+  font-family: Alexandria, sans-serif;
   font-size: 50px;
   font-style: normal;
   font-weight: 700;
   line-height: 130%; /* 65px */
   text-transform: uppercase;
 }
+
 .modal {
   position: fixed;
   width: 100%;
@@ -324,6 +363,14 @@ function closeModal(event) {
   width: 0;
   height: 0;
   display: none;
+}
+
+.required {
+  color: #d84240 !important;
+
+}
+.requiredInput{
+  border-bottom: 1px solid #d84240 !important;
 }
 
 @keyframes fadeIn {
@@ -376,21 +423,21 @@ function closeModal(event) {
 }
 
 @media screen and (max-width: 992px) {
-  .text-modal-form{
+  .text-modal-form {
     font-size: 24px !important;
 
   }
-  .btn-sent{
+  .btn-sent {
     font-size: 14px !important;
     height: 40px !important;
     width: 160px !important;
     padding: 12px 34px !important;
   }
-  .modal-content{
+  .modal-content {
     padding: 0 !important;
     width: 90% !important;
   }
-  .text-description-form{
+  .text-description-form {
     font-size: 14px !important;
   }
   .text-touch {
@@ -448,9 +495,9 @@ function closeModal(event) {
     top: 35px !important;
     left: 40px !important;
   }
-  .checkbox-container{
+  .checkbox-container {
     font-size: 14px !important;
-    width: 90%!important;
+    width: 90% !important;
   }
   .label-name {
     text-align: left !important;

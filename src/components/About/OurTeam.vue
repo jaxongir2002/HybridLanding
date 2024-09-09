@@ -1,41 +1,49 @@
 <script setup>
-import {onMounted,ref} from "vue";
-const items = ref([
-  {
-    title:'Design',
-    srcImg: new URL("@/assets/video/threeVideo.MP4", import.meta.url)
-  },
-  {
-    title:'Content',
-    srcImg:new URL("@/assets/video/fiveVideo.MP4", import.meta.url)
-  },
-  {
-    title:'Coding',
-    srcImg: new URL("@/assets/video/sixVideo.MP4", import.meta.url)
-  },
-])
-onMounted(() => {
-  const flipCards = document.querySelectorAll('.card-img-slider');
+import {onMounted, ref, onBeforeUnmount} from "vue";
 
-  window.addEventListener('scroll', () => {
-    const currentScrollPos = window.pageYOffset;
-    if (currentScrollPos >= 4000) {
-      flipCards[0].classList.add('card-full')
-    } else flipCards[0].classList.remove('card-full');
-
-    if (currentScrollPos >= 4700) {
-      flipCards[0].classList.remove('card-full');
-      flipCards[1].classList.add('card-full');
-    } else flipCards[1].classList.remove('card-full');
-
-    if (currentScrollPos >= 5215) {
-      flipCards[1].classList.remove('card-full');
-      flipCards[2].classList.add('card-full');
-    } else {
-      flipCards[2].classList.remove('card-full');
-    }
-  });
+const props = defineProps({
+  items: {
+    type: Array,
+    default: []
+  }
 })
+const flipCards = ref([])
+
+onMounted(() => {
+
+  const handleScroll = () => {
+    const currentScrollPos = window.pageYOffset;
+
+    if (flipCards.value.length > 0) {
+      if (currentScrollPos >= 4000) {
+        flipCards.value[0].classList.add('card-full');
+      } else {
+        flipCards.value[0].classList.remove('card-full');
+      }
+
+      if (currentScrollPos >= 4700) {
+        flipCards.value[0].classList.remove('card-full');
+        flipCards.value[1].classList.add('card-full');
+      } else {
+        flipCards.value[1].classList.remove('card-full');
+      }
+
+      if (currentScrollPos >= 5215) {
+        flipCards.value[1].classList.remove('card-full');
+        flipCards.value[2].classList.add('card-full');
+      } else {
+        flipCards.value[2].classList.remove('card-full');
+      }
+    }
+  };
+
+  window.addEventListener('scroll', handleScroll);
+
+  // Cleanup event listener on component unmount
+  onBeforeUnmount(() => {
+    window.removeEventListener('scroll', handleScroll);
+  });
+});
 </script>
 
 <template>
@@ -43,13 +51,13 @@ onMounted(() => {
     <div class="text-left-right relative z-10">
       Team
     </div>
-    <div class="flex flex-col slider-container items-center mt-[20%] relative z-10" >
-      <div class="card-img-slider relative" v-for="(item, index) in items" :key="index">
+    <div class="flex flex-col slider-container items-center mt-[20%] relative z-10">
+      <div ref="flipCards" class="card-img-slider relative" v-for="(item, index) in props.items" :key="index">
         <div class="nav-title">
           {{ item.title }}
         </div>
-        <video preload="metadata" loop muted  autoplay  playsinline>
-          <source :src="item.srcImg"
+        <video preload="metadata" loop muted autoplay playsinline>
+          <source :src="item.video"
                   type="video/mp4">
         </video>
         <div class="btn-container grid grid-cols-12 gap-[10px] absolute bottom-[40px] left-[30px]">
@@ -71,7 +79,7 @@ onMounted(() => {
     <div class="text-left-right relative z-10">
       Lets create
       <br>
-     <div class="text-right">magic!</div>
+      <div class="text-right">magic!</div>
     </div>
   </div>
   <div class="mobile-version mt-[80px] relative z-10">
@@ -83,8 +91,8 @@ onMounted(() => {
         <div class="nav-title">
           {{ item.title }}
         </div>
-        <video preload="metadata" loop muted  autoplay  playsinline>
-          <source :src="item.srcImg"
+        <video preload="metadata" loop muted autoplay playsinline>
+          <source :src="item.video"
                   type="video/mp4">
         </video>
         <div class="btn-container grid grid-cols-12 gap-[10px] absolute bottom-[40px] left-[30px]">
@@ -107,45 +115,49 @@ onMounted(() => {
 </template>
 
 <style lang="scss" scoped>
-@media screen and (max-width: 992px){
-  .mobile-version{
+@media screen and (max-width: 992px) {
+  .mobile-version {
     display: block !important;
   }
-  .card-img-slider{
+  .card-img-slider {
     opacity: 1 !important;
     transform: scale(1) !important;
-    width:100% !important;
+    width: 100% !important;
     height: 429px !important;
     margin-top: 20px !important;
   }
-  .text-left-right{
+  .text-left-right {
     font-size: 20px !important;
     position: relative;
     top: 50px;
   }
-  .nav-title{
+  .nav-title {
     font-size: 20px !important;
   }
-  .button-team{
+  .button-team {
     padding: 8px !important;
     font-size: 12px !important;
   }
 }
-.mobile-version{
+
+.mobile-version {
   display: none;
 }
+
 .slider-container {
   transition: 1s;
 }
-.text-left-right{
+
+.text-left-right {
   color: var(--White, #F9F9F9);
-  font-family: Alexandria,sans-serif;
+  font-family: Alexandria, sans-serif;
   font-size: 24px;
   font-style: normal;
   font-weight: 500;
   line-height: 130%; /* 31.2px */
   text-transform: uppercase;
 }
+
 .card-img-slider {
   border-radius: 12px;
   border: 1.2px solid rgba(255, 255, 255, 0.05);

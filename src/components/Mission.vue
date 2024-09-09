@@ -1,69 +1,88 @@
 <script setup>
-import {onMounted, ref} from "vue";
+import {onBeforeUnmount, onMounted, ref} from "vue";
 import gsap from 'gsap';
 import {ScrollTrigger} from "gsap/ScrollTrigger";
+import {useCounterStore} from "@/store/store.js";
 
-const missionTitle = ref(null);
+const props = defineProps({
+  video: {
+    type: String,
+    default: ''
+  }
+});
 
-onMounted(() => {
-  gsap.registerPlugin(ScrollTrigger,SplitText);
-  let tl = gsap.timeline({
+const store = useCounterStore();
+let tl;
+
+function initAnimations() {
+  gsap.registerPlugin(ScrollTrigger);
+  tl = gsap.timeline({
     scrollTrigger: {
       trigger: '.helloWorld',
       start: 'top top',
       pin: true,
       end: '200%',
-      scrub: 1,
+      scrub: true,
     }
   });
-  let mySplitText = new SplitText(".first-text", {type: "chars"});
-  let chars = mySplitText.chars;
-  let secondText = new SplitText(".second-text", {type: "chars"});
-  let charsTwo = secondText.chars;
-  let thirdText = new SplitText(".third-text", {type: "chars"});
-  let charsThird = thirdText.chars;
 
+  const mySplitText = new SplitText(".first-text", {type: "chars"});
+  const chars = mySplitText.chars;
+
+  const secondText = new SplitText(".second-text", {type: "chars"});
+  const charsTwo = secondText.chars;
+
+  const thirdText = new SplitText(".third-text", {type: "chars"});
+  const charsThird = thirdText.chars;
 
   tl.to(chars, {
     color: 'white',
     duration: 1,
     stagger: 0.02,
   })
+      .to('.first-name', {
+        translateY: '-50px',
+        duration: 0.5,
+      })
+      .to('.second-name', {
+        translateY: '-25px',
+        duration: 0.5,
+      })
+      .to(charsTwo, {
+        color: 'white',
+        duration: 1,
+        stagger: 0.02,
+      })
+      .to(charsThird, {
+        color: 'white',
+        duration: 1,
+        stagger: 0.02,
+      })
+      .to('.second-name', {
+        delay: 0.5,
+        className: 'some-class',
+        duration: 0.5,
+      })
+      .to('.third-name', {
+        translateY: '-50px',
+        duration: 0.5,
+        ease: "power2.inOut",
+      });
 
-  tl.to('.first-name', {
-    transition: '.5s',
-    transform: 'translateY(-50px)',
-  })
-  tl.to('.second-name', {
-    transition: '.5s',
-    transform: 'translateY(-25px)',
-  })
+  return tl;
+}
 
-  tl.to(charsTwo, {
-    color: 'white',
-    duration: 1,
-    stagger: 0.02,
-  })
+const source = ref()
+onMounted(() => {
+  tl = initAnimations();
 
+});
 
-  tl.to(charsThird, {
-    color: 'white',
-    duration: 1,
-    stagger: 0.02,
-  })
-  tl.to('.second-name', {
-    delay: 0.5,
-    transition: '.5s',
-    className: 'some-class'
-
-  })
-
-  tl.to('.third-name', {
-    transition: '.5s',
-    transform: 'translateY(-50px)',
-    ease: "power2.inOut",
-  })
-// document.querySelector('.pin-spacer').style.zIndex = 999;
+onBeforeUnmount(() => {
+  if (tl) {
+    tl.kill(); // Kill the timeline if it exists
+  }
+  ScrollTrigger.getAll().forEach(trigger => trigger.kill()); // Kill all ScrollTriggers
 });
 </script>
 
@@ -72,8 +91,7 @@ onMounted(() => {
     <div class="col-span-6 w-[555px] mobile-version">
       <div class="card-mission relative">
         <video autoplay loop muted class="magic-img" width="750" height="340" playsinline>
-          <source src="@/assets/video/wecreatemagic_lsF4u8LF.mp4"
-                  type="video/mp4">
+          <source ref="source" :src="props.video" type="video/mp4">
         </video>
       </div>
       <div class="flex text-font font-light justify-between text-white mt-[20px] leading-6">
@@ -88,17 +106,15 @@ onMounted(() => {
           <li class="third-name">03</li>
         </ul>
       </div>
-
     </div>
     <div class="col-span-6 big-div-mobile">
       <h1 class="uppercase text-font font-bold text-[50px] leading-[50px] text-white title-mobile">
         mission & vision
       </h1>
       <div ref="missionTitle" class="text-description">
-        <span class="first-text relative z-[33]"> We are a modern
-        and innovative new media arts tech studio, creatively combining art and tech to create unique immersive experiences.</span>
+        <span class="first-text relative z-[33]"> We are a modern and innovative new media arts tech studio, creatively combining art and tech to create unique immersive experiences.</span>
         <span class="second-text relative z-[33]">Our mission is to bridge the gap between the virtual and physical worlds,</span>
-        <span class="third-text relative z-[33]" >offering concepts that empower you to dream beyond boundaries.</span>
+        <span class="third-text relative z-[33]">offering concepts that empower you to dream beyond boundaries.</span>
       </div>
       <button class="btn-about-us flex gap-[5px] items-center" style="position:relative; z-index: 33 !important;">
         <i class="pi pi-arrow-right text-[16px] mr-[3px] mt-[3px] h-[24px] mobile-icon"></i> About us
@@ -106,8 +122,7 @@ onMounted(() => {
     </div>
 
     <div class="col-span-6 flex flex-col justify-between mb-[70px] mobile-version">
-      <div>
-      </div>
+      <div></div>
       <div>
         <div class="text-social mb-[15px] relative z-[33]">
           Social:
@@ -130,16 +145,17 @@ onMounted(() => {
               src="https://lottie.host/embed/8e80c604-e0af-4b03-96ce-f75675059aa0/Tyehx7Emkq.json"></iframe>
     </div>
   </div>
-
 </template>
+
+
 <style lang="scss">
-.pin-spacer{
+.pin-spacer {
   position: relative;
   z-index: 33 !important;
 }
 </style>
 <style scoped lang="scss">
-video{
+video {
   border-radius: 8.3px !important;
 }
 
@@ -183,9 +199,11 @@ video{
     transform: scaleX(-1);
   }
 }
-.some-class{
+
+.some-class {
   transform: translateY(-50px) !important;
 }
+
 .text-social {
   color: var(--White, #F9F9F9);
   text-align: left;
@@ -195,6 +213,7 @@ video{
   font-weight: 300;
   line-height: 140%;
 }
+
 .btn-links {
   display: flex;
   height: 41px;
@@ -209,11 +228,13 @@ video{
 .btn-links:hover {
   border-color: #FFFF00;
   cursor: url("@/assets/img/Polygon.svg"), auto;
+
   i {
     color: #FFFF00;
   }
 }
-.btn-links img{
+
+.btn-links img {
   min-width: 24px;
 }
 

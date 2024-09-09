@@ -3,6 +3,12 @@ import gsap from "gsap";
 import {onMounted} from "vue";
 
 gsap.registerPlugin(SplitText);
+const props = defineProps({
+  description:{
+    type: String,
+    default:''
+  }
+})
 
 function topScroll() {
   window.scrollTo({
@@ -30,8 +36,7 @@ onMounted(() => {
       <div class="glass-effect left-[190px]"></div>
     </div>
     <div class="title-footer w-[20%] title-footer-mobile hidden">
-      We are misfits; we are not an agency, and we don’t just do production; we are a combination of both thinkers and
-      doers.
+
     </div>
 
   </section>
@@ -40,8 +45,7 @@ onMounted(() => {
     <iframe width="140px" height="194px"
             src="https://lottie.host/embed/8e80c604-e0af-4b03-96ce-f75675059aa0/Tyehx7Emkq.json"></iframe>
     <div class="title-footer w-[20%]">
-      We are misfits; we are not an agency, and we don’t just do production; we are a combination of both thinkers and
-      doers.
+    {{props.description}}
     </div>
     <span class="text-scroll" @click="topScroll">
       Scroll to experience magic

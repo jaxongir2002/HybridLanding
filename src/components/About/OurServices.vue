@@ -1,47 +1,22 @@
 <script setup>
-import {onMounted, ref} from "vue";
+import {nextTick, onMounted, ref} from "vue";
 
-const cards = ref([
-  {
-    title: '3D Projection Mapping',
-    videoSrc: new URL("@/assets/video/secondVideo.MP4", import.meta.url)
-  },
-  {
-    title: 'Real-time Interactivity',
-    videoSrc: new URL("@/assets/video/secondVideo.MP4", import.meta.url)
-  },
-  {
-    title: 'Holograms',
-    videoSrc: new URL("@/assets/video/secondVideo.MP4", import.meta.url)
-  },
-  {
-    title: 'Artificial Intelligence',
-    videoSrc: new URL("@/assets/video/secondVideo.MP4", import.meta.url)
-  },
-  {
-    title: 'Content Creation',
-    videoSrc: new URL("@/assets/video/secondVideo.MP4", import.meta.url)
-  },
-  {
-    title: '3D Animation',
-    videoSrc: new URL("@/assets/video/secondVideo.MP4", import.meta.url)
-  },
-  {
-    title: 'VFX & CGI',
-    videoSrc: new URL("@/assets/video/secondVideo.MP4", import.meta.url)
+const props = defineProps({
+  cards: {
+    type: Array,
+    default: []
   }
-]);
+})
+
 const isMobile = ref(window.matchMedia('(max-width: 992px)').matches);
-onMounted(() => {
-  const flipCards = document.querySelectorAll('.flip-card');
-
-
+const flipCard = ref([]);
+function cardRote() {
   if (isMobile.value) {
-    flipCards.forEach(card => {
+    flipCard.value.forEach(card => {
       card.style.transform = 'rotateY(180deg)';
     });
   } else {
-    flipCards.forEach(card => {
+    flipCard.value.forEach(card => {
       card.addEventListener('mousemove', () => {
         card.style.transform = 'rotateY(180deg)';
       });
@@ -49,25 +24,16 @@ onMounted(() => {
       card.addEventListener('mouseleave', () => {
         setTimeout(() => {
           card.style.transform = 'rotateY(0deg)';
-        }, 500)
+        }, 500);
       });
     });
   }
+}
 
-  (function setGlowEffectRx() {
-    const glowEffects = document.querySelectorAll(".glow-effect");
+onMounted( () => {
+  cardRote();
+});
 
-    glowEffects.forEach((glowEffect) => {
-      const glowLines = glowEffect.querySelectorAll("rect");
-      const rx = getComputedStyle(glowEffect).borderRadius;
-
-      glowLines.forEach((line) => {
-        line.setAttribute("rx", rx);
-      });
-    });
-  })();
-
-})
 </script>
 
 <template>
@@ -76,8 +42,9 @@ onMounted(() => {
   </div>
   <div class="grid grid-cols-12 gap-[20px]">
     <div
-        v-for="(item, index) in cards"
+        v-for="(item, index) in props.cards"
         :key="index"
+        ref="flipCard"
         class="flip-card glow-effect max-sm:col-span-12"
         :class="{'col-span-4': index < 3, 'col-span-3 mobile-hidden': index >= 3}"
     >
@@ -99,11 +66,8 @@ onMounted(() => {
             X
           </div>
           <div class="img-bg-hybrid relative">
-            <video autoplay loop muted width="320" height="240" playsinline>
-              <source
-                  :src="item.videoSrc"
-                  type="video/mp4"
-              />
+            <video      :src="item.video" autoplay loop muted width="320" height="240" playsinline>
+
             </video>
             <div class="hidden card-text-dev left-[10px] top-[90%] max-sm:block absolute uppercase">{{
                 item.title

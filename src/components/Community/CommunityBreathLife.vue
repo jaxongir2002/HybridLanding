@@ -1,12 +1,15 @@
 <script setup>
 import {onMounted} from "vue";
-
+const props = defineProps({
+  video: {
+    type: String,
+    default: ''
+  }
+})
 onMounted(() => {
   const flipCards = document.querySelector('#idSlider');
-
   window.addEventListener('scroll', () => {
     const currentScrollPos = window.pageYOffset;
-
     if (currentScrollPos >= 3561) {
       flipCards.classList.add('animateClass')
     }
@@ -18,6 +21,8 @@ onMounted(() => {
   <div class="relative mb-[50px]">
     <div class="absolute top-0 z-30 left-0 right-0 container-breath">
       <div class="text-breath">
+
+
         Breathe life
       </div>
       <div class="text-breath">
@@ -25,9 +30,7 @@ onMounted(() => {
       </div>
     </div>
     <div id="idSlider" class="card-img-slider col-span-4 mt-[40px] m-auto relative z-10">
-      <video autoplay loop muted playsinline>
-        <source src="@/assets/video/wecreatemagic_lsF4u8LF.mp4"
-                type="video/mp4">
+      <video :src="props.video" autoplay loop muted playsinline>
       </video>
     </div>
   </div>

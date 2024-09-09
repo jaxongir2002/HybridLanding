@@ -2,6 +2,11 @@
 import {onMounted, ref} from 'vue'
 import gsap from "gsap";
 import LoaderBlog from "@/components/LoaderBlog.vue";
+import moment from "moment";
+const props = defineProps({
+  blogList: Array,
+  default: []
+})
 
 const active = ref(0);
 const activeBlogs = ref(8);
@@ -57,51 +62,48 @@ onMounted(() => {
           {{ item.title }}
         </button>
       </div>
+
     </div>
-      <div class="col-span-8 grid grid-cols-12 gap-[20px] cards-info-blog">
-        <div v-for="item in activeBlogs"
-             :key="item"
-             class="card-blog flex flex-col justify-between col-span-6 relative z-20 max-sm:mt-[20px]"
-             @click="$router.push({name: 'blogView', params: { id: item }})">
-          <div class="flex justify-between items-start max-sm:justify-between max-sm:items-start">
-            <div class="rounded-[9px] max-sm:rounded-[9px] overflow-hidden">
-              <video autoplay loop muted playsinline>
-                <source
-                    src="@/assets/video/91ec3544e41e9afbff63c3d000a9a5296073707d839b265710597bd574d824eb_ndrKpibw.mp4"
-                    type="video/mp4">
-              </video>
-            </div>
-            <img src="@/assets/img/Arrow_right.svg" alt="">
+    <div class="col-span-8 grid grid-cols-12 gap-[20px] cards-info-blog">
+      <div v-for="item in props.blogList"
+           :key="item"
+           class="card-blog flex flex-col justify-between col-span-6 relative z-20 max-sm:mt-[20px]"
+           @click="$router.push({name: 'blogView', params: { id: item }})">
+        <div class="flex justify-between items-start max-sm:justify-between max-sm:items-start">
+          <div class="rounded-[9px] max-sm:rounded-[9px] overflow-hidden">
+            <video :src="item.video" autoplay loop muted playsinline>
+            </video>
           </div>
-          <div>
-            <div class="text-blog">
-              A gaming revolution of interactive and interconnected playground of fun and experiences <span
-                class="emoji">
-            🕹️👾🎮
+          <img src="@/assets/img/Arrow_right.svg" alt="">
+        </div>
+        <div>
+          <div class="text-blog">
+           {{item.description}} <span
+              class="emoji">
           </span>
+          </div>
+          <div class="flex gap-[16px] mt-[12px]">
+            <div class="date">
+              {{ moment(new Date(item.date)).format('MM.DD.YYYY')}}
             </div>
-            <div class="flex gap-[16px] mt-[12px]">
-              <div class="date">
-                14.06.2024
-              </div>
-              <img src="@/assets/img/LineBlog.svg" alt="">
-              <div class="date">
-                News
-              </div>
+            <img src="@/assets/img/LineBlog.svg" alt="">
+            <div class="date">
+              {{ item.title }}
+            </div>
 
-            </div>
           </div>
         </div>
-
-        <div class="col-span-12 grid grid-cols-12">
-          <LoaderBlog class="col-span-6 m-auto max-sm:col-span-12" v-if="loading"/>
-          <LoaderBlog class="col-span-6 m-auto max-sm:hidden" v-if="loading"/>
-        </div>
-
-        <button class="learn-btn col-span-4 left-[100%] relative z-10" @click="loadMoreItems">
-          See more
-        </button>
       </div>
+
+      <div class="col-span-12 grid grid-cols-12">
+        <LoaderBlog class="col-span-6 m-auto max-sm:col-span-12" v-if="loading"/>
+        <LoaderBlog class="col-span-6 m-auto max-sm:hidden" v-if="loading"/>
+      </div>
+
+      <button class="learn-btn col-span-4 left-[100%] relative z-10" @click="loadMoreItems">
+        See more
+      </button>
+    </div>
   </div>
 </template>
 
@@ -160,13 +162,16 @@ onMounted(() => {
   transition: 0.3s;
 
 }
-.learn-btn:hover{
+
+.learn-btn:hover {
   color: #A20AFF;
   border-color: #A20AFF;
 }
-.learn-btn:active{
+
+.learn-btn:active {
   transform: scale(0.9);
 }
+
 .btn-blog-filter {
   color: var(--Black, #F9F9F9);
   font-family: Alexandria, sans-serif;
