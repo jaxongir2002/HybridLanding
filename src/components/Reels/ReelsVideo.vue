@@ -80,13 +80,10 @@ function openTab() {
     });
   }
 }
+const itemCount = ref(isMobile ? 6 : 15);
 
 const displayedItems = computed(() => {
-  if (isMobile) {
-    return props.videos.slice(0, 6);
-  } else {
-    return props.videos;
-  }
+  return props.videos.slice(0, itemCount.value);
 });
 
 onMounted(() => {
@@ -142,25 +139,12 @@ onMounted(() => {
 })
 
 function loadMoreItems() {
-  loading.value = true
+  loading.value = true;
   setTimeout(() => {
-    displayedItems.value.push({
-          src: new URL("@/assets/video/eightVideo.MP4", import.meta.url),
-        },
-        {
-          src: new URL("@/assets/video/ninaVideo.MP4", import.meta.url),
-        },
-        {
-          src: new URL("@/assets/video/thenVideo.MP4", import.meta.url),
-        },
-        {
-          src: new URL("@/assets/video/fourVideo.MP4", import.meta.url),
-        },
-        {
-          src: new URL("@/assets/video/fourVideo.MP4", import.meta.url),
-        },)
-    loading.value = false
-  }, 1000)
+    // Set itemCount to the total number of videos to show all
+    itemCount.value = props.videos.length;
+    loading.value = false;
+  }, 1000);
 }
 </script>
 <template>
@@ -191,10 +175,8 @@ function loadMoreItems() {
               class="cards"
               @click="openModal(item, index)"
           >
-            <video preload="metadata" loop muted ref="videoPlayer" autoplay width="320" height="240" playsinline
+            <video preload="metadata" :src="item.video" loop muted ref="videoPlayer" autoplay width="320" height="240" playsinline
                    class="cards-img">
-              <source :src="item.video"
-                      type="video/mp4">
             </video>
           </div>
           <LoaderBlog v-if="loading"/>

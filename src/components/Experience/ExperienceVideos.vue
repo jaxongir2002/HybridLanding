@@ -1,6 +1,6 @@
 <script setup>
 import {LottieAnimation} from "lottie-web-vue"
-import {onMounted, ref} from "vue";
+import {computed, onMounted, ref} from "vue";
 import WatermelonJSON from "@/assets/animation/whiteAnimation.json"
 import LoaderBlog from "@/components/LoaderBlog.vue";
 
@@ -13,6 +13,11 @@ const props = defineProps({
 
 let anim = ref()
 const loading = ref(false);
+const itemCount = ref(4);
+
+const displayedItems = computed(() => {
+  return props.video.slice(0, itemCount.value);
+});
 onMounted(() => {
   setTimeout(() => {
     anim.value
@@ -46,6 +51,7 @@ const getColumnClass = (index) => {
 function loadMoreItems() {
   loading.value = true
   setTimeout(() => {
+    itemCount.value = props.video.length
     loading.value = false
   }, 1000)
 }
@@ -56,7 +62,7 @@ function loadMoreItems() {
 
     <div class="grid grid-cols-12 slider-container gap-[20px] mt-[20%]">
       <div
-          v-for="(video, index) in props.video"
+          v-for="(video, index) in displayedItems"
           :key="index"
           :class="getColumnClass(index)"
           class="card-img-slider mobile-version  relative z-10"

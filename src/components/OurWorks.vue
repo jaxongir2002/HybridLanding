@@ -81,12 +81,38 @@ const displayedItems = computed(() => {
   if (isMobile) {
     return props.videos.slice(0, 6);
   } else {
-    return props.videos;
+    return props.videos.slice(0,15);
   }
 });
+const videoRefs = ref([]);
+const observer = ref(null);
 
+const isVisible = (index) => {
+  const videoElement = videoRefs.value[index];
+  return videoElement && videoElement.getBoundingClientRect().top < window.innerHeight && videoElement.getBoundingClientRect().bottom > 0;
+};
+
+const setupObserver = () => {
+  observer.value = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      const index = entry.target.dataset.index; // Get the index from data attribute
+      const videoElement = videoRefs.value[index];
+
+      if (entry.isIntersecting) {
+        videoElement.play(); // Play video when in view
+      } else {
+        videoElement.pause(); // Pause video when out of view
+      }
+    });
+  });
+
+  videoRefs.value.forEach((videoElement, index) => {
+    videoElement.dataset.index = index; // Set index as data attribute
+    observer.value.observe(videoElement); // Observe each video
+  });
+};
 onMounted(() => {
-
+  setupObserver();
   const slider = document.querySelector(".dev-card");
   let isDown = false;
   let startX;
@@ -168,10 +194,19 @@ onMounted(() => {
               class="cards"
               @click="openModal(item, index)"
           >
-            <video preload="metadata" loop muted ref="videoPlayer" autoplay width="320" height="240" playsinline
-                   class="cards-img">
-              <source :src="item.video"
-                      type="video/mp4">
+
+            <video
+                :src="item?.video"
+                preload="metadata"
+                loop
+                muted
+                ref="videoPlayer"
+                width="320"
+                height="240"
+                playsinline
+                class="cards-img"
+                :autoplay="isVisible(index)"
+            >
             </video>
           </div>
         </div>

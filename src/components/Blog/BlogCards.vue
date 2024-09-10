@@ -1,5 +1,5 @@
 <script setup>
-import {onMounted, watch, ref} from 'vue'
+import {onMounted, watch, ref, computed} from 'vue'
 import gsap from "gsap";
 import LoaderBlog from "@/components/LoaderBlog.vue";
 import moment from "moment";
@@ -10,9 +10,10 @@ const props = defineProps({
 })
 
 const active = ref(0);
-const activeBlogs = ref(8);
 const loading = ref(false);
 const selectTitle = ref('All');
+const filteredBlogList = ref();
+const itemCount = ref( 8);
 const btnBlog = ref([
   {
     title: 'All'
@@ -32,7 +33,17 @@ function activeFn(index, title) {
   active.value = index;
   selectTitle.value = title;
 }
-const filteredBlogList = ref();
+
+const displayedItems = computed(() => {
+  return props.blogList.slice(0, itemCount.value);
+});
+function loadMoreItems() {
+  loading.value = true
+  setTimeout(() => {
+    itemCount.value = props.blogList.length;
+    loading.value = false
+  }, 1000)
+}
 
 watch(selectTitle, (newTitle) => {
   if (newTitle) {
@@ -45,13 +56,6 @@ watch(selectTitle, (newTitle) => {
   }
 }, {deep: true});
 
-function loadMoreItems() {
-  loading.value = true
-  setTimeout(() => {
-    activeBlogs.value += 4
-    loading.value = false
-  }, 1000)
-}
 
 onMounted(() => {
   gsap.registerPlugin(SplitText);
@@ -80,20 +84,20 @@ onMounted(() => {
 
     </div>
     <div class="col-span-8 grid grid-cols-12 gap-[20px] cards-info-blog">
-      <div v-for="item in (filteredBlogList || props.blogList)"
+      <div v-for="item in (filteredBlogList || displayedItems)"
            :key="item"
            class="card-blog flex flex-col justify-between col-span-6 relative z-20 max-sm:mt-[20px]"
            @click="$router.push({name: 'blogView', params: { id: item.attributes.blog_list.id }})">
         <div class="flex justify-between items-start max-sm:justify-between max-sm:items-start">
           <div class="rounded-[9px] max-sm:rounded-[9px] overflow-hidden">
-            <video :src="item.attributes.blog_list.video" autoplay loop muted playsinline>
+            <video :src="item.attributes?.blog_list.video" autoplay loop muted playsinline>
             </video>
           </div>
           <img src="@/assets/img/Arrow_right.svg" alt="">
         </div>
         <div>
           <div class="text-blog">
-            {{ item.attributes.blog_list.description }} <span
+            {{ item.attributes.blog_list?.description }} <span
               class="emoji">
           </span>
           </div>

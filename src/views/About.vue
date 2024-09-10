@@ -17,7 +17,7 @@ const cardsVideo = ref([]);
 async function getMethod() {
   const res = await useAxios(`/landings?populate=*`)
   missionVideo.value = res.data[0].attributes.about_us
-  cardsVideo.value = res.data[0].attributes.video
+  cardsVideo.value = res.data[0].attributes.Second_section_3_videos
 }
 
 getMethod()

@@ -91,9 +91,7 @@ onMounted(() => {
         <div class="nav-title">
           {{ item.title }}
         </div>
-        <video preload="metadata" loop muted autoplay playsinline>
-          <source :src="item.video"
-                  type="video/mp4">
+        <video :src="item.video" preload="metadata" loop muted autoplay playsinline>
         </video>
         <div class="btn-container grid grid-cols-12 gap-[10px] absolute bottom-[40px] left-[30px]">
           <button class="button-team col-span-6">

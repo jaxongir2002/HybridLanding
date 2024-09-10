@@ -98,7 +98,7 @@ getList()
         <div class="description-blog mt-[40px]">
           {{ infoBlog?.more_description }}
         </div>
-        <div v-for="(item,index) in infoBlog.description_title" :key="index">
+        <div v-for="(item,index) in infoBlog?.description_title" :key="index">
           <div class="header-description mt-[60px]">
             {{ item.title }}
           </div>
