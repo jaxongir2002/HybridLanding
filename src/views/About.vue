@@ -13,11 +13,13 @@ import {ref} from 'vue'
 const missionVideo = ref();
 const ourWorks = ref([]);
 const cardsVideo = ref([]);
+const videoText = ref('');
 
 async function getMethod() {
   const res = await useAxios(`/landings?populate=*`)
   missionVideo.value = res.data[0].attributes.about_us
   cardsVideo.value = res.data[0].attributes.Second_section_3_videos
+  videoText.value = res.data[0].attributes.video_magic
 }
 
 getMethod()
@@ -34,7 +36,7 @@ getOurWorks()
     <Cover/>
     <Cards :list-cards="cardsVideo"/>
     <Mission :video="missionVideo"/>
-    <Magic/>
+    <Magic :video="videoText"/>
     <OurWorks :videos="ourWorks"/>
     <Partners/>
     <Register/>

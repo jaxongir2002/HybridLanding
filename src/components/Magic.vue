@@ -1,6 +1,11 @@
 <script setup>
+const props = defineProps({
+  video:{
+    type:String,
+    default:null
+  }
+})
 </script>
-
 
 <template>
   <div class="flex justify-between pt-[30px] mt-[30px] mb-[80px] pb-[30px] magic-div">
@@ -15,9 +20,7 @@
       </div>
     </div>
     <div class="video-div relative z-[33]">
-      <video autoplay loop muted class="magic-img" width="750" height="340" playsinline>
-        <source src="../assets/video/videomission_N9zw1KFg.mp4"
-                type="video/mp4">
+      <video :src="props.video" autoplay loop muted class="magic-img" width="750" height="340" playsinline>
       </video>
       <div class="text-magic-video relative z-[33]">
         we do it for the curious

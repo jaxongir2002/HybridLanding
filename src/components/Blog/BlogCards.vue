@@ -6,7 +6,10 @@ import moment from "moment";
 
 const props = defineProps({
   blogList: Array,
-  default: []
+  filterList:{
+    type:Array,
+    default:[]
+  }
 })
 
 const active = ref(0);
@@ -75,10 +78,10 @@ onMounted(() => {
       <div class="blog-logo relative z-10 test-animation-blog">
         Blog
       </div>
-      <div class="flex gap-[10px] mt-[15px] relative z-10">
-        <button class="btn-blog-filter" v-for="(item,index) in btnBlog" :key="index" @click="activeFn(index,item.title)"
+      <div class="grid grid-cols-10 gap-[10px] mt-[15px] relative z-10">
+        <button class="btn-blog-filter col-span-2" v-for="(item,index) in filterList" :key="index" @click="activeFn(index,item.title_text)"
                 :class="{ 'active': active === index }">
-          {{ item.title }}
+          {{ item?.title_text }}
         </button>
       </div>
 
