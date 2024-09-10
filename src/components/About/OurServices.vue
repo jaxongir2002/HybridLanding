@@ -27,9 +27,7 @@ const rotate = (index) => {
 const removeRotate = () => {
   flipCard.value.forEach((el) => {
     if (el) {
-      setTimeout(() => {
         el.style.transform = 'rotateY(0deg)';
-      }, 500);
     }
   });
 };
@@ -197,7 +195,7 @@ watch(props.cards, cardRote,{deep:true});
   height: 315px;
   position: relative;
   transform-style: preserve-3d;
-  transition: .6s .1s;
+  transition: .7s .1s;
   z-index: 33;
 }
 
