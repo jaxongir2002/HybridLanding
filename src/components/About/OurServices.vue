@@ -1,5 +1,5 @@
 <script setup>
-import {nextTick, onMounted, ref} from "vue";
+import {onMounted, watch, ref, watchEffect} from "vue";
 
 const props = defineProps({
   cards: {
@@ -10,30 +10,31 @@ const props = defineProps({
 
 const isMobile = ref(window.matchMedia('(max-width: 992px)').matches);
 const flipCard = ref([]);
+
 function cardRote() {
   if (isMobile.value) {
     flipCard.value.forEach(card => {
       card.style.transform = 'rotateY(180deg)';
     });
-  } else {
-    flipCard.value.forEach(card => {
-      card.addEventListener('mousemove', () => {
-        card.style.transform = 'rotateY(180deg)';
-      });
-
-      card.addEventListener('mouseleave', () => {
-        setTimeout(() => {
-          card.style.transform = 'rotateY(0deg)';
-        }, 500);
-      });
-    });
   }
 }
 
-onMounted( () => {
-  cardRote();
-});
+const rotate = (index) => {
+  if (flipCard.value[index]) {
+    flipCard.value[index].style.transform = 'rotateY(180deg)';
+  }
+};
+const removeRotate = () => {
+  flipCard.value.forEach((el) => {
+    if (el) {
+      setTimeout(() => {
+        el.style.transform = 'rotateY(0deg)';
+      }, 500);
+    }
+  });
+};
 
+watch(props.cards, cardRote,{deep:true});
 </script>
 
 <template>
@@ -41,36 +42,35 @@ onMounted( () => {
     Our Services
   </div>
   <div class="grid grid-cols-12 gap-[20px]">
+
     <div
         v-for="(item, index) in props.cards"
         :key="index"
         ref="flipCard"
+        @mousemove="rotate(index)"
+        @mouseleave="removeRotate"
         class="flip-card glow-effect max-sm:col-span-12"
         :class="{'col-span-4': index < 3, 'col-span-3 mobile-hidden': index >= 3}"
     >
       <div class="card-front">
         <figure class="flex items-end justify-between">
-          <div class="card-text-dev relative uppercase">{{ item.title }}</div>
+          <div class="card-text-dev relative uppercase">{{ item?.title }}</div>
           <div class="number-card absolute top-[5%] left-[92%]">0{{ index + 1 }}</div>
         </figure>
       </div>
 
       <div class="card-back">
         <figure class="video-background">
-          <div
-              class="text-logo text-logo-mobile-back"
-              style="color: white; position:relative; z-index: 33; font-size: 48px; text-align: center; float: left; top: 40px"
-          >
+          <div class="text-logo text-logo-mobile-back" style="color: white;
+           position:relative; z-index: 33; font-size: 48px; text-align: center; float: left; top: 40px">
             H
             <p class="center-logo-hybrid center-logo-back-mobile" style="color: white; font-size: 15px">Experience</p>
             X
           </div>
           <div class="img-bg-hybrid relative">
-            <video      :src="item.video" autoplay loop muted width="320" height="240" playsinline>
-
-            </video>
+            <video :src="item?.video" autoplay loop muted width="320" height="240" playsinline></video>
             <div class="hidden card-text-dev left-[10px] top-[90%] max-sm:block absolute uppercase">{{
-                item.title
+                item?.title
               }}
             </div>
             <div class="number-card absolute bottom-[110%] left-[90%]">0{{ index + 1 }}</div>
@@ -246,7 +246,7 @@ onMounted( () => {
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
-  line-height: 160%; /* 25.6px */
+  line-height: 160%;
 }
 
 figure {

@@ -1,10 +1,16 @@
 <script setup>
-
 import BriefCoverMobile from "@/components/Brief/BriefCoverMobile.vue";
 import gsap from "gsap";
 import {ScrollTrigger} from "gsap/ScrollTrigger";
 import {onMounted} from "vue";
+
 gsap.registerPlugin(SplitText, ScrollTrigger);
+const props = defineProps({
+  infoBrief:{
+    type: Object,
+    default:null
+  }
+})
 onMounted(() => {
   let mySplitText = new SplitText(".test-animation", {type: "chars"});
   let chars = mySplitText.chars;
@@ -35,9 +41,7 @@ function clickTop() {
     <div class="grid grid-cols-12 mt-[40px]">
       <div class="col-span-4">
         <div class="card-magic relative z-10">
-          <video autoplay loop muted playsinline>
-            <source src="@/assets/video/91ec3544e41e9afbff63c3d000a9a5296073707d839b265710597bd574d824eb_ndrKpibw.mp4"
-                    type="video/mp4">
+          <video autoplay loop muted playsinline :src="props.infoBrief?.main_video">
           </video>
         </div>
         <div class="magic-text mt-2 relative z-10"> WE CREATE MAGIC</div>
@@ -54,12 +58,7 @@ function clickTop() {
 
         <div class="flex justify-between">
           <div class="description-text-brief w-[397px] relative z-10">
-            We are misfits; we are not an agency,
-            and we don’t just do production; we are
-            a combination of both thinkers and
-            doers. We’re a combination of human
-            and more than human. A collaboration
-            between art and tech.
+            {{ props.infoBrief?.main_title }}
           </div>
           <span class="text-scroll flex items-center mt-[50px] relative z-10"  @click="clickTop">
               Contact form

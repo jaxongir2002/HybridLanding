@@ -2,7 +2,12 @@
 import {onMounted} from "vue";
 import gsap from 'gsap';
 import {ScrollTrigger} from "gsap/ScrollTrigger";
-
+const props = defineProps({
+  main_video:{
+    type:Object,
+    default:null
+  }
+})
 onMounted(() => {
   gsap.registerPlugin(ScrollTrigger, SplitText);
   let tl = gsap.timeline({
@@ -45,9 +50,7 @@ onMounted(() => {
   <div ref="logo" class="helloWorld flex justify-between pt-[80px] max-sm:block">
     <div class="mobile-version-animation max-sm:block hidden">
         <div class="card-lab-video">
-          <video autoplay loop muted class="magic-img"  playsinline>
-            <source src="@/assets/video/wecreatemagic_lsF4u8LF.mp4"
-                    type="video/mp4">
+          <video :src="props.main_video.video"  autoplay loop muted class="magic-img"  playsinline>
           </video>
         </div>
         <div class="flex text-font font-light justify-between mt-[20px] text-magic-lab">
@@ -69,9 +72,7 @@ onMounted(() => {
     <div class="flex flex-col h-[80vh] justify-between mobile-version-animation max-sm:hidden">
       <div class="w-[555px] mobile-version">
         <div class="card-mission relative">
-          <video autoplay loop muted class="magic-img" width="750" height="340" playsinline>
-            <source src="@/assets/video/wecreatemagic_lsF4u8LF.mp4"
-                    type="video/mp4">
+          <video :src="props.main_video.video" autoplay loop muted  playsinline>
           </video>
         </div>
         <div class="flex text-font font-light justify-between mt-[20px] text-magic-lab">

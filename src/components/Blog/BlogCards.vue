@@ -1,8 +1,9 @@
 <script setup>
-import {onMounted, ref} from 'vue'
+import {onMounted, watch, ref} from 'vue'
 import gsap from "gsap";
 import LoaderBlog from "@/components/LoaderBlog.vue";
 import moment from "moment";
+
 const props = defineProps({
   blogList: Array,
   default: []
@@ -11,6 +12,7 @@ const props = defineProps({
 const active = ref(0);
 const activeBlogs = ref(8);
 const loading = ref(false);
+const selectTitle = ref('All');
 const btnBlog = ref([
   {
     title: 'All'
@@ -26,9 +28,22 @@ const btnBlog = ref([
   },
 ]);
 
-function activeFn(index) {
-  active.value = index
+function activeFn(index, title) {
+  active.value = index;
+  selectTitle.value = title;
 }
+const filteredBlogList = ref();
+
+watch(selectTitle, (newTitle) => {
+  if (newTitle) {
+    filteredBlogList.value = props.blogList.filter(item =>
+        item.attributes.blog_list.title.includes(newTitle)
+    );
+  }
+  if (selectTitle.value === 'All') {
+    return filteredBlogList.value = [...props.blogList];
+  }
+}, {deep: true});
 
 function loadMoreItems() {
   loading.value = true
@@ -57,7 +72,7 @@ onMounted(() => {
         Blog
       </div>
       <div class="flex gap-[10px] mt-[15px] relative z-10">
-        <button class="btn-blog-filter" v-for="(item,index) in btnBlog" :key="index" @click="activeFn(index)"
+        <button class="btn-blog-filter" v-for="(item,index) in btnBlog" :key="index" @click="activeFn(index,item.title)"
                 :class="{ 'active': active === index }">
           {{ item.title }}
         </button>
@@ -65,30 +80,30 @@ onMounted(() => {
 
     </div>
     <div class="col-span-8 grid grid-cols-12 gap-[20px] cards-info-blog">
-      <div v-for="item in props.blogList"
+      <div v-for="item in (filteredBlogList || props.blogList)"
            :key="item"
            class="card-blog flex flex-col justify-between col-span-6 relative z-20 max-sm:mt-[20px]"
-           @click="$router.push({name: 'blogView', params: { id: item }})">
+           @click="$router.push({name: 'blogView', params: { id: item.attributes.blog_list.id }})">
         <div class="flex justify-between items-start max-sm:justify-between max-sm:items-start">
           <div class="rounded-[9px] max-sm:rounded-[9px] overflow-hidden">
-            <video :src="item.video" autoplay loop muted playsinline>
+            <video :src="item.attributes.blog_list.video" autoplay loop muted playsinline>
             </video>
           </div>
           <img src="@/assets/img/Arrow_right.svg" alt="">
         </div>
         <div>
           <div class="text-blog">
-           {{item.description}} <span
+            {{ item.attributes.blog_list.description }} <span
               class="emoji">
           </span>
           </div>
           <div class="flex gap-[16px] mt-[12px]">
             <div class="date">
-              {{ moment(new Date(item.date)).format('MM.DD.YYYY')}}
+              {{ moment(new Date(item.attributes.blog_list.date)).format('MM.DD.YYYY') }}
             </div>
             <img src="@/assets/img/LineBlog.svg" alt="">
             <div class="date">
-              {{ item.title }}
+              {{ item.attributes.blog_list.title }}
             </div>
 
           </div>

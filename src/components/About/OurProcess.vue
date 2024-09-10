@@ -1,5 +1,5 @@
 <script setup>
-import {onMounted, ref} from 'vue'
+import {onMounted, ref, onUnmounted, onBeforeUnmount} from 'vue'
 import gsap from "gsap";
 import {ScrollTrigger} from "gsap/ScrollTrigger";
 
@@ -34,10 +34,11 @@ const itemTitle = ref([
   },
 ]);
 gsap.registerPlugin(ScrollTrigger, SplitText);
-onMounted(() => {
+let tl;
+const initAnimation = () => {
   const isMobile = window.matchMedia('(max-width: 767px)').matches;
-  if (!isMobile){
-    let tl = gsap.timeline({
+  if (!isMobile) {
+    tl = gsap.timeline({
       scrollTrigger: {
         trigger: '.our-process',
         start: 'top top',
@@ -55,8 +56,17 @@ onMounted(() => {
       stagger: 0.02,
     })
   }
-
+  return tl;
+}
+onMounted(() => {
+  tl = initAnimation();
 })
+onBeforeUnmount(() => {
+  if (tl) {
+    tl.kill(); // Kill the timeline if it exists
+  }
+  ScrollTrigger.getAll().forEach(trigger => trigger.kill()); // Kill all ScrollTriggers
+});
 </script>
 
 <template>

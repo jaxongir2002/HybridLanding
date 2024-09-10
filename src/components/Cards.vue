@@ -1,5 +1,24 @@
 <script setup>
-import {onMounted, ref} from "vue";
+import {onMounted, ref, watchEffect} from "vue";
+
+const props = defineProps({
+  listCards: {
+    type: Array,
+    default: []
+  }
+})
+const firstVideo = ref(null);
+const videoSource = ref('');
+const secondSource = ref('');
+const thirdSource = ref('');
+
+watchEffect(() => {
+  if (props.listCards.length > 0) {
+    videoSource.value = props.listCards[0].video;
+    secondSource.value = props.listCards[1].video;
+    thirdSource.value = props.listCards[2].video;
+  }
+});
 
 onMounted(() => {
   const flipCards = document.querySelectorAll('.flip-card');
@@ -15,19 +34,6 @@ onMounted(() => {
       }, 500)
     });
   });
-  (function setGlowEffectRx() {
-    const glowEffects = document.querySelectorAll(".glow-effect");
-
-    glowEffects.forEach((glowEffect) => {
-      const glowLines = glowEffect.querySelectorAll("rect");
-      const rx = getComputedStyle(glowEffect).borderRadius;
-
-      glowLines.forEach((line) => {
-        line.setAttribute("rx", rx);
-      });
-    });
-  })();
-
   window.addEventListener('scroll', () => {
     const currentScrollPos = window.pageYOffset;
     const isMobile = window.innerWidth < 762;
@@ -110,10 +116,8 @@ onMounted(() => {
               X
             </div>
             <div class="img-bg-hybrid">
-              <video autoplay loop muted width="320" height="240" playsinline>
-                <source
-                    src="../assets/video/91ec3544e41e9afbff63c3d000a9a5296073707d839b265710597bd574d824eb_ndrKpibw.mp4"
-                    type="video/mp4">
+              <video ref="firstVideo" :src="videoSource" autoplay loop muted playsinline>
+
               </video>
               <div class="footer-btn absolute  bottom-[20px]">
                 <img src="../assets/img/Arrow_right.svg" alt="">
@@ -168,10 +172,7 @@ onMounted(() => {
               X
             </div>
             <div class="img-bg-hybrid">
-              <video autoplay loop muted width="320" height="240" playsinline>
-                <source
-                    src="../assets/video/84d3ee1d02f80623a9f94aaf876be15f12f8030d7abc558fa81e43cf65067340_FU8j2xww.mp4"
-                    type="video/mp4">
+              <video :src="secondSource" autoplay loop muted width="320" height="240" playsinline>
               </video>
               <div class="footer-btn absolute  bottom-[20px]">
                 <img src="../assets/img/Arrow_right.svg" alt="">
@@ -230,10 +231,7 @@ onMounted(() => {
               X
             </div>
             <div class="img-bg-hybrid">
-              <video autoplay loop muted width="320" height="240" playsinline>
-                <source
-                    src="../assets/video/ac57976749d126f18128abad5cec0903ee50f1bcaab2b1941b03887e69ae9a29_rbIGpUGF.mp4"
-                    type="video/mp4">
+              <video :src="thirdSource" autoplay loop muted width="320" height="240" playsinline>
               </video>
               <div class="footer-btn absolute bottom-[20px]">
                 <img src="../assets/img/Arrow_right.svg" alt="">

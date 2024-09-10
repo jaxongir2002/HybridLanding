@@ -4,6 +4,13 @@ import {onMounted, ref} from "vue";
 import WatermelonJSON from "@/assets/animation/whiteAnimation.json"
 import LoaderBlog from "@/components/LoaderBlog.vue";
 
+const props = defineProps({
+  video:{
+    type:Array,
+    default:[]
+  }
+})
+
 let anim = ref()
 const loading = ref(false);
 onMounted(() => {
@@ -12,28 +19,6 @@ onMounted(() => {
   }, 500)
 })
 
-const videos = ref([
-  {
-    title: 'Holograms',
-    src: new URL('@/assets/video/91ec3544e41e9afbff63c3d000a9a5296073707d839b265710597bd574d824eb_ndrKpibw.mp4', import.meta.url),
-    animationData: WatermelonJSON,
-  },
-  {
-    title: 'Interactive',
-    src: new URL('@/assets/video/wecreatemagic_lsF4u8LF.mp4', import.meta.url),
-    animationData: WatermelonJSON,
-  },
-  {
-    title: 'Gaming',
-    src: new URL('@/assets/video/ac57976749d126f18128abad5cec0903ee50f1bcaab2b1941b03887e69ae9a29_rbIGpUGF.mp4', import.meta.url),
-    animationData: WatermelonJSON,
-  },
-  {
-    title: 'Hybrid ips',
-    src: new URL('@/assets/video/ac57976749d126f18128abad5cec0903ee50f1bcaab2b1941b03887e69ae9a29_rbIGpUGF.mp4', import.meta.url),
-    animationData: WatermelonJSON,
-  },
-]);
 const getColumnClass = (index) => {
   const isMobile = window.matchMedia('(max-width: 767px)').matches;
 
@@ -61,16 +46,6 @@ const getColumnClass = (index) => {
 function loadMoreItems() {
   loading.value = true
   setTimeout(() => {
-    videos.value.push({
-          title: 'Hybrid ips',
-          src: new URL('@/assets/video/ac57976749d126f18128abad5cec0903ee50f1bcaab2b1941b03887e69ae9a29_rbIGpUGF.mp4', import.meta.url),
-          animationData: WatermelonJSON,
-        },
-        {
-          title: 'Hybrid ips',
-          src: new URL('@/assets/video/ac57976749d126f18128abad5cec0903ee50f1bcaab2b1941b03887e69ae9a29_rbIGpUGF.mp4', import.meta.url),
-          animationData: WatermelonJSON,
-        },)
     loading.value = false
   }, 1000)
 }
@@ -81,7 +56,7 @@ function loadMoreItems() {
 
     <div class="grid grid-cols-12 slider-container gap-[20px] mt-[20%]">
       <div
-          v-for="(video, index) in videos"
+          v-for="(video, index) in props.video"
           :key="index"
           :class="getColumnClass(index)"
           class="card-img-slider mobile-version  relative z-10"
@@ -92,7 +67,7 @@ function loadMoreItems() {
           </div>
           <div class="lottie-animate">
             <LottieAnimation
-                :animation-data="video.animationData"
+                :animation-data="WatermelonJSON"
                 :auto-play="true"
                 :loop="true"
                 :speed="1"
@@ -102,8 +77,7 @@ function loadMoreItems() {
             />
           </div>
         </div>
-        <video autoplay loop muted playsinline>
-          <source :src="video.src" type="video/mp4"/>
+        <video autoplay loop muted playsinline :src="video.video">
         </video>
       </div>
     </div>

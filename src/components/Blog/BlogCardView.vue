@@ -1,5 +1,4 @@
 <script setup>
-import NavigationMenu from "@/components/Navigation.vue";
 import {Swiper, SwiperSlide} from "swiper/vue";
 import {FreeMode} from "swiper/modules";
 import {ref} from "vue";
@@ -8,10 +7,29 @@ import LastSection from "@/components/LastSection.vue";
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
+import {useAxios} from "@/composable/useAxios.js";
+import {useRoute} from "vue-router";
+import moment from "moment";
 
 const modules = ref([FreeMode, Navigation])
 const isMobile = window.matchMedia('(max-width: 767px)').matches;
+const route = useRoute();
+const infoBlog = ref(null);
+const blogList = ref([]);
 
+async function getMethod() {
+  const res = await useAxios(`/blogs/${route.params.id}?populate=*`)
+  infoBlog.value = res.data.attributes
+}
+
+getMethod()
+
+async function getList() {
+  const res = await useAxios(`/blogs?populate=*`)
+  blogList.value = res.data
+}
+
+getList()
 </script>
 
 <template>
@@ -19,26 +37,24 @@ const isMobile = window.matchMedia('(max-width: 767px)').matches;
     <div class="mt-[100px] grid grid-cols-12 mb-[80px] relative z-10 max-sm:mt-[70px]">
       <div class="max-sm:block col-span-12 hidden">
         <div class="view-blog-first-text relative z-10">
-          A gaming revolution of interactive and interconnected playground of fun and experiences🕹️👾🎮
+          {{ infoBlog?.main_title }}
         </div>
         <div class="text-little-first flex  gap-[32px] mt-2.5 items-center relative z-10">
           Written by:
           <div class="flex gap-2.5 items-center">
             <img src="@/assets/img/elllipseBlog.svg" alt="">
-            Username
+            {{ infoBlog?.user_name }}
           </div>
         </div>
       </div>
       <div class="col-span-4 max-sm:col-span-12 flex flex-col justify-between blog-view-video relative z-10">
         <div class="card-video-blob">
-          <video autoplay loop muted playsinline>
-            <source src="@/assets/video/91ec3544e41e9afbff63c3d000a9a5296073707d839b265710597bd574d824eb_ndrKpibw.mp4"
-                    type="video/mp4">
+          <video autoplay loop muted playsinline :src="infoBlog?.video">
           </video>
         </div>
         <div class="flex gap-[16px] mt-[12px] max-sm:hidden">
           <div class="date">
-            14.06.2024
+            {{ moment(new Date(infoBlog?.updatedAt)).format('MM.DD.YYYY') }}
           </div>
           <img src="@/assets/img/LineBlog.svg" alt="">
           <div class="date">
@@ -49,21 +65,18 @@ const isMobile = window.matchMedia('(max-width: 767px)').matches;
       </div>
       <div class="col-span-8 max-sm:col-span-12">
         <div class="view-blog-first-text max-sm:hidden">
-          A gaming revolution of interactive and interconnected playground of fun and experiences🕹️👾🎮
+          {{ infoBlog?.main_title }}
         </div>
         <div class="text-little-first flex max-sm:hidden gap-[32px] mt-2.5 items-center">
           Written by:
           <div class="flex gap-2.5 items-center">
             <img src="@/assets/img/elllipseBlog.svg" alt="">
-            Username
+            {{ infoBlog?.user_name }}
           </div>
         </div>
         <div class="bg-[#F9F9F9] h-[1px] w-[120px] mt-[30px]"></div>
         <div class="blob-content mt-[30px]">
-          A gaming revolution where an interactive and interconnected playground of fun and experiences awaits. Dive
-          into
-          immersive worlds, connect with players globally, and enjoy endless entertainment. Get ready to redefine your
-          gaming journey with cutting-edge technology and thrilling adventures.
+          {{ infoBlog?.description }}
         </div>
         <div class="max-sm:flex gap-[16px] mt-[12px] hidden">
           <div class="date">
@@ -83,50 +96,17 @@ const isMobile = window.matchMedia('(max-width: 767px)').matches;
       <div class="col-span-8 max-sm:col-span-12">
         <div class="bg-[#F9F9F9] h-[1px] w-[120px] mt-[60px]"></div>
         <div class="description-blog mt-[40px]">
-          Embark on a new era of gaming where an interactive and interconnected playground of fun and experiences
-          awaits.
-          Discover immersive worlds filled with breathtaking details and compelling storylines. Connect with players
-          worldwide to build alliances, compete in epic battles, and share unforgettable moments. Enjoy endless
-          entertainment with diverse game genres that cater to every interest and skill level. Prepare to redefine your
-          gaming journey with cutting-edge technology, bringing thrilling adventures and innovative gameplay right to
-          your
-          screen. Whether you're exploring new realms or mastering complex strategies, this gaming revolution promises
-          to
-          elevate your experience to unprecedented heights.
+          {{ infoBlog?.more_description }}
         </div>
-        <div class="header-description mt-[60px]">
-          A Gaming Revolution
+        <div v-for="(item,index) in infoBlog.description_title" :key="index">
+          <div class="header-description mt-[60px]">
+            {{ item.title }}
+          </div>
+          <div class="description-blog mt-[15px]">
+            {{ item.text }}
+          </div>
         </div>
-        <div class="description-blog mt-[15px]">
-          Experience a new era of interactive and interconnected gaming, filled with fun and diverse experiences. Dive
-          into immersive worlds where every detail comes to life, and connect globally with players from all corners of
-          the world. Engage in epic quests, challenge friends and strangers alike, and enjoy endless entertainment that
-          keeps you coming back for more. As you redefine your gaming journey, embrace the latest technology and
-          innovations that bring exciting adventures and unique experiences to your fingertips. Whether you're a casual
-          player or a dedicated gamer, this revolution promises to elevate your gaming to unprecedented heights.
-        </div>
-        <div class="header-description mt-[60px]">
-          A New Era of Gaming Awaits
-        </div>
-        <div class="description-blog mt-[15px]">
-          Embark on a new era of gaming where an interactive and interconnected playground of fun and experiences
-          awaits.
 
-          <ul class="mt-[20px] mb-[20px] list-disc">
-            <li>Discover Immersive Worlds: Dive into breathtakingly detailed environments with compelling storylines.
-            </li>
-            <li>Connect Globally: Build alliances and compete with players from around the world.</li>
-            <li>Enjoy Endless Entertainment: Explore diverse game genres catering to every interest and skill level.
-            </li>
-            <li>Redefine Your Journey: Experience cutting-edge technology that brings thrilling adventures and
-              innovative
-              gameplay to your screen.
-            </li>
-          </ul>
-
-          Prepare to elevate your gaming experience to unprecedented heights with this revolutionary approach to
-          interactive entertainment.
-        </div>
       </div>
     </div>
     <div class="slider-header mt-[150px] relative z-[33]">
@@ -159,29 +139,27 @@ const isMobile = window.matchMedia('(max-width: 767px)').matches;
       },
     }"
     >
-      <swiper-slide v-for="(item, index) in 5" :key="index">
+      <swiper-slide v-for="(item, index) in blogList" :key="index">
         <div class="card-blog grid grid-cols-12 gap-5 relative z-20 mt-[40px]"
              @click="$router.push({name: 'blogView', params: { id: item }})">
           <div class="rounded-[9px] overflow-hidden col-span-4">
-            <video autoplay loop muted playsinline>
-              <source src="@/assets/video/91ec3544e41e9afbff63c3d000a9a5296073707d839b265710597bd574d824eb_ndrKpibw.mp4"
-                      type="video/mp4">
+            <video :src="item.attributes.blog_list.video" autoplay loop muted playsinline>
             </video>
           </div>
           <div class="col-span-8 flex flex-col justify-between">
             <div class="text-blog">
-              A gaming revolution of interactive and interconnected playground of fun
-              and experiences🕹️👾🎮
+              {{ item.attributes.blog_list.description }}
             </div>
             <div class="mt-[12px] flex justify-between items-center">
-              <div class="flex gap-[16px]">
+              <div class="flex gap-[16px] mt-[12px]">
                 <div class="date">
-                  14.06.2024
+                  {{ moment(new Date(item.attributes.blog_list.date)).format('MM.DD.YYYY')}}
                 </div>
                 <img src="@/assets/img/LineBlog.svg" alt="">
                 <div class="date">
-                  News
+                  {{ item.attributes.blog_list.title }}
                 </div>
+
               </div>
 
               <img src="@/assets/img/Arrow_right.svg" alt="">

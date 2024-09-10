@@ -8,6 +8,12 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 const modules = ref([FreeMode, Navigation])
+const props = defineProps({
+  sliderVideo:{
+    type:Array,
+    default:[]
+  }
+})
 </script>
 
 <template>
@@ -20,11 +26,11 @@ const modules = ref([FreeMode, Navigation])
         class="mySwiper"
         :navigation="true"
     >
-      <swiper-slide v-for="(item, index) in 5" :key="index">
+      <swiper-slide v-for="(item, index) in props.sliderVideo" :key="index">
         <div class="card-blog gap-5 relative z-20 mt-[40px] max-sm:mt-0 mb-[80px]">
           <div class="absolute flex flex-col justify-between h-[100%] left-[40px] max-sm:left-[20px] max-sm:top-[15px]">
             <div class="text-video-header">
-              Hybrid ips
+              {{ item.title }}
             </div>
             <div class="lottie-animate">
               <LottieAnimation
@@ -37,9 +43,7 @@ const modules = ref([FreeMode, Navigation])
             </div>
           </div>
           <div class="rounded-[9px] overflow-hidden h-[783px] max-sm:h-[180px]">
-            <video autoplay loop muted playsinline>
-              <source src="@/assets/video/91ec3544e41e9afbff63c3d000a9a5296073707d839b265710597bd574d824eb_ndrKpibw.mp4"
-                      type="video/mp4">
+            <video autoplay loop muted playsinline :src="item.video">
             </video>
           </div>
         </div>

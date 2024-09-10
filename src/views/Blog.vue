@@ -8,7 +8,7 @@ const blogList = ref([])
 
 async function getMethod() {
   const res = await useAxios(`/blogs?populate=*`)
-  blogList.value = res.data[0].attributes.card
+  blogList.value = res.data
 }
 
 getMethod()

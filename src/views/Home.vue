@@ -7,26 +7,37 @@ import LastSection from "@/components/LastSection.vue";
 import Partners from "@/components/Partners.vue";
 import Register from "@/components/Register.vue";
 import {useAxios} from "@/composable/useAxios.js";
-import {ref} from 'vue'
+import {onMounted, ref} from 'vue'
 
 const description = ref('');
 const cards = ref([]);
 const team = ref([]);
+const animation = ref(false)
+
 async function getMethod() {
-  const res = await useAxios(`/abouts?populate=*`)
-  description.value = res.data[0].attributes.main_description
-  cards.value = res.data[0].attributes.videos
-  team.value = res.data[0].attributes.video
+  try {
+    const res = await useAxios(`/abouts?populate=*`)
+    description.value = res.data[0].attributes.main_description
+    cards.value = res.data[0].attributes.videos
+    team.value = res.data[0].attributes.video
+  } catch (e) {
+    console.log("Error fetching method: ", e);
+  }
+  finally {
+    animation.value = true
+  }
 }
 
-getMethod()
+
+onMounted(getMethod)
+
 </script>
 
 <template>
   <div class="screen-width" style="padding: 34px 40px 34px 40px; max-width: 1440px;  margin: auto">
     <about-cover :description="description"/>
     <our-services :cards="cards"/>
-    <OurProcess/>
+    <OurProcess v-if="animation"/>
     <OurTeam :items="team"/>
     <Partners/>
     <Register/>

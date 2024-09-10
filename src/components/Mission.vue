@@ -80,9 +80,9 @@ onMounted(() => {
 
 onBeforeUnmount(() => {
   if (tl) {
-    tl.kill(); // Kill the timeline if it exists
+    tl.kill();
   }
-  ScrollTrigger.getAll().forEach(trigger => trigger.kill()); // Kill all ScrollTriggers
+  ScrollTrigger.getAll().forEach(trigger => trigger.kill());
 });
 </script>
 
@@ -90,8 +90,7 @@ onBeforeUnmount(() => {
   <div ref="logo" class="helloWorld grid grid-cols-12 pt-[80px] pb-[80px]">
     <div class="col-span-6 w-[555px] mobile-version">
       <div class="card-mission relative">
-        <video autoplay loop muted class="magic-img" width="750" height="340" playsinline>
-          <source ref="source" :src="props.video" type="video/mp4">
+        <video :src="props.video" autoplay loop muted class="magic-img" playsinline>
         </video>
       </div>
       <div class="flex text-font font-light justify-between text-white mt-[20px] leading-6">
