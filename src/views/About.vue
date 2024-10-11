@@ -34,14 +34,14 @@ getOurWorks();
 
 <template>
   <div class="container-hybrid screen-width" style="padding: 34px 40px 34px 40px; max-width: 1440px; margin: auto">
-<!--    <Cover/>-->
-<!--    <Cards :list-cards="cardsVideo"/>-->
-<!--    <Mission :video="missionVideo"/>-->
-<!--    <Magic :video="videoText"/>-->
-<!--    <OurWorks :videos="ourWorks"/>-->
+    <Cover/>
+    <Cards :list-cards="cardsVideo"/>
+    <Mission :video="missionVideo"/>
+    <Magic :video="videoText"/>
+    <OurWorks :videos="ourWorks"/>
     <Partners/>
-<!--    <Register/>-->
-<!--    <LastSection/>-->
+    <Register/>
+    <LastSection/>
   </div>
 </template>
 

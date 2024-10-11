@@ -8,7 +8,7 @@ const showLoader = ref(true);
 
 onMounted(() => {
   const lenis = new Lenis();
-  lenis.on("scroll", (e) => {
+  lenis.on("scroll", () => {
   });
 
   function raf(time) {
