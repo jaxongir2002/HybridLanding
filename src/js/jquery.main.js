@@ -13,14 +13,6 @@
     "use strict";
 
     if ( typeof module === "object" && typeof module.exports === "object" ) {
-
-        // For CommonJS and CommonJS-like environments where a proper `window`
-        // is present, execute the factory and get jQuery.
-        // For environments that do not have a `window` with a `document`
-        // (such as Node.js), expose a factory as module.exports.
-        // This accentuates the need for the creation of a real `window`.
-        // e.g. var jQuery = require("jquery")(window);
-        // See ticket trac-14549 for more info.
         module.exports = global.document ?
             factory( global, true ) :
             function( w ) {
@@ -32,14 +24,8 @@
     } else {
         factory( global );
     }
-
-// Pass this if window is not defined yet
 } )( typeof window !== "undefined" ? window : this, function( window, noGlobal ) {
 
-// Edge <= 12 - 13+, Firefox <=18 - 45+, IE 10 - 11, Safari 5.1 - 9+, iOS 6 - 9.1
-// throw exceptions when non-strict code (e.g., ASP.NET 4.5) accesses strict mode
-// arguments.callee.caller (trac-13335). But as of jQuery 3.0 (2016), strict mode should be common
-// enough that all such attempts are guarded in a try block.
     "use strict";
 
     var arr = [];
@@ -73,13 +59,6 @@
 
     var isFunction = function isFunction( obj ) {
 
-        // Support: Chrome <=57, Firefox <=52
-        // In some browsers, typeof returns "function" for HTML <object> elements
-        // (i.e., `typeof document.createElement( "object" ) === "function"`).
-        // We don't want to classify *any* DOM node as a function.
-        // Support: QtWeb <=3.8.5, WebKit <=534.34, wkhtmltopdf tool <=0.12.5
-        // Plus for old WebKit, typeof returns "function" for HTML collections
-        // (e.g., `typeof document.getElementsByTagName("div") === "function"`). (gh-4756)
         return typeof obj === "function" && typeof obj.nodeType !== "number" &&
             typeof obj.item !== "function";
     };
@@ -89,9 +68,7 @@
         return obj != null && obj === obj.window;
     };
 
-
     var document = window.document;
-
 
 
     var preservedScriptAttributes = {
@@ -1165,21 +1142,11 @@
                 return matches.call( el, "*" );
             } );
 
-            // Support: IE 9 - 11+, Edge 12 - 18+
-            // IE/Edge don't support the :scope pseudo-class.
+
             support.scope = assert( function() {
                 return document.querySelectorAll( ":scope" );
             } );
 
-            // Support: Chrome 105 - 111 only, Safari 15.4 - 16.3 only
-            // Make sure the `:has()` argument is parsed unforgivingly.
-            // We include `*` in the test to detect buggy implementations that are
-            // _selectively_ forgiving (specifically when the list includes at least
-            // one valid selector).
-            // Note that we treat complete lack of support for `:has()` as if it were
-            // spec-compliant support, which is fine because use of `:has()` in such
-            // environments will fail in the qSA path and fall back to jQuery traversal
-            // anyway.
             support.cssHas = assert( function() {
                 try {
                     document.querySelector( ":has(*,:jqfake)" );
@@ -3155,28 +3122,6 @@
         return object;
     }
 
-    /*
- * Create a callback list using the following parameters:
- *
- *	options: an optional list of space-separated options that will change how
- *			the callback list behaves or a more traditional option object
- *
- * By default a callback list will act like an event callback list and can be
- * "fired" multiple times.
- *
- * Possible options:
- *
- *	once:			will ensure the callback list can only be fired once (like a Deferred)
- *
- *	memory:			will keep track of previous values and will call any callback added
- *					after the list has been fired right away with the latest "memorized"
- *					values (like a Deferred)
- *
- *	unique:			will ensure a callback can only be added once (no duplicate in the list)
- *
- *	stopOnFalse:	interrupt callings when a callback returns false
- *
- */
     jQuery.Callbacks = function( options ) {
 
         // Convert options from String-formatted to Object-formatted if needed
@@ -3301,8 +3246,6 @@
                     return this;
                 },
 
-                // Check if a given callback is in the list.
-                // If no argument is given, return whether or not list has callbacks attached.
                 has: function( fn ) {
                     return fn ?
                         jQuery.inArray( fn, list ) > -1 :
@@ -3317,9 +3260,6 @@
                     return this;
                 },
 
-                // Disable .fire and .add
-                // Abort any current/pending executions
-                // Clear all callbacks and values
                 disable: function() {
                     locked = queue = [];
                     list = memory = "";
@@ -3329,9 +3269,6 @@
                     return !list;
                 },
 
-                // Disable .fire
-                // Also disable .add unless we have memory (since it would have no effect)
-                // Abort any pending executions
                 lock: function() {
                     locked = queue = [];
                     if ( !memory && !firing ) {
@@ -3395,15 +3332,9 @@
                 // Other non-thenables
             } else {
 
-                // Control `resolve` arguments by letting Array#slice cast boolean `noValue` to integer:
-                // * false: [ value ].slice( 0 ) => resolve( value )
-                // * true: [ value ].slice( 1 ) => resolve()
                 resolve.apply( undefined, [ value ].slice( noValue ) );
             }
 
-            // For Promises/A+, convert exceptions into rejections
-            // Since jQuery.when doesn't unwrap thenables, we can skip the extra checks appearing in
-            // Deferred#then to conditionally suppress rejection.
         } catch ( value ) {
 
             // Support: Android 4.0 only
