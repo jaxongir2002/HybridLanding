@@ -1,5 +1,4 @@
 import {createRouter, createWebHashHistory} from 'vue-router'
-import Loading from "@/components/Loading.vue";
 import About from "@/views/About.vue";
 import Home from "@/views/Home.vue";
 import Reels from "@/views/Reels.vue";
@@ -13,8 +12,7 @@ import Lab from "@/views/Lab.vue";
 import NotFound from "@/components/NotFound.vue";
 
 const routes = [
-    {path: '/', component: Loading,},
-    {path: '/landing', component: About},
+    {path: '/', component: About},
     {path: '/about', component: Home},
     {path: '/reels', component: Reels},
     {path: '/community', component: Community},
@@ -28,8 +26,8 @@ const routes = [
 ]
 
 const router = createRouter({
-    scrollBehavior(to, from, savedPosition) {
-        return new Promise((resolve, reject) => {
+    scrollBehavior() {
+        return new Promise((resolve) => {
             setTimeout(() => {
                 resolve({left: 0, top: 0})
             }, 500)

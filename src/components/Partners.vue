@@ -6,6 +6,7 @@ import gsap from "gsap";
 gsap.registerPlugin(SplitText, ScrollTrigger);
 
 let tl;
+
 const bigDiv = ref(null);
 
 const initAnimations = () => {
@@ -71,9 +72,9 @@ onMounted(() => {
 
 onBeforeUnmount(() => {
   if (tl) {
-    tl.kill(); // Kill the timeline if it exists
+    tl.kill();
   }
-  ScrollTrigger.getAll().forEach(trigger => trigger.kill()); // Kill all ScrollTriggers
+  ScrollTrigger.getAll().forEach(trigger => trigger.kill());
 });
 </script>
 
@@ -84,7 +85,7 @@ onBeforeUnmount(() => {
         <div class="text-work animation-text-home">We work with humans</div>
         <div class="text-work animation-text-two-home">and more than humans</div>
       </div>
-      <div class="relative z-20 content-div">
+      <div class="relative z-20 content-div" >
         <div
             class="flex gap-[20px] all-cards-partners max-sm:gap-[8px] max-sm:justify-center"
         >
@@ -97,18 +98,6 @@ onBeforeUnmount(() => {
                   src="../assets/img/Netflix.svg"
                   alt=""
               />
-              <svg class="glow-container">
-                <rect
-                    pathLength="100"
-                    stroke-linecap="round"
-                    class="glow-blur"
-                ></rect>
-                <rect
-                    pathLength="100"
-                    stroke-linecap="round"
-                    class="glow-line"
-                ></rect>
-              </svg>
             </div>
             <div
                 class="cards-company-home h-[140px] p-[80px] max-sm:p-[30px] max-sm:h-[58.508px] glow-effect"
@@ -118,18 +107,6 @@ onBeforeUnmount(() => {
                   src="../assets/img/Dyson.svg"
                   alt=""
               />
-              <svg class="glow-container">
-                <rect
-                    pathLength="100"
-                    stroke-linecap="round"
-                    class="glow-blur"
-                ></rect>
-                <rect
-                    pathLength="100"
-                    stroke-linecap="round"
-                    class="glow-line"
-                ></rect>
-              </svg>
             </div>
             <div
                 class="cards-company-home h-[220px] p-[120px] max-sm:p-[40px] max-sm:h-[91.94px] glow-effect"
@@ -139,18 +116,6 @@ onBeforeUnmount(() => {
                   src="../assets/img/Unilever.svg"
                   alt=""
               />
-              <svg class="glow-container">
-                <rect
-                    pathLength="100"
-                    stroke-linecap="round"
-                    class="glow-blur"
-                ></rect>
-                <rect
-                    pathLength="100"
-                    stroke-linecap="round"
-                    class="glow-line"
-                ></rect>
-              </svg>
             </div>
             <div
                 class="cards-company-home h-[180px] p-[80px] max-sm:p-[30px] max-sm:h-[75.224px] glow-effect"
@@ -160,18 +125,6 @@ onBeforeUnmount(() => {
                   src="../assets/img/vodafone.svg"
                   alt=""
               />
-              <svg class="glow-container">
-                <rect
-                    pathLength="100"
-                    stroke-linecap="round"
-                    class="glow-blur"
-                ></rect>
-                <rect
-                    pathLength="100"
-                    stroke-linecap="round"
-                    class="glow-line"
-                ></rect>
-              </svg>
             </div>
             <div
                 class="cards-company-home h-[210px] p-[80px] max-sm:p-[30px] max-sm:h-[87.761px] glow-effect">
@@ -180,34 +133,11 @@ onBeforeUnmount(() => {
                   src="../assets/img/SelaOrginal.svg"
                   alt=""
               />
-              <svg class="glow-container">
-                <rect
-                    pathLength="100"
-                    stroke-linecap="round"
-                    class="glow-blur"
-                ></rect>
-                <rect
-                    pathLength="100"
-                    stroke-linecap="round"
-                    class="glow-line"
-                ></rect>
-              </svg>
             </div>
             <div
                 class="cards-company-home h-[210px] p-[80px] max-sm:p-[30px] max-sm:h-[87.761px] glow-effect"
             ><img class="w-full h-auto object-cover" src="../assets/img/empireEnter.png" alt="">
-              <svg class="glow-container">
-                <rect
-                    pathLength="100"
-                    stroke-linecap="round"
-                    class="glow-blur"
-                ></rect>
-                <rect
-                    pathLength="100"
-                    stroke-linecap="round"
-                    class="glow-line"
-                ></rect>
-              </svg>
+
             </div>
             <div
                 class="cards-company-home h-[213px] p-[100px] max-sm:p-[30px] max-sm:h-[91.94px] glow-effect"
@@ -217,18 +147,6 @@ onBeforeUnmount(() => {
                   src="../assets/img/NOZOMI.svg"
                   alt=""
               />
-              <svg class="glow-container">
-                <rect
-                    pathLength="100"
-                    stroke-linecap="round"
-                    class="glow-blur"
-                ></rect>
-                <rect
-                    pathLength="100"
-                    stroke-linecap="round"
-                    class="glow-line"
-                ></rect>
-              </svg>
             </div>
           </div>
           <div ref="first"  class="second first">
@@ -240,18 +158,6 @@ onBeforeUnmount(() => {
                   src="../assets/img/Tiktok.svg"
                   alt=""
               />
-              <svg class="glow-container">
-                <rect
-                    pathLength="100"
-                    stroke-linecap="round"
-                    class="glow-blur"
-                ></rect>
-                <rect
-                    pathLength="100"
-                    stroke-linecap="round"
-                    class="glow-line"
-                ></rect>
-              </svg>
             </div>
             <div
                 class="cards-company-home h-[230px] p-[80px] max-sm:p-[30px] max-sm:h-[96.119px] glow-effect"
@@ -261,18 +167,6 @@ onBeforeUnmount(() => {
                   src="../assets/img/redBUll.svg"
                   alt=""
               />
-              <svg class="glow-container">
-                <rect
-                    pathLength="100"
-                    stroke-linecap="round"
-                    class="glow-blur"
-                ></rect>
-                <rect
-                    pathLength="100"
-                    stroke-linecap="round"
-                    class="glow-line"
-                ></rect>
-              </svg>
             </div>
             <div
                 class="cards-company-home h-[210px] p-[80px] max-sm:p-[30px] max-sm:h-[87.761px] glow-effect"
@@ -282,18 +176,6 @@ onBeforeUnmount(() => {
                   src="../assets/img/vuseLogo.svg"
                   alt=""
               />
-              <svg class="glow-container">
-                <rect
-                    pathLength="100"
-                    stroke-linecap="round"
-                    class="glow-blur"
-                ></rect>
-                <rect
-                    pathLength="100"
-                    stroke-linecap="round"
-                    class="glow-line"
-                ></rect>
-              </svg>
             </div>
             <div
                 class="cards-company-home h-[160px] p-[80px] max-sm:p-[30px] max-sm:h-[66.866px] glow-effect"
@@ -303,18 +185,6 @@ onBeforeUnmount(() => {
                   src="../assets/img/madic.svg"
                   alt=""
               />
-              <svg class="glow-container">
-                <rect
-                    pathLength="100"
-                    stroke-linecap="round"
-                    class="glow-blur"
-                ></rect>
-                <rect
-                    pathLength="100"
-                    stroke-linecap="round"
-                    class="glow-line"
-                ></rect>
-              </svg>
             </div>
 
             <div
@@ -325,18 +195,6 @@ onBeforeUnmount(() => {
                   src="../assets/img/Sharaf.svg"
                   alt=""
               />
-              <svg class="glow-container">
-                <rect
-                    pathLength="100"
-                    stroke-linecap="round"
-                    class="glow-blur"
-                ></rect>
-                <rect
-                    pathLength="100"
-                    stroke-linecap="round"
-                    class="glow-line"
-                ></rect>
-              </svg>
             </div>
             <div
                 class="cards-company-home h-[240px] p-[80px] max-sm:p-[30px] max-sm:h-[100.299px] glow-effect"
@@ -346,18 +204,6 @@ onBeforeUnmount(() => {
                   src="../assets/img/clap.png"
                   alt=""
               />
-              <svg class="glow-container">
-                <rect
-                    pathLength="100"
-                    stroke-linecap="round"
-                    class="glow-blur"
-                ></rect>
-                <rect
-                    pathLength="100"
-                    stroke-linecap="round"
-                    class="glow-line"
-                ></rect>
-              </svg>
             </div>
             <div
                 class="cards-company-home h-[180px] p-[100px] max-sm:p-[30px] max-sm:h-[91.94px] glow-effect"
@@ -367,18 +213,6 @@ onBeforeUnmount(() => {
                   src="../assets/img/DubaiPlace.png"
                   alt=""
               />
-              <svg class="glow-container">
-                <rect
-                    pathLength="100"
-                    stroke-linecap="round"
-                    class="glow-blur"
-                ></rect>
-                <rect
-                    pathLength="100"
-                    stroke-linecap="round"
-                    class="glow-line"
-                ></rect>
-              </svg>
             </div>
           </div>
           <div ref="first"  class="third first">
@@ -388,18 +222,6 @@ onBeforeUnmount(() => {
                   src="../assets/img/angahami.png"
                   alt=""
               />
-              <svg class="glow-container">
-                <rect
-                    pathLength="100"
-                    stroke-linecap="round"
-                    class="glow-blur"
-                ></rect>
-                <rect
-                    pathLength="100"
-                    stroke-linecap="round"
-                    class="glow-line"
-                ></rect>
-              </svg>
             </div>
             <div class="cards-company-home h-[250px] p-[80px] max-sm:p-[30px] glow-effect">
               <img
@@ -407,18 +229,6 @@ onBeforeUnmount(() => {
                   src="../assets/img/Ikea.svg"
                   alt=""
               />
-              <svg class="glow-container">
-                <rect
-                    pathLength="100"
-                    stroke-linecap="round"
-                    class="glow-blur"
-                ></rect>
-                <rect
-                    pathLength="100"
-                    stroke-linecap="round"
-                    class="glow-line"
-                ></rect>
-              </svg>
             </div>
             <div class="cards-company-home h-[220px] p-[80px] max-sm:p-[30px] glow-effect">
               <img
@@ -426,18 +236,6 @@ onBeforeUnmount(() => {
                   src="../assets/img/events.svg"
                   alt=""
               />
-              <svg class="glow-container">
-                <rect
-                    pathLength="100"
-                    stroke-linecap="round"
-                    class="glow-blur"
-                ></rect>
-                <rect
-                    pathLength="100"
-                    stroke-linecap="round"
-                    class="glow-line"
-                ></rect>
-              </svg>
             </div>
             <div class="cards-company-home h-[200px] p-[80px] max-sm:p-[30px] glow-effect">
               <img
@@ -445,18 +243,6 @@ onBeforeUnmount(() => {
                   src="../assets/img/Expo2020.svg"
                   alt=""
               />
-              <svg class="glow-container">
-                <rect
-                    pathLength="100"
-                    stroke-linecap="round"
-                    class="glow-blur"
-                ></rect>
-                <rect
-                    pathLength="100"
-                    stroke-linecap="round"
-                    class="glow-line"
-                ></rect>
-              </svg>
             </div>
 
             <div class="cards-company-home h-[180px] p-[80px] max-sm:p-[30px] glow-effect">
@@ -465,18 +251,6 @@ onBeforeUnmount(() => {
                   src="../assets/img/Boeker.svg"
                   alt=""
               />
-              <svg class="glow-container">
-                <rect
-                    pathLength="100"
-                    stroke-linecap="round"
-                    class="glow-blur"
-                ></rect>
-                <rect
-                    pathLength="100"
-                    stroke-linecap="round"
-                    class="glow-line"
-                ></rect>
-              </svg>
             </div>
             <div class="cards-company-home h-[190px] p-[80px] max-sm:p-[30px] glow-effect">
               <img
@@ -484,18 +258,6 @@ onBeforeUnmount(() => {
                   src="../assets/img/IRIS.svg"
                   alt=""
               />
-              <svg class="glow-container">
-                <rect
-                    pathLength="100"
-                    stroke-linecap="round"
-                    class="glow-blur"
-                ></rect>
-                <rect
-                    pathLength="100"
-                    stroke-linecap="round"
-                    class="glow-line"
-                ></rect>
-              </svg>
             </div>
             <div class="cards-company-home h-[180px] p-[80px] max-sm:p-[30px] glow-effect">
               <img
@@ -503,18 +265,6 @@ onBeforeUnmount(() => {
                   src="../assets/img/BIVWORLD.svg"
                   alt=""
               />
-              <svg class="glow-container">
-                <rect
-                    pathLength="100"
-                    stroke-linecap="round"
-                    class="glow-blur"
-                ></rect>
-                <rect
-                    pathLength="100"
-                    stroke-linecap="round"
-                    class="glow-line"
-                ></rect>
-              </svg>
             </div>
           </div>
           <div ref="first"  class="four first">
@@ -524,18 +274,6 @@ onBeforeUnmount(() => {
                   src="../assets/img/srt.svg"
                   alt=""
               />
-              <svg class="glow-container">
-                <rect
-                    pathLength="100"
-                    stroke-linecap="round"
-                    class="glow-blur"
-                ></rect>
-                <rect
-                    pathLength="100"
-                    stroke-linecap="round"
-                    class="glow-line"
-                ></rect>
-              </svg>
             </div>
             <div class="cards-company-home h-[230px] p-[80px] max-sm:p-[30px] glow-effect">
               <img
@@ -543,18 +281,6 @@ onBeforeUnmount(() => {
                   src="../assets/img/2022Logo.svg"
                   alt=""
               />
-              <svg class="glow-container">
-                <rect
-                    pathLength="100"
-                    stroke-linecap="round"
-                    class="glow-blur"
-                ></rect>
-                <rect
-                    pathLength="100"
-                    stroke-linecap="round"
-                    class="glow-line"
-                ></rect>
-              </svg>
             </div>
             <div class="cards-company-home h-[220px] p-[80px] max-sm:p-[30px] glow-effect">
               <img
@@ -562,18 +288,6 @@ onBeforeUnmount(() => {
                   src="../assets/img/SunsetGroup.png"
                   alt=""
               />
-              <svg class="glow-container">
-                <rect
-                    pathLength="100"
-                    stroke-linecap="round"
-                    class="glow-blur"
-                ></rect>
-                <rect
-                    pathLength="100"
-                    stroke-linecap="round"
-                    class="glow-line"
-                ></rect>
-              </svg>
             </div>
             <div class="cards-company-home h-[220px] p-[80px] max-sm:p-[30px] glow-effect">
               <img
@@ -581,18 +295,6 @@ onBeforeUnmount(() => {
                   src="../assets/img/srmo.svg"
                   alt=""
               />
-              <svg class="glow-container">
-                <rect
-                    pathLength="100"
-                    stroke-linecap="round"
-                    class="glow-blur"
-                ></rect>
-                <rect
-                    pathLength="100"
-                    stroke-linecap="round"
-                    class="glow-line"
-                ></rect>
-              </svg>
             </div>
 
             <div class="cards-company-home h-[170px] p-[80px] max-sm:p-[30px] glow-effect">
@@ -601,18 +303,6 @@ onBeforeUnmount(() => {
                   src="../assets/img/RTA.svg"
                   alt=""
               />
-              <svg class="glow-container">
-                <rect
-                    pathLength="100"
-                    stroke-linecap="round"
-                    class="glow-blur"
-                ></rect>
-                <rect
-                    pathLength="100"
-                    stroke-linecap="round"
-                    class="glow-line"
-                ></rect>
-              </svg>
             </div>
             <div class="cards-company-home h-[240px] p-[80px] max-sm:p-[30px] glow-effect">
               <img
@@ -620,18 +310,6 @@ onBeforeUnmount(() => {
                   src="../assets/img/ESCWA.svg"
                   alt=""
               />
-              <svg class="glow-container">
-                <rect
-                    pathLength="100"
-                    stroke-linecap="round"
-                    class="glow-blur"
-                ></rect>
-                <rect
-                    pathLength="100"
-                    stroke-linecap="round"
-                    class="glow-line"
-                ></rect>
-              </svg>
             </div>
             <div class="cards-company-home h-[170px] p-[80px] max-sm:p-[30px] glow-effect">
               <img
@@ -639,18 +317,6 @@ onBeforeUnmount(() => {
                   src="../assets/img/lastImg.svg"
                   alt=""
               />
-              <svg class="glow-container">
-                <rect
-                    pathLength="100"
-                    stroke-linecap="round"
-                    class="glow-blur"
-                ></rect>
-                <rect
-                    pathLength="100"
-                    stroke-linecap="round"
-                    class="glow-line"
-                ></rect>
-              </svg>
             </div>
           </div>
         </div>
@@ -690,10 +356,6 @@ onBeforeUnmount(() => {
   text-transform: uppercase;
 }
 
-.grid-sizer {
-  width: 20%;
-}
-
 .first {
   transition: 0.5s;
   position: sticky;
@@ -721,18 +383,4 @@ onBeforeUnmount(() => {
   width: 325px;
   max-width: 100%;
 }
-
-@keyframes cardAnimation {
-  0% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-20px);
-  }
-  100% {
-    transform: translateY(0);
-  }
-}
-
-
 </style>

@@ -20,7 +20,7 @@ const interval = setInterval(() => {
   } else {
     showTitle.value = true;
     setTimeout(() => {
-      router.push("/landing");
+      router.push("/");
     }, 1000);
     setTimeout(() => {
       const yellowImgH = document.querySelector(".yellow-img-h");

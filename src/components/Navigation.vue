@@ -68,7 +68,7 @@ function closeMobile() {
 }
 
 function load() {
-  router.push('/landing')
+  router.push('/')
 }
 
 function firstFn() {
@@ -123,7 +123,7 @@ watch(isNavSticky, (newVal) => {
     }">
 
     <div class="navigation" :class="{navMobile: isNavFixed}"
-         style=" padding: 34px 40px 34px 40px; max-width: 1440px; margin: auto">
+         style="padding: 34px 40px 34px 40px; max-width: 1440px;  margin: auto">
       <div>
         <img src="@/assets/img/Logo.svg" alt="" @click="load">
       </div>
@@ -162,7 +162,7 @@ watch(isNavSticky, (newVal) => {
         </div>
         <div class="flex">
           <div class="flex flex-col gap-[10px]">
-            <div @mousemove="firstFn" class="menu-text flex gap-[15px]" @click="changePages('landing')">
+            <div @mousemove="firstFn" class="menu-text flex gap-[15px]" @click="changePages('')">
               <span>
                    home
               </span>
@@ -300,8 +300,8 @@ watch(isNavSticky, (newVal) => {
       <div class="menu-mobile relative z-[33]" v-show="openMobil" :class="{mobileFixed : isNavFixed}">
         <div class="flex" :class="{topMenu : isNavFixed}">
           <div class="flex flex-col gap-[10px] relative justify-center">
-            <div class="text-mobile flex justify-center gap-[15px]" @click="changeMobilePages('landing')"
-                 :class="{'active-mobile':$route.path === '/landing'}">
+            <div class="text-mobile flex justify-center gap-[15px]" @click="changeMobilePages('')"
+                 :class="{'active-mobile':$route.path === '/'}">
               <span>home</span>
               <div class="btn-mobile">01</div>
             </div>
@@ -374,7 +374,7 @@ watch(isNavSticky, (newVal) => {
 @media screen and (max-width: 992px) {
   body {
     width: 100% !important;
-    overflow-x: hidden;
+    overflow-x: hidden !important;
   }
 }
 </style>

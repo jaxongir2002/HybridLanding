@@ -17,30 +17,31 @@ const videoText = ref('');
 
 async function getMethod() {
   const res = await useAxios(`/landings?populate=*`)
-  missionVideo.value = res.data[0].attributes.about_us
-  cardsVideo.value = res.data[0].attributes.Second_section_3_videos
-  videoText.value = res.data[0].attributes.video_magic
+  missionVideo.value = res.data[0]?.attributes.about_us
+  cardsVideo.value = res.data[0]?.attributes.Second_section_3_videos
+  videoText.value = res.data[0]?.attributes.video_magic
 }
 
-getMethod()
+getMethod();
+
 async function getOurWorks() {
   const res = await useAxios(`/ourworks?populate=*`)
-  ourWorks.value = res.data[0].attributes.videos
+  ourWorks.value = res.data[0]?.attributes.videos
 }
 
-getOurWorks()
+getOurWorks();
 </script>
 
 <template>
   <div class="container-hybrid screen-width" style="padding: 34px 40px 34px 40px; max-width: 1440px; margin: auto">
-    <Cover/>
-    <Cards :list-cards="cardsVideo"/>
-    <Mission :video="missionVideo"/>
-    <Magic :video="videoText"/>
-    <OurWorks :videos="ourWorks"/>
+<!--    <Cover/>-->
+<!--    <Cards :list-cards="cardsVideo"/>-->
+<!--    <Mission :video="missionVideo"/>-->
+<!--    <Magic :video="videoText"/>-->
+<!--    <OurWorks :videos="ourWorks"/>-->
     <Partners/>
-    <Register/>
-    <LastSection/>
+<!--    <Register/>-->
+<!--    <LastSection/>-->
   </div>
 </template>
 
