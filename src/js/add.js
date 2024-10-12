@@ -7,9 +7,10 @@
  *     License: ISC
  *
  */
-console.log('ki')
+
 !function (e, r) {
     "object" == typeof exports && "object" == typeof module ? module.exports = r() : "function" == typeof define && define.amd ? define([], r) : "object" == typeof exports ? exports.Fluid = r() : e.Fluid = r()
+    console.log('ki')
 }(window, function () {
     return function (e) {
         var r = {};
