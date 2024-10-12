@@ -8,8 +8,15 @@
   </head>
   <body>
     <div id="app"></div>
-    <script >
-
+    <script type="module">
+        document.addEventListener("DOMContentLoaded", function() {
+            const canvas = document.getElementById("renderSurface");
+            let myFluid = new Fluid(canvas); // Assuming Fluid is a class
+            myFluid.mapBehaviors({
+                curl: 10
+            });
+            myFluid.activate();
+        });
     </script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.glitch.global/8352fc0e-bebe-4680-ae0b-269da8b54259/SplitText.min.js"></script>
@@ -17,6 +24,6 @@
 
     <script type="module" src="./src/js/fluid.min.js"></script>
     <script type="module" src="/src/main.js"></script>
-    <script type="module" src="/src/js/add.js"></script>
+<!--    <script type="module" src="/src/js/add.js"></script>-->
   </body>
 </html>
