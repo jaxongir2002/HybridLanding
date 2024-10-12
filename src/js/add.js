@@ -1,3 +1,4 @@
+console.log('jaxon')
 const canvas = document.getElementById("renderSurface");
 
 let myFluid = new Fluid(canvas)
