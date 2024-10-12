@@ -1,10 +1,8 @@
-console.log('2')
-const canvas = document.getElementById("renderSurface");
-
-let myFluid = new Fluid(canvas)
-console.log('1')
-myFluid.mapBehaviors({
-    curl: 10
+document.addEventListener("DOMContentLoaded", function() {
+    const canvas = document.getElementById("renderSurface");
+    let myFluid = new Fluid(canvas);
+    myFluid.mapBehaviors({
+        curl: 10
+    });
+    myFluid.activate();
 });
-
-myFluid.activate()
