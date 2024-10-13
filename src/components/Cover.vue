@@ -1,6 +1,4 @@
 <script setup>
-import Navigation from "@/components/Navigation.vue";
-
 function topScroll() {
   window.scrollTo({
     top: 1000,
@@ -11,7 +9,7 @@ function topScroll() {
 
 <template>
 
-  <section id="container" class=""  style="padding: 34px 40px 34px 40px; max-width: 1440px; margin: auto">
+  <section id="container" style="padding: 34px 40px 34px 40px; max-width: 1440px; margin: auto">
     <div class="title-container">
       <div class="title-logo">Hybrid</div>
       <div ref="elementRef" class="title-text">xperience</div>

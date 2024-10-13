@@ -30,15 +30,11 @@ onMounted(() => {
 
 <template>
   <section id="container">
-    <div class="title-container">
+    <div class="title-container ">
       <div class="title-logo test-animation-about">We are</div>
       <div ref="elementRef" class="title-logo relative lg:left-[240px] mobile-title test-animation-about">misfits</div>
       <div class="glass-effect left-[190px]"></div>
     </div>
-    <div class="title-footer w-[20%] title-footer-mobile hidden">
-
-    </div>
-
   </section>
 
   <div class="footer-cover flex justify-between items-center">
@@ -124,6 +120,7 @@ body::-webkit-scrollbar {
   flex-direction: column;
   align-items: center;
   height: 100vh;
+  position: relative;
 }
 
 .title-container {

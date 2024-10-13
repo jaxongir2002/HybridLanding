@@ -62,12 +62,12 @@ setTimeout(() => {
     <Loading/>
   </div>
   <div v-else style="background: #0e0e0e;">
+    <canvas id="renderSurface" ref="canvas"></canvas>
     <Navigation/>
     <router-view>
     </router-view>
-    <canvas id="renderSurface" class="opacity-1"></canvas>
-    <canvas ref="canvas"></canvas>
   </div>
+
 </template>
 
 <style lang="scss">

@@ -17,9 +17,9 @@ const animation = ref(false)
 async function getMethod() {
   try {
     const res = await useAxios(`/abouts?populate=*`)
-    description.value = res.data[0].attributes.main_description
-    cards.value = res.data[0].attributes.videos
-    team.value = res.data[0].attributes.video
+    description.value = res.data[0]?.attributes.main_description
+    cards.value = res.data[0]?.attributes.videos
+    team.value = res.data[0]?.attributes.video
   } catch (e) {
     console.log("Error fetching method: ", e);
   }
