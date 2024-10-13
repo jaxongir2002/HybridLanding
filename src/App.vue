@@ -1,10 +1,13 @@
 <script setup>
 import Lenis from "lenis";
-import {onMounted, ref} from "vue";
+import {onMounted,onBeforeUnmount, ref} from "vue";
 import Navigation from "@/components/Navigation.vue";
 import Loading from "@/components/Loading.vue";
+import WebGLFluidEnhanced from 'webgl-fluid-enhanced';
 
 const showLoader = ref(true);
+let simulation = null;
+const canvas = ref();
 
 onMounted(() => {
   const lenis = new Lenis();
@@ -28,6 +31,17 @@ const onAnimationComplete = () => {
   showLoader.value = false;
 };
 
+onMounted(() => {
+  simulation = new WebGLFluidEnhanced(canvas.value);
+  simulation.start();
+});
+
+onBeforeUnmount(() => {
+  if (simulation) {
+    simulation.stop();
+  }
+});
+
 setTimeout(() => {
   onAnimationComplete()
 }, 7000)
@@ -42,6 +56,7 @@ setTimeout(() => {
     <router-view>
     </router-view>
     <canvas id="renderSurface" class="opacity-1"></canvas>
+    <canvas ref="canvas"></canvas>
   </div>
 </template>
 
