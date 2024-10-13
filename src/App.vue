@@ -42,7 +42,7 @@ onMounted(() => {
     backgroundColor: "#0E0E0E",
     colorPalette: ['#0037C3', '#7E06BD'],
     bloom: true,
-
+    brightness: 0.35,
   });
 });
 
