@@ -34,6 +34,16 @@ const onAnimationComplete = () => {
 onMounted(() => {
   simulation = new WebGLFluidEnhanced(canvas.value);
   simulation.start();
+  simulation.setConfig({
+    densityDissipation: 1.5,
+    velocityDissipation: 0,
+    pressure: 0.7,
+    curl: 5,
+    backgroundColor: "#0E0E0E",
+    colorPalette: ['#0037C3', '#7E06BD'],
+    bloom: true,
+
+  });
 });
 
 onBeforeUnmount(() => {
