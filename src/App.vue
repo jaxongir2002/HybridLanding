@@ -51,10 +51,13 @@ onBeforeUnmount(() => {
     simulation.stop();
   }
 });
+onMounted(()=>{
+  startEffect()
+})
 
 setTimeout(() => {
   onAnimationComplete()
-  startEffect()
+
 }, 7000)
 </script>
 
@@ -63,10 +66,10 @@ setTimeout(() => {
     <Loading/>
   </div>
   <div v-else style="background: #0e0e0e;">
-    <canvas id="renderSurface" ref="canvas"></canvas>
     <Navigation/>
     <router-view>
     </router-view>
+    <canvas id="renderSurface" ref="canvas"></canvas>
   </div>
 </template>
 
