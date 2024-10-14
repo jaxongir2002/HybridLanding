@@ -1,5 +1,5 @@
 <script setup>
-import { computed, ref } from "vue";
+import {computed, onMounted, ref} from "vue";
 import { useCounterStore } from "../store/store.js";
 import { useRouter } from "vue-router";
 import MobileLoading from "@/components/MobileLoading.vue";
@@ -14,7 +14,6 @@ const interval = setInterval(() => {
   if (store.count >= 60) {
     document.body.classList.add("bodyScroll");
   }
-
   if (store.count <= 99) {
     store.count += 1;
   } else {
@@ -38,6 +37,7 @@ const computedColor = computed(() => {
   const opacity = Math.min(store.count / 100, 1);
   return `rgba(255, 255, 255, ${opacity})`;
 });
+
 </script>
 
 <template>
@@ -145,6 +145,10 @@ const computedColor = computed(() => {
 </template>
 
 <style lang="scss">
+body::-webkit-scrollbar {
+  display: none !important;
+}
+
 .bodyScroll::-webkit-scrollbar {
   display: none !important;
 }

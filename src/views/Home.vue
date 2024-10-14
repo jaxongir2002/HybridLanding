@@ -27,8 +27,6 @@ async function getMethod() {
     animation.value = true
   }
 }
-
-
 onMounted(getMethod)
 
 </script>

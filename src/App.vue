@@ -30,8 +30,7 @@ const onAnimationComplete = () => {
   localStorage.setItem('hasVisited', 'true');
   showLoader.value = false;
 };
-
-onMounted(() => {
+function startEffect() {
   simulation = new WebGLFluidEnhanced(canvas.value);
   simulation.start();
   simulation.setConfig({
@@ -44,7 +43,8 @@ onMounted(() => {
     bloom: true,
     brightness: 0.35,
   });
-});
+}
+
 
 onBeforeUnmount(() => {
   if (simulation) {
@@ -54,6 +54,7 @@ onBeforeUnmount(() => {
 
 setTimeout(() => {
   onAnimationComplete()
+  startEffect()
 }, 7000)
 </script>
 
@@ -67,7 +68,6 @@ setTimeout(() => {
     <router-view>
     </router-view>
   </div>
-
 </template>
 
 <style lang="scss">
