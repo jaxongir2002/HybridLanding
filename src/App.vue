@@ -71,7 +71,6 @@ setTimeout(() => {
     <Navigation/>
     <router-view>
     </router-view>
-    <canvas id="renderSurface" ref="canvas"></canvas>
   </div>
 </template>
 
