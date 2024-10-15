@@ -19,9 +19,6 @@ const interval = setInterval(() => {
   } else {
     showTitle.value = true;
     setTimeout(() => {
-      router.push("/");
-    }, 1000);
-    setTimeout(() => {
       const yellowImgH = document.querySelector(".yellow-img-h");
       const yellowImg = document.querySelector(".yellow-img");
 
@@ -33,6 +30,9 @@ const interval = setInterval(() => {
     clearInterval(interval);
   }
 }, 60);
+setTimeout(() => {
+  router.push("/");
+}, 1000);
 const computedColor = computed(() => {
   const opacity = Math.min(store.count / 100, 1);
   return `rgba(255, 255, 255, ${opacity})`;

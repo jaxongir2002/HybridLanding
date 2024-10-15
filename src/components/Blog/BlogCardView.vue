@@ -21,8 +21,6 @@ async function getList() {
   const res = await useAxios(`/blogs?populate=*`)
   blogList.value = res.data
   infoBlog.value = res.data[route.params.id-1]?.attributes
-
-  console.log(infoBlog.value)
 }
 
 getList()

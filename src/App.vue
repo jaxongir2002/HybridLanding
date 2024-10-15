@@ -1,6 +1,6 @@
 <script setup>
 import Lenis from "lenis";
-import {onMounted,onBeforeUnmount, ref} from "vue";
+import {onMounted, onBeforeUnmount, ref, watchEffect} from "vue";
 import Navigation from "@/components/Navigation.vue";
 import Loading from "@/components/Loading.vue";
 import WebGLFluidEnhanced from 'webgl-fluid-enhanced';
@@ -51,8 +51,10 @@ onBeforeUnmount(() => {
     simulation.stop();
   }
 });
-onMounted(()=>{
-  startEffect()
+watchEffect(()=>{
+  if (!showLoader.value){
+    startEffect()
+  }
 })
 
 setTimeout(() => {
