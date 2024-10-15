@@ -15,7 +15,7 @@ async function getMethod() {
 getMethod()
 async function getFilter() {
   const res = await useAxios(`/filter-blogs?populate=*`)
-  filterList.value = res.data[0].attributes.title
+  filterList.value = res.data[0]?.attributes.title
 }
 
 getFilter()

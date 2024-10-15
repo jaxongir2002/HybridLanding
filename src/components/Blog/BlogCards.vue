@@ -37,7 +37,7 @@ function loadMoreItems() {
 watch(selectTitle, (newTitle) => {
   if (newTitle) {
     filteredBlogList.value = props.blogList.filter(item =>
-        item.attributes.blog_list.title.includes(newTitle)
+        item?.attributes.blog_list.title.includes(newTitle)
     );
   }
   if (selectTitle.value === 'All') {
@@ -79,14 +79,14 @@ onMounted(() => {
            @click="$router.push({name: 'blogView', params: { id: item.attributes.blog_list.id }})">
         <div class="flex justify-between items-start max-sm:justify-between max-sm:items-start">
           <div class="rounded-[9px] max-sm:rounded-[9px] overflow-hidden">
-            <video :src="item.attributes?.blog_list.video" autoplay loop muted playsinline>
+            <video :src="item?.attributes?.blog_list.video" autoplay loop muted playsinline>
             </video>
           </div>
           <img src="@/assets/img/Arrow_right.svg" alt="">
         </div>
         <div>
           <div class="text-blog">
-            {{ item.attributes.blog_list?.description }} <span
+            {{ item?.attributes.blog_list?.description }} <span
               class="emoji">
           </span>
           </div>
@@ -96,7 +96,7 @@ onMounted(() => {
             </div>
             <img src="@/assets/img/LineBlog.svg" alt="">
             <div class="date">
-              {{ item.attributes.blog_list.title }}
+              {{ item?.attributes.blog_list.title }}
             </div>
 
           </div>
