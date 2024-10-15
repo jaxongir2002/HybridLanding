@@ -17,16 +17,10 @@ const route = useRoute();
 const infoBlog = ref(null);
 const blogList = ref([]);
 
-async function getMethod() {
-  const res = await useAxios(`/blogs/${route.params.id}?populate=*`)
-  infoBlog.value = res.data.attributes
-}
-
-getMethod()
-
 async function getList() {
   const res = await useAxios(`/blogs?populate=*`)
   blogList.value = res.data
+  infoBlog.value = res.data[route.params.id-1].attributes
 }
 
 getList()

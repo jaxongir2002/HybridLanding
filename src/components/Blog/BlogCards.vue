@@ -17,20 +17,6 @@ const loading = ref(false);
 const selectTitle = ref('All');
 const filteredBlogList = ref();
 const itemCount = ref( 8);
-const btnBlog = ref([
-  {
-    title: 'All'
-  },
-  {
-    title: 'News'
-  },
-  {
-    title: 'Trends'
-  },
-  {
-    title: 'Insights'
-  },
-]);
 
 function activeFn(index, title) {
   active.value = index;
