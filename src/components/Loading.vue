@@ -1,5 +1,5 @@
 <script setup>
-import {computed, onMounted, ref} from "vue";
+import {computed, ref} from "vue";
 import { useCounterStore } from "../store/store.js";
 import { useRouter } from "vue-router";
 import MobileLoading from "@/components/MobileLoading.vue";
@@ -26,8 +26,8 @@ const interval = setInterval(() => {
       const yellowImg = document.querySelector(".yellow-img");
 
       addClass.value = true;
-      yellowImgH.classList.add("addClassH");
-      yellowImg.classList.add("addClassX");
+      yellowImgH?.classList.add("addClassH");
+      yellowImg?.classList.add("addClassX");
     }, 900);
 
     clearInterval(interval);

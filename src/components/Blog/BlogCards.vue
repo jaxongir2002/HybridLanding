@@ -76,7 +76,8 @@ onMounted(() => {
       <div v-for="item in (filteredBlogList || displayedItems)"
            :key="item"
            class="card-blog flex flex-col justify-between col-span-6 relative z-20 max-sm:mt-[20px]"
-           @click="$router.push({name: 'blogView', params: { id: item.attributes.id }})">
+           @click="$router.push({name: 'blogView', params: { id: item.id }})">
+
         <div class="flex justify-between items-start max-sm:justify-between max-sm:items-start">
           <div class="rounded-[9px] max-sm:rounded-[9px] overflow-hidden">
             <video :src="item?.attributes?.blog_list.video" autoplay loop muted playsinline>
@@ -93,6 +94,7 @@ onMounted(() => {
           <div class="flex gap-[16px] mt-[12px]">
             <div class="date">
               {{ moment(new Date(item.attributes.blog_list.date)).format('MM.DD.YYYY') }}
+
             </div>
             <img src="@/assets/img/LineBlog.svg" alt="">
             <div class="date">

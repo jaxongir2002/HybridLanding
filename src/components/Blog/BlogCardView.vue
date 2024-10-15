@@ -21,6 +21,8 @@ async function getList() {
   const res = await useAxios(`/blogs?populate=*`)
   blogList.value = res.data
   infoBlog.value = res.data[route.params.id-1]?.attributes
+
+  console.log(infoBlog.value)
 }
 
 getList()
@@ -30,6 +32,7 @@ getList()
   <div style="padding: 34px 40px 34px 40px; max-width: 1440px;  margin: auto">
     <div class="mt-[100px] grid grid-cols-12 mb-[80px] relative z-10 max-sm:mt-[70px]">
       <div class="max-sm:block col-span-12 hidden">
+        {{infoBlog}}
         <div class="view-blog-first-text relative z-10">
           {{ infoBlog?.main_title }}
         </div>
@@ -94,10 +97,10 @@ getList()
         </div>
         <div v-for="(item,index) in infoBlog?.description_title" :key="index">
           <div class="header-description mt-[60px]">
-            {{ item.title }}
+            {{ item?.title }}
           </div>
           <div class="description-blog mt-[15px]">
-            {{ item.text }}
+            {{ item?.text }}
           </div>
         </div>
 
