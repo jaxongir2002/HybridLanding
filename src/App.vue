@@ -30,6 +30,7 @@ const onAnimationComplete = () => {
   localStorage.setItem('hasVisited', 'true');
   showLoader.value = false;
 };
+
 function startEffect() {
   simulation = new WebGLFluidEnhanced(canvas.value);
   simulation.start();
@@ -45,22 +46,28 @@ function startEffect() {
   });
 }
 
-
+const isMobile = window.matchMedia('(max-width: 767px)').matches;
 onBeforeUnmount(() => {
   if (simulation) {
     simulation.stop();
   }
 });
-watchEffect(()=>{
-  if (!showLoader.value){
+watchEffect(() => {
+  if (!showLoader.value) {
     startEffect()
+  }
+  if (isMobile){
+    setTimeout(() => {
+      onAnimationComplete()
+    }, 3000)
+  }else{
+    setTimeout(() => {
+      onAnimationComplete()
+    }, 7000)
   }
 })
 
-setTimeout(() => {
-  onAnimationComplete()
 
-}, 7000)
 </script>
 
 <template>
@@ -71,6 +78,7 @@ setTimeout(() => {
     <Navigation/>
     <router-view>
     </router-view>
+    <canvas id="renderSurface" ref="canvas" style="position:absolute !important; width: 0; height: 0"></canvas>
   </div>
 </template>
 

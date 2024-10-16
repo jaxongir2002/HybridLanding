@@ -115,12 +115,9 @@ onMounted(() => {
     <div class="flex justify-between items-center mt-[119px] max-sm:mt-[20px]">
       <div class="text-info max-sm:hidden relative z-[33]">Bay Square, Business Bay, Dubai</div>
       <div class="text-info relative z-[33]">©2024 by HYBRID Xperience.</div>
-      <div
-          @click="topScroll"
-          class="text-info flex gap-[10px] relative z-20 items-center "
-      >
-        Back to top
-        <img class="animation-arrow" src="@/assets/img/ArrowUp.svg" alt=""/>
+      <div class="text-info flex gap-[10px] relative z-20 items-center">
+        Website by
+        <img class="" src="@/assets/img/ArrowUp.svg" alt=""/>
       </div>
     </div>
     <div class="big-div-last relative z-10">

@@ -1,11 +1,9 @@
 <script setup>
 import {computed, ref} from "vue";
 import { useCounterStore } from "../store/store.js";
-import { useRouter } from "vue-router";
 import MobileLoading from "@/components/MobileLoading.vue";
 
 const store = useCounterStore();
-const router = useRouter();
 const isMobile = ref(window.innerWidth < 762);
 const showTitle = ref(false);
 const addClass = ref(false);
@@ -30,9 +28,7 @@ const interval = setInterval(() => {
     clearInterval(interval);
   }
 }, 60);
-setTimeout(() => {
-  router.push("/");
-}, 1000);
+
 const computedColor = computed(() => {
   const opacity = Math.min(store.count / 100, 1);
   return `rgba(255, 255, 255, ${opacity})`;

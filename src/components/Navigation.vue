@@ -16,6 +16,7 @@ const changeThreeVideo = ref(false);
 const changeFourVideo = ref(false);
 const changeFiveVideo = ref(false);
 const changeSixVideo = ref(false);
+
 onMounted(() => {
   let prevScrollPos = window.pageYOffset;
   window.addEventListener('scroll', () => {
@@ -32,12 +33,10 @@ onMounted(() => {
   });
   const element = document.getElementById("renderSurface");
 
-// Create the onclick event handler function
   function handleClick() {
     openMenu.value = false
   }
 
-// Attach the onclick event handler to the element
   element.onclick = handleClick;
 
 });
