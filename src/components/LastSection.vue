@@ -3,6 +3,8 @@ import gsap from "gsap";
 import {ScrollTrigger} from "gsap/ScrollTrigger";
 import {onMounted} from "vue";
 
+const isMobile = window.matchMedia('(max-width: 767px)').matches;
+
 function topScroll() {
   window.scrollTo({
     top: 0,
@@ -10,7 +12,9 @@ function topScroll() {
   });
 }
 
-const isMobile = window.matchMedia('(max-width: 767px)').matches;
+function onClick() {
+  window.location.href = 'https://eloqwnt.com/';
+}
 onMounted(() => {
   if (!isMobile) {
     gsap.registerPlugin(SplitText, ScrollTrigger);
@@ -117,7 +121,7 @@ onMounted(() => {
       <div class="text-info relative z-[33]">©2024 by HYBRID Xperience.</div>
       <div class="text-info flex gap-[10px] relative z-20 items-center">
         Website by
-        <img class="" src="@/assets/img/ArrowUp.svg" alt=""/>
+        <img @click="onClick" class="" src="@/assets/img/ArrowUp.svg" alt=""/>
       </div>
     </div>
     <div class="big-div-last relative z-10">
