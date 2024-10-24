@@ -19,7 +19,7 @@ onMounted(() => {
     requestAnimationFrame(raf);
   }
 
-  const hasVisited = localStorage.getItem('hasVisited');
+  const hasVisited = sessionStorage.getItem('hasVisited');
   if (hasVisited) {
     showLoader.value = false;
   }
@@ -27,7 +27,7 @@ onMounted(() => {
   requestAnimationFrame(raf);
 });
 const onAnimationComplete = () => {
-  localStorage.setItem('hasVisited', 'true');
+  sessionStorage.setItem('hasVisited', 'true');
   showLoader.value = false;
 };
 

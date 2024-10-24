@@ -13,7 +13,6 @@ function topScroll() {
     <div class="title-container">
       <div class="title-logo">Hybrid</div>
       <div ref="elementRef" class="title-text">xperience</div>
-      <div class="glass-effect"></div>
     </div>
     <span class="text-scroll" @click="topScroll" >
       Scroll to experience magic
@@ -126,21 +125,6 @@ body::-webkit-scrollbar {
   to {
     transform: scale(1);
   }
-}
-
-.glass-effect {
-  width: 770px;
-  height: 80px;
-  border-radius: 30px;
-  background: #0000000d;
-  backdrop-filter: blur(4px);
-  position: relative;
-  bottom: 45px;
-  box-shadow: 0 4px 30px #0000000d;
-  opacity: 0;
-  animation: glass-effect 0.4s forwards;
-  animation-delay: 0.5s;
-  transform: translateY(5px);
 }
 
 @keyframes glass-effect {
