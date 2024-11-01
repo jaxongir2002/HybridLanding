@@ -20,7 +20,10 @@ const blogList = ref([]);
 async function getList() {
   const res = await useAxios(`/blogs?populate=*`)
   blogList.value = res.data
-  infoBlog.value = res.data[route.params?.id-1]?.attributes
+  setTimeout(()=>{
+    infoBlog.value = res.data[route.params?.id-1]?.attributes
+  },500)
+
 }
 
 getList()
