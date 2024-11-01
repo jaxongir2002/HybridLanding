@@ -20,9 +20,11 @@ const blogList = ref([]);
 async function getList() {
   const res = await useAxios(`/blogs?populate=*`)
   blogList.value = res.data
-  setTimeout(()=>{
-    infoBlog.value = res.data[route.params?.id-1]?.attributes
-  },500)
+  res.data.forEach(el => {
+    if (el.id === Number(route.params.id)) {
+      infoBlog.value = el.attributes
+    }
+  })
 
 }
 
@@ -33,7 +35,7 @@ getList()
   <div style="padding: 34px 40px 34px 40px; max-width: 1440px;  margin: auto">
     <div class="mt-[100px] grid grid-cols-12 mb-[80px] relative z-10 max-sm:mt-[70px]">
       <div class="max-sm:block col-span-12 hidden">
-        {{infoBlog}}
+        {{ infoBlog }}
         <div class="view-blog-first-text relative z-10">
           {{ infoBlog?.main_title }}
         </div>
@@ -151,7 +153,7 @@ getList()
             <div class="mt-[12px] flex justify-between items-center">
               <div class="flex gap-[16px] mt-[12px]">
                 <div class="date">
-                  {{ moment(new Date(item.attributes.blog_list.date)).format('MM.DD.YYYY')}}
+                  {{ moment(new Date(item.attributes.blog_list.date)).format('MM.DD.YYYY') }}
                 </div>
                 <img src="@/assets/img/LineBlog.svg" alt="">
                 <div class="date">
