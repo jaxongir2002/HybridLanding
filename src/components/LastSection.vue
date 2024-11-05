@@ -5,16 +5,6 @@ import {onMounted} from "vue";
 
 const isMobile = window.matchMedia('(max-width: 767px)').matches;
 
-function topScroll() {
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth",
-  });
-}
-
-function onClick() {
-  window.location.href = 'https://eloqwnt.com/';
-}
 onMounted(() => {
   if (!isMobile) {
     gsap.registerPlugin(SplitText, ScrollTrigger);
@@ -108,7 +98,6 @@ onMounted(() => {
     <div class="flex justify-around items-center mt-[121px] relative z-[33]">
       <div class="text-content">
         Let`s make some magic
-        <div class="glass-effect"></div>
       </div>
       <div>
         <iframe
@@ -119,10 +108,6 @@ onMounted(() => {
     <div class="flex justify-between items-center mt-[119px] max-sm:mt-[20px]">
       <div class="text-info max-sm:hidden relative z-[33]">Bay Square, Business Bay, Dubai</div>
       <div class="text-info relative z-[33]">©2024 by HYBRID Xperience.</div>
-      <div class="text-info flex gap-[10px] relative z-20 items-center">
-        Website by
-        <img @click="onClick" class="" src="@/assets/img/ArrowUp.svg" alt=""/>
-      </div>
     </div>
     <div class="big-div-last relative z-10">
       <div id="footer-text" class="footer-text hover-text">
@@ -144,12 +129,6 @@ onMounted(() => {
   }
   .text-content {
     font-size: 14px !important;
-  }
-  .glass-effect {
-    width: 220px !important;
-    height: 20px !important;
-    bottom: 8px !important;
-    left: -10px;
   }
   iframe {
     width: 275.147px !important;
@@ -223,18 +202,6 @@ onMounted(() => {
   line-height: 130%;
   text-transform: uppercase;
   transition: 0.3s;
-}
-
-.glass-effect {
-  width: 100%;
-  height: 80px;
-  flex-shrink: 0;
-  border-radius: 30px;
-  background: rgba(0, 0, 0, 0.05);
-  backdrop-filter: blur(4px);
-  position: relative;
-  bottom: 30px;
-  //right: 50px;
 }
 
 .gradient-overlay {

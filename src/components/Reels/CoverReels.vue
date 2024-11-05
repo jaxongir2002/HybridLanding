@@ -18,7 +18,6 @@ onMounted(() => {
   <section id="container">
     <div class="title-container">
       <div class="title-logo test-animation">Our  <span class="mobile-works">Works</span></div>
-      <div class="glass-effect"></div>
     </div>
   </section>
 </template>
@@ -32,11 +31,6 @@ onMounted(() => {
   }
   .mobile-works{
     display: block;
-  }
-  .glass-effect {
-    width: 320px !important;
-    height: 40px !important;
-    transform: translateY(20px) !important;
   }
 
   .title-container {
@@ -86,21 +80,6 @@ onMounted(() => {
   to {
     transform: scale(1);
   }
-}
-
-.glass-effect {
-  width: 960px;
-  height: 80px;
-  border-radius: 30px;
-  background: #0000000d;
-  backdrop-filter: blur(2px);
-  position: relative;
-  bottom: 45px;
-  box-shadow: 0 4px 30px #0000000d;
-  opacity: 0;
-  animation: glass-effect 0.4s forwards;
-  animation-delay: 0.5s;
-  transform: translateY(-5px);
 }
 
 @keyframes glass-effect {
