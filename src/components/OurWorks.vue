@@ -195,18 +195,7 @@ onMounted(() => {
               @click="openModal(item, index)"
           >
 
-            <video
-                :src="item?.video"
-                preload="metadata"
-                ref="videoPlayer"
-                width="320"
-                height="240"
-                autoplay
-                loop
-                muted
-                playsinline
-                class="cards-img"
-            >
+            <video  :src="item.video"  autoplay loop muted playsinline>
             </video>
           </div>
         </div>
