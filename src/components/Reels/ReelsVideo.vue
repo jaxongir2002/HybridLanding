@@ -69,11 +69,7 @@ function closeModal(event) {
 
 function openTab() {
   addTab.value = !addTab.value;
-  const videos = document.querySelectorAll('.cards-img');
 
-  videos.forEach(video => {
-    video;
-  });
   if (addTab.value === false) {
     document.querySelectorAll(".cards").forEach((el) => {
       el.style.transform = "translateY(0px)";
@@ -123,9 +119,7 @@ onMounted(() => {
         classAddAnimation.value = true
         anotherClass.value = false
 
-        if (addTab) {
-          fixNav.value = false
-        } else fixNav.value = true
+        fixNav.value = !addTab;
       } else {
         classAddAnimation.value = false
         anotherClass.value = true
@@ -174,10 +168,12 @@ function loadMoreItems() {
               class="cards"
               @click="openModal(item, index)"
           >
-            <video loop muted ref="videoPlayer" playsinline
-                   class="cards-img">
-              <source :src="item.video"
-                      type="video/mp4">
+            <video ref="videoPlayer" playsinline class="cards-img">
+              <source :src="item.video" type="video/mp4">
+
+              <source :src="item.video.replace('.mp4', '-lowres.mp4')" type="video/mp4">
+
+              <source :src="item.video.replace('.mp4', '.webm')" type="video/webm">
             </video>
           </div>
           <LoaderBlog v-if="loading"/>
