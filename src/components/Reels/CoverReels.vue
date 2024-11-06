@@ -81,13 +81,4 @@ onMounted(() => {
     transform: scale(1);
   }
 }
-
-@keyframes glass-effect {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
 </style>

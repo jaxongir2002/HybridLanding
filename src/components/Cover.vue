@@ -38,11 +38,6 @@ body::-webkit-scrollbar {
     font-size: 46.5px !important;
     line-height: 100% !important;
   }
-  .glass-effect {
-    width: 320px !important;
-    height: 40px !important;
-    transform: translateY(20px) !important;
-  }
   .text-scroll {
     font-size: 12px !important;
     font-style: normal;
@@ -127,14 +122,6 @@ body::-webkit-scrollbar {
   }
 }
 
-@keyframes glass-effect {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
 .text-scroll {
   font-family: "Urbanist", sans-serif;
   font-size: 16px;

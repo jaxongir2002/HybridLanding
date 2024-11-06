@@ -25,7 +25,6 @@ onMounted(() => {
     <div class="title-container">
       <div class="title-logo test-animation-installations">Hybrid</div>
       <div ref="elementRef" class="title-text test-animation-installations"> Installations </div>
-      <div class="glass-effect"></div>
     </div>
     <span class="text-scroll" @click="topScroll" >
       Scroll to experience magic
@@ -45,12 +44,6 @@ onMounted(() => {
   .title-text {
     font-size: 34px !important;
     line-height: 100% !important;
-  }
-  .glass-effect {
-    width: 320px !important;
-    height: 40px !important;
-    transform: translateY(35px) !important;
-    backdrop-filter: blur(2px)!important;
   }
   .text-scroll {
     font-size: 12px !important;
@@ -133,29 +126,6 @@ onMounted(() => {
   }
 }
 
-.glass-effect {
-  width: 110%;
-  height: 80px;
-  border-radius: 30px;
-  background: #0000000d;
-  backdrop-filter: blur(4px);
-  position: relative;
-  bottom: 45px;
-  box-shadow: 0 4px 30px #0000000d;
-  opacity: 0;
-  animation: glass-effect 0.4s forwards;
-  animation-delay: 0.5s;
-  transform: translateY(10px);
-}
-
-@keyframes glass-effect {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
 .text-scroll {
   font-family: "Urbanist", sans-serif;
   font-size: 16px;

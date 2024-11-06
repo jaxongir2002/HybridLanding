@@ -36,7 +36,6 @@ onMounted(() => {
         <div class="rotate-number">0</div>
         4
       </div>
-      <div class="glass-effect"></div>
       <div class="mt-[32px] relative z-[33]">
         <div ref="oops" class="oops-sorry">
           Oops.. sorry..
@@ -59,10 +58,6 @@ onMounted(() => {
   .title-logo {
     font-size:137.09px!important;
     line-height: 55px !important;
-  }
-
-  .glass-effect {
-   display: none;
   }
   .oops-sorry{
     font-size: 14px !important;
@@ -150,27 +145,4 @@ onMounted(() => {
   transition: 1s;
 }
 
-
-.glass-effect {
-  width: 105%;
-  height: 120px;
-  border-radius: 30px;
-  background: #0000000d;
-  backdrop-filter: blur(4px);
-  position: relative;
-  bottom: 145px;
-  opacity: 0;
-  animation: glass-effect 0.4s forwards;
-  animation-delay: 0.5s;
-  transform: translateY(5px);
-}
-
-@keyframes glass-effect {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
 </style>

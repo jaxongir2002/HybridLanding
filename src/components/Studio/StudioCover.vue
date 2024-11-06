@@ -56,11 +56,6 @@ onMounted(() => {
     line-height: 100% !important;
     width: 87px !important;
   }
-  .glass-effect {
-    width: 320px !important;
-    height: 40px !important;
-    transform: translateY(20px) !important;
-  }
   .text-scroll {
     font-size: 12px !important;
     font-style: normal;
@@ -127,15 +122,6 @@ onMounted(() => {
   }
   to {
     transform: scale(1);
-  }
-}
-
-@keyframes glass-effect {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
   }
 }
 

@@ -24,7 +24,6 @@ onMounted(() => {
   <section id="container" class="">
     <div class="title-container">
       <div class="title-logo test-animation">Hybrid Lab</div>
-      <div class="glass-effect"></div>
       <div class="flex justify-between w-[965px] max-sm:w-[80%]">
         <div class="text-trials">
           Trials
@@ -51,11 +50,6 @@ onMounted(() => {
   .text-trials {
     font-size: 16px !important;
     line-height: 100% !important;
-  }
-  .glass-effect {
-    width: 320px !important;
-    height: 40px !important;
-    transform: translateY(25px) !important;
   }
   .text-scroll {
     font-size: 12px !important;
@@ -136,14 +130,6 @@ onMounted(() => {
   }
 }
 
-@keyframes glass-effect {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
 
 .text-scroll {
   font-family: "Urbanist", sans-serif;
@@ -170,20 +156,5 @@ onMounted(() => {
   line-height: 130%; /* 31.2px */
   text-transform: uppercase;
   width: 177px;
-}
-
-.glass-effect {
-  width: 965px;
-  height: 80px;
-  border-radius: 30px;
-  background: #0000000d;
-  backdrop-filter: blur(5px);
-  position: relative;
-  bottom: 45px;
-  box-shadow: 0 4px 30px #0000000d;
-  opacity: 0;
-  animation: glass-effect 0.4s forwards;
-  animation-delay: 0.5s;
-  transform: translateY(10px);
 }
 </style>

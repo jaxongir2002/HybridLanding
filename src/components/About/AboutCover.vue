@@ -33,7 +33,6 @@ onMounted(() => {
     <div class="title-container ">
       <div class="title-logo test-animation-about">We are</div>
       <div ref="elementRef" class="title-logo relative lg:left-[240px] mobile-title test-animation-about">misfits</div>
-      <div class="glass-effect left-[190px]"></div>
     </div>
   </section>
 
@@ -77,12 +76,6 @@ body::-webkit-scrollbar {
   }
   iframe {
     display: none;
-  }
-  .glass-effect {
-    width: 239px !important;
-    height: 40px !important;
-    transform: translateY(20px) !important;
-    left: 60px !important;
   }
   .text-scroll {
     font-size: 12px !important;
@@ -153,30 +146,6 @@ body::-webkit-scrollbar {
   }
   to {
     transform: scale(1);
-  }
-}
-
-.glass-effect {
-  width: 770px;
-  height: 80px;
-  border-radius: 30px;
-  background: #0000000d;
-  backdrop-filter: blur(2px);
-  position: relative;
-  bottom: 45px;
-  box-shadow: 0 4px 30px #0000000d;
-  opacity: 0;
-  animation: glass-effect 0.4s forwards;
-  animation-delay: 0.5s;
-  transform: translateY(-15px);
-}
-
-@keyframes glass-effect {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
   }
 }
 

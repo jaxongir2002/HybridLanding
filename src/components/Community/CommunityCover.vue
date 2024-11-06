@@ -25,7 +25,6 @@ onMounted(() => {
   <section id="container" class="">
     <div class="title-container">
       <div class="title-logo test-animation">Community</div>
-      <div class="glass-effect-community hidden"></div>
       <div class="title-text">Hybrid + Artist = magic</div>
     </div>
     <span class="text-scroll" @click="topScroll">
@@ -45,17 +44,6 @@ onMounted(() => {
   }
   .title-text {
     display: none;
-  }
-  .glass-effect-community {
-    width: 320px !important;
-    height: 40px !important;
-    transform: translateY(20px) !important;
-    display: block !important;
-    position: absolute;
-    top: 5px;
-    border-radius: 15px;
-    background: rgba(0, 0, 0, 0.05) !important;
-    backdrop-filter: blur(2px) !important;
   }
   .text-scroll {
     font-size: 12px !important;
@@ -144,30 +132,6 @@ onMounted(() => {
   }
   to {
     transform: scale(1);
-  }
-}
-
-.glass-effect {
-  width: 770px;
-  height: 80px;
-  border-radius: 30px;
-  background: #0000000d;
-  backdrop-filter: blur(5px);
-  position: relative;
-  bottom: 45px;
-  box-shadow: 0 4px 30px #0000000d;
-  opacity: 0;
-  animation: glass-effect 0.4s forwards;
-  animation-delay: 0.5s;
-  transform: translateY(10px);
-}
-
-@keyframes glass-effect {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
   }
 }
 

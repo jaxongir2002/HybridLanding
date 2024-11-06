@@ -66,7 +66,6 @@ const interval = setInterval(() => {
     <div class="title-container" :class="{ animate: showTitle }">
       <div class="title-logo" :class="{ shadowNone: addClass }">Hybrid</div>
       <div class="title-text" :class="{ shadowNone: addClass }">xperience</div>
-      <div class="glass-effect" style="visibility: hidden"></div>
     </div>
     <img
         :class="{
@@ -116,11 +115,6 @@ const interval = setInterval(() => {
   .title-text {
     font-size: 46.5px !important;
     line-height: 100% !important;
-  }
-  .glass-effect {
-    width: 320px !important;
-    height: 40px !important;
-    transform: translateY(20px) !important;
   }
   .text-scroll {
     font-size: 12px !important;
@@ -445,14 +439,6 @@ const interval = setInterval(() => {
   font-weight: 900;
   font-size: 93px;
   line-height: 93px;
-}
-
-.glass-effect {
-  width: 770px;
-  height: 80px;
-  position: relative;
-  bottom: 45px;
-  transform: translateY(10px);
 }
 
 .text-scroll {

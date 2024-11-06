@@ -114,7 +114,6 @@ onMounted(() => {
     <div>
       <div class="text-touch relative z-[33]">
         Get in Touch
-        <div class="glass-effect"></div>
       </div>
       <div class="flex gap-[20px] mt-[136px] info-container">
         <div>
@@ -228,12 +227,6 @@ onMounted(() => {
     width: 188px !important;
   }
 
-  .glass-effect {
-    width: 166px !important;
-    height: 40px !important;
-    bottom: 20px !important;
-    right: 5px;
-  }
   .scroll-register-aboutP {
     flex-direction: column !important;
   }
@@ -453,17 +446,6 @@ onMounted(() => {
   line-height: 100%;
   text-transform: uppercase;
   width: 440px;
-}
-
-.glass-effect {
-  width: 440px;
-  height: 80px;
-  flex-shrink: 0;
-  border-radius: 30px;
-  background: rgba(0, 0, 0, 0.05);
-  backdrop-filter: blur(4px);
-  position: relative;
-  bottom: 50px;
 }
 
 .btn-links {

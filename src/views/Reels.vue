@@ -18,7 +18,7 @@ getOurWorks()
 </script>
 
 <template>
-  <div class="screen-width" style=" padding: 34px 40px 34px 40px; max-width: 1440px;  margin: auto">
+  <div class="screen-width" style="padding: 34px 40px 34px 40px; max-width: 1440px;  margin: auto">
     <cover-reels/>
     <reels-video :videos="ourWorks"/>
     <Partners/>
