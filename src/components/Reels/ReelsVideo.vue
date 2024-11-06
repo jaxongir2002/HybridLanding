@@ -168,13 +168,9 @@ function loadMoreItems() {
               class="cards"
               @click="openModal(item, index)"
           >
-            <video ref="videoPlayer" playsinline class="cards-img">
-              <source :src="item.video" type="video/mp4">
-
-              <source :src="item.video.replace('.mp4', '-lowres.mp4')" type="video/mp4">
-
-              <source :src="item.video.replace('.mp4', '.webm')" type="video/webm">
+            <video ref="firstVideo"  :src="item.video"  autoplay loop muted playsinline>
             </video>
+
           </div>
           <LoaderBlog v-if="loading"/>
         </div>
