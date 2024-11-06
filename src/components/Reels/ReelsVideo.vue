@@ -175,7 +175,7 @@ function loadMoreItems() {
               class="cards"
               @click="openModal(item, index)"
           >
-            <video preload="metadata" :src="item.video" loop muted ref="videoPlayer" autoplay width="320" height="240" playsinline
+            <video preload="metadata" :src="item.video" loop muted ref="videoPlayer" width="320" height="240" playsinline
                    class="cards-img">
             </video>
           </div>
