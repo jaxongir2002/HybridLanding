@@ -126,6 +126,7 @@ onMounted(() => {
   transition: all 0.3s ease-in-out;
 }
 
+
 @keyframes dashboard-animation {
   from {
     transform: scale(0.8);
