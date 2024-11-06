@@ -141,7 +141,6 @@ onMounted(() => {
 function loadMoreItems() {
   loading.value = true;
   setTimeout(() => {
-    // Set itemCount to the total number of videos to show all
     itemCount.value = props.videos.length;
     loading.value = false;
   }, 1000);
@@ -198,7 +197,7 @@ function loadMoreItems() {
             <div class="cards cards-tab"
                  @click="openModal(item, index)"
             >
-              <video loop muted ref="videoPlayer" autoplay width="320" height="240" playsinline
+              <video loop muted ref="videoPlayer" width="320" height="240" playsinline
                      class="cards-img cards-img-tab">
                 <source :src="item.video"
                         type="video/mp4">
