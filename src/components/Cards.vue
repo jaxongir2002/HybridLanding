@@ -117,7 +117,6 @@ onMounted(() => {
             </div>
             <div class="img-bg-hybrid">
               <video ref="firstVideo" :src="videoSource" autoplay loop muted playsinline>
-
               </video>
               <div class="footer-btn absolute  bottom-[20px]">
                 <img src="../assets/img/Arrow_right.svg" alt="">
