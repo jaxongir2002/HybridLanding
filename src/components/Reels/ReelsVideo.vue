@@ -168,7 +168,7 @@ function loadMoreItems() {
               class="cards"
               @click="openModal(item, index)"
           >
-            <video ref="firstVideo"  :src="item.video"  autoplay loop muted playsinline>
+            <video ref="firstVideo"  :src="item.video"  loop muted playsinline>
             </video>
 
           </div>
