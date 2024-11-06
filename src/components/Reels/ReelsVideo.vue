@@ -174,7 +174,7 @@ function loadMoreItems() {
               class="cards"
               @click="openModal(item, index)"
           >
-            <video loop muted ref="videoPlayer" width="320" height="240" playsinline
+            <video loop muted ref="videoPlayer" playsinline
                    class="cards-img">
               <source :src="item.video"
                       type="video/mp4">
