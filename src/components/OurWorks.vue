@@ -198,14 +198,14 @@ onMounted(() => {
             <video
                 :src="item?.video"
                 preload="metadata"
-                loop
-                muted
                 ref="videoPlayer"
                 width="320"
                 height="240"
+                autoplay
+                loop
+                muted
                 playsinline
                 class="cards-img"
-                :autoplay="isVisible(index)"
             >
             </video>
           </div>
@@ -225,7 +225,7 @@ onMounted(() => {
           <div class="cards cards-tab"
                @click="openModal(item, index)"
           >
-            <video loop muted ref="videoPlayer" autoplay width="320" height="240" playsinline
+            <video loop muted ref="videoPlayer" width="320" height="240" playsinline
                    class="cards-img cards-img-tab">
               <source :src="item.video"
                       type="video/mp4">
